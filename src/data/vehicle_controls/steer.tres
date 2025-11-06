@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="VehicleAxisControlInput" load_steps=2 format=3 uid="uid://b3ahasvr0j0io"]
+
+[ext_resource type="Script" uid="uid://b8sfr3npohd0i" path="res://vehicle/vehicle_axis_control_input.gd" id="1_oh6bs"]
+
+[resource]
+script = ExtResource("1_oh6bs")
+action_mapping_negative = "turn_left"
+action_mapping_positive = "turn_right"
+metadata/_custom_type_script = "uid://b8sfr3npohd0i"

@@ -1,0 +1,111 @@
+[gd_scene load_steps=11 format=3 uid="uid://scmr7fvfwq86"]
+
+[ext_resource type="Script" uid="uid://ceb3fbth2q404" path="res://vehicle/vehicle.gd" id="1_opyur"]
+[ext_resource type="Resource" uid="uid://qnlykqd5qlqd" path="res://data/vehicle_parts/wheel.tres" id="2_1ktiy"]
+[ext_resource type="Resource" uid="uid://btkcews2jo7yo" path="res://vehicle/vehicle_controls.tres" id="2_vg162"]
+[ext_resource type="PackedScene" uid="uid://bjf4o1kponle7" path="res://debug/debug_window.tscn" id="4_vp2eu"]
+[ext_resource type="Resource" uid="uid://btxwwm7l8way1" path="res://vehicle/debug_items.tres" id="5_raajb"]
+[ext_resource type="ButtonGroup" uid="uid://clepjgnltrk2f" path="res://ui/control_ui/button_group_accelerate.tres" id="6_6bjwd"]
+[ext_resource type="Script" uid="uid://jqnjm14o6aub" path="res://ui/control_ui/vehicle_control_button.gd" id="6_raajb"]
+[ext_resource type="Resource" uid="uid://cvkqs11635jo2" path="res://data/vehicle_controls/accelerate.tres" id="7_g2dx0"]
+[ext_resource type="Resource" uid="uid://b3ahasvr0j0io" path="res://data/vehicle_controls/steer.tres" id="8_6bjwd"]
+[ext_resource type="ButtonGroup" uid="uid://hkkm4m712nm3" path="res://ui/control_ui/button_group_steer.tres" id="9_s4s6f"]
+
+[node name="Vehicle" type="RigidBody2D"]
+center_of_mass_mode = 1
+can_sleep = false
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 5
+linear_damp_mode = 1
+linear_damp = 1.0
+angular_damp_mode = 1
+angular_damp = 1.0
+script = ExtResource("1_opyur")
+controls = ExtResource("2_vg162")
+wheel_part_reference = ExtResource("2_1ktiy")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Structure Nodes" type="Node2D" parent="."]
+
+[node name="Mounted Nodes" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Debug Window" parent="CanvasLayer" instance=ExtResource("4_vp2eu")]
+item_collection = ExtResource("5_raajb")
+
+[node name="Control UI" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -179.0
+offset_bottom = 111.0
+grow_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control UI"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Control UI/MarginContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Control" type="Control" parent="CanvasLayer/Control UI/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="VehicleControlButton" type="Button" parent="CanvasLayer/Control UI/MarginContainer/GridContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("6_6bjwd")
+text = "FORWARD"
+script = ExtResource("6_raajb")
+linked_control = ExtResource("7_g2dx0")
+control_parameter = 2
+metadata/_custom_type_script = "uid://jqnjm14o6aub"
+
+[node name="Control2" type="Control" parent="CanvasLayer/Control UI/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="VehicleControlButton3" type="Button" parent="CanvasLayer/Control UI/MarginContainer/GridContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("9_s4s6f")
+text = "LEFT"
+script = ExtResource("6_raajb")
+linked_control = ExtResource("8_6bjwd")
+control_parameter = 1
+metadata/_custom_type_script = "uid://jqnjm14o6aub"
+
+[node name="Control3" type="Control" parent="CanvasLayer/Control UI/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="VehicleControlButton4" type="Button" parent="CanvasLayer/Control UI/MarginContainer/GridContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("9_s4s6f")
+text = "RIGHT"
+script = ExtResource("6_raajb")
+linked_control = ExtResource("8_6bjwd")
+control_parameter = 2
+metadata/_custom_type_script = "uid://jqnjm14o6aub"
+
+[node name="Control4" type="Control" parent="CanvasLayer/Control UI/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="VehicleControlButton2" type="Button" parent="CanvasLayer/Control UI/MarginContainer/GridContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("6_6bjwd")
+text = "BACK"
+script = ExtResource("6_raajb")
+linked_control = ExtResource("7_g2dx0")
+control_parameter = 1
+metadata/_custom_type_script = "uid://jqnjm14o6aub"
+
+[node name="Control5" type="Control" parent="CanvasLayer/Control UI/MarginContainer/GridContainer"]
+layout_mode = 2

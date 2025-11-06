@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="VehicleLayout" load_steps=7 format=3 uid="uid://dgc124n34wdwm"]
+
+[ext_resource type="Script" uid="uid://c3njl81r2414m" path="res://vehicle/parts/vehicle_mounted_part_info_data.gd" id="1_u56c4"]
+[ext_resource type="Resource" uid="uid://c6nj6sqfxlk8h" path="res://data/vehicle_parts/driver.tres" id="2_wdqlg"]
+[ext_resource type="Script" uid="uid://bj8xmxi8huo" path="res://vehicle/vehicle_layout.gd" id="4_hxg2c"]
+[ext_resource type="Script" uid="uid://ddgjj5b5vs23n" path="res://vehicle/parts/vehicle_structure_data.gd" id="5_5q3pu"]
+[ext_resource type="Resource" uid="uid://ctgyp7g7ih0oi" path="res://data/vehicle_parts/light_structure.tres" id="6_gq6vq"]
+
+[sub_resource type="Resource" id="Resource_c0hub"]
+script = ExtResource("1_u56c4")
+part = ExtResource("2_wdqlg")
+metadata/_custom_type_script = "uid://c3njl81r2414m"
+
+[resource]
+script = ExtResource("4_hxg2c")
+structure_parts = Dictionary[Vector2i, ExtResource("5_5q3pu")]({
+Vector2i(0, 0): ExtResource("6_gq6vq")
+})
+mounted_parts = Dictionary[Vector2i, ExtResource("1_u56c4")]({
+Vector2i(0, 0): SubResource("Resource_c0hub")
+})
+metadata/_custom_type_script = "uid://bj8xmxi8huo"

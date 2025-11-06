@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="VehicleAxisControlInput" load_steps=2 format=3 uid="uid://cvkqs11635jo2"]
+
+[ext_resource type="Script" uid="uid://b8sfr3npohd0i" path="res://vehicle/vehicle_axis_control_input.gd" id="1_yvptv"]
+
+[resource]
+script = ExtResource("1_yvptv")
+action_mapping_negative = "backward"
+action_mapping_positive = "forward"
+metadata/_custom_type_script = "uid://b8sfr3npohd0i"

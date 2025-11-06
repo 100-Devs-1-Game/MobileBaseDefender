@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="DebugWindowItemCollection" load_steps=10 format=3 uid="uid://btxwwm7l8way1"]
+
+[ext_resource type="Script" uid="uid://b5minub6eomyb" path="res://debug/debug_window_item.gd" id="1_0e122"]
+[ext_resource type="Script" uid="uid://c3144pxwnbsrc" path="res://debug/debug_window_item_collection.gd" id="2_dl8pt"]
+
+[sub_resource type="Resource" id="Resource_0e122"]
+script = ExtResource("1_0e122")
+id = "acceleration"
+metadata/_custom_type_script = "uid://b5minub6eomyb"
+
+[sub_resource type="Resource" id="Resource_dl8pt"]
+script = ExtResource("1_0e122")
+id = "torque"
+format = "%.2f"
+metadata/_custom_type_script = "uid://b5minub6eomyb"
+
+[sub_resource type="Resource" id="Resource_we8ka"]
+script = ExtResource("1_0e122")
+id = "speed"
+metadata/_custom_type_script = "uid://b5minub6eomyb"
+
+[sub_resource type="Resource" id="Resource_stqet"]
+script = ExtResource("1_0e122")
+id = "available power"
+metadata/_custom_type_script = "uid://b5minub6eomyb"
+
+[sub_resource type="Resource" id="Resource_1onmf"]
+script = ExtResource("1_0e122")
+id = "used power"
+metadata/_custom_type_script = "uid://b5minub6eomyb"
+
+[sub_resource type="Resource" id="Resource_iujbo"]
+script = ExtResource("1_0e122")
+id = "stored power"
+metadata/_custom_type_script = "uid://b5minub6eomyb"
+
+[sub_resource type="Resource" id="Resource_avseo"]
+script = ExtResource("1_0e122")
+id = "power ratio"
+format = "%.2f"
+metadata/_custom_type_script = "uid://b5minub6eomyb"
+
+[resource]
+script = ExtResource("2_dl8pt")
+items = Array[ExtResource("1_0e122")]([SubResource("Resource_0e122"), SubResource("Resource_dl8pt"), SubResource("Resource_we8ka"), SubResource("Resource_stqet"), SubResource("Resource_1onmf"), SubResource("Resource_iujbo"), SubResource("Resource_avseo")])
+metadata/_custom_type_script = "uid://c3144pxwnbsrc"
