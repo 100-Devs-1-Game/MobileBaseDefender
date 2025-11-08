@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://scmr7fvfwq86"]
+[gd_scene load_steps=12 format=3 uid="uid://scmr7fvfwq86"]
 
 [ext_resource type="Script" uid="uid://ceb3fbth2q404" path="res://vehicle/vehicle.gd" id="1_opyur"]
 [ext_resource type="Resource" uid="uid://qnlykqd5qlqd" path="res://data/vehicle_parts/wheel.tres" id="2_1ktiy"]
@@ -10,6 +10,9 @@
 [ext_resource type="Resource" uid="uid://cvkqs11635jo2" path="res://data/vehicle_controls/accelerate.tres" id="7_g2dx0"]
 [ext_resource type="Resource" uid="uid://b3ahasvr0j0io" path="res://data/vehicle_controls/steer.tres" id="8_6bjwd"]
 [ext_resource type="ButtonGroup" uid="uid://hkkm4m712nm3" path="res://ui/control_ui/button_group_steer.tres" id="9_s4s6f"]
+
+[sub_resource type="Theme" id="Theme_s4s6f"]
+Button/font_sizes/font_size = 32
 
 [node name="Vehicle" type="RigidBody2D"]
 center_of_mass_mode = 1
@@ -40,9 +43,10 @@ item_collection = ExtResource("5_raajb")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -179.0
-offset_bottom = 111.0
+offset_left = -216.0
+offset_bottom = 121.0
 grow_horizontal = 0
+theme = SubResource("Theme_s4s6f")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control UI"]
 layout_mode = 2
@@ -53,6 +57,8 @@ theme_override_constants/margin_bottom = 10
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/Control UI/MarginContainer"]
 layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 20
 columns = 3
 
 [node name="Control" type="Control" parent="CanvasLayer/Control UI/MarginContainer/GridContainer"]

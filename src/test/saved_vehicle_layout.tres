@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="VehicleLayout" load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://vehicle/parts/vehicle_mounted_part_info_data.gd" id="1_e7xyf"]
+[ext_resource type="Resource" path="res://data/vehicle_parts/driver.tres" id="2_d110u"]
+[ext_resource type="Script" path="res://vehicle/vehicle_layout.gd" id="2_gdna0"]
+[ext_resource type="Script" path="res://vehicle/parts/vehicle_structure_data.gd" id="3_3ub8b"]
+[ext_resource type="Resource" path="res://data/vehicle_parts/wheel.tres" id="3_gagud"]
+[ext_resource type="Resource" path="res://data/vehicle_parts/power_generator.tres" id="4_fqhwb"]
+[ext_resource type="Resource" path="res://data/vehicle_parts/light_structure.tres" id="7_tos2m"]
+
+[sub_resource type="Resource" id="Resource_d110u"]
+script = ExtResource("1_e7xyf")
+part = ExtResource("2_d110u")
+metadata/_custom_type_script = "uid://c3njl81r2414m"
+
+[sub_resource type="Resource" id="Resource_gagud"]
+script = ExtResource("1_e7xyf")
+part = ExtResource("4_fqhwb")
+
+[sub_resource type="Resource" id="Resource_fqhwb"]
+script = ExtResource("1_e7xyf")
+part = ExtResource("3_gagud")
+
+[sub_resource type="Resource" id="Resource_tos2m"]
+script = ExtResource("1_e7xyf")
+part = ExtResource("3_gagud")
+rotation = Vector2i(1, 0)
+
+[resource]
+script = ExtResource("2_gdna0")
+structure_parts = Dictionary[Vector2i, ExtResource("3_3ub8b")]({
+Vector2i(-1, 0): ExtResource("7_tos2m"),
+Vector2i(-1, 1): ExtResource("7_tos2m"),
+Vector2i(0, 0): ExtResource("7_tos2m"),
+Vector2i(0, 1): ExtResource("7_tos2m")
+})
+mounted_parts = Dictionary[Vector2i, ExtResource("1_e7xyf")]({
+Vector2i(-1, 0): SubResource("Resource_fqhwb"),
+Vector2i(-1, 1): SubResource("Resource_gagud"),
+Vector2i(0, 0): SubResource("Resource_d110u"),
+Vector2i(0, 1): SubResource("Resource_tos2m")
+})
+metadata/_custom_type_script = "uid://bj8xmxi8huo"

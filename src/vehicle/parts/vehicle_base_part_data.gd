@@ -10,3 +10,11 @@ extends Resource
 @export var build_mode_texture: Texture2D
 @export var game_mode_texture: Texture2D
 @export var game_mode_scene: PackedScene
+
+
+
+func get_build_mode_texture()-> Texture2D:
+	if not build_mode_texture:
+		assert(game_mode_texture)
+		return game_mode_texture
+	return build_mode_texture

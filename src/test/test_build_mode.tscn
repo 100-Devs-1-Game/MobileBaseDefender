@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjuyqn4rgouhh"]
+
+[ext_resource type="Script" uid="uid://da4w8lmtox543" path="res://test/test_build_mode.gd" id="1_xs6ey"]
+[ext_resource type="Resource" uid="uid://c6f7g3f2klter" path="res://test/saved_vehicle_layout.tres" id="2_fajxb"]
+[ext_resource type="Resource" uid="uid://dgc124n34wdwm" path="res://test/driver_only_vehicle_layout.tres" id="3_swxc6"]
+[ext_resource type="Texture2D" uid="uid://c3abnbhiyu2fj" path="res://assets/art/placeholder/parts/structure_driver.png" id="4_swxc6"]
+
+[node name="BuildMode" type="Node2D"]
+script = ExtResource("1_xs6ey")
+start_clean = true
+saved_layout = ExtResource("2_fajxb")
+start_layout = ExtResource("3_swxc6")
+
+[node name="Active Part" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+texture = ExtResource("4_swxc6")
+
+[node name="Placed Parts" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]

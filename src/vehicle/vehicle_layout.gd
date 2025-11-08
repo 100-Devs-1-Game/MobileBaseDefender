@@ -6,6 +6,19 @@ extends Resource
 
 
 
+func add_structure(pos: Vector2i, structure: VehicleStructureData):
+	assert(not has_structure_at(pos))
+	structure_parts[pos]= structure
+
+
+func add_mounted_part(pos: Vector2i, part: VehicleMountedPartData, rotation: Vector2i= Vector2i.UP):
+	assert(has_structure_at(pos) and not has_mounted_part_at(pos))
+	var info:= VehicleMountedPartInfo.new()
+	info.part= part
+	info.rotation= rotation
+	mounted_parts[pos]= info
+
+
 func get_structure_at(pos: Vector2i)-> VehicleStructureData:
 	if not has_structure_at(pos):
 		return null
