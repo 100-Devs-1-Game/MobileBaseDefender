@@ -38,4 +38,4 @@ func get_power_usage(part_info: VehicleMountedPartInfo)-> float:
 
 
 func is_reloading(part_info: VehicleMountedPartInfo)-> bool:
-	return part_info.live_data[RELOAD_TIME_DATA] <= 0.0
+	return part_info.live_data[RELOAD_TIME_DATA] > 0.0
