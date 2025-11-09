@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0gwdjytppuwp"]
+
+[ext_resource type="Script" uid="uid://cxcfs10xl5f0f" path="res://global/raycast_helper.gd" id="1_k7kib"]
+
+[node name="Raycast Helper" type="RayCast2D"]
+enabled = false
+script = ExtResource("1_k7kib")
