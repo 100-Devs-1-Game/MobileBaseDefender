@@ -15,6 +15,7 @@
 Button/font_sizes/font_size = 32
 
 [node name="Vehicle" type="RigidBody2D"]
+collision_mask = 2
 center_of_mass_mode = 1
 can_sleep = false
 continuous_cd = 2

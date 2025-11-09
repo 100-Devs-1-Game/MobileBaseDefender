@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bquumw8ed1c51"]
+
+[ext_resource type="Script" uid="uid://7xvxekdxpthy" path="res://level/projectile.gd" id="1_5k5be"]
+
+[node name="BaseProjectileScene" type="Node2D"]
+z_index = 10
+script = ExtResource("1_5k5be")

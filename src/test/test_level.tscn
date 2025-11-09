@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://d1xcyyg232282" path="res://test/level_sandbox.gd" id="1_klfgi"]
 [ext_resource type="Script" uid="uid://2nbwj3a61tla" path="res://test/test_level.gd" id="1_ls30l"]
 [ext_resource type="PackedScene" uid="uid://scmr7fvfwq86" path="res://vehicle/vehicle.tscn" id="2_piqwm"]
-[ext_resource type="Resource" uid="uid://c6f7g3f2klter" path="res://test/saved_vehicle_layout.tres" id="4_oxjuh"]
+[ext_resource type="Resource" uid="uid://b6k7c13pja6ui" path="res://test/test_vehicle_layout.tres" id="4_oxjuh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_klfgi"]
 texture = ExtResource("1_8rkqs")
@@ -115,7 +115,7 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_ls30l"]
 tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 2
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Cave"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)

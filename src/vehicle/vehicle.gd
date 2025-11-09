@@ -26,6 +26,8 @@ var power_supply_ratio: float
 var acceleration_force: float
 var rotation_torque: float
 
+var auto_fire:= true
+
 
 
 func initialize(_layout: VehicleLayout):
@@ -130,9 +132,10 @@ func tick_parts():
 
 	acceleration_force= 0
 	rotation_torque= 0
-	for part_info: VehicleMountedPartInfo in layout.get_all_mounted_parts():
+	for tile_pos: Vector2i in layout.mounted_parts.keys():
+		var part_info:= layout.mounted_parts[tile_pos]
 		if part_info.enabled:
-			part_info.part.tick(part_info, self, delta) 
+			part_info.part.tick(part_info, self, tile_pos, delta) 
 
 
 func update_stats():
@@ -147,3 +150,15 @@ func update_debug_window():
 	debug_window.set_value("used power", used_power)
 	debug_window.set_value("stored power", stored_power)
 	debug_window.set_value("power ratio", power_supply_ratio)
+
+
+func get_tile_transform(tile: Vector2i)-> Transform2D:
+	var trans:= Transform2D()
+	trans.origin= Vector2(tile) * PART_SIZE # + Vector2.ONE * PART_SIZE * 0.5
+	trans= trans.rotated(rotation)
+	trans.origin+= position
+	return trans
+
+
+func get_level()-> Level:
+	return get_parent()

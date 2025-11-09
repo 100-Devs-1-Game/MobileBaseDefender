@@ -6,7 +6,7 @@ extends VehicleMountedPartData
 
 
 
-func tick(_part_info: VehicleMountedPartInfo, vehicle: Vehicle, _delta: float): 
+func tick(_part_info: VehicleMountedPartInfo, vehicle: Vehicle, _tile_pos: Vector2i, _delta: float): 
 	var drive:= vehicle.controls.drive
 	var steer:= vehicle.controls.steer
 

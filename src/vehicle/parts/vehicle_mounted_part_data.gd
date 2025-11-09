@@ -13,7 +13,7 @@ func init(_part_info: VehicleMountedPartInfo, _vehicle: Vehicle):
 	pass
 
 
-func tick(_part_info: VehicleMountedPartInfo, _vehicle: Vehicle, _delta: float): 
+func tick(_part_info: VehicleMountedPartInfo, _vehicle: Vehicle,  _tile_pos: Vector2i, _delta: float): 
 	pass
 
 

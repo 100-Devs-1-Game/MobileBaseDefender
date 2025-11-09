@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cu0mvivm45jxb"]
+
+[ext_resource type="PackedScene" uid="uid://bquumw8ed1c51" path="res://level/base_projectile_scene.tscn" id="1_smfpi"]
+
+[node name="CannonProjectile" instance=ExtResource("1_smfpi")]

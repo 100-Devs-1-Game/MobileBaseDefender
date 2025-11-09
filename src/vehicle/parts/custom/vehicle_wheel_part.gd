@@ -12,7 +12,7 @@ func init(part_info: VehicleMountedPartInfo, _vehicle: Vehicle):
 	part_info.live_data[INPUT_DATA]= 0.0
 
 
-func tick(part_info: VehicleMountedPartInfo, vehicle: Vehicle, _delta: float): 
+func tick(part_info: VehicleMountedPartInfo, vehicle: Vehicle, _tile_pos: Vector2i, _delta: float): 
 	var input: VehicleAxisControlInput
 	var accelerate: bool= is_acceleration_wheel(part_info)
 	input= vehicle.controls.drive if accelerate else vehicle.controls.steer
