@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://5o5abaqxug0v"]
+
+[ext_resource type="Script" uid="uid://dxt7t5luuxwwf" path="res://entities/enemy.gd" id="1_fmncu"]
+[ext_resource type="Script" uid="uid://dfif7mfxedq70" path="res://entities/health_component.gd" id="2_qd7tb"]
+
+[node name="BaseEnemy" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 3
+lock_rotation = true
+script = ExtResource("1_fmncu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_qd7tb")
+metadata/_custom_type_script = "uid://dfif7mfxedq70"
+
+[connection signal="died" from="HealthComponent" to="." method="_on_died"]
+[connection signal="hurt" from="HealthComponent" to="." method="_on_hurt"]

@@ -1,9 +1,16 @@
-[gd_resource type="Resource" script_class="ProjectileDefinition" load_steps=3 format=3 uid="uid://dead3a6357njm"]
+[gd_resource type="Resource" script_class="ProjectileDefinition" load_steps=5 format=3 uid="uid://dead3a6357njm"]
 
 [ext_resource type="PackedScene" uid="uid://cu0mvivm45jxb" path="res://data/projectiles/scenes/cannon_projectile.tscn" id="1_g74td"]
 [ext_resource type="Script" uid="uid://bgadtju0txhbh" path="res://level/projectile_definition.gd" id="1_nx5ue"]
+[ext_resource type="Script" uid="uid://dwhy702tspcb" path="res://systems/damage_system/damage.gd" id="1_vy2c0"]
+
+[sub_resource type="Resource" id="Resource_xsdwn"]
+script = ExtResource("1_vy2c0")
+dmg = 10.0
+metadata/_custom_type_script = "uid://dwhy702tspcb"
 
 [resource]
 script = ExtResource("1_nx5ue")
+damage = SubResource("Resource_xsdwn")
 scene = ExtResource("1_g74td")
 metadata/_custom_type_script = "uid://bgadtju0txhbh"

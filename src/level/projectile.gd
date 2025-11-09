@@ -15,6 +15,11 @@ func _draw() -> void:
 func _physics_process(delta: float) -> void:
 	var prev_pos: Vector2= position
 	position+= -global_transform.y * type.speed * delta
-	RaycastHelper.update(prev_pos ,position, collision_mask)
+	RaycastHelper.update(prev_pos, position, collision_mask)
 	if RaycastHelper.is_colliding():
+		var collider: Node2D= RaycastHelper.get_collider()
+		if collider.is_in_group(Groups.DAMAGEABLE):
+			var dmg_inst:= DamageInstance.new(type.damage, null, RaycastHelper.get_collision_point(), -global_transform.y)
+			var health_comp:= HealthComponent.get_from_node(collider)
+			health_comp.take_damage(dmg_inst)
 		queue_free()
