@@ -28,6 +28,8 @@ var rotation_torque: float
 
 var auto_fire:= true
 
+var custom_mounted_objects: Array[VehicleMountePartedObject]
+
 
 
 func initialize(_layout: VehicleLayout):
@@ -86,9 +88,11 @@ func add_mounted_part(info: VehicleMountedPartInfo, part_pos: Vector2):
 		sprite.texture= mounted_data.game_mode_texture
 		node2d= sprite
 	else:
-		var scene= mounted_data.game_mode_scene.instantiate()
-		scene.position= part_pos
-		node2d= scene
+		var object: VehicleMountePartedObject= mounted_data.game_mode_scene.instantiate()
+		object.position= part_pos
+		object.part_info= info
+		custom_mounted_objects.append(object)
+		node2d= object
 	
 	var ang: float= Vector2.UP.angle_to(info.rotation)
 	node2d.rotation= ang
@@ -136,6 +140,9 @@ func tick_parts():
 		var part_info:= layout.mounted_parts[tile_pos]
 		if part_info.enabled:
 			part_info.part.tick(part_info, self, tile_pos, delta) 
+
+	for object in custom_mounted_objects:
+		object.tick(self, delta)
 
 
 func update_stats():

@@ -16,12 +16,12 @@ func tick(part_info: VehicleMountedPartInfo, vehicle: Vehicle, tile_pos: Vector2
 	if part_info.live_data[RELOAD_TIME_DATA] > 0:
 		part_info.live_data[RELOAD_TIME_DATA]-= delta * vehicle.power_supply_ratio
 	else:
-		if vehicle.auto_fire:
+		if can_fire(part_info, vehicle):
 			fire(part_info, vehicle, tile_pos)
 		
 
 func fire(part_info: VehicleMountedPartInfo, vehicle: Vehicle, tile_pos: Vector2i):
-	var muzzle_trans: = vehicle.get_tile_transform(tile_pos)
+	var muzzle_trans: = get_muzzle_transform(part_info, vehicle, tile_pos)
 	muzzle_trans.origin+= -muzzle_trans.y * muzzle_offset
 	vehicle.get_level().spawn_projectile(muzzle_trans, projectile)
 	reload(part_info)
@@ -39,3 +39,11 @@ func get_power_usage(part_info: VehicleMountedPartInfo)-> float:
 
 func is_reloading(part_info: VehicleMountedPartInfo)-> bool:
 	return part_info.live_data[RELOAD_TIME_DATA] > 0.0
+
+
+func can_fire(_part_info: VehicleMountedPartInfo, vehicle: Vehicle)-> bool:
+	return vehicle.auto_fire
+
+
+func get_muzzle_transform(_part_info: VehicleMountedPartInfo, vehicle: Vehicle, tile_pos: Vector2i)-> Transform2D:
+	return vehicle.get_tile_transform(tile_pos)

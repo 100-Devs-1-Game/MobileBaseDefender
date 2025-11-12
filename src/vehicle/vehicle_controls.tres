@@ -6,6 +6,7 @@
 
 [resource]
 script = ExtResource("2_4k6ex")
+enable_keyboard_input = true
 drive = ExtResource("1_scngk")
 steer = ExtResource("3_0870g")
 dummy_initializer = false

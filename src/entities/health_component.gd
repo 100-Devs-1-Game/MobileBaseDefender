@@ -7,6 +7,7 @@ signal hurt(dmg: DamageInstance)
 const NODE_NAME= "HealthComponent"
 
 @export var max_hp: int= 100
+@export var invulnerable: bool= false
 
 var hp: float
 
@@ -21,7 +22,8 @@ func _ready() -> void:
 func take_damage(dmg_inst: DamageInstance):
 	if hp <= 0: return
 	
-	hp-= dmg_inst.damage.dmg
+	if not invulnerable:
+		hp-= dmg_inst.damage.dmg
 	
 	if hp <= 0:
 		died.emit()

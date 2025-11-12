@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ProjectileDefinition" load_steps=5 format=3 uid="uid://byqy24vhnldqg"]
+
+[ext_resource type="Script" uid="uid://dwhy702tspcb" path="res://systems/damage_system/damage.gd" id="1_iycjk"]
+[ext_resource type="PackedScene" uid="uid://crmanwfwge5tu" path="res://data/projectiles/scenes/gun_projectile.tscn" id="2_iycjk"]
+[ext_resource type="Script" uid="uid://bgadtju0txhbh" path="res://level/projectile_definition.gd" id="3_omh8e"]
+
+[sub_resource type="Resource" id="Resource_iycjk"]
+script = ExtResource("1_iycjk")
+metadata/_custom_type_script = "uid://dwhy702tspcb"
+
+[resource]
+script = ExtResource("3_omh8e")
+damage = SubResource("Resource_iycjk")
+scene = ExtResource("2_iycjk")
+metadata/_custom_type_script = "uid://bgadtju0txhbh"

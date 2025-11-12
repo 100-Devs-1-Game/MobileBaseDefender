@@ -1,7 +1,8 @@
 class_name Projectile
 extends Node2D
 
-@export_flags_2d_physics var collision_mask: int= 2 + 4
+@export var size: int= 2
+@export_flags_2d_physics var collision_mask: int= CollisionLayers.TERRAIN + CollisionLayers.ENEMY
 
 
 var type: ProjectileDefinition
@@ -9,7 +10,7 @@ var type: ProjectileDefinition
 
 
 func _draw() -> void:
-	draw_circle(Vector2.ZERO, 5, Color.RED, true)
+	draw_circle(Vector2.ZERO, size, Color.RED, true)
 
 
 func _physics_process(delta: float) -> void:

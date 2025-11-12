@@ -138,9 +138,3 @@ tile_set = SubResource("TileSet_ls30l")
 
 [node name="TestEnemy" parent="." instance=ExtResource("6_k117l")]
 position = Vector2(0, -536)
-
-[node name="TestEnemy2" parent="." instance=ExtResource("6_k117l")]
-position = Vector2(84, -536)
-
-[node name="TestEnemy3" parent="." instance=ExtResource("6_k117l")]
-position = Vector2(-111, -536)

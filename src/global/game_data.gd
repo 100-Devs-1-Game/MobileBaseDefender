@@ -13,6 +13,8 @@ func _ready() -> void:
 
 func init_parts():
 	for file in ResourceLoader.list_directory(vehicle_parts_dir):
+		if file.ends_with("/"):
+			continue
 		var part: VehicleBasePartData= load(str(vehicle_parts_dir, "/", file))
 		parts.append(part)
 		parts_class_lookup[part.get_script()]= part
