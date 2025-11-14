@@ -32,6 +32,10 @@ var custom_mounted_objects: Array[VehicleMountePartedObject]
 
 
 
+func _ready() -> void:
+	Global.vehicle= self
+
+
 func initialize(_layout: VehicleLayout):
 	layout= _layout
 	

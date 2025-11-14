@@ -21,6 +21,7 @@ GameData="*res://global/game_data.tscn"
 RaycastHelper="*res://global/raycast_helper.tscn"
 Groups="*res://global/groups.gd"
 CollisionLayers="*res://global/collision_layers.gd"
+Global="*res://global/global.gd"
 
 [display]
 
