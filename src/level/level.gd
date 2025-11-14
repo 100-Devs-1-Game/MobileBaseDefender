@@ -5,6 +5,7 @@ extends Node2D
 
 var vehicle: Vehicle
 var projectiles_node: Node2D
+var enemies_node: Node2D
 
 var enemy_query:= PhysicsShapeQueryParameters2D.new()
 
@@ -12,6 +13,7 @@ var enemy_query:= PhysicsShapeQueryParameters2D.new()
 
 func _ready() -> void:
 	projectiles_node= create_sub_node("Projectiles")
+	enemies_node= create_sub_node("Enemies")
 	enemy_query.collision_mask= CollisionLayers.ENEMY
 	enemy_query.shape= CircleShape2D.new()
 
@@ -28,6 +30,12 @@ func spawn_projectile(trans: Transform2D, type: ProjectileDefinition):
 	projectile.transform= trans
 	projectile.type= type
 	projectiles_node.add_child(projectile)
+
+
+func spawn_enemy(type: EnemyDefinition, pos: Vector2):
+	var enemy: Enemy= type.scene.instantiate()
+	enemy.position= pos
+	enemies_node.add_child(enemy)
 
 
 func create_sub_node(node_name: String)-> Node2D:
@@ -47,7 +55,6 @@ func get_enemies_in_range(center: Vector2, radius: float, steps: int= 0)-> Array
 		for item in query_result:
 			result.append(item.collider)
 			
-	
 	return result
 
 

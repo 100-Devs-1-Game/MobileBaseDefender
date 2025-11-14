@@ -1,13 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://5o5abaqxug0v"]
+[gd_scene load_steps=4 format=3 uid="uid://5o5abaqxug0v"]
 
 [ext_resource type="Script" uid="uid://dxt7t5luuxwwf" path="res://entities/enemy.gd" id="1_fmncu"]
 [ext_resource type="Script" uid="uid://dfif7mfxedq70" path="res://entities/health_component.gd" id="2_qd7tb"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qd7tb"]
+friction = 0.1
+
 [node name="BaseEnemy" type="RigidBody2D"]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 7
+physics_material_override = SubResource("PhysicsMaterial_qd7tb")
+can_sleep = false
 lock_rotation = true
+linear_damp_mode = 1
+linear_damp = 1.0
 script = ExtResource("1_fmncu")
+max_speed = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
