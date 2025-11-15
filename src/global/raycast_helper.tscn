@@ -4,4 +4,5 @@
 
 [node name="Raycast Helper" type="RayCast2D"]
 enabled = false
+hit_from_inside = true
 script = ExtResource("1_k7kib")
