@@ -18,9 +18,16 @@ func _physics_process(delta: float) -> void:
 	position+= -global_transform.y * type.speed * delta
 	RaycastHelper.update(prev_pos, position, collision_mask)
 	if RaycastHelper.is_colliding():
-		var collider: Node2D= RaycastHelper.get_collider()
-		if collider.is_in_group(Groups.DAMAGEABLE):
-			var dmg_inst:= DamageInstance.new(type.damage, null, RaycastHelper.get_collision_point(), -global_transform.y)
-			var health_comp:= HealthComponent.get_from_node(collider)
-			health_comp.take_damage(dmg_inst)
+		if type.does_explode():
+			get_level().spawn_explosion(position, type.damage)
+		else:
+			var collider: Node2D= RaycastHelper.get_collider()
+			if collider.is_in_group(Groups.DAMAGEABLE):
+				var dmg_inst:= DamageInstance.new(type.damage, RaycastHelper.get_collision_point(), null, -global_transform.y)
+				var health_comp:= HealthComponent.get_from_node(collider)
+				health_comp.take_damage(dmg_inst)
 		queue_free()
+
+
+func get_level()-> Level:
+	return get_parent().get_parent()

@@ -6,7 +6,8 @@
 
 [sub_resource type="Resource" id="Resource_xsdwn"]
 script = ExtResource("1_vy2c0")
-dmg = 10.0
+dmg = 5.0
+radius = 30.0
 metadata/_custom_type_script = "uid://dwhy702tspcb"
 
 [resource]

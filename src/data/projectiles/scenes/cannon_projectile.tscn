@@ -4,3 +4,4 @@
 
 [node name="CannonProjectile" instance=ExtResource("1_smfpi")]
 size = 5
+collision_mask = null

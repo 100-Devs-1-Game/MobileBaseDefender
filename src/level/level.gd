@@ -2,6 +2,7 @@ class_name Level
 extends Node2D
 
 @export var vehicle_scene: PackedScene
+@export var explosion_scene: PackedScene
 
 var vehicle: Vehicle
 var projectiles_node: Node2D
@@ -12,6 +13,9 @@ var enemy_query:= PhysicsShapeQueryParameters2D.new()
 
 
 func _ready() -> void:
+	assert(vehicle_scene)
+	assert(explosion_scene)
+	
 	projectiles_node= create_sub_node("Projectiles")
 	enemies_node= create_sub_node("Enemies")
 	enemy_query.collision_mask= CollisionLayers.ENEMY
@@ -36,6 +40,17 @@ func spawn_enemy(type: EnemyDefinition, pos: Vector2):
 	var enemy: Enemy= type.scene.instantiate()
 	enemy.position= pos
 	enemies_node.add_child(enemy)
+
+
+func spawn_explosion(pos: Vector2, damage: Damage):
+	var explosion: Explosion= explosion_scene.instantiate()
+	explosion.init(pos, damage.dmg, damage.radius)
+	add_child(explosion)
+	
+	var dmg_inst:= DamageInstance.new(damage, pos)
+	for enemy in get_enemies_in_range(pos, damage.radius):
+		var health:= HealthComponent.get_from_node(enemy)
+		health.take_damage(dmg_inst)
 
 
 func create_sub_node(node_name: String)-> Node2D:
