@@ -67,6 +67,12 @@ backward={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Vehicle"
+2d_physics/layer_2="Level"
+2d_physics/layer_3="Enemies"
+
 [physics]
 
 2d/default_gravity=0.0
