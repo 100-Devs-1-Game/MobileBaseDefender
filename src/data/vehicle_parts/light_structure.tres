@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="VehicleStructureData" load_steps=3 format=3 uid="uid://ctgyp7g7ih0oi"]
 
 [ext_resource type="Script" uid="uid://ddgjj5b5vs23n" path="res://vehicle/parts/vehicle_structure_data.gd" id="1_57bb5"]
-[ext_resource type="Texture2D" uid="uid://dxorovb4106i6" path="res://assets/art/placeholder/parts/structure_light.png" id="1_wiaj8"]
+[ext_resource type="Texture2D" uid="uid://26flf65sv015" path="res://assets/art/vehicle/structure/Base Frame_Dirty_1.png" id="1_wiaj8"]
 
 [resource]
 script = ExtResource("1_57bb5")

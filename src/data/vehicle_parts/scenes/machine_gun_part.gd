@@ -1,6 +1,6 @@
 extends VehicleMountedPartObject
 
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: Node2D = $Sprite2D
 
 
 func tick(_vehicle: Vehicle, _delta: float):

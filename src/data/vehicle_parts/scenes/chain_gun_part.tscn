@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2e2llmlywfj5"]
+
+[ext_resource type="Script" uid="uid://bd8uf007vsxt7" path="res://data/vehicle_parts/scenes/machine_gun_part.gd" id="1_s2kvv"]
+[ext_resource type="Texture2D" uid="uid://k8g1l61lcbm5" path="res://assets/art/vehicle/mounted/chaingun/MG_001.png" id="2_qf5ln"]
+[ext_resource type="Texture2D" uid="uid://ddahmc8b1ex8x" path="res://assets/art/vehicle/mounted/chaingun/MG_002.png" id="3_xcx2u"]
+[ext_resource type="Texture2D" uid="uid://bfrau3htdfkq4" path="res://assets/art/vehicle/mounted/chaingun/MG_003.png" id="4_rdq2n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1a72a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qf5ln")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xcx2u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rdq2n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="ChainGunPart" type="Node2D"]
+script = ExtResource("1_s2kvv")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1a72a")
+autoplay = "default"
+frame = 2
+frame_progress = 0.04094342

@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://ddgjj5b5vs23n" path="res://vehicle/parts/vehicle_structure_data.gd" id="4_jv3jr"]
 [ext_resource type="Resource" uid="uid://ctgyp7g7ih0oi" path="res://data/vehicle_parts/light_structure.tres" id="5_dp0lq"]
 [ext_resource type="Resource" uid="uid://iovva17d01ae" path="res://data/vehicle_parts/fixed_gun.tres" id="5_jv3jr"]
-[ext_resource type="Resource" uid="uid://swi43ik3iupi" path="res://data/vehicle_parts/machine_gun.tres" id="6_dp0lq"]
+[ext_resource type="Resource" uid="uid://swi43ik3iupi" path="res://data/vehicle_parts/chain_gun.tres" id="6_dp0lq"]
 
 [sub_resource type="Resource" id="Resource_1uc7r"]
 script = ExtResource("1_ehye6")
