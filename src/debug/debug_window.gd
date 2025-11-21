@@ -21,6 +21,7 @@ func _ready() -> void:
 		var label_value:= Label.new()
 		label_value.horizontal_alignment= HORIZONTAL_ALIGNMENT_RIGHT
 		label_value.text= "---"
+		label_value.custom_minimum_size.x= 80
 		grid_container.add_child(label_value)
 		labels[item.id]= label_value
 

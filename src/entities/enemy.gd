@@ -2,10 +2,11 @@ class_name Enemy
 extends RigidBody2D
 
 @export var max_speed: float= 100
+@export var touch_damage: Damage
 
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var target_pos:= get_move_target()
 	var dir= global_position.direction_to(target_pos)
 	linear_velocity= dir * max_speed

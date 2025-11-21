@@ -1,4 +1,4 @@
-class_name VehicleMountePartedObject
+class_name VehicleMountedPartObject
 extends Node2D
 
 var part_info: VehicleMountedPartInfo

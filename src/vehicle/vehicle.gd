@@ -12,6 +12,7 @@ const PART_SIZE= 128
 @onready var structure_nodes: Node2D = $"Structure Nodes"
 @onready var mounted_nodes: Node2D = $"Mounted Nodes"
 @onready var debug_window: DebugWindow = $"CanvasLayer/Debug Window"
+@onready var damage_indicator: Sprite2D = $"Damage Indicator"
 
 
 var layout: VehicleLayout
@@ -28,7 +29,10 @@ var rotation_torque: float
 
 var auto_fire:= true
 
-var custom_mounted_objects: Array[VehicleMountePartedObject]
+var custom_mounted_objects: Array[VehicleMountedPartObject]
+var coll_shape_tile_pos_lookup: Dictionary[int, Vector2i] 
+
+var structure_damage: Dictionary[Vector2i, float]
 
 
 
@@ -39,16 +43,20 @@ func _ready() -> void:
 func initialize(_layout: VehicleLayout):
 	layout= _layout
 	
+	var ctr:= 0
 	for tile_pos: Vector2i in layout.structure_parts.keys():
 		var structure_data:= layout.get_structure_at(tile_pos)
 		var mounted_info:= layout.get_mounted_part_info_at(tile_pos)
 		
 		var part_pos: Vector2= tile_pos * PART_SIZE
 
-		add_structure_part(structure_data, part_pos)
+		add_structure_part(structure_data, tile_pos, part_pos)
+		
+		coll_shape_tile_pos_lookup[ctr]= tile_pos
+		ctr+= 1
 		
 		if mounted_info:
-			add_mounted_part(mounted_info, part_pos)
+			add_mounted_part(mounted_info, tile_pos, part_pos)
 			
 	update_stats()
 	mass= stats.weight
@@ -69,10 +77,11 @@ func _physics_process(delta: float) -> void:
 	update_debug_window()
 
 
-func add_structure_part(data: VehicleStructureData, part_pos: Vector2):
+func add_structure_part(data: VehicleStructureData, tile_pos: Vector2i, part_pos: Vector2):
 	var structure_sprite:= Sprite2D.new()
 	structure_sprite.position= part_pos
 	structure_sprite.texture= data.game_mode_texture
+	structure_sprite.name= str(tile_pos)
 	structure_nodes.add_child(structure_sprite)
 
 	var rect_shape:= RectangleShape2D.new()
@@ -80,10 +89,11 @@ func add_structure_part(data: VehicleStructureData, part_pos: Vector2):
 	var coll_shape:= CollisionShape2D.new()
 	coll_shape.position= part_pos
 	coll_shape.shape= rect_shape
+	coll_shape.name= str(tile_pos)
 	add_child(coll_shape)
 
 
-func add_mounted_part(info: VehicleMountedPartInfo, part_pos: Vector2):
+func add_mounted_part(info: VehicleMountedPartInfo, tile_pos: Vector2i, part_pos: Vector2):
 	var mounted_data:= info.part
 	var node2d: Node2D
 	if mounted_data.game_mode_texture:
@@ -92,7 +102,7 @@ func add_mounted_part(info: VehicleMountedPartInfo, part_pos: Vector2):
 		sprite.texture= mounted_data.game_mode_texture
 		node2d= sprite
 	else:
-		var object: VehicleMountePartedObject= mounted_data.game_mode_scene.instantiate()
+		var object: VehicleMountedPartObject= mounted_data.game_mode_scene.instantiate()
 		object.position= part_pos
 		object.part_info= info
 		custom_mounted_objects.append(object)
@@ -100,6 +110,7 @@ func add_mounted_part(info: VehicleMountedPartInfo, part_pos: Vector2):
 	
 	var ang: float= Vector2.UP.angle_to(info.rotation)
 	node2d.rotation= ang
+	node2d.name= str(tile_pos)
 	
 	mounted_nodes.add_child(node2d)
 	mounted_data.init(info, self)
@@ -147,6 +158,35 @@ func tick_parts():
 
 	for object in custom_mounted_objects:
 		object.tick(self, delta)
+
+
+func take_damage_at_shape(dmg_inst: DamageInstance, idx: int):
+	var tile_pos: Vector2i= coll_shape_tile_pos_lookup[idx]
+	
+	var dmg_val: float= dmg_inst.damage.dmg
+	if structure_damage.has(tile_pos):
+		dmg_val+= structure_damage[tile_pos]
+	structure_damage[tile_pos]= dmg_val
+
+	var structure:= layout.get_structure_at(tile_pos)
+	if not structure:
+		return
+		
+	if dmg_val > structure.hitpoints:
+		var node_name:= str(tile_pos)
+		structure_nodes.get_node(node_name).queue_free()
+		var mounted_part_node= mounted_nodes.get_node(node_name)
+		if mounted_part_node is VehicleMountedPartObject:
+			custom_mounted_objects.erase(mounted_part_node)
+		mounted_part_node.queue_free()
+		(get_node(node_name) as CollisionShape2D).disabled= true
+		layout.remove_structure(tile_pos, true)
+		
+		
+	damage_indicator.global_transform= get_tile_transform(tile_pos)
+	damage_indicator.show()
+	await get_tree().create_timer(0.2).timeout
+	damage_indicator.hide()
 
 
 func update_stats():

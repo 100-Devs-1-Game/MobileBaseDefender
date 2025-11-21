@@ -1,4 +1,4 @@
-extends VehicleMountePartedObject
+extends VehicleMountedPartObject
 
 @onready var sprite: Sprite2D = $Sprite2D
 

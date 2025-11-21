@@ -19,6 +19,16 @@ func add_mounted_part(pos: Vector2i, part: VehicleMountedPartData, rotation: Vec
 	mounted_parts[pos]= info
 
 
+func remove_structure(pos: Vector2i, integrity_check: bool= false):
+	if has_mounted_part_at(pos):
+		remove_part(pos)
+	structure_parts.erase(pos)
+
+
+func remove_part(pos: Vector2i):
+	mounted_parts.erase(pos)
+
+
 func get_structure_at(pos: Vector2i)-> VehicleStructureData:
 	if not has_structure_at(pos):
 		return null
