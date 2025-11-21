@@ -31,8 +31,8 @@ var auto_fire:= true
 
 var custom_mounted_objects: Array[VehicleMountedPartObject]
 var coll_shape_tile_pos_lookup: Dictionary[int, Vector2i] 
-
 var structure_damage: Dictionary[Vector2i, float]
+var tile_references: Dictionary[Vector2i, TileReferences]
 
 
 
@@ -47,6 +47,7 @@ func initialize(_layout: VehicleLayout):
 	for tile_pos: Vector2i in layout.structure_parts.keys():
 		var structure_data:= layout.get_structure_at(tile_pos)
 		var mounted_info:= layout.get_mounted_part_info_at(tile_pos)
+		tile_references[tile_pos]= TileReferences.new()
 		
 		var part_pos: Vector2= tile_pos * PART_SIZE
 
@@ -83,6 +84,7 @@ func add_structure_part(data: VehicleStructureData, tile_pos: Vector2i, part_pos
 	structure_sprite.texture= data.game_mode_texture
 	structure_sprite.name= str(tile_pos)
 	structure_nodes.add_child(structure_sprite)
+	tile_references[tile_pos].structure_node= structure_sprite
 
 	var rect_shape:= RectangleShape2D.new()
 	rect_shape.size= Vector2.ONE * PART_SIZE
@@ -91,6 +93,7 @@ func add_structure_part(data: VehicleStructureData, tile_pos: Vector2i, part_pos
 	coll_shape.shape= rect_shape
 	coll_shape.name= str(tile_pos)
 	add_child(coll_shape)
+	tile_references[tile_pos].collision_shape= coll_shape
 
 
 func add_mounted_part(info: VehicleMountedPartInfo, tile_pos: Vector2i, part_pos: Vector2):
@@ -113,8 +116,11 @@ func add_mounted_part(info: VehicleMountedPartInfo, tile_pos: Vector2i, part_pos
 	node2d.name= str(tile_pos)
 	
 	mounted_nodes.add_child(node2d)
+	tile_references[tile_pos].mounted_node= node2d
+	
 	mounted_data.init(info, self)
-
+	
+	
 
 func _unhandled_input(event: InputEvent) -> void:
 	controls.update_event(event)
@@ -173,13 +179,12 @@ func take_damage_at_shape(dmg_inst: DamageInstance, idx: int):
 		return
 		
 	if dmg_val > structure.hitpoints:
-		var node_name:= str(tile_pos)
-		structure_nodes.get_node(node_name).queue_free()
-		var mounted_part_node= mounted_nodes.get_node(node_name)
-		if mounted_part_node is VehicleMountedPartObject:
-			custom_mounted_objects.erase(mounted_part_node)
-		mounted_part_node.queue_free()
-		(get_node(node_name) as CollisionShape2D).disabled= true
+		var refs: TileReferences= tile_references[tile_pos]
+		refs.structure_node.queue_free()
+		if refs.mounted_node is VehicleMountedPartObject:
+			custom_mounted_objects.erase(refs.mounted_node)
+		refs.mounted_node.queue_free()
+		refs.collision_shape.disabled= true
 		layout.remove_structure(tile_pos, true)
 		
 		
