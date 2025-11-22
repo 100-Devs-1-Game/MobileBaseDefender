@@ -6,6 +6,8 @@ extends VehicleMountedPartData
 @export var projectile: ProjectileDefinition
 
 const RELOAD_TIME_DATA= "reload_time"
+const JUST_FIRED_DATA= "just_fired"
+
 
 
 func init(part_info: VehicleMountedPartInfo, _vehicle: Vehicle):
@@ -13,6 +15,7 @@ func init(part_info: VehicleMountedPartInfo, _vehicle: Vehicle):
 
 
 func tick(part_info: VehicleMountedPartInfo, vehicle: Vehicle, tile_pos: Vector2i, delta: float): 
+	part_info.live_data[JUST_FIRED_DATA]= false
 	if part_info.live_data[RELOAD_TIME_DATA] > 0:
 		part_info.live_data[RELOAD_TIME_DATA]-= delta * vehicle.power_supply_ratio
 	else:
@@ -25,6 +28,7 @@ func fire(part_info: VehicleMountedPartInfo, vehicle: Vehicle, tile_pos: Vector2
 	muzzle_trans.origin+= -muzzle_trans.y * muzzle_offset
 	vehicle.get_level().spawn_projectile(muzzle_trans, projectile)
 	reload(part_info)
+	part_info.live_data[JUST_FIRED_DATA]= true
 
 
 func reload(part_info: VehicleMountedPartInfo):

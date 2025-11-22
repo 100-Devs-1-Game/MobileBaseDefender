@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="VehicleFixedGunPart" load_steps=4 format=3 uid="uid://iovva17d01ae"]
+[gd_resource type="Resource" script_class="VehicleFixedGunPart" load_steps=5 format=3 uid="uid://iovva17d01ae"]
 
-[ext_resource type="Texture2D" uid="uid://dwaimisy02d7p" path="res://assets/art/placeholder/parts/mounted_gun.png" id="1_fk6py"]
+[ext_resource type="Texture2D" uid="uid://beq62f4206jk1" path="res://assets/art/vehicle/mounted/cannon/Cannon_build_mode.png" id="1_eyw50"]
+[ext_resource type="PackedScene" uid="uid://bxy25wfyhmj48" path="res://data/vehicle_parts/scenes/cannon_part.tscn" id="1_jb1mw"]
 [ext_resource type="Script" uid="uid://bi3pnambfplya" path="res://vehicle/parts/custom/vehicle_fixed_gun_part.gd" id="1_ym4d4"]
 [ext_resource type="Resource" uid="uid://dead3a6357njm" path="res://data/projectiles/cannon_projectile.tres" id="2_jb1mw"]
 
 [resource]
 script = ExtResource("1_ym4d4")
 projectile = ExtResource("2_jb1mw")
+rotate_mode = 2
+build_mode_texture = ExtResource("1_eyw50")
+game_mode_scene = ExtResource("1_jb1mw")
 name = "Gun"
 weight = 5
-power_required = 10
-game_mode_texture = ExtResource("1_fk6py")
 metadata/_custom_type_script = "uid://bi3pnambfplya"
