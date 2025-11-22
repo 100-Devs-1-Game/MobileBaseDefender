@@ -29,5 +29,5 @@ func get_power_usage(part_info: VehicleMountedPartInfo)-> float:
 	return abs(part_info.live_data[INPUT_DATA]) * power_required
 
 
-func is_acceleration_wheel(part_info: VehicleMountedPartInfo)-> bool:
+static func is_acceleration_wheel(part_info: VehicleMountedPartInfo)-> bool:
 	return part_info.rotation.y != 0

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="VehicleWheelPart" load_steps=3 format=3 uid="uid://qnlykqd5qlqd"]
+[gd_resource type="Resource" script_class="VehicleWheelPart" load_steps=4 format=3 uid="uid://qnlykqd5qlqd"]
 
-[ext_resource type="Texture2D" uid="uid://thntuuehm1xo" path="res://assets/art/placeholder/parts/mounted_wheel.png" id="1_i6glo"]
+[ext_resource type="Texture2D" uid="uid://bvp0x3jmjhgqx" path="res://assets/art/vehicle/mounted/wheel/Tire_v1_anim_0001.png" id="1_p7w8o"]
+[ext_resource type="PackedScene" uid="uid://oshucwloqxta" path="res://data/vehicle_parts/scenes/wheel_part.tscn" id="2_gd2b5"]
 [ext_resource type="Script" uid="uid://b1crndso7c7qf" path="res://vehicle/parts/custom/vehicle_wheel_part.gd" id="2_p7w8o"]
 
 [resource]
@@ -9,8 +10,9 @@ acceleration_factor = 200.0
 rotation_factor = 0.5
 category = 1
 rotate_mode = 1
+power_required = 10
+build_mode_texture = ExtResource("1_p7w8o")
+game_mode_scene = ExtResource("2_gd2b5")
 name = "Wheel"
 weight = 5
-power_required = 10
-game_mode_texture = ExtResource("1_i6glo")
 metadata/_custom_type_script = "uid://b1crndso7c7qf"
