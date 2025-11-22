@@ -185,7 +185,8 @@ func take_damage_at_shape(dmg_inst: DamageInstance, idx: int):
 		refs.mounted_node.queue_free()
 		refs.collision_shape.disabled= true
 		layout.remove_structure(tile_pos, true)
-	
+		update_stats()
+		
 	else:
 		var dmg_ratio: float= dmg_val / structure.hitpoints
 		var texture_index: int= max(0, dmg_ratio * structure.texture_stages.size() - 1)
