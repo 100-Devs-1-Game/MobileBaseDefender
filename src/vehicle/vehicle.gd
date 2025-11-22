@@ -81,7 +81,7 @@ func _physics_process(delta: float) -> void:
 func add_structure_part(data: VehicleStructureData, tile_pos: Vector2i, part_pos: Vector2):
 	var structure_sprite:= Sprite2D.new()
 	structure_sprite.position= part_pos
-	structure_sprite.texture= data.game_mode_texture
+	structure_sprite.texture= data.get_game_mode_texture()
 	structure_sprite.name= str(tile_pos)
 	structure_nodes.add_child(structure_sprite)
 	tile_references[tile_pos].structure_node= structure_sprite
@@ -119,8 +119,7 @@ func add_mounted_part(info: VehicleMountedPartInfo, tile_pos: Vector2i, part_pos
 	tile_references[tile_pos].mounted_node= node2d
 	
 	mounted_data.init(info, self)
-	
-	
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	controls.update_event(event)
@@ -178,20 +177,24 @@ func take_damage_at_shape(dmg_inst: DamageInstance, idx: int):
 	if not structure:
 		return
 		
+	var refs: TileReferences= tile_references[tile_pos]
 	if dmg_val > structure.hitpoints:
-		var refs: TileReferences= tile_references[tile_pos]
 		refs.structure_node.queue_free()
 		if refs.mounted_node is VehicleMountedPartObject:
 			custom_mounted_objects.erase(refs.mounted_node)
 		refs.mounted_node.queue_free()
 		refs.collision_shape.disabled= true
 		layout.remove_structure(tile_pos, true)
+	
+	else:
+		var dmg_ratio: float= dmg_val / structure.hitpoints
+		var texture_index: int= max(0, dmg_ratio * structure.texture_stages.size() - 1)
+		refs.structure_node.texture= structure.get_game_mode_texture(texture_index)
 		
-		
-	damage_indicator.global_transform= get_tile_transform(tile_pos)
-	damage_indicator.show()
-	await get_tree().create_timer(0.2).timeout
-	damage_indicator.hide()
+		damage_indicator.global_transform= get_tile_transform(tile_pos)
+		damage_indicator.show()
+		await get_tree().create_timer(0.2).timeout
+		damage_indicator.hide()
 
 
 func update_stats():

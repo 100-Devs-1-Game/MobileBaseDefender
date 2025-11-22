@@ -1,13 +1,17 @@
-[gd_resource type="Resource" script_class="VehicleStructureData" load_steps=3 format=3 uid="uid://ctgyp7g7ih0oi"]
+[gd_resource type="Resource" script_class="VehicleStructureData" load_steps=8 format=3 uid="uid://ctgyp7g7ih0oi"]
 
 [ext_resource type="Script" uid="uid://ddgjj5b5vs23n" path="res://vehicle/parts/vehicle_structure_data.gd" id="1_57bb5"]
-[ext_resource type="Texture2D" uid="uid://26flf65sv015" path="res://assets/art/vehicle/structure/Base Frame_Dirty_1.png" id="1_wiaj8"]
+[ext_resource type="Texture2D" uid="uid://dig2s5xnlnrsw" path="res://assets/art/vehicle/structure/Base Frame_Clean_1.png" id="2_wiaj8"]
+[ext_resource type="Texture2D" uid="uid://m0vkbvombptg" path="res://assets/art/vehicle/structure/base_plate/Base_plate-damae_0001.png" id="3_0hbto"]
+[ext_resource type="Texture2D" uid="uid://natajltnv38j" path="res://assets/art/vehicle/structure/base_plate/Base_plate-damae_0002.png" id="4_1nghh"]
+[ext_resource type="Texture2D" uid="uid://c5wfdg21m80oo" path="res://assets/art/vehicle/structure/base_plate/Base_plate-damae_0003.png" id="5_o57a3"]
+[ext_resource type="Texture2D" uid="uid://bs4vpxudub8tx" path="res://assets/art/vehicle/structure/base_plate/Base_plate-damae_0004.png" id="6_b8lsw"]
+[ext_resource type="Texture2D" uid="uid://b5ow4t4k2mucg" path="res://assets/art/vehicle/structure/base_plate/Base_plate-damae_0005.png" id="7_j0o8j"]
 
 [resource]
 script = ExtResource("1_57bb5")
 hitpoints = 10
-connection_sides = 2
+texture_stages = Array[Texture2D]([ExtResource("2_wiaj8"), ExtResource("3_0hbto"), ExtResource("4_1nghh"), ExtResource("5_o57a3"), ExtResource("6_b8lsw"), ExtResource("7_j0o8j")])
 name = "Light Structure"
 weight = 10
-game_mode_texture = ExtResource("1_wiaj8")
 metadata/_custom_type_script = "uid://ddgjj5b5vs23n"
