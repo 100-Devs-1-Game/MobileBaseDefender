@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bapdy7ollwper"
-path="res://.godot/imported/Tire_v1_anim_0002.png-9b8eee44d875f743cf3fc4ca29cff76e.ctex"
+uid="uid://d38s1vwpj1qoy"
+path="res://.godot/imported/Tire_v2_0005.png-ce9d2fb862b8af91826cdcc9059ef8e7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/vehicle/mounted/wheel/Tire_v1_anim_0002.png"
-dest_files=["res://.godot/imported/Tire_v1_anim_0002.png-9b8eee44d875f743cf3fc4ca29cff76e.ctex"]
+source_file="res://assets/art/vehicle/mounted/wheel/Tire_v2_0005.png"
+dest_files=["res://.godot/imported/Tire_v2_0005.png-ce9d2fb862b8af91826cdcc9059ef8e7.ctex"]
 
 [params]
 

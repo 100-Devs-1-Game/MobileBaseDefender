@@ -1,25 +1,33 @@
-[gd_scene load_steps=6 format=3 uid="uid://oshucwloqxta"]
+[gd_scene load_steps=8 format=3 uid="uid://oshucwloqxta"]
 
 [ext_resource type="Script" uid="uid://b8qfcd6ykyrxu" path="res://data/vehicle_parts/scenes/wheel_part.gd" id="1_mdoef"]
-[ext_resource type="Texture2D" uid="uid://bvp0x3jmjhgqx" path="res://assets/art/vehicle/mounted/wheel/Tire_v1_anim_0001.png" id="2_ep7b3"]
-[ext_resource type="Texture2D" uid="uid://bapdy7ollwper" path="res://assets/art/vehicle/mounted/wheel/Tire_v1_anim_0002.png" id="3_d637y"]
-[ext_resource type="Texture2D" uid="uid://bffi6wymsaxxm" path="res://assets/art/vehicle/mounted/wheel/Tire_v1_anim_0003.png" id="4_cfu2v"]
+[ext_resource type="Texture2D" uid="uid://c2ju8ogaicfn3" path="res://assets/art/vehicle/mounted/wheel/Tire_v2_0001.png" id="2_d637y"]
+[ext_resource type="Texture2D" uid="uid://cfbutb1v1jad8" path="res://assets/art/vehicle/mounted/wheel/Tire_v2_0002.png" id="3_cfu2v"]
+[ext_resource type="Texture2D" uid="uid://bu4tuxsnrq3kk" path="res://assets/art/vehicle/mounted/wheel/Tire_v2_0003.png" id="4_smahm"]
+[ext_resource type="Texture2D" uid="uid://bmiiqflujfpc" path="res://assets/art/vehicle/mounted/wheel/Tire_v2_0004.png" id="5_br7qo"]
+[ext_resource type="Texture2D" uid="uid://d38s1vwpj1qoy" path="res://assets/art/vehicle/mounted/wheel/Tire_v2_0005.png" id="6_grn7h"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_smahm"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ep7b3")
+"texture": ExtResource("2_d637y")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_d637y")
+"texture": ExtResource("3_cfu2v")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_cfu2v")
+"texture": ExtResource("4_smahm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_br7qo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_grn7h")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [node name="WheelPart" type="Node2D"]
