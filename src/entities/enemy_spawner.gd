@@ -1,6 +1,7 @@
 class_name EnemySpawner
 extends Node2D
 
+@export var enabled: bool= true
 @export var enemy_type: EnemyDefinition
 @export var max_spawns: int= 100
 @export var spawn_interval: float= 0.1
@@ -11,6 +12,9 @@ var timer:= Timer.new()
 
 
 func _ready() -> void:
+	if not enabled:
+		return
+
 	timer.wait_time= spawn_interval
 	timer.timeout.connect(on_timeout)
 	add_child(timer)
