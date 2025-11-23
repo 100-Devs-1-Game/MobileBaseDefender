@@ -69,11 +69,11 @@ func _physics_process(delta: float) -> void:
 		tick_parts()
 		controls.finish_update()
 
-	speed+= acceleration_force * delta
+	speed+= acceleration_force / ( mass / 100.0 ) * delta
 	speed*= 1 - delta
 	linear_velocity= speed * -global_transform.y 
 
-	angular_velocity= rotation_torque
+	angular_velocity= rotation_torque / ( mass / 100.0 )
 
 	update_debug_window()
 
@@ -203,6 +203,7 @@ func take_damage_at_shape(dmg_inst: DamageInstance, idx: int):
 
 func update_stats():
 	stats= layout.get_stats()
+	mass= stats.weight
 
 
 func update_debug_window():
