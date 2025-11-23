@@ -1,3 +1,4 @@
+@abstract
 class_name VehicleMountedPartData
 extends VehicleBasePartData
 
@@ -21,7 +22,6 @@ func get_build_mode_texture()-> Texture2D:
 	return build_mode_texture
 
 
-
 func init(_part_info: VehicleMountedPartInfo, _vehicle: Vehicle):
 	pass
 
@@ -32,6 +32,10 @@ func tick(_part_info: VehicleMountedPartInfo, _vehicle: Vehicle,  _tile_pos: Vec
 
 func get_power_usage(_part_info: VehicleMountedPartInfo)-> float:
 	return power_required
+
+
+func get_power_production(_part_info: VehicleMountedPartInfo)-> float:
+	return 0
 
 
 func can_rotate()-> bool:

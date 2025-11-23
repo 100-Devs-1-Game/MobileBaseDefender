@@ -130,12 +130,14 @@ func tick_parts():
 	
 	used_power= 0.0
 	power_supply_ratio= 0.0
-	
+	var total_power: float= 0
+
 	for part_info: VehicleMountedPartInfo in layout.get_all_mounted_parts():
 		if part_info.enabled:
+			total_power+= part_info.part.get_power_production(part_info)
 			used_power+= part_info.part.get_power_usage(part_info)
 
-	var total_power: float= stats.generated_power
+	available_power= total_power
 	
 	if used_power > total_power:
 		var power_delta: float= used_power - total_power
@@ -145,7 +147,6 @@ func tick_parts():
 	else:
 		stored_power= min(stored_power + ( total_power - used_power), stats.power_capacity)
 
-	available_power= total_power
 
 	assert(stored_power >= 0 and stored_power <= stats.power_capacity)
 		
