@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://scmr7fvfwq86"]
+[gd_scene load_steps=14 format=3 uid="uid://scmr7fvfwq86"]
 
 [ext_resource type="Script" uid="uid://ceb3fbth2q404" path="res://vehicle/vehicle.gd" id="1_opyur"]
 [ext_resource type="Resource" uid="uid://qnlykqd5qlqd" path="res://data/vehicle_parts/wheel.tres" id="2_1ktiy"]
@@ -9,6 +9,7 @@
 [ext_resource type="ButtonGroup" uid="uid://clepjgnltrk2f" path="res://ui/control_ui/button_group_accelerate.tres" id="6_6bjwd"]
 [ext_resource type="Script" uid="uid://jqnjm14o6aub" path="res://ui/control_ui/vehicle_control_button.gd" id="6_raajb"]
 [ext_resource type="Resource" uid="uid://cvkqs11635jo2" path="res://data/vehicle_controls/accelerate.tres" id="7_g2dx0"]
+[ext_resource type="FontFile" uid="uid://cuq0hfcm174n" path="res://assets_external/fonts/Jersey_25/Jersey25-Regular.ttf" id="7_p3bq1"]
 [ext_resource type="Resource" uid="uid://b3ahasvr0j0io" path="res://data/vehicle_controls/steer.tres" id="8_6bjwd"]
 [ext_resource type="ButtonGroup" uid="uid://hkkm4m712nm3" path="res://ui/control_ui/button_group_steer.tres" id="9_s4s6f"]
 
@@ -72,6 +73,7 @@ layout_mode = 2
 
 [node name="VehicleControlButton" type="Button" parent="CanvasLayer/Control UI/MarginContainer/GridContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("7_p3bq1")
 toggle_mode = true
 button_group = ExtResource("6_6bjwd")
 text = "FORWARD"
@@ -85,6 +87,7 @@ layout_mode = 2
 
 [node name="VehicleControlButton3" type="Button" parent="CanvasLayer/Control UI/MarginContainer/GridContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("7_p3bq1")
 toggle_mode = true
 button_group = ExtResource("9_s4s6f")
 text = "LEFT"
@@ -98,6 +101,7 @@ layout_mode = 2
 
 [node name="VehicleControlButton4" type="Button" parent="CanvasLayer/Control UI/MarginContainer/GridContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("7_p3bq1")
 toggle_mode = true
 button_group = ExtResource("9_s4s6f")
 text = "RIGHT"
@@ -111,6 +115,7 @@ layout_mode = 2
 
 [node name="VehicleControlButton2" type="Button" parent="CanvasLayer/Control UI/MarginContainer/GridContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("7_p3bq1")
 toggle_mode = true
 button_group = ExtResource("6_6bjwd")
 text = "BACK"
