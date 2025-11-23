@@ -32,6 +32,11 @@ script = ExtResource("1_ehye6")
 part = ExtResource("4_e816a")
 metadata/_custom_type_script = "uid://c3njl81r2414m"
 
+[sub_resource type="Resource" id="Resource_qdikw"]
+script = ExtResource("1_ehye6")
+part = ExtResource("7_icswl")
+metadata/_custom_type_script = "uid://c3njl81r2414m"
+
 [sub_resource type="Resource" id="Resource_e816a"]
 script = ExtResource("1_ehye6")
 part = ExtResource("3_1uc7r")
@@ -40,11 +45,6 @@ metadata/_custom_type_script = "uid://c3njl81r2414m"
 [sub_resource type="Resource" id="Resource_dp0lq"]
 script = ExtResource("1_ehye6")
 part = ExtResource("5_jv3jr")
-metadata/_custom_type_script = "uid://c3njl81r2414m"
-
-[sub_resource type="Resource" id="Resource_qdikw"]
-script = ExtResource("1_ehye6")
-part = ExtResource("7_icswl")
 metadata/_custom_type_script = "uid://c3njl81r2414m"
 
 [resource]
