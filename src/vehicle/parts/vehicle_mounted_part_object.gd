@@ -11,3 +11,7 @@ func init(info: VehicleMountedPartInfo):
 
 func tick(_vehicle: Vehicle, _delta: float):
 	pass
+
+
+func physics_tick(_vehicle: Vehicle, _delta: float):
+	pass

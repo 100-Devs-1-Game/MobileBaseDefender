@@ -75,6 +75,9 @@ func _physics_process(delta: float) -> void:
 
 	angular_velocity= rotation_torque / ( mass / 100.0 )
 
+	for object in custom_mounted_objects:
+		object.physics_tick(self, delta)
+
 	update_debug_window()
 
 
