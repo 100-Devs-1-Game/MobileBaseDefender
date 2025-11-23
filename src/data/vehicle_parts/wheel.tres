@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bvp0x3jmjhgqx" path="res://assets/art/vehicle/mounted/wheel/Tire_v1_anim_0001.png" id="1_p7w8o"]
 [ext_resource type="PackedScene" uid="uid://oshucwloqxta" path="res://data/vehicle_parts/scenes/wheel_part.tscn" id="2_gd2b5"]
-[ext_resource type="Script" uid="uid://b1crndso7c7qf" path="res://vehicle/parts/custom/vehicle_wheel_part.gd" id="2_p7w8o"]
+[ext_resource type="Script" uid="uid://b1crndso7c7qf" path="res://vehicle/parts/custom/wheel_part_data.gd" id="2_p7w8o"]
 
 [resource]
 script = ExtResource("2_p7w8o")

@@ -8,7 +8,7 @@ extends VehicleMountedPartObject
 
 
 func _physics_process(delta: float) -> void:
-	var just_fired: bool= part_info.live_data[VehicleBaseGunPart.JUST_FIRED_DATA]
+	var just_fired: bool= part_info.live_data[VehicleBaseGunPartData.JUST_FIRED_DATA]
 	
 	if just_fired:
 		barrel.position.y+= recoil_distance

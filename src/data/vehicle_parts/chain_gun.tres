@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://k8g1l61lcbm5" path="res://assets/art/vehicle/mounted/chaingun/MG_001.png" id="1_7li6q"]
 [ext_resource type="PackedScene" uid="uid://b2e2llmlywfj5" path="res://data/vehicle_parts/scenes/chain_gun_part.tscn" id="2_7li6q"]
 [ext_resource type="Resource" uid="uid://byqy24vhnldqg" path="res://data/projectiles/gun_projectile.tres" id="3_r88ec"]
-[ext_resource type="Script" uid="uid://duyx6wgtu0f64" path="res://vehicle/parts/custom/vehicle_rotating_gun_part.gd" id="4_g2cot"]
+[ext_resource type="Script" uid="uid://duyx6wgtu0f64" path="res://vehicle/parts/custom/rotating_gun_part_data.gd" id="4_g2cot"]
 
 [resource]
 script = ExtResource("4_g2cot")

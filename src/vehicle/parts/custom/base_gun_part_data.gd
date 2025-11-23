@@ -1,4 +1,4 @@
-class_name VehicleBaseGunPart
+class_name VehicleBaseGunPartData
 extends VehicleMountedPartData
 
 @export var reload_duration: float= 1.0

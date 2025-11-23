@@ -7,7 +7,7 @@ const PART_SIZE= 128
 @export var part_tick_interval: int= 1
 
 @export var controls: VehicleControls
-@export var wheel_part_reference: VehicleWheelPart
+@export var wheel_part_reference: VehicleWheelPartData
 
 @onready var structure_nodes: Node2D = $"Structure Nodes"
 @onready var mounted_nodes: Node2D = $"Mounted Nodes"

@@ -11,9 +11,9 @@ var generated_power: int
 
 func update(layout: VehicleLayout):
 	weight= layout.get_weight()
-	var power_generator_part: VehiclePowerGeneratorPart= GameData.get_part_from_class(VehiclePowerGeneratorPart)
+	var power_generator_part: VehiclePowerGeneratorPartData= GameData.get_part_from_class(VehiclePowerGeneratorPartData)
 	generated_power= layout.get_mounted_parts_of_type(power_generator_part).size() * power_generator_part.power_generated
-	var power_capacity_part: VehiclePowerStoragePart= GameData.get_part_from_class(VehiclePowerStoragePart)
+	var power_capacity_part: VehiclePowerStoragePartData= GameData.get_part_from_class(VehiclePowerStoragePartData)
 	power_capacity= layout.get_mounted_parts_of_type(power_capacity_part).size() * power_capacity_part.storage_capacity
 	
 	#var acceleration_wheels:= layout.get_mounted_parts_of_type(wheel_part_reference, [Vector2i.UP, Vector2i.DOWN])

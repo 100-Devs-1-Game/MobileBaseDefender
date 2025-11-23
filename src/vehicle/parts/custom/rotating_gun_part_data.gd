@@ -1,5 +1,5 @@
 class_name VehicleRotatingGunPart
-extends VehicleBaseGunPart
+extends VehicleBaseGunPartData
 
 const TARGET_DATA= "target_data"
 const ROTATION_DATA= "rotation_data"

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="VehiclePowerStoragePart" load_steps=3 format=3 uid="uid://cgt3fmfbmosjv"]
 
-[ext_resource type="Script" uid="uid://c36kx50lrvmum" path="res://vehicle/parts/custom/vehicle_power_storage_part.gd" id="1_ggsho"]
+[ext_resource type="Script" uid="uid://c36kx50lrvmum" path="res://vehicle/parts/custom/power_storage_part_data.gd" id="1_ggsho"]
 [ext_resource type="Texture2D" uid="uid://dcyqaa68j6emj" path="res://assets/art/vehicle/mounted/Battery_1_export.png" id="1_x0bp6"]
 
 [resource]

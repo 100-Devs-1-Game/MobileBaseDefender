@@ -1,4 +1,4 @@
-class_name VehicleWheelPart
+class_name VehicleWheelPartData
 extends VehicleMountedPartData
 
 const INPUT_DATA= "input"

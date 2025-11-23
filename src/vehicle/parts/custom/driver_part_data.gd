@@ -1,4 +1,4 @@
-class_name VehicleDriverPart
+class_name VehicleDriverPartData
 extends VehicleMountedPartData
 
 @export var acceleration_factor: float= 1.0

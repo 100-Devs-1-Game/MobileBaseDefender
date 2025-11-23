@@ -1,4 +1,4 @@
-class_name VehiclePowerGeneratorPart
+class_name VehiclePowerGeneratorPartDataData
 extends VehicleMountedPartData
 
 @export var power_generated: int

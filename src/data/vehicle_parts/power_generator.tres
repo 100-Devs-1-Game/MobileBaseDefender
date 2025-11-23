@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="VehiclePowerGeneratorPart" load_steps=3 format=3 uid="uid://c7k1ds7l6x6l5"]
 
 [ext_resource type="Texture2D" uid="uid://d0drigxbhc46q" path="res://assets/art/placeholder/parts/generator.png" id="1_pwpvo"]
-[ext_resource type="Script" uid="uid://cd88nas0odmhb" path="res://vehicle/parts/custom/vehicle_power_generator_part.gd" id="1_xym0b"]
+[ext_resource type="Script" uid="uid://cd88nas0odmhb" path="res://vehicle/parts/custom/power_generator_part_data.gd" id="1_xym0b"]
 
 [resource]
 script = ExtResource("1_xym0b")
