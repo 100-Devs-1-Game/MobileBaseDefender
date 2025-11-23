@@ -3,14 +3,16 @@
 [ext_resource type="Texture2D" uid="uid://k8g1l61lcbm5" path="res://assets/art/vehicle/mounted/chaingun/MG_001.png" id="1_7li6q"]
 [ext_resource type="PackedScene" uid="uid://b2e2llmlywfj5" path="res://data/vehicle_parts/scenes/chain_gun_part.tscn" id="2_7li6q"]
 [ext_resource type="Resource" uid="uid://byqy24vhnldqg" path="res://data/projectiles/gun_projectile.tres" id="3_r88ec"]
-[ext_resource type="Script" uid="uid://duyx6wgtu0f64" path="res://vehicle/parts/custom/rotating_gun_part_data.gd" id="4_g2cot"]
+[ext_resource type="Script" uid="uid://duyx6wgtu0f64" path="res://vehicle/parts/custom/rotating_gun_part_data.gd" id="4_7li6q"]
 
 [resource]
-script = ExtResource("4_g2cot")
+script = ExtResource("4_7li6q")
 reload_duration = 0.1
 muzzle_offset = 64
 projectile = ExtResource("3_r88ec")
-name = "Machine Gun"
+rotate_mode = 2
+power_required = 20
 build_mode_texture = ExtResource("1_7li6q")
 game_mode_scene = ExtResource("2_7li6q")
+name = "Machine Gun"
 metadata/_custom_type_script = "uid://duyx6wgtu0f64"
