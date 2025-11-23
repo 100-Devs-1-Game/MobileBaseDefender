@@ -145,6 +145,8 @@ func tick_parts():
 	else:
 		stored_power= min(stored_power + ( total_power - used_power), stats.power_capacity)
 
+	available_power= total_power
+
 	assert(stored_power >= 0 and stored_power <= stats.power_capacity)
 		
 	if used_power > 0:
