@@ -12,13 +12,15 @@ const JUST_FIRED_DATA= "just_fired"
 
 func init(part_info: VehicleMountedPartInfo, _vehicle: Vehicle):
 	part_info.live_data[RELOAD_TIME_DATA]= 0.0
+	part_info.live_data[JUST_FIRED_DATA]= false
 
 
 func tick(part_info: VehicleMountedPartInfo, vehicle: Vehicle, tile_pos: Vector2i, delta: float): 
 	part_info.live_data[JUST_FIRED_DATA]= false
-	if part_info.live_data[RELOAD_TIME_DATA] > 0:
+	if is_reloading(part_info):
 		part_info.live_data[RELOAD_TIME_DATA]-= delta * vehicle.power_supply_ratio
-	else:
+	
+	if not is_reloading(part_info):
 		if can_fire(part_info, vehicle):
 			fire(part_info, vehicle, tile_pos)
 		
@@ -36,13 +38,17 @@ func reload(part_info: VehicleMountedPartInfo):
 
 
 func get_power_usage(part_info: VehicleMountedPartInfo)-> float:
-	if is_reloading(part_info):
+	if is_reloading(part_info) or is_shooting(part_info):
 		return power_required
 	return 0
 
 
 func is_reloading(part_info: VehicleMountedPartInfo)-> bool:
 	return part_info.live_data[RELOAD_TIME_DATA] > 0.0
+
+
+func is_shooting(part_info: VehicleMountedPartInfo)-> bool:
+	return part_info.live_data[JUST_FIRED_DATA]
 
 
 func can_fire(_part_info: VehicleMountedPartInfo, vehicle: Vehicle)-> bool:
