@@ -121,6 +121,9 @@ func add_mounted_part(info: VehicleMountedPartInfo, tile_pos: Vector2i, part_pos
 	mounted_nodes.add_child(node2d)
 	tile_references[tile_pos].mounted_node= node2d
 	
+	if mounted_data.full_visual_replacement:
+		tile_references[tile_pos].structure_node.hide()
+	
 	mounted_data.init(info, self)
 
 

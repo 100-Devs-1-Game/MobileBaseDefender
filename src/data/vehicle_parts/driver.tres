@@ -9,6 +9,7 @@ acceleration_factor = 100.0
 rotation_factor = 0.25
 category = 1
 game_mode_scene = ExtResource("1_kuk4r")
+full_visual_replacement = true
 name = "Driver"
 weight = 5
 metadata/_custom_type_script = "uid://cgyg4csxb88p7"
