@@ -7,9 +7,12 @@ extends Resource
 
 @export var dummy_initializer: bool= true:
 	set(b):
+		if not OS.is_debug_build():
+			enable_keyboard_input= false
+		
 		print("Vehicle controls: initialize inputs")
 		all_inputs= [ drive, steer ]
-
+		
 var all_inputs: Array[VehicleBaseControlInput]
 
 
