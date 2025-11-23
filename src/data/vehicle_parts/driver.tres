@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="VehicleDriverPart" load_steps=3 format=3 uid="uid://c6nj6sqfxlk8h"]
+[gd_resource type="Resource" script_class="VehicleDriverPartData" load_steps=3 format=3 uid="uid://c6nj6sqfxlk8h"]
 
-[ext_resource type="Texture2D" uid="uid://c3abnbhiyu2fj" path="res://assets/art/placeholder/parts/structure_driver.png" id="1_kuk4r"]
+[ext_resource type="PackedScene" uid="uid://drf8ll8qw2k8" path="res://data/vehicle_parts/scenes/driver_part.tscn" id="1_kuk4r"]
 [ext_resource type="Script" uid="uid://cgyg4csxb88p7" path="res://vehicle/parts/custom/driver_part_data.gd" id="1_ofgo8"]
 
 [resource]
@@ -8,7 +8,7 @@ script = ExtResource("1_ofgo8")
 acceleration_factor = 100.0
 rotation_factor = 0.25
 category = 1
+game_mode_scene = ExtResource("1_kuk4r")
 name = "Driver"
 weight = 5
-game_mode_texture = ExtResource("1_kuk4r")
 metadata/_custom_type_script = "uid://cgyg4csxb88p7"
