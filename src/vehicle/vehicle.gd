@@ -44,7 +44,7 @@ var coll_shape_tile_pos_lookup: Dictionary[int, Vector2i]
 var structure_damage: Dictionary[Vector2i, float]
 var tile_references: Dictionary[Vector2i, TileReferences]
 
-var fire_groups: Array[FireGroup]
+var fire_groups: Dictionary[FireGroup.Type, FireGroup]
 
 
 
@@ -74,6 +74,18 @@ func initialize(_layout: VehicleLayout):
 			
 	update_stats()
 	mass= stats.weight
+	
+	initialize_fire_groups()
+
+
+func initialize_fire_groups():
+	for i in FireGroup.Type.values():
+		fire_groups[i]= FireGroup.new()
+
+	for part_info in layout.get_all_mounted_parts():
+		if part_info.part is VehicleBaseGunPartData:
+			var type:= VehicleBaseGunPartData.get_fire_group_type(part_info)
+			fire_groups[type].add(part_info)
 
 
 func _physics_process(delta: float) -> void:
