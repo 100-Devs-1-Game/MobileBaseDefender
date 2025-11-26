@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ceb3fbth2q404" path="res://vehicle/vehicle.gd" id="1_opyur"]
 [ext_resource type="Resource" uid="uid://qnlykqd5qlqd" path="res://data/vehicle_parts/wheel.tres" id="2_1ktiy"]
-[ext_resource type="Resource" uid="uid://btkcews2jo7yo" path="res://vehicle/vehicle_controls.tres" id="2_vg162"]
+[ext_resource type="Resource" uid="uid://btkcews2jo7yo" path="res://vehicle/controls/vehicle_controls.tres" id="2_vg162"]
 [ext_resource type="Texture2D" uid="uid://nvplug3sg3i8" path="res://assets/art/placeholder/damage_indicator.png" id="4_fehuk"]
 [ext_resource type="Texture2D" uid="uid://fxbtmdld23ty" path="res://assets/art/placeholder/drop_shadow.png" id="4_jmtuw"]
 [ext_resource type="PackedScene" uid="uid://bjf4o1kponle7" path="res://debug/debug_window.tscn" id="4_vp2eu"]
@@ -31,7 +31,12 @@ linear_damp = 1.0
 angular_damp_mode = 1
 angular_damp = 1.0
 script = ExtResource("1_opyur")
+part_tick_interval = null
+rolling_friction = null
+brake_friction = null
 controls = ExtResource("2_vg162")
+shadow_offset = null
+shadow_alpha = null
 wheel_part_reference = ExtResource("2_1ktiy")
 shadow_texture = ExtResource("4_jmtuw")
 

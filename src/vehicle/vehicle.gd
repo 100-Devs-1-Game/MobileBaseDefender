@@ -44,6 +44,8 @@ var coll_shape_tile_pos_lookup: Dictionary[int, Vector2i]
 var structure_damage: Dictionary[Vector2i, float]
 var tile_references: Dictionary[Vector2i, TileReferences]
 
+var fire_groups: Array[FireGroup]
+
 
 
 func _ready() -> void:

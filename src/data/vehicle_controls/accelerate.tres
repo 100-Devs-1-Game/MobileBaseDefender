@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="VehicleAxisControlInput" load_steps=2 format=3 uid="uid://cvkqs11635jo2"]
 
-[ext_resource type="Script" uid="uid://b8sfr3npohd0i" path="res://vehicle/vehicle_axis_control_input.gd" id="1_yvptv"]
+[ext_resource type="Script" uid="uid://b8sfr3npohd0i" path="res://vehicle/controls/vehicle_axis_control_input.gd" id="1_yvptv"]
 
 [resource]
 script = ExtResource("1_yvptv")

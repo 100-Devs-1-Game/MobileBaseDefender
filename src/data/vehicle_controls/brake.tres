@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="VehicleToggleControlInput" load_steps=2 format=3 uid="uid://0pxq5yd0t3jj"]
 
-[ext_resource type="Script" uid="uid://2qipfffhn7vp" path="res://vehicle/vehicle_toggle_control_input.gd" id="1_1ivil"]
+[ext_resource type="Script" uid="uid://2qipfffhn7vp" path="res://vehicle/controls/vehicle_toggle_control_input.gd" id="1_1ivil"]
 
 [resource]
 script = ExtResource("1_1ivil")
