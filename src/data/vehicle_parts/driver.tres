@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_ofgo8")
 acceleration_factor = 100.0
-rotation_factor = 0.25
+rotation_factor = 0.01
 category = 1
 game_mode_scene = ExtResource("1_kuk4r")
 full_visual_replacement = true
