@@ -14,6 +14,8 @@ const PART_SIZE= 128
 @onready var debug_window: DebugWindow = $"CanvasLayer/Debug Window"
 @onready var damage_indicator: Sprite2D = $"Damage Indicator"
 
+@onready var camera: Camera2D = $Camera2D
+
 
 var layout: VehicleLayout
 var stats: VehicleStats
@@ -38,6 +40,7 @@ var tile_references: Dictionary[Vector2i, TileReferences]
 
 func _ready() -> void:
 	Global.vehicle= self
+	camera.ignore_rotation= not GameConstants.active.lock_camera_rotation
 
 
 func initialize(_layout: VehicleLayout):

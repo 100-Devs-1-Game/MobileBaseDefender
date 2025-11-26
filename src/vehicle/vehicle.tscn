@@ -32,6 +32,7 @@ controls = ExtResource("2_vg162")
 wheel_part_reference = ExtResource("2_1ktiy")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+ignore_rotation = false
 
 [node name="Structure Nodes" type="Node2D" parent="."]
 
