@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btpioq8qj8g68"
-path="res://.godot/imported/clouds.png-e877dfdcf68dbe35ea7defb955c4c2a8.ctex"
+uid="uid://bglgolito8mo6"
+path="res://.godot/imported/cloud_tileset.png-53a6dd81bfd72d3cc4c65c6ba70ada22.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/level/clouds/clouds.png"
-dest_files=["res://.godot/imported/clouds.png-e877dfdcf68dbe35ea7defb955c4c2a8.ctex"]
+source_file="res://assets/art/placeholder/cloud_tileset.png"
+dest_files=["res://.godot/imported/cloud_tileset.png-53a6dd81bfd72d3cc4c65c6ba70ada22.ctex"]
 
 [params]
 
