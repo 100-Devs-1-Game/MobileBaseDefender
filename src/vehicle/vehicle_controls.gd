@@ -4,6 +4,7 @@ extends Resource
 @export var enable_keyboard_input: bool= false
 @export var drive: VehicleAxisControlInput
 @export var steer: VehicleAxisControlInput
+@export var brake: VehicleToggleControlInput
 
 @export var dummy_initializer: bool= true:
 	set(b):
@@ -11,7 +12,7 @@ extends Resource
 			enable_keyboard_input= false
 		
 		print("Vehicle controls: initialize inputs")
-		all_inputs= [ drive, steer ]
+		all_inputs= [ drive, steer, brake ]
 		
 var all_inputs: Array[VehicleBaseControlInput]
 
