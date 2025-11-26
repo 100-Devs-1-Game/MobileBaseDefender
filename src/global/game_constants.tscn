@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://c47ot4qpckp2q"]
+
+[ext_resource type="Script" uid="uid://mjvx2ooy7ikx" path="res://global/game_constants.gd" id="1_y3lg3"]
+[ext_resource type="Script" uid="uid://po4gsi1p0t8e" path="res://misc/game_constants_data.gd" id="2_61cua"]
+
+[sub_resource type="Resource" id="Resource_3fjuc"]
+script = ExtResource("2_61cua")
+metadata/_custom_type_script = "uid://po4gsi1p0t8e"
+
+[sub_resource type="Resource" id="Resource_qbgio"]
+script = ExtResource("2_61cua")
+lock_camera_rotation = false
+steering_factor = 5.0
+metadata/_custom_type_script = "uid://po4gsi1p0t8e"
+
+[node name="GameConstants" type="Node"]
+script = ExtResource("1_y3lg3")
+release_constants = SubResource("Resource_3fjuc")
+testing_constants = SubResource("Resource_qbgio")

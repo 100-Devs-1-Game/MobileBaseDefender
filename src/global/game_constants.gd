@@ -1,0 +1,14 @@
+extends Node
+
+@export var release_constants: GameConstantsData
+@export var testing_constants: GameConstantsData
+
+var active: GameConstantsData
+
+
+
+func _ready() -> void:
+	if OS.is_debug_build():
+		active= testing_constants
+	else:
+		active= release_constants
