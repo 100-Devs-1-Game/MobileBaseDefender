@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://scmr7fvfwq86"]
+[gd_scene load_steps=15 format=3 uid="uid://scmr7fvfwq86"]
 
 [ext_resource type="Script" uid="uid://ceb3fbth2q404" path="res://vehicle/vehicle.gd" id="1_opyur"]
 [ext_resource type="Resource" uid="uid://qnlykqd5qlqd" path="res://data/vehicle_parts/wheel.tres" id="2_1ktiy"]
 [ext_resource type="Resource" uid="uid://btkcews2jo7yo" path="res://vehicle/vehicle_controls.tres" id="2_vg162"]
 [ext_resource type="Texture2D" uid="uid://nvplug3sg3i8" path="res://assets/art/placeholder/damage_indicator.png" id="4_fehuk"]
+[ext_resource type="Texture2D" uid="uid://fxbtmdld23ty" path="res://assets/art/placeholder/drop_shadow.png" id="4_jmtuw"]
 [ext_resource type="PackedScene" uid="uid://bjf4o1kponle7" path="res://debug/debug_window.tscn" id="4_vp2eu"]
 [ext_resource type="Resource" uid="uid://btxwwm7l8way1" path="res://vehicle/debug_items.tres" id="5_raajb"]
 [ext_resource type="ButtonGroup" uid="uid://clepjgnltrk2f" path="res://ui/control_ui/button_group_accelerate.tres" id="6_6bjwd"]
@@ -17,6 +18,7 @@
 Button/font_sizes/font_size = 32
 
 [node name="Vehicle" type="RigidBody2D"]
+z_index = 1
 collision_mask = 6
 center_of_mass_mode = 1
 can_sleep = false
@@ -30,6 +32,7 @@ angular_damp = 1.0
 script = ExtResource("1_opyur")
 controls = ExtResource("2_vg162")
 wheel_part_reference = ExtResource("2_1ktiy")
+shadow_texture = ExtResource("4_jmtuw")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 ignore_rotation = false
@@ -37,6 +40,9 @@ ignore_rotation = false
 [node name="Structure Nodes" type="Node2D" parent="."]
 
 [node name="Mounted Nodes" type="Node2D" parent="."]
+
+[node name="Shadow" type="Node2D" parent="."]
+z_index = -1
 
 [node name="Damage Indicator" type="Sprite2D" parent="."]
 visible = false

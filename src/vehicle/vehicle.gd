@@ -7,12 +7,18 @@ const PART_SIZE= 128
 @export var part_tick_interval: int= 1
 
 @export var controls: VehicleControls
+
+@export var shadow_offset: Vector2= Vector2(10, 10)
+@export var shadow_alpha: float= 0.7
+
 @export var wheel_part_reference: VehicleWheelPartData
+@export var shadow_texture: Texture2D
 
 @onready var structure_nodes: Node2D = $"Structure Nodes"
 @onready var mounted_nodes: Node2D = $"Mounted Nodes"
 @onready var debug_window: DebugWindow = $"CanvasLayer/Debug Window"
 @onready var damage_indicator: Sprite2D = $"Damage Indicator"
+@onready var shadow_node: Node2D = $Shadow
 
 @onready var camera: Camera2D = $Camera2D
 
@@ -81,6 +87,9 @@ func _physics_process(delta: float) -> void:
 	for object in custom_mounted_objects:
 		object.physics_tick(self, delta)
 
+	shadow_node.position= Vector2.ZERO
+	shadow_node.global_position+= shadow_offset
+
 	update_debug_window()
 
 
@@ -100,6 +109,12 @@ func add_structure_part(data: VehicleStructureData, tile_pos: Vector2i, part_pos
 	coll_shape.name= str(tile_pos)
 	add_child(coll_shape)
 	tile_references[tile_pos].collision_shape= coll_shape
+
+	var shadow_sprite:= Sprite2D.new()
+	shadow_sprite.texture= shadow_texture
+	shadow_sprite.position= part_pos
+	shadow_sprite.modulate.a= shadow_alpha
+	shadow_node.add_child(shadow_sprite)
 
 
 func add_mounted_part(info: VehicleMountedPartInfo, tile_pos: Vector2i, part_pos: Vector2):
