@@ -18,7 +18,7 @@ const PART_SIZE= 128
 
 @onready var structure_nodes: Node2D = $"Structure Nodes"
 @onready var mounted_nodes: Node2D = $"Mounted Nodes"
-@onready var debug_window: DebugWindow = $"CanvasLayer/Debug Window"
+@onready var debug_window: DebugWindow = $"Vehicle UI/Debug Window"
 @onready var damage_indicator: Sprite2D = $"Damage Indicator"
 @onready var shadow_node: Node2D = $Shadow
 

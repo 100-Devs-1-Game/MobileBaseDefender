@@ -1,0 +1,157 @@
+[gd_scene load_steps=15 format=3 uid="uid://d0g5ffcu256n"]
+
+[ext_resource type="PackedScene" uid="uid://bjf4o1kponle7" path="res://debug/debug_window.tscn" id="1_2mjmc"]
+[ext_resource type="Resource" uid="uid://btxwwm7l8way1" path="res://vehicle/debug_items.tres" id="2_8pk62"]
+[ext_resource type="FontFile" uid="uid://cuq0hfcm174n" path="res://assets_external/fonts/Jersey_25/Jersey25-Regular.ttf" id="3_4t8d0"]
+[ext_resource type="ButtonGroup" uid="uid://clepjgnltrk2f" path="res://ui/control_ui/button_group_accelerate.tres" id="4_jwrgk"]
+[ext_resource type="Script" uid="uid://jqnjm14o6aub" path="res://ui/control_ui/vehicle_control_button.gd" id="5_sds00"]
+[ext_resource type="Resource" uid="uid://cvkqs11635jo2" path="res://data/vehicle_controls/accelerate.tres" id="6_dnrdk"]
+[ext_resource type="ButtonGroup" uid="uid://hkkm4m712nm3" path="res://ui/control_ui/button_group_steer.tres" id="7_1ranw"]
+[ext_resource type="Resource" uid="uid://b3ahasvr0j0io" path="res://data/vehicle_controls/steer.tres" id="8_4l2aw"]
+[ext_resource type="Resource" uid="uid://0pxq5yd0t3jj" path="res://data/vehicle_controls/brake.tres" id="9_ai48s"]
+[ext_resource type="Script" uid="uid://dnbrrhrn8th2q" path="res://ui/control_ui/vehicle_fire_group_button.gd" id="10_l2yv4"]
+[ext_resource type="Script" uid="uid://dqq8x16kjf0ek" path="res://ui/control_ui/zoom_button.gd" id="11_u0o3n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1255d"]
+bg_color = Color(0.38409242, 0.22858453, 0.15754125, 1)
+
+[sub_resource type="Theme" id="Theme_s4s6f"]
+Button/font_sizes/font_size = 32
+Button/styles/pressed = SubResource("StyleBoxFlat_1255d")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83031"]
+bg_color = Color(0.6, 0.6, 0.6, 0.7607843)
+
+[node name="Vehicle UI" type="CanvasLayer"]
+
+[node name="Debug Window" parent="." instance=ExtResource("1_2mjmc")]
+item_collection = ExtResource("2_8pk62")
+
+[node name="Control UI" type="PanelContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -216.0
+offset_bottom = 121.0
+grow_horizontal = 0
+theme = SubResource("Theme_s4s6f")
+theme_override_styles/panel = SubResource("StyleBoxFlat_83031")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control UI"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control UI/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 35
+
+[node name="GridContainer Driving" type="GridContainer" parent="Control UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 20
+columns = 3
+
+[node name="Control" type="Control" parent="Control UI/MarginContainer/VBoxContainer/GridContainer Driving"]
+layout_mode = 2
+
+[node name="VehicleControlButton" type="Button" parent="Control UI/MarginContainer/VBoxContainer/GridContainer Driving"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4t8d0")
+toggle_mode = true
+button_group = ExtResource("4_jwrgk")
+text = "FORWARD"
+script = ExtResource("5_sds00")
+linked_control = ExtResource("6_dnrdk")
+control_parameter = 2
+metadata/_custom_type_script = "uid://jqnjm14o6aub"
+
+[node name="Control2" type="Control" parent="Control UI/MarginContainer/VBoxContainer/GridContainer Driving"]
+layout_mode = 2
+
+[node name="VehicleControlButton3" type="Button" parent="Control UI/MarginContainer/VBoxContainer/GridContainer Driving"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4t8d0")
+toggle_mode = true
+button_group = ExtResource("7_1ranw")
+text = "LEFT"
+script = ExtResource("5_sds00")
+linked_control = ExtResource("8_4l2aw")
+control_parameter = 1
+metadata/_custom_type_script = "uid://jqnjm14o6aub"
+
+[node name="VehicleControlButton5" type="Button" parent="Control UI/MarginContainer/VBoxContainer/GridContainer Driving"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4t8d0")
+toggle_mode = true
+button_group = ExtResource("4_jwrgk")
+text = "BRAKE"
+script = ExtResource("5_sds00")
+linked_control = ExtResource("9_ai48s")
+metadata/_custom_type_script = "uid://jqnjm14o6aub"
+
+[node name="VehicleControlButton4" type="Button" parent="Control UI/MarginContainer/VBoxContainer/GridContainer Driving"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4t8d0")
+toggle_mode = true
+button_group = ExtResource("7_1ranw")
+text = "RIGHT"
+script = ExtResource("5_sds00")
+linked_control = ExtResource("8_4l2aw")
+control_parameter = 2
+metadata/_custom_type_script = "uid://jqnjm14o6aub"
+
+[node name="Control4" type="Control" parent="Control UI/MarginContainer/VBoxContainer/GridContainer Driving"]
+layout_mode = 2
+
+[node name="VehicleControlButton2" type="Button" parent="Control UI/MarginContainer/VBoxContainer/GridContainer Driving"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4t8d0")
+toggle_mode = true
+button_group = ExtResource("4_jwrgk")
+text = "BACK"
+script = ExtResource("5_sds00")
+linked_control = ExtResource("6_dnrdk")
+control_parameter = 1
+metadata/_custom_type_script = "uid://jqnjm14o6aub"
+
+[node name="Control5" type="Control" parent="Control UI/MarginContainer/VBoxContainer/GridContainer Driving"]
+layout_mode = 2
+
+[node name="VBoxContainer Fire Groups" type="VBoxContainer" parent="Control UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="VehicleFireGroupButton" type="Button" parent="Control UI/MarginContainer/VBoxContainer/VBoxContainer Fire Groups"]
+layout_mode = 2
+toggle_mode = true
+button_pressed = true
+text = "Fire Group 1"
+script = ExtResource("10_l2yv4")
+
+[node name="VehicleFireGroupButton2" type="Button" parent="Control UI/MarginContainer/VBoxContainer/VBoxContainer Fire Groups"]
+layout_mode = 2
+toggle_mode = true
+button_pressed = true
+text = "Fire Group 2"
+script = ExtResource("10_l2yv4")
+type = 1
+
+[node name="HBoxContainer Zoom" type="HBoxContainer" parent="Control UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ButtonZoomIn" type="Button" parent="Control UI/MarginContainer/VBoxContainer/HBoxContainer Zoom"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Zoom+"
+script = ExtResource("11_u0o3n")
+type = 1
+
+[node name="ButtonZoomIn2" type="Button" parent="Control UI/MarginContainer/VBoxContainer/HBoxContainer Zoom"]
+layout_mode = 2
+text = "Zoom-"
+script = ExtResource("11_u0o3n")
+type = 2
