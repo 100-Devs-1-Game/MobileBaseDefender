@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cts2j2h4sqyb8"]
+
+[ext_resource type="Script" uid="uid://df843apbeqwjk" path="res://level/object_tile.gd" id="1_k28br"]
+[ext_resource type="Texture2D" uid="uid://d4iby284aigrq" path="res://assets/art/level/Mushroom_v2_top.png" id="2_k28br"]
+[ext_resource type="Texture2D" uid="uid://bmybvw6ooguux" path="res://assets/art/level/Mushroom_v2_Bottom.png" id="3_uinot"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vbkug"]
+radius = 32.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1k6yi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_k28br")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uinot")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Mushroom2 Tile" type="Area2D"]
+collision_layer = 256
+script = ExtResource("1_k28br")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vbkug")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1k6yi")

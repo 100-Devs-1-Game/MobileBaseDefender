@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://be3yu3jhiqf5n"]
+
+[ext_resource type="Script" uid="uid://df843apbeqwjk" path="res://level/object_tile.gd" id="1_vbkug"]
+[ext_resource type="Texture2D" uid="uid://dj7w27djnxdan" path="res://assets/art/level/Iron Ore_Rocks 1.png" id="2_qeqcn"]
+[ext_resource type="Texture2D" uid="uid://bb4g26rch8cjt" path="res://assets/art/level/Iron Ore_Rocks 1_Cracked.png" id="3_npjho"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vbkug"]
+radius = 32.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_maaxr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qeqcn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_npjho")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Ore Tile" type="Area2D"]
+collision_layer = 256
+script = ExtResource("1_vbkug")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vbkug")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_maaxr")
