@@ -94,7 +94,7 @@ func _physics_process(delta: float) -> void:
 		tick_parts()
 		controls.finish_update()
 
-	speed+= acceleration_force / ( mass / 100.0 ) * delta
+	speed+= acceleration_force * GameConstants.active.acceleration_factor / ( mass / 100.0 ) * delta
 	speed*= 1 - delta * rolling_friction
 	
 	if controls.brake.toggled:
