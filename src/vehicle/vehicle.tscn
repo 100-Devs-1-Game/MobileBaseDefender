@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://scmr7fvfwq86"]
+[gd_scene load_steps=19 format=3 uid="uid://scmr7fvfwq86"]
 
 [ext_resource type="Script" uid="uid://ceb3fbth2q404" path="res://vehicle/vehicle.gd" id="1_opyur"]
 [ext_resource type="Resource" uid="uid://qnlykqd5qlqd" path="res://data/vehicle_parts/wheel.tres" id="2_1ktiy"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://nvplug3sg3i8" path="res://assets/art/placeholder/damage_indicator.png" id="4_fehuk"]
 [ext_resource type="Texture2D" uid="uid://fxbtmdld23ty" path="res://assets/art/placeholder/drop_shadow.png" id="4_jmtuw"]
 [ext_resource type="PackedScene" uid="uid://bjf4o1kponle7" path="res://debug/debug_window.tscn" id="4_vp2eu"]
+[ext_resource type="Script" uid="uid://bufhsendqclmw" path="res://vehicle/camera.gd" id="5_157w3"]
 [ext_resource type="Resource" uid="uid://btxwwm7l8way1" path="res://vehicle/debug_items.tres" id="5_raajb"]
 [ext_resource type="ButtonGroup" uid="uid://clepjgnltrk2f" path="res://ui/control_ui/button_group_accelerate.tres" id="6_6bjwd"]
 [ext_resource type="Script" uid="uid://jqnjm14o6aub" path="res://ui/control_ui/vehicle_control_button.gd" id="6_raajb"]
@@ -15,6 +16,7 @@
 [ext_resource type="ButtonGroup" uid="uid://hkkm4m712nm3" path="res://ui/control_ui/button_group_steer.tres" id="9_s4s6f"]
 [ext_resource type="Resource" uid="uid://0pxq5yd0t3jj" path="res://data/vehicle_controls/brake.tres" id="14_egcsk"]
 [ext_resource type="Script" uid="uid://dnbrrhrn8th2q" path="res://ui/control_ui/vehicle_fire_group_button.gd" id="15_28v1e"]
+[ext_resource type="Script" uid="uid://dqq8x16kjf0ek" path="res://ui/control_ui/zoom_button.gd" id="17_1255d"]
 
 [sub_resource type="Theme" id="Theme_s4s6f"]
 Button/font_sizes/font_size = 32
@@ -38,6 +40,7 @@ shadow_texture = ExtResource("4_jmtuw")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 ignore_rotation = false
+script = ExtResource("5_157w3")
 
 [node name="Structure Nodes" type="Node2D" parent="."]
 
@@ -165,3 +168,20 @@ button_pressed = true
 text = "Fire Group 2"
 script = ExtResource("15_28v1e")
 type = 1
+
+[node name="HBoxContainer Zoom" type="HBoxContainer" parent="CanvasLayer/Control UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ButtonZoomIn" type="Button" parent="CanvasLayer/Control UI/MarginContainer/VBoxContainer/HBoxContainer Zoom"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Zoom+"
+script = ExtResource("17_1255d")
+type = 1
+
+[node name="ButtonZoomIn2" type="Button" parent="CanvasLayer/Control UI/MarginContainer/VBoxContainer/HBoxContainer Zoom"]
+layout_mode = 2
+text = "Zoom-"
+script = ExtResource("17_1255d")
+type = 2
