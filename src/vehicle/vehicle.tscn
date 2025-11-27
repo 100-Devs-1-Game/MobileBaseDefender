@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://scmr7fvfwq86"]
+[gd_scene load_steps=21 format=3 uid="uid://scmr7fvfwq86"]
 
 [ext_resource type="Script" uid="uid://ceb3fbth2q404" path="res://vehicle/vehicle.gd" id="1_opyur"]
 [ext_resource type="Resource" uid="uid://qnlykqd5qlqd" path="res://data/vehicle_parts/wheel.tres" id="2_1ktiy"]
@@ -18,8 +18,15 @@
 [ext_resource type="Script" uid="uid://dnbrrhrn8th2q" path="res://ui/control_ui/vehicle_fire_group_button.gd" id="15_28v1e"]
 [ext_resource type="Script" uid="uid://dqq8x16kjf0ek" path="res://ui/control_ui/zoom_button.gd" id="17_1255d"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1255d"]
+bg_color = Color(0.38409242, 0.22858453, 0.15754125, 1)
+
 [sub_resource type="Theme" id="Theme_s4s6f"]
 Button/font_sizes/font_size = 32
+Button/styles/pressed = SubResource("StyleBoxFlat_1255d")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83031"]
+bg_color = Color(0.6, 0.6, 0.6, 0.7607843)
 
 [node name="Vehicle" type="RigidBody2D"]
 z_index = 1
@@ -66,6 +73,7 @@ offset_left = -216.0
 offset_bottom = 121.0
 grow_horizontal = 0
 theme = SubResource("Theme_s4s6f")
+theme_override_styles/panel = SubResource("StyleBoxFlat_83031")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control UI"]
 layout_mode = 2
