@@ -11,7 +11,6 @@
 [node name="Vehicle" type="RigidBody2D"]
 z_index = 1
 collision_mask = 6
-center_of_mass_mode = 1
 can_sleep = false
 continuous_cd = 2
 contact_monitor = true
