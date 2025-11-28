@@ -9,4 +9,5 @@ script = ExtResource("1_fa55c")
 category = 1
 build_mode_texture = ExtResource("1_8172t")
 game_mode_scene = ExtResource("2_0omsg")
+full_visual_replacement = true
 metadata/_custom_type_script = "uid://bukr8eeqvu81p"
