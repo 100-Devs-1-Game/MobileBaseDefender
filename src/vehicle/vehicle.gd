@@ -102,7 +102,11 @@ func _physics_process(delta: float) -> void:
 	
 	linear_velocity= speed * -global_transform.y 
 
-	angular_velocity= rotation_torque * GameConstants.active.steering_factor / ( mass / 100.0 )
+	var applied_torque:= rotation_torque
+	if speed < 0:
+		applied_torque*= -1
+
+	angular_velocity= applied_torque * GameConstants.active.steering_factor / ( mass / 100.0 )
 
 	for object in custom_mounted_objects:
 		object.physics_tick(self, delta)
