@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("2_p7w8o")
-acceleration_factor = 20.0
+acceleration_factor = 50.0
 rotation_factor = 0.1
 category = 1
 rotate_mode = 1
