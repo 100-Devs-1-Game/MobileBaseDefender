@@ -78,6 +78,8 @@ brake={
 2d_physics/layer_1="Vehicle"
 2d_physics/layer_2="Level"
 2d_physics/layer_3="Enemies"
+2d_physics/layer_9="Pickup"
+2d_physics/layer_10="Ore Tile"
 
 [physics]
 

@@ -3,10 +3,12 @@ extends Node2D
 
 @export var vehicle_scene: PackedScene
 @export var explosion_scene: PackedScene
+@export var pickup_scene: PackedScene
 
 var vehicle: Vehicle
 var projectiles_node: Node2D
 var enemies_node: Node2D
+var pickups_node: Node2D
 
 var enemy_query:= PhysicsShapeQueryParameters2D.new()
 
@@ -15,9 +17,13 @@ var enemy_query:= PhysicsShapeQueryParameters2D.new()
 func _ready() -> void:
 	assert(vehicle_scene)
 	assert(explosion_scene)
+	Global.level= self
 	
 	projectiles_node= create_sub_node("Projectiles")
 	enemies_node= create_sub_node("Enemies")
+	pickups_node= create_sub_node("Pickups")
+	pickups_node.z_index= 2
+	
 	enemy_query.collision_mask= CollisionLayers.ENEMY
 	enemy_query.shape= CircleShape2D.new()
 
@@ -51,6 +57,13 @@ func spawn_explosion(pos: Vector2, damage: Damage):
 	for enemy in get_enemies_in_range(pos, damage.radius):
 		var health:= HealthComponent.get_from_node(enemy)
 		health.take_damage(dmg_inst)
+
+
+func spawn_pickup(pos: Vector2, data: BasePickupData):
+	var pickup: Pickup= pickup_scene.instantiate()
+	pickup.position= pos
+	pickups_node.add_child(pickup)
+	pickup.init(data)
 
 
 func create_sub_node(node_name: String)-> Node2D:

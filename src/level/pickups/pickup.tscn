@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx47c2u622pn3"]
+
+[ext_resource type="Script" uid="uid://l87ex53ryrtn" path="res://level/pickups/pickup.gd" id="1_vfsm4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6te3g"]
+radius = 32.0
+
+[node name="Pickup" type="Area2D"]
+collision_layer = 256
+script = ExtResource("1_vfsm4")
+acceleration = 1500.0
+damping = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6te3g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
