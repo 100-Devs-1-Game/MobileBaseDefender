@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=4 uid="uid://dp2bundpytnhd"]
+[gd_scene load_steps=20 format=4 uid="uid://dp2bundpytnhd"]
 
 [ext_resource type="Texture2D" uid="uid://kn5gitcrkpes" path="res://assets/art/placeholder/level_base_tileset.png" id="1_8rkqs"]
 [ext_resource type="Script" uid="uid://d1xcyyg232282" path="res://test/level_sandbox.gd" id="1_klfgi"]
 [ext_resource type="Script" uid="uid://2nbwj3a61tla" path="res://test/test_level.gd" id="1_ls30l"]
 [ext_resource type="PackedScene" uid="uid://scmr7fvfwq86" path="res://vehicle/vehicle.tscn" id="2_piqwm"]
 [ext_resource type="PackedScene" uid="uid://bqpnvn7x034jq" path="res://level/explosion.tscn" id="3_ic46k"]
+[ext_resource type="PackedScene" uid="uid://dx47c2u622pn3" path="res://level/pickups/pickup.tscn" id="4_j8bqw"]
 [ext_resource type="Resource" uid="uid://b6k7c13pja6ui" path="res://test/test_vehicle_layout.tres" id="4_oxjuh"]
 [ext_resource type="Script" uid="uid://cpf8rw0riybn6" path="res://entities/enemy_spawner.gd" id="6_piqwm"]
 [ext_resource type="PackedScene" uid="uid://be3yu3jhiqf5n" path="res://level/tile_scenes/iron_ore_tile.tscn" id="7_c0hlm"]
@@ -197,6 +198,7 @@ sources/1 = SubResource("TileSetAtlasSource_c0hub")
 script = ExtResource("1_ls30l")
 vehicle_scene = ExtResource("2_piqwm")
 explosion_scene = ExtResource("3_ic46k")
+pickup_scene = ExtResource("4_j8bqw")
 
 [node name="Sandbox" type="Node" parent="."]
 script = ExtResource("1_klfgi")

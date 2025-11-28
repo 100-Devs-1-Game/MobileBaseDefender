@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="OrePickupData" load_steps=3 format=3 uid="uid://c1ctocx5k81hf"]
+
+[ext_resource type="Script" uid="uid://cgmy8c1bxc5u" path="res://level/pickups/ore_pickup_data.gd" id="1_o7tg4"]
+[ext_resource type="Texture2D" uid="uid://cnl0ff6rtcls2" path="res://assets/art/resources/Iron Ore_Rocks_ 1_Iron Lumps.png" id="2_04tml"]
+
+[resource]
+script = ExtResource("1_o7tg4")
+texture = ExtResource("2_04tml")
+metadata/_custom_type_script = "uid://cgmy8c1bxc5u"

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="VehicleLayout" load_steps=18 format=3 uid="uid://b6k7c13pja6ui"]
+[gd_resource type="Resource" script_class="VehicleLayout" load_steps=20 format=3 uid="uid://b6k7c13pja6ui"]
 
 [ext_resource type="Script" uid="uid://c3njl81r2414m" path="res://vehicle/parts/vehicle_mounted_part_info_data.gd" id="1_ehye6"]
 [ext_resource type="Resource" uid="uid://c6nj6sqfxlk8h" path="res://data/vehicle_parts/driver.tres" id="2_1uc7r"]
@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://iovva17d01ae" path="res://data/vehicle_parts/fixed_gun.tres" id="5_jv3jr"]
 [ext_resource type="Resource" uid="uid://swi43ik3iupi" path="res://data/vehicle_parts/chain_gun.tres" id="6_dp0lq"]
 [ext_resource type="Resource" uid="uid://cgt3fmfbmosjv" path="res://data/vehicle_parts/power_storage.tres" id="7_icswl"]
+[ext_resource type="Resource" uid="uid://cpbtrshdmxr2m" path="res://data/vehicle_parts/drill.tres" id="8_qdikw"]
 
 [sub_resource type="Resource" id="Resource_1uc7r"]
 script = ExtResource("1_ehye6")
@@ -47,6 +48,11 @@ script = ExtResource("1_ehye6")
 part = ExtResource("5_jv3jr")
 metadata/_custom_type_script = "uid://c3njl81r2414m"
 
+[sub_resource type="Resource" id="Resource_rt3tl"]
+script = ExtResource("1_ehye6")
+part = ExtResource("8_qdikw")
+metadata/_custom_type_script = "uid://c3njl81r2414m"
+
 [resource]
 script = ExtResource("3_e816a")
 structure_parts = Dictionary[Vector2i, ExtResource("4_jv3jr")]({
@@ -56,7 +62,8 @@ Vector2i(0, 0): ExtResource("5_dp0lq"),
 Vector2i(0, 1): ExtResource("5_dp0lq"),
 Vector2i(0, 2): ExtResource("5_dp0lq"),
 Vector2i(1, 0): ExtResource("5_dp0lq"),
-Vector2i(1, 1): ExtResource("5_dp0lq")
+Vector2i(1, 1): ExtResource("5_dp0lq"),
+Vector2i(1, 2): ExtResource("5_dp0lq")
 })
 mounted_parts = Dictionary[Vector2i, ExtResource("1_ehye6")]({
 Vector2i(-1, 0): SubResource("Resource_1uc7r"),
@@ -65,6 +72,7 @@ Vector2i(0, 0): SubResource("Resource_c0hub"),
 Vector2i(0, 1): SubResource("Resource_jv3jr"),
 Vector2i(0, 2): SubResource("Resource_qdikw"),
 Vector2i(1, 0): SubResource("Resource_e816a"),
-Vector2i(1, 1): SubResource("Resource_dp0lq")
+Vector2i(1, 1): SubResource("Resource_dp0lq"),
+Vector2i(1, 2): SubResource("Resource_rt3tl")
 })
 metadata/_custom_type_script = "uid://bj8xmxi8huo"
