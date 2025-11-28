@@ -22,7 +22,8 @@ animations = [{
 }]
 
 [node name="Mushroom1 Tile" type="Area2D"]
-collision_layer = 256
+collision_layer = 0
+monitorable = false
 script = ExtResource("1_l2r6f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
