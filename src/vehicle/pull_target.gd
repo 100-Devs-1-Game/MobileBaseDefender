@@ -9,6 +9,7 @@ var timer:= Timer.new()
 
 
 func _ready() -> void:
+	area_entered.connect(on_area_entered)
 	area_exited.connect(on_area_exited)
 	
 	collision_mask= CollisionLayers.PICKUP
@@ -24,6 +25,13 @@ func on_timeout():
 		
 		if not pickup.has_valid_pull_target() or pickup.is_closer_pull_target(self):
 			pickup.set_pull_target(self)
+
+
+func on_area_entered(area: Area2D):
+	var pickup: Pickup= area
+	assert(pickup)
+	if not pickup.has_valid_pull_target():
+		pickup.set_pull_target(self)
 
 
 func on_area_exited(area: Area2D):
