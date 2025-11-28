@@ -7,7 +7,7 @@ func _ready() -> void:
 
 
 func zoom_in():
-	if zoom.is_equal_approx(Vector2.ONE):
+	if zoom.is_equal_approx(Vector2.ONE * 2):
 		return
 	zoom*= 2
 
