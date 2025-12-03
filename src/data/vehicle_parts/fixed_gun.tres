@@ -13,5 +13,6 @@ power_required = 20
 build_mode_texture = ExtResource("1_eyw50")
 game_mode_scene = ExtResource("1_jb1mw")
 name = "Gun"
-weight = 5
+cost = 15
+weight = 20
 metadata/_custom_type_script = "uid://bi3pnambfplya"

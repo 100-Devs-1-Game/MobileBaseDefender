@@ -14,5 +14,6 @@ power_required = 10
 build_mode_texture = ExtResource("1_p7w8o")
 game_mode_scene = ExtResource("2_gd2b5")
 name = "Wheel"
+cost = 5
 weight = 5
 metadata/_custom_type_script = "uid://b1crndso7c7qf"

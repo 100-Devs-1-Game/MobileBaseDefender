@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="VehicleDriverPartData" load_steps=3 format=3 uid="uid://c6nj6sqfxlk8h"]
+[gd_resource type="Resource" script_class="VehicleDriverPartData" load_steps=4 format=3 uid="uid://c6nj6sqfxlk8h"]
 
+[ext_resource type="Texture2D" uid="uid://bj2lj58iqv1xp" path="res://assets/art/vehicle/mounted/driver/Hub_Car_0001.png" id="1_5n8e8"]
 [ext_resource type="PackedScene" uid="uid://drf8ll8qw2k8" path="res://data/vehicle_parts/scenes/driver_part.tscn" id="1_kuk4r"]
 [ext_resource type="Script" uid="uid://cgyg4csxb88p7" path="res://vehicle/parts/custom/driver_part_data.gd" id="1_ofgo8"]
 
@@ -8,8 +9,10 @@ script = ExtResource("1_ofgo8")
 acceleration_factor = 25.0
 rotation_factor = 0.01
 category = 1
+build_mode_texture = ExtResource("1_5n8e8")
 game_mode_scene = ExtResource("1_kuk4r")
 full_visual_replacement = true
 name = "Driver"
 weight = 5
+can_be_built = false
 metadata/_custom_type_script = "uid://cgyg4csxb88p7"

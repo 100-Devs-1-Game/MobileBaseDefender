@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://btkcews2jo7yo" path="res://vehicle/controls/vehicle_controls.tres" id="2_vg162"]
 [ext_resource type="Texture2D" uid="uid://nvplug3sg3i8" path="res://assets/art/placeholder/damage_indicator.png" id="4_fehuk"]
 [ext_resource type="Texture2D" uid="uid://fxbtmdld23ty" path="res://assets/art/placeholder/drop_shadow.png" id="4_jmtuw"]
-[ext_resource type="Script" uid="uid://bufhsendqclmw" path="res://vehicle/camera.gd" id="5_157w3"]
+[ext_resource type="Script" uid="uid://bufhsendqclmw" path="res://misc/game_camera.gd" id="5_157w3"]
 [ext_resource type="PackedScene" uid="uid://d0g5ffcu256n" path="res://vehicle/vehicle_ui.tscn" id="7_kuhha"]
 
 [node name="Vehicle" type="RigidBody2D"]

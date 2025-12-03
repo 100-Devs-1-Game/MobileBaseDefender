@@ -74,6 +74,10 @@ func get_muzzle_transform(_part_info: VehicleMountedPartInfo, vehicle: Vehicle, 
 	return vehicle.get_tile_transform(tile_pos)
 
 
+func get_stats_str()-> String:
+	return super() + "Rof: %d/s  Dmg: %d  Aoe: %d" % [ 60 / reload_duration, projectile.damage.dmg, projectile.damage.radius ]
+
+
 static func get_fire_group_type(part_info: VehicleMountedPartInfo)-> FireGroup.Type:
 	var gun: VehicleBaseGunPartData= part_info.part
 	assert(gun)

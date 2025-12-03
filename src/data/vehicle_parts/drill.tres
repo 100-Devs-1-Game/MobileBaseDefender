@@ -10,4 +10,7 @@ category = 1
 build_mode_texture = ExtResource("1_8172t")
 game_mode_scene = ExtResource("2_0omsg")
 full_visual_replacement = true
+name = "Drill"
+cost = 20
+weight = 30
 metadata/_custom_type_script = "uid://bukr8eeqvu81p"

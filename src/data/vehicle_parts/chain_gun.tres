@@ -15,4 +15,6 @@ power_required = 20
 build_mode_texture = ExtResource("1_7li6q")
 game_mode_scene = ExtResource("2_7li6q")
 name = "Machine Gun"
+cost = 20
+weight = 10
 metadata/_custom_type_script = "uid://duyx6wgtu0f64"

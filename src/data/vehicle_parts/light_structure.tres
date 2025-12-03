@@ -12,6 +12,8 @@
 script = ExtResource("1_57bb5")
 hitpoints = 10
 texture_stages = Array[Texture2D]([ExtResource("2_wiaj8"), ExtResource("3_0hbto"), ExtResource("4_1nghh"), ExtResource("5_o57a3"), ExtResource("6_b8lsw"), ExtResource("7_j0o8j")])
-name = "Light Structure"
-weight = 10
+name = "Light Frame"
+cost = 1
+weight = 2
+sort_order = "aa"
 metadata/_custom_type_script = "uid://ddgjj5b5vs23n"

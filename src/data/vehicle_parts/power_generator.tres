@@ -1,13 +1,16 @@
-[gd_resource type="Resource" script_class="VehiclePowerGeneratorPartData" load_steps=3 format=3 uid="uid://c7k1ds7l6x6l5"]
+[gd_resource type="Resource" script_class="VehiclePowerGeneratorPartData" load_steps=4 format=3 uid="uid://c7k1ds7l6x6l5"]
 
 [ext_resource type="PackedScene" uid="uid://bjlk3nulg4jng" path="res://data/vehicle_parts/scenes/generator_part.tscn" id="1_pwpvo"]
+[ext_resource type="Texture2D" uid="uid://cahs6x4t3n3o3" path="res://assets/art/vehicle/mounted/generator/Engine_generator_0001.png" id="1_vm02y"]
 [ext_resource type="Script" uid="uid://cd88nas0odmhb" path="res://vehicle/parts/custom/power_generator_part_data.gd" id="1_xym0b"]
 
 [resource]
 script = ExtResource("1_xym0b")
 power_generated = 50
 category = 1
+build_mode_texture = ExtResource("1_vm02y")
 game_mode_scene = ExtResource("1_pwpvo")
 name = "Generator"
-weight = 10
+cost = 30
+weight = 20
 metadata/_custom_type_script = "uid://cd88nas0odmhb"

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="CampaignData" load_steps=2 format=3 uid="uid://6ocvds5w73p"]
+
+[ext_resource type="Script" uid="uid://dmelvg0oag58q" path="res://campaign/campaign_data.gd" id="1_t55dv"]
+
+[resource]
+script = ExtResource("1_t55dv")
+metadata/_custom_type_script = "uid://dmelvg0oag58q"

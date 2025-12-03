@@ -32,7 +32,7 @@ func spawn_vehicle(pos: Vector2, layout: VehicleLayout):
 	vehicle= vehicle_scene.instantiate()
 	vehicle.position= pos
 	add_child(vehicle)
-	vehicle.initialize(layout)
+	vehicle.initialize(SceneManager.vehicle_layout if SceneManager.vehicle_layout else layout)
 
 
 func spawn_projectile(trans: Transform2D, type: ProjectileDefinition):

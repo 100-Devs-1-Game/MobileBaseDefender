@@ -1,5 +1,6 @@
 extends Node
 
+@export var campaign: CampaignData
 @export_dir var vehicle_parts_dir: String
 
 var parts: Array[VehicleBasePartData]
@@ -18,6 +19,9 @@ func init_parts():
 		var part: VehicleBasePartData= load(str(vehicle_parts_dir, "/", file))
 		parts.append(part)
 		parts_class_lookup[part.get_script()]= part
+
+	parts.sort_custom(func(a: VehicleBasePartData, b: VehicleBasePartData):
+		return a.sort_order < b.sort_order)
 
 
 func get_part_from_class(script: Script)-> VehicleBasePartData:

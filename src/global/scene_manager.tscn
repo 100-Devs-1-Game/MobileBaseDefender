@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://44d1sohtg23e"]
+
+[ext_resource type="Script" uid="uid://btom5x58cj7in" path="res://global/scene_manager.gd" id="1_vlahm"]
+[ext_resource type="PackedScene" uid="uid://dp2bundpytnhd" path="res://test/test_level.tscn" id="2_ujlvl"]
+
+[node name="SceneManager" type="Node"]
+script = ExtResource("1_vlahm")
+level_scene = ExtResource("2_ujlvl")

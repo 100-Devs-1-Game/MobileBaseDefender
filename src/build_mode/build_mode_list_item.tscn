@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://b7jvanrnafg43"]
+
+[ext_resource type="StyleBox" uid="uid://k1tblxlbw76e" path="res://build_mode/list_item_style_disabled.tres" id="1_42deh"]
+[ext_resource type="Script" uid="uid://duetls5m8ttl5" path="res://build_mode/build_mode_list_item.gd" id="1_ehu7w"]
+[ext_resource type="StyleBox" uid="uid://buvqav41xqu8n" path="res://build_mode/list_item_style_active.tres" id="1_gawnm"]
+[ext_resource type="Texture2D" uid="uid://dig2s5xnlnrsw" path="res://assets/art/vehicle/structure/Base Frame_Clean_1.png" id="1_ntb08"]
+[ext_resource type="StyleBox" uid="uid://ipdh607c03oy" path="res://build_mode/list_item_style.tres" id="3_jk3vx"]
+[ext_resource type="StyleBox" uid="uid://bdwctrvoq7wy4" path="res://build_mode/list_item_style_hover.tres" id="4_42deh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gawnm"]
+font_size = 24
+
+[node name="Build Mode List Item" type="PanelContainer"]
+theme_override_styles/panel = ExtResource("1_42deh")
+script = ExtResource("1_ehu7w")
+default_style = ExtResource("3_jk3vx")
+hover_style = ExtResource("4_42deh")
+selected_style = ExtResource("1_gawnm")
+disabled_style = ExtResource("1_42deh")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("1_ntb08")
+expand_mode = 1
+
+[node name="Label Name" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_gawnm")
+
+[node name="Label Cost" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "20 Credits"
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

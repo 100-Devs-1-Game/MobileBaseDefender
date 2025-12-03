@@ -7,7 +7,9 @@
 script = ExtResource("1_ggsho")
 storage_capacity = 5000
 category = 1
+build_mode_texture = ExtResource("1_x0bp6")
 game_mode_texture = ExtResource("1_x0bp6")
 name = "Battery"
-weight = 5
+cost = 15
+weight = 10
 metadata/_custom_type_script = "uid://c36kx50lrvmum"

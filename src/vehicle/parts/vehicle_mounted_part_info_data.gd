@@ -9,3 +9,8 @@ const rotations: Array[Vector2i]= [ Vector2i.UP, Vector2i.RIGHT, Vector2i.DOWN, 
 @export var group_id: int
 
 var live_data: Dictionary
+
+
+#func _init(p_part: VehicleMountedPartData= null, rot: Vector2i= Vector2i.UP):
+	#part= p_part
+	#rotation= rot

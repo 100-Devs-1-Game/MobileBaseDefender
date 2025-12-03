@@ -7,7 +7,6 @@ extends Resource
 
 
 func add_structure(pos: Vector2i, structure: VehicleStructureData):
-	assert(not has_structure_at(pos))
 	structure_parts[pos]= structure
 
 
@@ -41,28 +40,17 @@ func get_mounted_part_info_at(pos: Vector2i)-> VehicleMountedPartInfo:
 	return mounted_parts[pos]
 
 
-func can_build_structure_at(pos: Vector2i)-> bool:
+func can_build_structure_at(pos: Vector2i, new_structure: VehicleStructureData= null)-> bool:
 	if has_structure_at(pos):
+		if new_structure and get_structure_at(pos).hitpoints < new_structure.hitpoints:
+			return true
 		return false
 	if has_mounted_part_at(pos):
 		return false
 	if not has_neighbor_structure(pos):
 		return false
-	
-	for neighbor_pos in get_neighbor_structures(pos):
-		var structure:= get_structure_at(neighbor_pos)
-		var hor:= structure.connection_sides == VehicleStructureData.ConnectionSides.HORIZONTAL
-		var vert:= structure.connection_sides == VehicleStructureData.ConnectionSides.VERTICAL
-		if structure.connection_sides == VehicleStructureData.ConnectionSides.ALL:
-			hor= true
-			vert= true
-	
-		if hor and abs(neighbor_pos.x - pos.x) > 0:
-			return true
-		if vert and abs(neighbor_pos.y - pos.y) > 0:
-			return true
-	
-	return false
+
+	return true
 
 
 func can_mount_part_at(pos: Vector2i)-> bool:

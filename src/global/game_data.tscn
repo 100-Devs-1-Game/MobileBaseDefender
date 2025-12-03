@@ -1,7 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://b67vvxub2ctrn"]
+[gd_scene load_steps=3 format=3 uid="uid://b67vvxub2ctrn"]
 
 [ext_resource type="Script" uid="uid://bjgdw45g28oft" path="res://global/game_data.gd" id="1_kvyay"]
+[ext_resource type="Resource" uid="uid://6ocvds5w73p" path="res://campaign/campaign.tres" id="2_ox8x4"]
 
 [node name="GameData" type="Node"]
 script = ExtResource("1_kvyay")
+campaign = ExtResource("2_ox8x4")
 vehicle_parts_dir = "res://data/vehicle_parts"
