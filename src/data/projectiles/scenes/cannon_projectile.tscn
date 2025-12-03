@@ -1,7 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cu0mvivm45jxb"]
+[gd_scene load_steps=3 format=3 uid="uid://cu0mvivm45jxb"]
 
 [ext_resource type="PackedScene" uid="uid://bquumw8ed1c51" path="res://level/base_projectile_scene.tscn" id="1_smfpi"]
+[ext_resource type="Texture2D" uid="uid://cebliit3rf2ih" path="res://assets/art/projectiles/Bullets_1.png" id="2_oawmj"]
 
 [node name="CannonProjectile" instance=ExtResource("1_smfpi")]
-size = 5
-collision_mask = null
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_oawmj")

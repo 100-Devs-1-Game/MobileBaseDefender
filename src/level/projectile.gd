@@ -1,21 +1,21 @@
 class_name Projectile
 extends Node2D
 
-@export var size: int= 2
 @export_flags_2d_physics var collision_mask: int= CollisionLayers.TERRAIN + CollisionLayers.ENEMY
 
 
 var type: ProjectileDefinition
+var speed: float
 
 
 
-func _draw() -> void:
-	draw_circle(Vector2.ZERO, size, Color.RED, true)
+func init_speed(extra_velocity: Vector2):
+	speed= type.speed + extra_velocity.dot(-global_transform.y)
 
 
 func _physics_process(delta: float) -> void:
 	var prev_pos: Vector2= position
-	position+= -global_transform.y * type.speed * delta
+	position+= -global_transform.y * speed * delta
 	RaycastHelper.update(prev_pos, position, collision_mask)
 	if RaycastHelper.is_colliding():
 		if type.does_explode():

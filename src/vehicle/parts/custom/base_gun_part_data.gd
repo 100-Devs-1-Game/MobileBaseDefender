@@ -36,7 +36,7 @@ func tick(part_info: VehicleMountedPartInfo, vehicle: Vehicle, tile_pos: Vector2
 func fire(part_info: VehicleMountedPartInfo, vehicle: Vehicle, tile_pos: Vector2i):
 	var muzzle_trans: = get_muzzle_transform(part_info, vehicle, tile_pos)
 	muzzle_trans.origin+= -muzzle_trans.y * muzzle_offset
-	vehicle.get_level().spawn_projectile(muzzle_trans, projectile)
+	vehicle.get_level().spawn_projectile(muzzle_trans, projectile, vehicle.linear_velocity)
 	reload(part_info)
 	part_info.live_data[JUST_FIRED_DATA]= true
 

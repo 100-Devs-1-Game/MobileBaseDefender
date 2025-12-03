@@ -1,5 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://crmanwfwge5tu"]
+[gd_scene load_steps=3 format=3 uid="uid://crmanwfwge5tu"]
 
 [ext_resource type="PackedScene" uid="uid://bquumw8ed1c51" path="res://level/base_projectile_scene.tscn" id="1_67bh7"]
+[ext_resource type="Texture2D" uid="uid://pkeyie2ckj8h" path="res://assets/art/projectiles/Bullets_3.png" id="2_xtkwr"]
 
 [node name="GunProjectile" instance=ExtResource("1_67bh7")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_xtkwr")
