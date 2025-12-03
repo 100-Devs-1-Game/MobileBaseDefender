@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="VehicleLayout" load_steps=20 format=3 uid="uid://b6k7c13pja6ui"]
+[gd_resource type="Resource" script_class="VehicleLayout" load_steps=21 format=3 uid="uid://b6k7c13pja6ui"]
 
 [ext_resource type="Script" uid="uid://c3njl81r2414m" path="res://vehicle/parts/vehicle_mounted_part_info_data.gd" id="1_ehye6"]
 [ext_resource type="Resource" uid="uid://c6nj6sqfxlk8h" path="res://data/vehicle_parts/driver.tres" id="2_1uc7r"]
+[ext_resource type="Resource" uid="uid://d1hwaro2rajdi" path="res://data/vehicle_parts/thrusters.tres" id="2_rt3tl"]
 [ext_resource type="Resource" uid="uid://qnlykqd5qlqd" path="res://data/vehicle_parts/wheel.tres" id="3_1uc7r"]
 [ext_resource type="Script" uid="uid://bj8xmxi8huo" path="res://vehicle/vehicle_layout.gd" id="3_e816a"]
 [ext_resource type="Resource" uid="uid://c7k1ds7l6x6l5" path="res://data/vehicle_parts/power_generator.tres" id="4_e816a"]
@@ -14,8 +15,7 @@
 
 [sub_resource type="Resource" id="Resource_1uc7r"]
 script = ExtResource("1_ehye6")
-part = ExtResource("3_1uc7r")
-rotation = Vector2i(1, 0)
+part = ExtResource("2_rt3tl")
 metadata/_custom_type_script = "uid://c3njl81r2414m"
 
 [sub_resource type="Resource" id="Resource_icswl"]

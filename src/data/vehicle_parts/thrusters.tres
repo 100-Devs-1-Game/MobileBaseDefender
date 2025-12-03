@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="VehicleThrusterPartData" load_steps=3 format=3 uid="uid://d1hwaro2rajdi"]
+
+[ext_resource type="Texture2D" uid="uid://dbn2x53c40gcq" path="res://assets/art/vehicle/mounted/thrusters.png" id="1_axlpp"]
+[ext_resource type="Script" uid="uid://bxmipv5fv4y88" path="res://vehicle/parts/custom/thruster_part_data.gd" id="2_qj41w"]
+
+[resource]
+script = ExtResource("2_qj41w")
+rotation_factor = 0.1
+category = 1
+power_required = 10
+game_mode_texture = ExtResource("1_axlpp")
+name = "Thrusters"
+cost = 10
+weight = 2
+sort_order = "cb"
+metadata/_custom_type_script = "uid://bxmipv5fv4y88"

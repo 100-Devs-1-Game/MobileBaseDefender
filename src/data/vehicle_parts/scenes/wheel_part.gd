@@ -10,8 +10,7 @@ var prev_velocity: float
 
 
 func tick(vehicle: Vehicle, _delta: float):
-	var acceleration_wheel:= VehicleWheelPartData.is_acceleration_wheel(part_info)
-	var vel: float= vehicle.speed if acceleration_wheel else vehicle.angular_velocity * angular_speed_scale
+	var vel: float= vehicle.speed
 	vel*= -1
 
 	if not is_equal_approx(vel, prev_velocity):
