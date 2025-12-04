@@ -8,6 +8,7 @@ extends Node2D
 
 @onready var tile_map_floor: TileMapLayer = $TileMapLayer
 @onready var tile_map_objects: TileMapLayer = $"TileMapLayer Objects"
+@onready var level_ui: LevelUI = $LevelUI
 
 var vehicle: Vehicle
 var projectiles_node: Node2D
@@ -85,7 +86,9 @@ func set_target_area(rect: Rect2i):
 
 
 func on_level_completed():
-	SceneManager.load_build_mode()
+	level_ui.open_popup(vehicle)
+	GameData.campaign.earn(vehicle.inventory.ore)
+	SceneManager.call_delayed(SceneManager.load_build_mode, 3.0)
 
 
 func create_sub_node(node_name: String)-> Node2D:

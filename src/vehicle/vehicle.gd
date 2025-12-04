@@ -45,6 +45,7 @@ var structure_damage: Dictionary[Vector2i, float]
 var tile_references: Dictionary[Vector2i, TileReferences]
 
 var fire_groups: Dictionary[FireGroup.Type, FireGroup]
+var inventory:= VehicleInventory.new()
 
 
 
@@ -54,7 +55,7 @@ func _ready() -> void:
 
 
 func initialize(_layout: VehicleLayout):
-	layout= _layout
+	layout= _layout.duplicate(true)
 	
 	var ctr:= 0
 	for tile_pos: Vector2i in layout.structure_parts.keys():

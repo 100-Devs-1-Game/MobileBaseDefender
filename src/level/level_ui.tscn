@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://dabyq7bb8c3yy"]
+
+[ext_resource type="Script" uid="uid://xlssgqgv4mci" path="res://level/level_ui.gd" id="1_45c2k"]
+[ext_resource type="FontFile" uid="uid://cuq0hfcm174n" path="res://assets_external/fonts/Jersey_25/Jersey25-Regular.ttf" id="2_f7lsl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_45c2k"]
+bg_color = Color(0.123473026, 0.12347307, 0.123472966, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kiycb"]
+font = ExtResource("2_f7lsl")
+font_size = 64
+
+[node name="LevelUI" type="CanvasLayer"]
+script = ExtResource("1_45c2k")
+
+[node name="Popup" type="CenterContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Popup"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_45c2k")
+
+[node name="MarginContainer" type="MarginContainer" parent="Popup/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 50
+
+[node name="Label Popup" type="Label" parent="Popup/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "Text
+"
+label_settings = SubResource("LabelSettings_kiycb")
+horizontal_alignment = 1
+vertical_alignment = 1

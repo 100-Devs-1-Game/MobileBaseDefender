@@ -24,6 +24,16 @@ var vehicle_stats:= VehicleStats.new()
 func _ready() -> void:
 	EventManager.credits_changed.connect(update_credits)
 
+	if SceneManager.vehicle_layout:
+		layout= SceneManager.vehicle_layout
+	#elif start_clean:
+		#layout= start_layout.duplicate(true)
+		#var save_path:= saved_layout.resource_path
+		#saved_layout= null
+		#layout.resource_path= save_path
+	#else:
+		#layout= saved_layout
+
 	update_credits(0)
 	update_list()
 	update_stats()

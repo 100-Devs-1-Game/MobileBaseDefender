@@ -140,7 +140,7 @@ text = "GO"
 
 [node name="Info Panel" type="PanelContainer" parent="UI"]
 custom_minimum_size = Vector2(0, 50)
-anchors_preset = -1
+anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0

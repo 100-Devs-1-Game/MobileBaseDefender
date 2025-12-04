@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://dp2bundpytnhd"]
+[gd_scene load_steps=20 format=4 uid="uid://dp2bundpytnhd"]
 
 [ext_resource type="Script" uid="uid://d1xcyyg232282" path="res://test/level_sandbox.gd" id="1_klfgi"]
 [ext_resource type="Script" uid="uid://2nbwj3a61tla" path="res://test/test_level.gd" id="1_ls30l"]
@@ -7,12 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://dx47c2u622pn3" path="res://level/pickups/pickup.tscn" id="4_j8bqw"]
 [ext_resource type="Resource" uid="uid://b6k7c13pja6ui" path="res://test/test_vehicle_layout.tres" id="4_oxjuh"]
 [ext_resource type="Script" uid="uid://cpf8rw0riybn6" path="res://entities/enemy_spawner.gd" id="6_piqwm"]
+[ext_resource type="Resource" uid="uid://k8kvc4xxlepp" path="res://level/level_generator.tres" id="7_0ibfp"]
 [ext_resource type="PackedScene" uid="uid://be3yu3jhiqf5n" path="res://level/tile_scenes/iron_ore_tile.tscn" id="7_c0hlm"]
-[ext_resource type="Resource" uid="uid://c1qmapn7xd51d" path="res://test/test_enemy_definition.tres" id="7_ic46k"]
 [ext_resource type="TileSet" uid="uid://bd5547dpppf5q" path="res://test/tileset.tres" id="7_j8bqw"]
 [ext_resource type="Texture2D" uid="uid://bglgolito8mo6" path="res://assets/art/placeholder/cloud_tileset.png" id="8_c0hlm"]
 [ext_resource type="PackedScene" uid="uid://deyumgb2afg0o" path="res://level/tile_scenes/mushroom1_tile.tscn" id="8_c0hub"]
 [ext_resource type="PackedScene" uid="uid://cts2j2h4sqyb8" path="res://level/tile_scenes/mushroom2_tile.tscn" id="9_1vllh"]
+[ext_resource type="Resource" uid="uid://ctgldl27tg0ve" path="res://entities/bees/speed_bee_definition.tres" id="13_j8bqw"]
+[ext_resource type="PackedScene" uid="uid://dabyq7bb8c3yy" path="res://level/level_ui.tscn" id="15_q5gq5"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_c0hub"]
 scenes/1/scene = ExtResource("7_c0hlm")
@@ -87,6 +89,7 @@ pickup_scene = ExtResource("4_j8bqw")
 script = ExtResource("1_klfgi")
 spawn_vehicle = true
 vehicle_layout = ExtResource("4_oxjuh")
+generator = ExtResource("7_0ibfp")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(-3, 36)
@@ -108,8 +111,9 @@ tile_set = SubResource("TileSet_c0hub")
 [node name="EnemySpawner" type="Node2D" parent="."]
 position = Vector2(0, -648)
 script = ExtResource("6_piqwm")
-enabled = false
-enemy_type = ExtResource("7_ic46k")
+enemy_type = ExtResource("13_j8bqw")
 max_spawns = 50
 spawn_interval = 0.2
 metadata/_custom_type_script = "uid://cpf8rw0riybn6"
+
+[node name="LevelUI" parent="." instance=ExtResource("15_q5gq5")]
