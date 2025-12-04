@@ -14,7 +14,11 @@ var part_rotation:= Vector2i.UP
 
 
 func _ready() -> void:
-	if start_clean:
+	assert(false, "DEPRECATED")
+	
+	if SceneManager.vehicle_layout:
+		layout= SceneManager.vehicle_layout
+	elif start_clean:
 		layout= start_layout.duplicate(true)
 		var save_path:= saved_layout.resource_path
 		saved_layout= null
