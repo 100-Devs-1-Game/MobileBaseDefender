@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_ofgo8")
 acceleration_factor = 25.0
-rotation_factor = 0.01
+rotation_factor = 0.03
 category = 1
 build_mode_texture = ExtResource("1_5n8e8")
 game_mode_scene = ExtResource("1_kuk4r")
