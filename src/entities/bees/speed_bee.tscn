@@ -1,0 +1,54 @@
+[gd_scene load_steps=11 format=3 uid="uid://byg8h45tmmg6l"]
+
+[ext_resource type="PackedScene" uid="uid://5o5abaqxug0v" path="res://entities/base_enemy.tscn" id="1_m50ex"]
+[ext_resource type="Script" uid="uid://ds6gg1xa55t28" path="res://entities/bees/bee.gd" id="2_yykaq"]
+[ext_resource type="Texture2D" uid="uid://blvijgbqa08be" path="res://assets/art/enemies/speed/Bumble_speeds_0001.png" id="3_eks6i"]
+[ext_resource type="Texture2D" uid="uid://chpdpfkrwavml" path="res://assets/art/enemies/speed/Bumble_speeds_0002.png" id="4_4dp83"]
+[ext_resource type="Texture2D" uid="uid://cn7reoip1dla4" path="res://assets/art/enemies/speed/Bumble_speeds_0003.png" id="5_w82df"]
+[ext_resource type="Script" uid="uid://4ihsvhpi0so2" path="res://entities/vehicle_interval_damager.gd" id="6_4dp83"]
+[ext_resource type="Script" uid="uid://dwhy702tspcb" path="res://systems/damage_system/damage.gd" id="7_w82df"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yykaq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mx2n1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_eks6i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4dp83")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_w82df")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="Resource" id="Resource_mx2n1"]
+script = ExtResource("7_w82df")
+metadata/_custom_type_script = "uid://dwhy702tspcb"
+
+[node name="Speed Bee" instance=ExtResource("1_m50ex")]
+z_index = 5
+collision_mask = 6
+script = ExtResource("2_yykaq")
+max_speed = 150.0
+angle_offset = -90
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_yykaq")
+
+[node name="HealthComponent" parent="." index="1"]
+max_hp = 1
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_mx2n1")
+autoplay = "default"
+
+[node name="VehicleIntervalDamager" type="Node2D" parent="." index="3"]
+script = ExtResource("6_4dp83")
+damage = SubResource("Resource_mx2n1")
+metadata/_custom_type_script = "uid://4ihsvhpi0so2"

@@ -3,11 +3,13 @@ extends Node2D
 
 @export var enabled: bool= true
 @export var enemy_type: EnemyDefinition
+@export var trigger_distance: int= 1000
 @export var max_spawns: int= 100
 @export var spawn_interval: float= 0.1
 
 var spawn_ctr:= 0
 var timer:= Timer.new()
+var area: Area2D
 
 
 
@@ -18,7 +20,19 @@ func _ready() -> void:
 	timer.wait_time= spawn_interval
 	timer.timeout.connect(on_timeout)
 	add_child(timer)
-	timer.start()
+	if trigger_distance <= 0:
+		timer.start()
+	else:
+		area= Area2D.new()
+		var coll_shape:= CollisionShape2D.new()
+		var circle:= CircleShape2D.new()
+		circle.radius= trigger_distance
+		coll_shape.shape= circle
+		area.add_child(coll_shape)
+		area.monitorable= false
+		area.body_entered.connect(on_triggered)
+		add_child(area)
+	
 
 
 func spawn():
@@ -35,3 +49,9 @@ func on_timeout():
 
 func get_level()-> Level:
 	return get_tree().current_scene
+
+
+func on_triggered(body):
+	assert(body is Vehicle)
+	area.queue_free()
+	timer.start()

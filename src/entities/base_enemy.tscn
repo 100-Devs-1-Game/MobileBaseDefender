@@ -23,5 +23,7 @@ max_speed = 0.0
 script = ExtResource("2_qd7tb")
 metadata/_custom_type_script = "uid://dfif7mfxedq70"
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
 [connection signal="died" from="HealthComponent" to="." method="_on_died"]
 [connection signal="hurt" from="HealthComponent" to="." method="_on_hurt"]
