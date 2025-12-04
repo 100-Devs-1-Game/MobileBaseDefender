@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="LevelGenerator" load_steps=4 format=3 uid="uid://k8kvc4xxlepp"]
+
+[ext_resource type="Script" uid="uid://4yrpcdgk6rop" path="res://level/ore_data.gd" id="1_kpoq2"]
+[ext_resource type="Script" uid="uid://d2k2adr6f8g3l" path="res://level/level_generator.gd" id="2_llxlv"]
+
+[sub_resource type="Resource" id="Resource_kpoq2"]
+script = ExtResource("1_kpoq2")
+tile_scene_id = 1
+density = 1.0
+metadata/_custom_type_script = "uid://4yrpcdgk6rop"
+
+[resource]
+script = ExtResource("2_llxlv")
+ores = Array[ExtResource("1_kpoq2")]([SubResource("Resource_kpoq2")])
+metadata/_custom_type_script = "uid://d2k2adr6f8g3l"

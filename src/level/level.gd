@@ -1,9 +1,13 @@
 class_name Level
 extends Node2D
 
+@export var minimap_data: MinimapData
 @export var vehicle_scene: PackedScene
 @export var explosion_scene: PackedScene
 @export var pickup_scene: PackedScene
+
+@onready var tile_map_floor: TileMapLayer = $TileMapLayer
+@onready var tile_map_objects: TileMapLayer = $"TileMapLayer Objects"
 
 var vehicle: Vehicle
 var projectiles_node: Node2D
@@ -35,11 +39,12 @@ func spawn_vehicle(pos: Vector2, layout: VehicleLayout):
 	vehicle.initialize(SceneManager.vehicle_layout if SceneManager.vehicle_layout else layout)
 
 
-func spawn_projectile(trans: Transform2D, type: ProjectileDefinition):
+func spawn_projectile(trans: Transform2D, type: ProjectileDefinition, extra_velocity: Vector2= Vector2.ZERO):
 	var projectile: Projectile= type.scene.instantiate()
 	projectile.transform= trans
 	projectile.type= type
 	projectiles_node.add_child(projectile)
+	projectile.init_speed(extra_velocity)
 
 
 func spawn_enemy(type: EnemyDefinition, pos: Vector2):
@@ -64,6 +69,23 @@ func spawn_pickup(pos: Vector2, data: BasePickupData):
 	pickup.position= pos
 	pickups_node.add_child(pickup)
 	pickup.init(data)
+
+
+func set_target_area(rect: Rect2i):
+	var area:= Area2D.new()
+	var rect_shape:= RectangleShape2D.new()
+	rect_shape.size= rect.size
+	var coll_shape:= CollisionShape2D.new()
+	coll_shape.shape= rect_shape
+	area.position= rect.position
+	area.add_child(coll_shape)
+	area.monitorable= false
+	area.body_entered.connect(on_level_completed.unbind(1))
+	add_child(area)
+
+
+func on_level_completed():
+	SceneManager.load_build_mode()
 
 
 func create_sub_node(node_name: String)-> Node2D:

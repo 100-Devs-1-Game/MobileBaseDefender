@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://d0g5ffcu256n"]
+[gd_scene load_steps=17 format=3 uid="uid://d0g5ffcu256n"]
 
 [ext_resource type="PackedScene" uid="uid://bjf4o1kponle7" path="res://debug/debug_window.tscn" id="1_2mjmc"]
+[ext_resource type="Script" uid="uid://m4xmy2vwl3wx" path="res://vehicle/vehicle_ui.gd" id="1_8pk62"]
 [ext_resource type="Resource" uid="uid://btxwwm7l8way1" path="res://vehicle/debug_items.tres" id="2_8pk62"]
 [ext_resource type="FontFile" uid="uid://cuq0hfcm174n" path="res://assets_external/fonts/Jersey_25/Jersey25-Regular.ttf" id="3_4t8d0"]
 [ext_resource type="ButtonGroup" uid="uid://clepjgnltrk2f" path="res://ui/control_ui/button_group_accelerate.tres" id="4_jwrgk"]
@@ -11,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://0pxq5yd0t3jj" path="res://data/vehicle_controls/brake.tres" id="9_ai48s"]
 [ext_resource type="Script" uid="uid://dnbrrhrn8th2q" path="res://ui/control_ui/vehicle_fire_group_button.gd" id="10_l2yv4"]
 [ext_resource type="Script" uid="uid://dqq8x16kjf0ek" path="res://ui/control_ui/zoom_button.gd" id="11_u0o3n"]
+[ext_resource type="Script" uid="uid://dsfvl161r6qvd" path="res://misc/canvas_item_draw_delegator.gd" id="13_4t8d0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1255d"]
 bg_color = Color(0.38409242, 0.22858453, 0.15754125, 1)
@@ -23,6 +25,7 @@ Button/styles/pressed = SubResource("StyleBoxFlat_1255d")
 bg_color = Color(0.6, 0.6, 0.6, 0.7607843)
 
 [node name="Vehicle UI" type="CanvasLayer"]
+script = ExtResource("1_8pk62")
 
 [node name="Debug Window" parent="." instance=ExtResource("1_2mjmc")]
 item_collection = ExtResource("2_8pk62")
@@ -155,3 +158,38 @@ layout_mode = 2
 text = "Zoom-"
 script = ExtResource("11_u0o3n")
 type = 2
+
+[node name="Minimap" type="PanelContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Minimap"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Texture Minimap" type="TextureRect" parent="Minimap/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Static Minimap Overlay" type="Control" parent="Minimap/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("13_4t8d0")
+
+[node name="Dynamic Minimap Overlay" type="Control" parent="Minimap/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("13_4t8d0")
+
+[connection signal="on_draw" from="Minimap/MarginContainer/Static Minimap Overlay" to="." method="_on_static_minimap_overlay_on_draw"]
+[connection signal="on_draw" from="Minimap/MarginContainer/Dynamic Minimap Overlay" to="." method="_on_dynamic_minimap_overlay_redraw"]
