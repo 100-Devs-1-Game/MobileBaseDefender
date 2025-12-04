@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://drf8ll8qw2k8"]
+[gd_scene load_steps=11 format=3 uid="uid://drf8ll8qw2k8"]
 
 [ext_resource type="Script" uid="uid://dtasfy4dfv5xu" path="res://data/vehicle_parts/scenes/driver_part.gd" id="1_q4vac"]
 [ext_resource type="Texture2D" uid="uid://bj2lj58iqv1xp" path="res://assets/art/vehicle/mounted/driver/Hub_Car_0001.png" id="2_vk3el"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://pju2o2xxpas3" path="res://assets/art/vehicle/mounted/driver/Hub_Car_0004.png" id="5_6bw1k"]
 [ext_resource type="Texture2D" uid="uid://csx87b72gjuol" path="res://assets/art/vehicle/mounted/driver/Car_arms 1.png" id="6_rbkdc"]
 [ext_resource type="Texture2D" uid="uid://dia2fb864y40g" path="res://assets/art/vehicle/mounted/driver/Car_Head_1.png" id="7_ud4kg"]
+[ext_resource type="Script" uid="uid://bii1dddyeee5l" path="res://vehicle/pull_target.gd" id="8_8531v"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5yl42"]
 animations = [{
@@ -28,6 +29,9 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8531v"]
+radius = 500.0
+
 [node name="Driver" type="Node2D"]
 script = ExtResource("1_q4vac")
 
@@ -43,3 +47,10 @@ texture = ExtResource("6_rbkdc")
 
 [node name="Head" type="Sprite2D" parent="."]
 texture = ExtResource("7_ud4kg")
+
+[node name="PullTarget" type="Area2D" parent="."]
+script = ExtResource("8_8531v")
+metadata/_custom_type_script = "uid://bii1dddyeee5l"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PullTarget"]
+shape = SubResource("CircleShape2D_8531v")

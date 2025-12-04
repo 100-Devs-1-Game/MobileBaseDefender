@@ -4,8 +4,8 @@ extends BasePickupData
 
 
 func on_pickup():
-	pass
+	Global.vehicle.inventory.ore+= 1
 
 
 func get_type()-> PullTargetType:
-	return PullTargetType.DRILL
+	return PullTargetType.DRIVER
