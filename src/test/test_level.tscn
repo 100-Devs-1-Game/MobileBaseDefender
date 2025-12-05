@@ -1,7 +1,10 @@
-[gd_scene load_steps=17 format=4 uid="uid://dp2bundpytnhd"]
+[gd_scene load_steps=20 format=4 uid="uid://dp2bundpytnhd"]
 
 [ext_resource type="Script" uid="uid://c1tnmf5ecbjjj" path="res://level/level.gd" id="1_1vllh"]
 [ext_resource type="Script" uid="uid://d1xcyyg232282" path="res://test/level_sandbox.gd" id="1_klfgi"]
+[ext_resource type="PackedScene" uid="uid://scmr7fvfwq86" path="res://vehicle/vehicle.tscn" id="2_piqwm"]
+[ext_resource type="PackedScene" uid="uid://bqpnvn7x034jq" path="res://level/explosion.tscn" id="3_ic46k"]
+[ext_resource type="PackedScene" uid="uid://dx47c2u622pn3" path="res://level/pickups/pickup.tscn" id="4_j8bqw"]
 [ext_resource type="Resource" uid="uid://b6k7c13pja6ui" path="res://test/test_vehicle_layout.tres" id="4_oxjuh"]
 [ext_resource type="Script" uid="uid://cpf8rw0riybn6" path="res://entities/enemy_spawner.gd" id="6_piqwm"]
 [ext_resource type="Resource" uid="uid://k8kvc4xxlepp" path="res://level/level_generator.tres" id="7_0ibfp"]
@@ -33,6 +36,9 @@ sources/0 = SubResource("TileSetAtlasSource_2po81")
 
 [node name="TestLevel" type="Node2D"]
 script = ExtResource("1_1vllh")
+vehicle_scene = ExtResource("2_piqwm")
+explosion_scene = ExtResource("3_ic46k")
+pickup_scene = ExtResource("4_j8bqw")
 
 [node name="Sandbox" type="Node" parent="."]
 script = ExtResource("1_klfgi")
