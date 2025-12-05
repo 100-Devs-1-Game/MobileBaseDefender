@@ -18,7 +18,7 @@ func init(part_info: VehicleMountedPartInfo, vehicle: Vehicle):
 func tick(part_info: VehicleMountedPartInfo, vehicle: Vehicle, tile_pos: Vector2i, delta: float): 
 	super(part_info, vehicle, tile_pos, delta)
 
-	var target: Enemy= get_target(part_info)
+	var target: Node2D= get_target(part_info)
 	var trans:= vehicle.get_tile_transform(tile_pos)
 
 	if target:
@@ -38,11 +38,20 @@ func tick(part_info: VehicleMountedPartInfo, vehicle: Vehicle, tile_pos: Vector2
 	trans.rotated(get_rotation(part_info))
 	
 	var target_dir:= trans.origin.direction_to(target.global_position)
+
+	if target is Enemy:
+		var dist= trans.origin.distance_to(target.global_position)
+		var t= dist / ( projectile.speed + vehicle.linear_velocity.dot(target_dir))
+		var target_position_adjustment: Vector2= target.linear_velocity * t
+		var rand= randf_range(0.3, 1.2)
+		target_dir= trans.origin.direction_to(target.global_position + target_position_adjustment * rand)
+
 	var angle_diff: float= target_dir.angle() - -trans.y.angle()
 	var max_rotation: float= deg_to_rad(rotation_speed) * delta
 	
 	# TODO rotate and add last vehicle rotate delta ( that delta has to be between part ticks )
 	#if abs(angle_diff) < max_rotation:
+
 	set_rotation(part_info, target_dir.angle())
 
 
@@ -68,11 +77,11 @@ func set_rotation(part_info: VehicleMountedPartInfo, angle: float):
 	part_info.live_data[ROTATION_DATA]= angle
 
 
-func set_target(part_info: VehicleMountedPartInfo, enemy: Enemy):
-	if enemy == null:
+func set_target(part_info: VehicleMountedPartInfo, node: Node2D):
+	if node == null:
 		part_info.live_data[TARGET_DATA]= null
 	else:
-		part_info.live_data[TARGET_DATA]= weakref(enemy)
+		part_info.live_data[TARGET_DATA]= weakref(node)
 
 
 func get_rotation(part_info: VehicleMountedPartInfo)-> float:

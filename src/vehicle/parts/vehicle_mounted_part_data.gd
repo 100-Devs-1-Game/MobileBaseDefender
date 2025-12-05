@@ -39,5 +39,10 @@ func get_power_production(_part_info: VehicleMountedPartInfo)-> float:
 	return 0
 
 
+func get_part_scene(vehicle: Vehicle, tile_pos: Vector2i)-> Node2D:
+	assert(vehicle.tile_references[tile_pos])
+	return vehicle.tile_references[tile_pos].mounted_node
+
+
 func can_rotate()-> bool:
 	return rotate_mode != RotateMode.NONE
