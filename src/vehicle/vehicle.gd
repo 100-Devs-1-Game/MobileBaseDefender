@@ -1,6 +1,8 @@
 class_name Vehicle
 extends RigidBody2D
 
+signal destroyed
+
 const PART_SIZE= 128
 
 
@@ -226,33 +228,40 @@ func take_damage_at_shape(dmg_inst: DamageInstance, idx: int):
 	structure_damage[tile_pos]= dmg_val
 
 	var structure:= layout.get_structure_at(tile_pos)
-	if not structure:
-		return
-		
-	var refs: TileReferences= tile_references[tile_pos]
-	if dmg_val > structure.hitpoints:
-		refs.structure_node.queue_free()
-		if refs.mounted_node is VehicleMountedPartObject:
-			custom_mounted_objects.erase(refs.mounted_node)
-		refs.mounted_node.queue_free()
-		refs.collision_shape.disabled= true
-		layout.remove_structure(tile_pos, true)
-		update_stats()
-		
-	else:
-		var dmg_ratio: float= dmg_val / structure.hitpoints
-		var texture_index: int= max(0, dmg_ratio * structure.texture_stages.size() - 1)
-		refs.structure_node.texture= structure.get_game_mode_texture(texture_index)
-		
-		damage_indicator.global_transform= get_tile_transform(tile_pos)
-		damage_indicator.show()
-		await get_tree().create_timer(0.2).timeout
-		damage_indicator.hide()
+	if structure:
+			
+		var refs: TileReferences= tile_references[tile_pos]
+		if dmg_val > structure.hitpoints:
+			refs.structure_node.queue_free()
+			if refs.mounted_node is VehicleMountedPartObject:
+				custom_mounted_objects.erase(refs.mounted_node)
+			if refs.mounted_node:
+				refs.mounted_node.queue_free()
+			
+			refs.collision_shape.disabled= true
+			layout.remove_structure(tile_pos, true)
+			update_stats()
+			
+		else:
+			var dmg_ratio: float= dmg_val / structure.hitpoints
+			var texture_index: int= max(0, dmg_ratio * structure.texture_stages.size() - 1)
+			refs.structure_node.texture= structure.get_game_mode_texture(texture_index)
+			
+			damage_indicator.global_transform= get_tile_transform(tile_pos)
+			damage_indicator.show()
+			await get_tree().create_timer(0.2).timeout
+			damage_indicator.hide()
+
+	if not layout.has_driver():
+		set_physics_process(false)
+		destroyed.emit()
 
 
 func update_stats():
 	stats= layout.get_stats()
-	mass= stats.weight
+	
+	if stats.weight > 1:
+		mass= stats.weight
 
 
 func update_debug_window():

@@ -37,6 +37,7 @@ func _ready() -> void:
 func spawn_vehicle(pos: Vector2, layout: VehicleLayout):
 	vehicle= vehicle_scene.instantiate()
 	vehicle.position= pos
+	vehicle.destroyed.connect(game_over)
 	add_child(vehicle)
 	vehicle.initialize(SceneManager.vehicle_layout if SceneManager.vehicle_layout else layout)
 
@@ -85,6 +86,10 @@ func set_target_area(rect: Rect2i):
 	area.body_entered.connect(on_level_completed.unbind(1))
 	add_child(area)
 
+
+func game_over():
+	SceneManager.call_delayed(SceneManager.load_build_mode, 3.0)
+	
 
 func on_level_completed():
 	level_ui.open_popup(vehicle)
