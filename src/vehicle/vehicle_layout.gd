@@ -18,14 +18,76 @@ func add_mounted_part(pos: Vector2i, part: VehicleMountedPartData, rotation: Vec
 	mounted_parts[pos]= info
 
 
-func remove_structure(pos: Vector2i, integrity_check: bool= false):
-	if has_mounted_part_at(pos):
-		remove_part(pos)
-	structure_parts.erase(pos)
+func remove_structure(tile_pos: Vector2i, with_integrity_check: bool= false)-> Array[Vector2i]:
+	var removed_arr: Array[Vector2i]
+	
+	_do_remove_structure(tile_pos)
+	removed_arr.append(tile_pos)
+
+	if not has_driver():
+		return removed_arr
+	
+	if with_integrity_check:
+		var patches: Array[Array]= integrity_check()
+		if patches.size() > 1:
+			for patch in patches:
+				for tile in patch:
+					_do_remove_structure(tile)
+					removed_arr.append(tile)
+
+	return removed_arr
+
+
+func _do_remove_structure(tile_pos: Vector2i):
+	if has_mounted_part_at(tile_pos):
+		remove_part(tile_pos)
+	structure_parts.erase(tile_pos)	
 
 
 func remove_part(pos: Vector2i):
 	mounted_parts.erase(pos)
+
+
+func integrity_check(without_tiles: Array[Vector2i]= [])-> Array[Array]:
+	assert(has_driver())
+	var patches: Array[Array]
+	
+	var computed_tiles: int= 0
+	patches.append(get_patch(Vector2i.ZERO, without_tiles))
+	computed_tiles+= patches[0].size()
+	
+	while computed_tiles < structure_parts.keys().size() - without_tiles.size():
+		for tile in structure_parts.keys():
+			if tile in without_tiles:
+				continue
+			var has_tile_been_computed:= false
+			for patch: Array[Vector2i] in patches:
+				if tile in patch:
+					has_tile_been_computed= true
+					break
+			
+			if not has_tile_been_computed:
+				patches.append(get_patch(tile, without_tiles))
+				computed_tiles+= patches[-1].size()
+				break
+	return patches
+
+
+func get_patch(starting_tile: Vector2i, without_tiles: Array[Vector2i]= [])-> Array[Vector2i]:
+	var tiles: Array[Vector2i]= [ starting_tile ]
+	var new_tiles: Array[Vector2i]= [ starting_tile ]
+		
+	
+	while not new_tiles.is_empty():
+		var current_tile: Vector2i= new_tiles.pop_front()
+		for neighbor in get_neighbor_structures(current_tile):
+			if neighbor in without_tiles:
+				continue
+			if neighbor not in tiles and neighbor not in new_tiles:
+				new_tiles.append(neighbor)
+				tiles.append(neighbor)
+
+	return tiles
 
 
 func get_structure_at(pos: Vector2i)-> VehicleStructureData:
@@ -80,6 +142,11 @@ func has_neighbor_structure(pos: Vector2i, only_horizontal: bool= true)-> bool:
 			if has_structure_at(pos + Vector2i(x, y)):
 				return true
 	return false
+
+
+func has_driver()-> bool:
+	return has_structure_at(Vector2i.ZERO)
+	#return not get_mounted_parts_of_type(GameData.get_part_from_class(VehicleDriverPartData)).is_empty()
 
 
 func get_weight()-> int:

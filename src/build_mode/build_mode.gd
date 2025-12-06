@@ -83,7 +83,7 @@ func _on_texture_rect_grid_gui_input(event: InputEvent) -> void:
 				refund_part(layout.get_mounted_part_info_at(tile_pos).part)
 				layout.remove_part(tile_pos)
 				render_layout()
-			elif layout.has_structure_at(tile_pos):
+			elif layout.has_structure_at(tile_pos) and can_remove_structure_at(tile_pos):
 				refund_part(layout.get_structure_at(tile_pos))
 				layout.remove_structure(tile_pos)
 				render_layout()
@@ -192,6 +192,10 @@ func get_pos_from_tile(tile: Vector2i)-> Vector2:
 func get_tile_from_pos(pos: Vector2)-> Vector2i:
 	pos+= Vector2.ONE * 64
 	return Vector2i(floor(pos.x / 128), floor(pos.y / 128))
+
+
+func can_remove_structure_at(tile_pos: Vector2):
+	return layout.integrity_check([tile_pos]).size() == 1
 
 
 func _on_texture_rect_grid_mouse_entered() -> void:
