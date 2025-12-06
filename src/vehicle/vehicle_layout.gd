@@ -30,6 +30,7 @@ func remove_structure(tile_pos: Vector2i, with_integrity_check: bool= false)-> A
 	if with_integrity_check:
 		var patches: Array[Array]= integrity_check()
 		if patches.size() > 1:
+			patches.pop_front()
 			for patch in patches:
 				for tile in patch:
 					_do_remove_structure(tile)
