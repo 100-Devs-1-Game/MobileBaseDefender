@@ -9,7 +9,7 @@ extends Node2D
 @onready var tile_map_floor: TileMapLayer = $TileMapLayer
 @onready var tile_map_objects: TileMapLayer = $"TileMapLayer Objects"
 @onready var level_ui: LevelUI = $LevelUI
-@onready var clouds_tile_map: TileMapLayer = $Clouds
+@onready var clouds_node: StaticBody2D = $Clouds
 
 var vehicle: Vehicle
 var projectiles_node: Node2D

@@ -5,3 +5,4 @@ const TERRAIN= 2
 const ENEMY= 4
 
 const PICKUP= 256
+const CLOUDS= 1024

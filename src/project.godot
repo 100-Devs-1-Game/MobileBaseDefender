@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Mobile Base Defender"
-run/main_scene="uid://w7vbuvefyglq"
+run/main_scene="uid://dp2bundpytnhd"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -83,6 +83,7 @@ brake={
 2d_physics/layer_4="Ground Enemies"
 2d_physics/layer_9="Pickup"
 2d_physics/layer_10="Ore Tile"
+2d_physics/layer_11="Clouds"
 
 [physics]
 

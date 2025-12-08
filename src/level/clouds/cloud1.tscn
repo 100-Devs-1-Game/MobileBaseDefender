@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjkhb5u1ifqbk"]
+
+[ext_resource type="Texture2D" uid="uid://di8386v2bit10" path="res://assets/art/level/clouds/Cloud_3.png" id="1_tnxwy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obbi8"]
+size = Vector2(350, 380)
+
+[node name="CollisionShape2D" type="CollisionShape2D"]
+shape = SubResource("RectangleShape2D_obbi8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(17, 6)
+texture = ExtResource("1_tnxwy")
