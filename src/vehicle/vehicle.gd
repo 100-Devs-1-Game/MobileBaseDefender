@@ -97,6 +97,8 @@ func _physics_process(delta: float) -> void:
 		tick_parts()
 		controls.finish_update()
 
+	speed= linear_velocity.dot(-global_transform.y) 
+
 	speed+= acceleration_force * GameConstants.active.acceleration_factor / ( mass / 100.0 ) * delta
 	speed*= 1 - delta * rolling_friction
 	
