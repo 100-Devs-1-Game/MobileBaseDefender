@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://scmr7fvfwq86"]
+[gd_scene load_steps=9 format=3 uid="uid://scmr7fvfwq86"]
 
 [ext_resource type="Script" uid="uid://ceb3fbth2q404" path="res://vehicle/vehicle.gd" id="1_opyur"]
 [ext_resource type="Resource" uid="uid://qnlykqd5qlqd" path="res://data/vehicle_parts/wheel.tres" id="2_1ktiy"]
@@ -8,9 +8,13 @@
 [ext_resource type="Script" uid="uid://bufhsendqclmw" path="res://misc/game_camera.gd" id="5_157w3"]
 [ext_resource type="PackedScene" uid="uid://d0g5ffcu256n" path="res://vehicle/vehicle_ui.tscn" id="7_kuhha"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kuhha"]
+friction = 0.0
+
 [node name="Vehicle" type="RigidBody2D"]
 z_index = 1
 collision_mask = 10
+physics_material_override = SubResource("PhysicsMaterial_kuhha")
 center_of_mass_mode = 1
 can_sleep = false
 continuous_cd = 2
