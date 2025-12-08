@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d0g5ffcu256n"]
+[gd_scene load_steps=26 format=3 uid="uid://d0g5ffcu256n"]
 
 [ext_resource type="PackedScene" uid="uid://bjf4o1kponle7" path="res://debug/debug_window.tscn" id="1_2mjmc"]
 [ext_resource type="Script" uid="uid://m4xmy2vwl3wx" path="res://vehicle/vehicle_ui.gd" id="1_8pk62"]
@@ -24,6 +24,42 @@ Button/styles/pressed = SubResource("StyleBoxFlat_1255d")
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83031"]
 bg_color = Color(0.6, 0.6, 0.6, 0.7607843)
 
+[sub_resource type="LabelSettings" id="LabelSettings_4t8d0"]
+font_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jwrgk"]
+bg_color = Color(0.10872062, 0.10872086, 0.10872059, 1)
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="Gradient" id="Gradient_sds00"]
+offsets = PackedFloat32Array(0, 0.48333332, 1)
+colors = PackedColorArray(0, 0.79607844, 0, 1, 0.7058824, 0.70980394, 0.003921569, 1, 1, 0.07450981, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dnrdk"]
+gradient = SubResource("Gradient_sds00")
+width = 200
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ranw"]
+texture = SubResource("GradientTexture1D_dnrdk")
+axis_stretch_horizontal = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_4l2aw"]
+
+[sub_resource type="Gradient" id="Gradient_4t8d0"]
+offsets = PackedFloat32Array(0, 0.48333332, 1)
+colors = PackedColorArray(1, 0.07450981, 0, 1, 0.7058824, 0.70980394, 0.003921569, 1, 0, 0.79607844, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jwrgk"]
+gradient = SubResource("Gradient_4t8d0")
+width = 200
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sds00"]
+texture = SubResource("GradientTexture1D_jwrgk")
+axis_stretch_horizontal = 1
+
 [node name="Vehicle UI" type="CanvasLayer"]
 script = ExtResource("1_8pk62")
 
@@ -34,8 +70,8 @@ item_collection = ExtResource("2_8pk62")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -216.0
-offset_bottom = 121.0
+offset_left = -308.0
+offset_bottom = 406.0
 grow_horizontal = 0
 theme = SubResource("Theme_s4s6f")
 theme_override_styles/panel = SubResource("StyleBoxFlat_83031")
@@ -190,6 +226,105 @@ script = ExtResource("13_4t8d0")
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("13_4t8d0")
+
+[node name="Bars" type="PanelContainer" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -314.0
+offset_top = -44.0
+offset_bottom = 44.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_83031")
+
+[node name="MarginContainer" type="MarginContainer" parent="Bars"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 5
+
+[node name="GridContainer" type="GridContainer" parent="Bars/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="Label" type="Label" parent="Bars/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Energy"
+label_settings = SubResource("LabelSettings_4t8d0")
+
+[node name="ProgressBar Energy" type="ProgressBar" parent="Bars/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 25)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_jwrgk")
+theme_override_styles/fill = SubResource("StyleBoxTexture_1ranw")
+max_value = 150.0
+step = 1.0
+value = 150.0
+allow_greater = true
+show_percentage = false
+
+[node name="Label Energy Progress" type="Label" parent="Bars/MarginContainer/GridContainer/ProgressBar Energy"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "100%"
+label_settings = SubResource("LabelSettings_4l2aw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Bars/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Storage"
+label_settings = SubResource("LabelSettings_4t8d0")
+
+[node name="ProgressBar Storage" type="ProgressBar" parent="Bars/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 25)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_jwrgk")
+theme_override_styles/fill = SubResource("StyleBoxTexture_sds00")
+step = 1.0
+value = 100.0
+allow_greater = true
+show_percentage = false
+
+[node name="Label Storage" type="Label" parent="Bars/MarginContainer/GridContainer/ProgressBar Storage"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "4000"
+label_settings = SubResource("LabelSettings_4l2aw")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="on_draw" from="Minimap/MarginContainer/Static Minimap Overlay" to="." method="_on_static_minimap_overlay_on_draw"]
 [connection signal="on_draw" from="Minimap/MarginContainer/Dynamic Minimap Overlay" to="." method="_on_dynamic_minimap_overlay_redraw"]

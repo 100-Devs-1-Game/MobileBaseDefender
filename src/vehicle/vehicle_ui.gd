@@ -7,6 +7,11 @@ extends CanvasLayer
 @onready var texture_minimap: TextureRect = %"Texture Minimap"
 @onready var dynamic_minimap_overlay: Control = %"Dynamic Minimap Overlay"
 
+@onready var progress_bar_energy: ProgressBar = %"ProgressBar Energy"
+@onready var label_energy_progress: Label = %"Label Energy Progress"
+@onready var progress_bar_storage: ProgressBar = %"ProgressBar Storage"
+@onready var label_storage: Label = %"Label Storage"
+
 var minimap_data: MinimapData
 
 
@@ -25,10 +30,32 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	update_bars()
+	
 	if not enable_minimap:
 		return
 	dynamic_minimap_overlay.queue_redraw()
 
+
+func update_bars():
+	var orig_energy_val: float= vehicle.used_power / max(vehicle.available_power, 1)
+	var energy_val: float
+	if energy_val <= 1.0:
+		energy_val= orig_energy_val * 100
+	else:
+		energy_val= ( 1 + log(orig_energy_val) ) * 100
+
+	energy_val= clampf(energy_val, 0, 150)
+	progress_bar_energy.value= energy_val
+	label_energy_progress.text= str(int(orig_energy_val * 100), "%")
+
+	var storage: float= vehicle.stored_power
+	var storage_ratio: float= storage / vehicle.stats.power_capacity
+
+	progress_bar_storage.value= storage_ratio * 100
+	label_storage.text= str(int(storage), "/", vehicle.stats.power_capacity)
+
+	  
 
 func _on_dynamic_minimap_overlay_redraw(canvas_item: CanvasItem):
 	if not enable_minimap:
