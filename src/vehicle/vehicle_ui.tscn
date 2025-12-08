@@ -172,6 +172,7 @@ theme_override_constants/separation = 10
 
 [node name="VehicleFireGroupButton" type="Button" parent="Control UI/MarginContainer/VBoxContainer/VBoxContainer Fire Groups"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4t8d0")
 toggle_mode = true
 button_pressed = true
 text = "Fire Group 1"
@@ -179,6 +180,7 @@ script = ExtResource("10_l2yv4")
 
 [node name="VehicleFireGroupButton2" type="Button" parent="Control UI/MarginContainer/VBoxContainer/VBoxContainer Fire Groups"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4t8d0")
 toggle_mode = true
 button_pressed = true
 text = "Fire Group 2"
@@ -192,12 +194,14 @@ alignment = 1
 [node name="ButtonZoomIn" type="Button" parent="Control UI/MarginContainer/VBoxContainer/HBoxContainer Zoom"]
 layout_mode = 2
 size_flags_horizontal = 2
+theme_override_fonts/font = ExtResource("3_4t8d0")
 text = "Zoom+"
 script = ExtResource("11_u0o3n")
 type = 1
 
 [node name="ButtonZoomIn2" type="Button" parent="Control UI/MarginContainer/VBoxContainer/HBoxContainer Zoom"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4t8d0")
 text = "Zoom-"
 script = ExtResource("11_u0o3n")
 type = 2
