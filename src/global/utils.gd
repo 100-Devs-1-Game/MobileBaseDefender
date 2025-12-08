@@ -6,6 +6,10 @@ static func chance100(c: float)-> bool:
 	return randf() * 100 < c
 
 
+static func chancef(c: float)-> bool:
+	return randf() < c
+
+
 static func remove_children(node: Node):
 	for child in node.get_children():
 		node.remove_child(child)
