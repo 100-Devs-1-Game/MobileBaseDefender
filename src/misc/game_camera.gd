@@ -13,4 +13,14 @@ func zoom_in():
 
 
 func zoom_out():
-	zoom/= 2
+	if zoom.x > 0.125:
+		zoom/= 2
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.pressed:
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+				zoom_in()
+			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+				zoom_out()
