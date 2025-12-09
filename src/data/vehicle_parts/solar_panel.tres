@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="VehicleSolarPanelPartData" load_steps=3 format=3 uid="uid://bw6562nwsmbm5"]
+
+[ext_resource type="Script" uid="uid://b8x81oodb3ujs" path="res://vehicle/parts/custom/solar_panel_part_data.gd" id="1_its2j"]
+[ext_resource type="Texture2D" uid="uid://bh8kpx02f1jw0" path="res://assets/art/vehicle/mounted/Solar_Panel_v1_Clean.png" id="1_xlp3u"]
+
+[resource]
+script = ExtResource("1_its2j")
+power_generated = 50
+category = 1
+build_mode_texture = ExtResource("1_xlp3u")
+game_mode_texture = ExtResource("1_xlp3u")
+name = "Solar Panel"
+cost = 10
+weight = 5
+sort_order = "db"
+metadata/_custom_type_script = "uid://b8x81oodb3ujs"

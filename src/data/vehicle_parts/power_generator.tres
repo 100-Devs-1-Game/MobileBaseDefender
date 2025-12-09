@@ -13,4 +13,5 @@ game_mode_scene = ExtResource("1_pwpvo")
 name = "Generator"
 cost = 30
 weight = 20
+sort_order = "da"
 metadata/_custom_type_script = "uid://cd88nas0odmhb"
