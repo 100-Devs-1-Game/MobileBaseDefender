@@ -15,13 +15,4 @@ func init(pos: Vector2, dmg: float, r: float):
 
 
 func _ready() -> void:
-	animated_sprite.scale= Vector2.ONE * radius / 128.0
-
-#
-#
-#func _draw() -> void:
-	#var color:= Color.ORANGE
-	#color.a= 0.5
-	#draw_circle(Vector2.ZERO, radius, color)
-	#var tween:= create_tween()
-	#tween.tween_property(self, "modulate", Color.TRANSPARENT, 0.4)
+	animated_sprite.scale= Vector2.ONE * radius / 64.0
