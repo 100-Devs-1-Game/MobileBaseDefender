@@ -18,3 +18,7 @@ func get_build_mode_texture()-> Texture2D
 
 func get_stats_str()-> String:
 	return "Weight: %dkg " % cost
+
+
+func can_rotate()-> bool:
+	return false

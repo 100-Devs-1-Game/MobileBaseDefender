@@ -19,6 +19,8 @@ var selected_item: BuildModeListItem
 var selected_part: VehicleBasePartData
 var vehicle_stats:= VehicleStats.new()
 
+var part_rotation:= Vector2i.UP
+
 
 
 func _ready() -> void:
@@ -75,7 +77,7 @@ func _on_texture_rect_grid_gui_input(event: InputEvent) -> void:
 					render_layout()
 			elif layout.can_mount_part_at(tile_pos):
 				buy_part()
-				layout.add_mounted_part(tile_pos, selected_part)
+				layout.add_mounted_part(tile_pos, selected_part, part_rotation)
 				render_layout()
 				
 		elif event.button_index == MOUSE_BUTTON_RIGHT:
@@ -148,6 +150,7 @@ func render_layout():
 			sprite= Sprite2D.new()
 			sprite.texture= part_info.part.get_build_mode_texture()
 			sprite.position= pos
+			sprite.rotation= Vector2.UP.angle_to(part_info.rotation)
 			part_sprites_node.add_child(sprite)
 
 
@@ -183,6 +186,21 @@ func on_item_selected(item: BuildModeListItem):
 	selected_item= item
 	selected_part= item.type
 	selected_sprite.texture= selected_part.get_build_mode_texture()
+	part_rotation= Vector2i.UP
+	selected_sprite.rotation_degrees= 0
+
+	activate_rotation_buttons(selected_part.can_rotate())
+
+
+func rotate_part(delta: int):
+	var rotations:= VehicleMountedPartInfo.rotations
+	part_rotation= rotations[wrapi(rotations.find(part_rotation) + delta, 0, 4)]
+	selected_sprite.rotation_degrees+= 90 * delta
+
+
+func activate_rotation_buttons(enabled: bool):
+	for button: Button in %"Rotate Buttons".get_children():
+		button.disabled= not enabled
 
 
 func get_pos_from_tile(tile: Vector2i)-> Vector2:
@@ -206,22 +224,16 @@ func _on_texture_rect_grid_mouse_exited() -> void:
 	selected_sprite.hide()
 
 
-func _on_button_parts_toggled(toggled_on: bool) -> void:
-	if toggled_on:
-		build_list_content.show()
-		stats_panel.hide()
-
-
-func _on_button_stats_toggled(toggled_on: bool) -> void:
-	if toggled_on:
-		build_list_content.hide()
-		stats_panel.show()
-		
-
-func _on_button_techs_toggled(toggled_on: bool) -> void:
-	pass # Replace with function body.
-
-
 func _on_button_go_pressed() -> void:
 	SceneManager.vehicle_layout= layout
 	SceneManager.load_level()
+
+
+func _on_button_rotate_left_pressed() -> void:
+	assert(selected_part.can_rotate())
+	rotate_part(-1)
+
+
+func _on_button_rotate_right_pressed() -> void:
+	assert(selected_part.can_rotate())
+	rotate_part(1)

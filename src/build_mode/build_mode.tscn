@@ -7,7 +7,6 @@
 [ext_resource type="LabelSettings" uid="uid://cfw65naj2wd0p" path="res://build_mode/stats_label_settings.tres" id="4_c1e2y"]
 [ext_resource type="Texture2D" uid="uid://c6fhw4bb2ddc" path="res://assets/art/build_mode/build_mode_grid.png" id="5_wea0h"]
 [ext_resource type="FontFile" uid="uid://cuq0hfcm174n" path="res://assets_external/fonts/Jersey_25/Jersey25-Regular.ttf" id="6_8iu1i"]
-[ext_resource type="ButtonGroup" uid="uid://co34btb34dium" path="res://build_mode/build_button_group.tres" id="7_kixqc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wea0h"]
 bg_color = Color(0.34656933, 0.34656936, 0.34656924, 1)
@@ -17,6 +16,11 @@ font = ExtResource("6_8iu1i")
 font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_qsv6l"]
+font = ExtResource("6_8iu1i")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_kixqc"]
+font = ExtResource("6_8iu1i")
 font_size = 32
 
 [node name="Build Mode" type="Node2D"]
@@ -87,36 +91,6 @@ layout_mode = 2
 text = "Credits: 100"
 label_settings = SubResource("LabelSettings_wea0h")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Sidebar/MarginContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 15
-
-[node name="Button Parts" type="Button" parent="UI/Sidebar/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("6_8iu1i")
-theme_override_font_sizes/font_size = 32
-toggle_mode = true
-button_pressed = true
-button_group = ExtResource("7_kixqc")
-text = "Parts"
-
-[node name="Button Stats" type="Button" parent="UI/Sidebar/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("6_8iu1i")
-theme_override_font_sizes/font_size = 32
-toggle_mode = true
-button_group = ExtResource("7_kixqc")
-text = "Stats"
-
-[node name="Button Techs" type="Button" parent="UI/Sidebar/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("6_8iu1i")
-theme_override_font_sizes/font_size = 32
-disabled = true
-toggle_mode = true
-button_group = ExtResource("7_kixqc")
-text = "Techs"
-
 [node name="HSeparator" type="HSeparator" parent="UI/Sidebar/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -140,10 +114,11 @@ text = "GO"
 
 [node name="Info Panel" type="PanelContainer" parent="UI"]
 custom_minimum_size = Vector2(0, 50)
-anchors_preset = 12
+anchors_preset = -1
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 200.0
 offset_top = -50.0
 offset_right = -400.0
 grow_horizontal = 2
@@ -163,10 +138,49 @@ layout_mode = 2
 text = "Weight: 10  Hitpoints: 20"
 label_settings = SubResource("LabelSettings_qsv6l")
 
+[node name="Tool Panel" type="PanelContainer" parent="UI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wea0h")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Tool Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Tool Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Tool Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Rotate"
+label_settings = SubResource("LabelSettings_kixqc")
+
+[node name="Rotate Buttons" type="HBoxContainer" parent="UI/Tool Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Button Rotate Left" type="Button" parent="UI/Tool Panel/MarginContainer/VBoxContainer/Rotate Buttons"]
+layout_mode = 2
+disabled = true
+text = "<-"
+
+[node name="Button Rotate Right" type="Button" parent="UI/Tool Panel/MarginContainer/VBoxContainer/Rotate Buttons"]
+layout_mode = 2
+disabled = true
+text = "->"
+
 [connection signal="gui_input" from="TextureRect Grid" to="." method="_on_texture_rect_grid_gui_input"]
 [connection signal="mouse_entered" from="TextureRect Grid" to="." method="_on_texture_rect_grid_mouse_entered"]
 [connection signal="mouse_exited" from="TextureRect Grid" to="." method="_on_texture_rect_grid_mouse_exited"]
-[connection signal="toggled" from="UI/Sidebar/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Button Parts" to="." method="_on_button_parts_toggled"]
-[connection signal="toggled" from="UI/Sidebar/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Button Stats" to="." method="_on_button_stats_toggled"]
-[connection signal="toggled" from="UI/Sidebar/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/Button Techs" to="." method="_on_button_techs_toggled"]
 [connection signal="pressed" from="UI/Sidebar/MarginContainer/VBoxContainer/Button Go" to="." method="_on_button_go_pressed"]
+[connection signal="pressed" from="UI/Tool Panel/MarginContainer/VBoxContainer/Rotate Buttons/Button Rotate Left" to="." method="_on_button_rotate_left_pressed"]
+[connection signal="pressed" from="UI/Tool Panel/MarginContainer/VBoxContainer/Rotate Buttons/Button Rotate Right" to="." method="_on_button_rotate_right_pressed"]
