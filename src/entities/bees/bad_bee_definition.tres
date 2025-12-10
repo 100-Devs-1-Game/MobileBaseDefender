@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EnemyDefinition" load_steps=3 format=3 uid="uid://dri40dk0ce674"]
+
+[ext_resource type="PackedScene" uid="uid://dottu51hmefpt" path="res://entities/bees/bad_bee.tscn" id="1_f6wri"]
+[ext_resource type="Script" uid="uid://cc25ovrepcyai" path="res://entities/enemy_definition.gd" id="2_1iapt"]
+
+[resource]
+script = ExtResource("2_1iapt")
+scene = ExtResource("1_f6wri")
+metadata/_custom_type_script = "uid://cc25ovrepcyai"

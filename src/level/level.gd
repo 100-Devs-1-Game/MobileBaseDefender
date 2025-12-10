@@ -17,7 +17,7 @@ var enemies_node: Node2D
 var pickups_node: Node2D
 
 var enemy_query:= PhysicsShapeQueryParameters2D.new()
-
+var vehicle_query:= PhysicsShapeQueryParameters2D.new()
 
 
 func _ready() -> void:
@@ -32,6 +32,9 @@ func _ready() -> void:
 	
 	enemy_query.collision_mask= CollisionLayers.ENEMY
 	enemy_query.shape= CircleShape2D.new()
+
+	vehicle_query.collision_mask= CollisionLayers.VEHICLE
+	vehicle_query.shape= CircleShape2D.new()
 
 
 func spawn_vehicle(pos: Vector2, layout: VehicleLayout):
@@ -56,15 +59,23 @@ func spawn_enemy(type: EnemyDefinition, pos: Vector2):
 	enemies_node.add_child(enemy)
 
 
-func spawn_explosion(pos: Vector2, damage: Damage):
+func spawn_explosion(pos: Vector2, damage: Damage, vs_vehicle: bool= false):
 	var explosion: Explosion= explosion_scene.instantiate()
 	explosion.init(pos, damage.dmg, damage.radius)
 	add_child(explosion)
-	
+
 	var dmg_inst:= DamageInstance.new(damage, pos)
-	for enemy in get_enemies_in_range(pos, damage.radius):
-		var health:= HealthComponent.get_from_node(enemy)
-		health.take_damage(dmg_inst)
+
+	if vs_vehicle:
+		(vehicle_query.shape as CircleShape2D).radius= damage.radius
+		vehicle_query.transform.origin= pos
+		var result:= get_world_2d().direct_space_state.intersect_shape(vehicle_query)
+		for item in result:
+			vehicle.take_damage_at_shape(dmg_inst, item["shape"])
+	else:
+		for enemy in get_enemies_in_range(pos, damage.radius):
+			var health:= HealthComponent.get_from_node(enemy)
+			health.take_damage(dmg_inst)
 
 
 func spawn_pickup(pos: Vector2, data: BasePickupData):

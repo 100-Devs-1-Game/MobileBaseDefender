@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://dp2bundpytnhd"]
+[gd_scene load_steps=27 format=4 uid="uid://dp2bundpytnhd"]
 
 [ext_resource type="Script" uid="uid://c1tnmf5ecbjjj" path="res://level/level.gd" id="1_1vllh"]
 [ext_resource type="Script" uid="uid://d1xcyyg232282" path="res://test/level_sandbox.gd" id="1_klfgi"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dlsewoyhq8q1t" path="res://assets/art/level/background/Outer_Ground_4.png" id="11_84qfq"]
 [ext_resource type="Resource" uid="uid://ctgldl27tg0ve" path="res://entities/bees/speed_bee_definition.tres" id="13_j8bqw"]
 [ext_resource type="PackedScene" uid="uid://dabyq7bb8c3yy" path="res://level/level_ui.tscn" id="15_q5gq5"]
+[ext_resource type="Resource" uid="uid://dri40dk0ce674" path="res://entities/bees/bad_bee_definition.tres" id="18_jdt5b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0kn63"]
 texture = ExtResource("8_guuyl")
@@ -90,9 +91,18 @@ collision_mask = 0
 [node name="EnemySpawner" type="Node2D" parent="."]
 position = Vector2(0, -648)
 script = ExtResource("6_piqwm")
+enabled = false
 enemy_type = ExtResource("13_j8bqw")
 max_spawns = 50
 spawn_interval = 0.2
+metadata/_custom_type_script = "uid://cpf8rw0riybn6"
+
+[node name="EnemySpawner2" type="Node2D" parent="."]
+position = Vector2(0, 1779)
+script = ExtResource("6_piqwm")
+enemy_type = ExtResource("18_jdt5b")
+max_spawns = 25
+spawn_interval = 1.0
 metadata/_custom_type_script = "uid://cpf8rw0riybn6"
 
 [node name="LevelUI" parent="." instance=ExtResource("15_q5gq5")]

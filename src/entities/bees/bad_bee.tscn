@@ -1,0 +1,64 @@
+[gd_scene load_steps=11 format=3 uid="uid://dottu51hmefpt"]
+
+[ext_resource type="PackedScene" uid="uid://5o5abaqxug0v" path="res://entities/base_enemy.tscn" id="1_yqxkq"]
+[ext_resource type="Script" uid="uid://ds6gg1xa55t28" path="res://entities/bees/bee.gd" id="2_yuxnc"]
+[ext_resource type="Texture2D" uid="uid://vun8801w1rjw" path="res://assets/art/enemies/bad/Bumble_Bad_0001.png" id="3_plnn1"]
+[ext_resource type="Script" uid="uid://dwhy702tspcb" path="res://systems/damage_system/damage.gd" id="3_yuxnc"]
+[ext_resource type="Texture2D" uid="uid://b03d7cmhc14xe" path="res://assets/art/enemies/bad/Bumble_Bad_0002.png" id="4_s8ifh"]
+[ext_resource type="Texture2D" uid="uid://c74ba0tegvesf" path="res://assets/art/enemies/bad/Bumble_Bad_0003.png" id="5_yshqr"]
+[ext_resource type="Texture2D" uid="uid://unpw6fshpg2r" path="res://assets/art/enemies/bad/Bumble_Bad_0004.png" id="6_7yxgw"]
+
+[sub_resource type="Resource" id="Resource_plnn1"]
+script = ExtResource("3_yuxnc")
+dmg = 5.0
+radius = 50.0
+metadata/_custom_type_script = "uid://dwhy702tspcb"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yqxkq"]
+radius = 15.0
+height = 70.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bc7r0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_plnn1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_s8ifh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_yshqr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7yxgw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Bad Bee" instance=ExtResource("1_yqxkq")]
+z_index = 5
+collision_mask = 6
+script = ExtResource("2_yuxnc")
+explosion_dmg = SubResource("Resource_plnn1")
+max_speed = 50.0
+angle_offset = -90
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CapsuleShape2D_yqxkq")
+
+[node name="HealthComponent" parent="." index="1"]
+max_hp = 10
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_bc7r0")
+autoplay = "default"
+
+[node name="Vehicle Detector" type="Area2D" parent="." index="3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vehicle Detector" index="0"]
+shape = SubResource("CapsuleShape2D_yqxkq")
+
+[connection signal="body_entered" from="Vehicle Detector" to="." method="_on_died" unbinds=1]
