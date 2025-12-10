@@ -192,6 +192,8 @@ func tick_parts():
 
 	available_power= total_power
 	
+	stored_power= max(stored_power, stats.power_capacity)
+	
 	if used_power > total_power:
 		var power_delta: float= used_power - total_power
 		var stored_power_delta: float= min(power_delta, stored_power)
@@ -201,7 +203,7 @@ func tick_parts():
 		stored_power= min(stored_power + ( total_power - used_power), stats.power_capacity)
 
 
-	assert(stored_power >= 0 and stored_power <= stats.power_capacity)
+	assert(stored_power >= 0)
 		
 	if used_power > 0:
 		power_supply_ratio= clampf(total_power / used_power, 0, 1)
@@ -240,7 +242,7 @@ func take_damage_at_shape(dmg_inst: DamageInstance, idx: int):
 			if refs.mounted_node:
 				refs.mounted_node.queue_free()
 			
-			refs.collision_shape.disabled= true
+			refs.collision_shape.set_deferred("disabled", true)
 			layout.remove_structure(tile_pos, true)
 			update_stats()
 			
