@@ -46,4 +46,3 @@ visible = false
 texture = ExtResource("4_fehuk")
 
 [node name="Vehicle UI" parent="." instance=ExtResource("7_kuhha")]
-enable_minimap = false

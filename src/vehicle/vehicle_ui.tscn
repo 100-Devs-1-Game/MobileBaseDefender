@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://d0g5ffcu256n"]
+[gd_scene load_steps=29 format=3 uid="uid://d0g5ffcu256n"]
 
 [ext_resource type="PackedScene" uid="uid://bjf4o1kponle7" path="res://debug/debug_window.tscn" id="1_2mjmc"]
 [ext_resource type="Script" uid="uid://m4xmy2vwl3wx" path="res://vehicle/vehicle_ui.gd" id="1_8pk62"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://dnbrrhrn8th2q" path="res://ui/control_ui/vehicle_fire_group_button.gd" id="10_l2yv4"]
 [ext_resource type="Script" uid="uid://dqq8x16kjf0ek" path="res://ui/control_ui/zoom_button.gd" id="11_u0o3n"]
 [ext_resource type="Script" uid="uid://dsfvl161r6qvd" path="res://misc/canvas_item_draw_delegator.gd" id="13_4t8d0"]
+[ext_resource type="Shader" uid="uid://7o5lxkiw5doi" path="res://vehicle/minimap_shader.gdshader" id="13_jwrgk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1255d"]
 bg_color = Color(0.38409242, 0.22858453, 0.15754125, 1)
@@ -23,6 +24,13 @@ Button/styles/pressed = SubResource("StyleBoxFlat_1255d")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83031"]
 bg_color = Color(0.6, 0.6, 0.6, 0.7607843)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sds00"]
+shader = ExtResource("13_jwrgk")
+shader_parameter/scanline_color = Color(0.20791352, 0.51751584, 0.27667853, 0.5019608)
+shader_parameter/scanline_spacing = 5.000000142499999
+shader_parameter/scanline_width = 0.50000002049012
+shader_parameter/edge_softness = 1.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_jwrgk"]
 font = ExtResource("3_4t8d0")
@@ -228,6 +236,16 @@ theme_override_constants/margin_bottom = 10
 [node name="Texture Minimap" type="TextureRect" parent="Minimap/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Minimap/MarginContainer/Texture Minimap"]
+material = SubResource("ShaderMaterial_sds00")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
 
 [node name="Static Minimap Overlay" type="Control" parent="Minimap/MarginContainer"]
 unique_name_in_owner = true
