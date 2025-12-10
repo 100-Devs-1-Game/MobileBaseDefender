@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var vehicle: Vehicle= get_parent()
 @onready var texture_minimap: TextureRect = %"Texture Minimap"
 @onready var dynamic_minimap_overlay: Control = %"Dynamic Minimap Overlay"
+@onready var debug_window: DebugWindow = %"Debug Window"
 
 @onready var progress_bar_energy: ProgressBar = %"ProgressBar Energy"
 @onready var label_energy_progress: Label = %"Label Energy Progress"
@@ -19,6 +20,9 @@ var minimap_data: MinimapData
 func _ready() -> void:
 	assert(vehicle)
 	await vehicle.ready
+	
+	if not OS.is_debug_build():
+		debug_window.queue_free()
 	
 	if enable_minimap:
 		minimap_data= vehicle.get_level().minimap_data

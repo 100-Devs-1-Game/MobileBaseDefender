@@ -71,6 +71,7 @@ axis_stretch_horizontal = 1
 script = ExtResource("1_8pk62")
 
 [node name="Debug Window" parent="." instance=ExtResource("1_2mjmc")]
+unique_name_in_owner = true
 item_collection = ExtResource("2_8pk62")
 
 [node name="Control UI" type="PanelContainer" parent="."]
