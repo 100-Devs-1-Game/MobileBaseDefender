@@ -46,10 +46,9 @@ func tick(part_info: VehicleMountedPartInfo, vehicle: Vehicle, tile_pos: Vector2
 		var rand= randf_range(0.3, 1.2)
 		target_dir= trans.origin.direction_to(target.global_position + target_position_adjustment * rand)
 
-	var angle_diff: float= target_dir.angle() - -trans.y.angle()
-	var max_rotation: float= deg_to_rad(rotation_speed) * delta
-	
 	# TODO rotate and add last vehicle rotate delta ( that delta has to be between part ticks )
+	#var angle_diff: float= target_dir.angle() - -trans.y.angle()
+	#var max_rotation: float= deg_to_rad(rotation_speed) * delta
 	#if abs(angle_diff) < max_rotation:
 
 	set_rotation(part_info, target_dir.angle())
@@ -73,22 +72,22 @@ func acquire_target(part_info: VehicleMountedPartInfo, vehicle: Vehicle, tile_po
 	return found_target
 
 
-func set_rotation(part_info: VehicleMountedPartInfo, angle: float):
+static func set_rotation(part_info: VehicleMountedPartInfo, angle: float):
 	part_info.live_data[ROTATION_DATA]= angle
 
 
-func set_target(part_info: VehicleMountedPartInfo, node: Node2D):
+static func set_target(part_info: VehicleMountedPartInfo, node: Node2D):
 	if node == null:
 		part_info.live_data[TARGET_DATA]= null
 	else:
 		part_info.live_data[TARGET_DATA]= weakref(node)
 
 
-func get_rotation(part_info: VehicleMountedPartInfo)-> float:
+static func get_rotation(part_info: VehicleMountedPartInfo)-> float:
 	return part_info.live_data[ROTATION_DATA]
 
 
-func get_target(part_info: VehicleMountedPartInfo)-> Enemy:
+static func get_target(part_info: VehicleMountedPartInfo)-> Enemy:
 	var data= part_info.live_data[TARGET_DATA]
 	if data == null:
 		return null
@@ -103,7 +102,7 @@ func get_muzzle_transform(part_info: VehicleMountedPartInfo, vehicle: Vehicle, t
 	return trans
 
 
-func has_target(part_info: VehicleMountedPartInfo)-> bool:
+static func has_target(part_info: VehicleMountedPartInfo)-> bool:
 	return get_target(part_info) != null
 
 
