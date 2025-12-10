@@ -13,6 +13,7 @@ func _ready() -> void:
 	neighbor_query.shape= circle_shape
 	neighbor_query.exclude= [ get_rid() ]
 
+
 func _physics_process(delta: float) -> void:
 	super(delta)
 	if linear_velocity:
