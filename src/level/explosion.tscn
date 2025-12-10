@@ -35,6 +35,7 @@ animations = [{
 }]
 
 [node name="Explosion" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_sh5kp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
