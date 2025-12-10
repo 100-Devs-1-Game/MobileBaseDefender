@@ -72,22 +72,22 @@ func _on_texture_rect_grid_gui_input(event: InputEvent) -> void:
 				if layout.can_build_structure_at(tile_pos, selected_part):
 					if layout.has_structure_at(tile_pos):
 						refund_part(layout.get_structure_at(tile_pos))
-					buy_part()
 					layout.add_structure(tile_pos, selected_part)
+					buy_part()
 					render_layout()
 			elif layout.can_mount_part_at(tile_pos):
-				buy_part()
 				layout.add_mounted_part(tile_pos, selected_part, part_rotation)
+				buy_part()
 				render_layout()
 				
 		elif event.button_index == MOUSE_BUTTON_RIGHT:
 			if layout.has_mounted_part_at(tile_pos):
-				refund_part(layout.get_mounted_part_info_at(tile_pos).part)
 				layout.remove_part(tile_pos)
+				refund_part(layout.get_mounted_part_info_at(tile_pos).part)
 				render_layout()
 			elif layout.has_structure_at(tile_pos) and can_remove_structure_at(tile_pos):
-				refund_part(layout.get_structure_at(tile_pos))
 				layout.remove_structure(tile_pos)
+				refund_part(layout.get_structure_at(tile_pos))
 				render_layout()
 
 
