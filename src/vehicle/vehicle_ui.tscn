@@ -25,13 +25,6 @@ Button/styles/pressed = SubResource("StyleBoxFlat_1255d")
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83031"]
 bg_color = Color(0.6, 0.6, 0.6, 0.7607843)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sds00"]
-shader = ExtResource("13_jwrgk")
-shader_parameter/scanline_color = Color(0.20791352, 0.51751584, 0.27667853, 0.5019608)
-shader_parameter/scanline_spacing = 5.000000142499999
-shader_parameter/scanline_width = 0.50000002049012
-shader_parameter/edge_softness = 1.0
-
 [sub_resource type="LabelSettings" id="LabelSettings_jwrgk"]
 font = ExtResource("3_4t8d0")
 font_size = 32
@@ -74,6 +67,13 @@ width = 200
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sds00"]
 texture = SubResource("GradientTexture1D_jwrgk")
 axis_stretch_horizontal = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sds00"]
+shader = ExtResource("13_jwrgk")
+shader_parameter/scanline_color = Color(0.20791352, 0.51751584, 0.27667853, 0.5019608)
+shader_parameter/scanline_spacing = 5.000000142499999
+shader_parameter/scanline_width = 0.50000002049012
+shader_parameter/edge_softness = 1.0
 
 [node name="Vehicle UI" type="CanvasLayer"]
 script = ExtResource("1_8pk62")
@@ -196,6 +196,44 @@ text = "Fire Group 2"
 script = ExtResource("10_l2yv4")
 type = 1
 
+[node name="VehicleFireGroupButton3" type="Button" parent="Control UI/MarginContainer/VBoxContainer/VBoxContainer Fire Groups"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4t8d0")
+toggle_mode = true
+button_pressed = true
+text = "Bomb"
+script = ExtResource("10_l2yv4")
+type = 1
+
+[node name="VBoxContainer Targeting" type="VBoxContainer" parent="Control UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control UI/MarginContainer/VBoxContainer/VBoxContainer Targeting"]
+layout_mode = 2
+text = "Targeting"
+label_settings = SubResource("LabelSettings_jwrgk")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control UI/MarginContainer/VBoxContainer/VBoxContainer Targeting"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Button" type="Button" parent="Control UI/MarginContainer/VBoxContainer/VBoxContainer Targeting/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4t8d0")
+text = "Enemies"
+
+[node name="Button2" type="Button" parent="Control UI/MarginContainer/VBoxContainer/VBoxContainer Targeting/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4t8d0")
+text = "Ores"
+
+[node name="Button3" type="Button" parent="Control UI/MarginContainer/VBoxContainer/VBoxContainer Targeting/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4t8d0")
+text = "Manual"
+
 [node name="HBoxContainer Zoom" type="HBoxContainer" parent="Control UI/MarginContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
@@ -215,7 +253,110 @@ text = "Zoom-"
 script = ExtResource("11_u0o3n")
 type = 2
 
+[node name="Bars" type="PanelContainer" parent="Control UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_83031")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control UI/MarginContainer/VBoxContainer/Bars"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control UI/MarginContainer/VBoxContainer/Bars/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control UI/MarginContainer/VBoxContainer/Bars/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Energy"
+label_settings = SubResource("LabelSettings_jwrgk")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Control UI/MarginContainer/VBoxContainer/Bars/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Control UI/MarginContainer/VBoxContainer/Bars/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="Label" type="Label" parent="Control UI/MarginContainer/VBoxContainer/Bars/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Consumption"
+label_settings = SubResource("LabelSettings_4t8d0")
+
+[node name="ProgressBar Energy" type="ProgressBar" parent="Control UI/MarginContainer/VBoxContainer/Bars/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 25)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_jwrgk")
+theme_override_styles/fill = SubResource("StyleBoxTexture_1ranw")
+max_value = 150.0
+step = 1.0
+value = 150.0
+allow_greater = true
+show_percentage = false
+
+[node name="Label Energy Progress" type="Label" parent="Control UI/MarginContainer/VBoxContainer/Bars/MarginContainer/VBoxContainer/GridContainer/ProgressBar Energy"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "100%"
+label_settings = SubResource("LabelSettings_4l2aw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Control UI/MarginContainer/VBoxContainer/Bars/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Storage"
+label_settings = SubResource("LabelSettings_4t8d0")
+
+[node name="ProgressBar Storage" type="ProgressBar" parent="Control UI/MarginContainer/VBoxContainer/Bars/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 25)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_jwrgk")
+theme_override_styles/fill = SubResource("StyleBoxTexture_sds00")
+step = 1.0
+value = 100.0
+allow_greater = true
+show_percentage = false
+
+[node name="Label Storage" type="Label" parent="Control UI/MarginContainer/VBoxContainer/Bars/MarginContainer/VBoxContainer/GridContainer/ProgressBar Storage"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "4000/4000"
+label_settings = SubResource("LabelSettings_4l2aw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Minimap" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(300, 300)
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -256,117 +397,6 @@ script = ExtResource("13_4t8d0")
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("13_4t8d0")
-
-[node name="Bars" type="PanelContainer" parent="."]
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -314.0
-offset_top = -44.0
-offset_bottom = 44.0
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_83031")
-
-[node name="MarginContainer" type="MarginContainer" parent="Bars"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Bars/MarginContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Bars/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Energy"
-label_settings = SubResource("LabelSettings_jwrgk")
-horizontal_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="Bars/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="GridContainer" type="GridContainer" parent="Bars/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/h_separation = 15
-theme_override_constants/v_separation = 10
-columns = 2
-
-[node name="Label" type="Label" parent="Bars/MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-text = "Consumption"
-label_settings = SubResource("LabelSettings_4t8d0")
-
-[node name="ProgressBar Energy" type="ProgressBar" parent="Bars/MarginContainer/VBoxContainer/GridContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 25)
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_styles/background = SubResource("StyleBoxFlat_jwrgk")
-theme_override_styles/fill = SubResource("StyleBoxTexture_1ranw")
-max_value = 150.0
-step = 1.0
-value = 150.0
-allow_greater = true
-show_percentage = false
-
-[node name="Label Energy Progress" type="Label" parent="Bars/MarginContainer/VBoxContainer/GridContainer/ProgressBar Energy"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "100%"
-label_settings = SubResource("LabelSettings_4l2aw")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="Bars/MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-text = "Storage"
-label_settings = SubResource("LabelSettings_4t8d0")
-
-[node name="ProgressBar Storage" type="ProgressBar" parent="Bars/MarginContainer/VBoxContainer/GridContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 25)
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_styles/background = SubResource("StyleBoxFlat_jwrgk")
-theme_override_styles/fill = SubResource("StyleBoxTexture_sds00")
-step = 1.0
-value = 100.0
-allow_greater = true
-show_percentage = false
-
-[node name="Label Storage" type="Label" parent="Bars/MarginContainer/VBoxContainer/GridContainer/ProgressBar Storage"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "4000/4000"
-label_settings = SubResource("LabelSettings_4l2aw")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="on_draw" from="Minimap/MarginContainer/Static Minimap Overlay" to="." method="_on_static_minimap_overlay_on_draw"]
 [connection signal="on_draw" from="Minimap/MarginContainer/Dynamic Minimap Overlay" to="." method="_on_dynamic_minimap_overlay_redraw"]
