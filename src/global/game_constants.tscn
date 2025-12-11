@@ -10,8 +10,8 @@ metadata/_custom_type_script = "uid://po4gsi1p0t8e"
 [sub_resource type="Resource" id="Resource_qbgio"]
 script = ExtResource("2_61cua")
 lock_camera_rotation = false
-acceleration_factor = 4.0
-steering_factor = 5.0
+acceleration_factor = 25.0
+steering_factor = 10.0
 metadata/_custom_type_script = "uid://po4gsi1p0t8e"
 
 [node name="GameConstants" type="Node"]
