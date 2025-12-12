@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://crcw1ledl44nx"]
+
+[ext_resource type="PackedScene" uid="uid://dbyugginwd1ct" path="res://ui/control_ui/control_texture_button.tscn" id="1_i25hw"]
+[ext_resource type="Script" uid="uid://jqnjm14o6aub" path="res://ui/control_ui/vehicle_control_button.gd" id="2_mnn1m"]
+
+[node name="VehicleControlButton" instance=ExtResource("1_i25hw")]
+script = ExtResource("2_mnn1m")
