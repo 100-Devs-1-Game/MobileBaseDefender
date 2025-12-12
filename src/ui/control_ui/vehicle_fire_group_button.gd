@@ -1,5 +1,5 @@
 class_name VehicleFireGroupButton
-extends Button
+extends BaseButton
 
 @export var type: FireGroup.Type
 

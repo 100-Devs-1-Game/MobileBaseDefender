@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://d0g5ffcu256n"]
+[gd_scene load_steps=45 format=3 uid="uid://d0g5ffcu256n"]
 
 [ext_resource type="PackedScene" uid="uid://bjf4o1kponle7" path="res://debug/debug_window.tscn" id="1_2mjmc"]
 [ext_resource type="Script" uid="uid://m4xmy2vwl3wx" path="res://vehicle/vehicle_ui.gd" id="1_8pk62"]
@@ -20,7 +20,12 @@
 [ext_resource type="Texture2D" uid="uid://cd0wbcpglhb5n" path="res://assets/art/ui/RedButton9SliceHovered.png" id="14_l2yv4"]
 [ext_resource type="PackedScene" uid="uid://dbyugginwd1ct" path="res://ui/control_ui/control_texture_button.tscn" id="16_u0o3n"]
 [ext_resource type="ButtonGroup" uid="uid://j173owpnbik0" path="res://ui/control_ui/button_group_target.tres" id="17_h71wi"]
+[ext_resource type="Texture2D" uid="uid://cmn1dnu7fejoe" path="res://assets/art/ui/BombButtonHighlighted.png" id="18_momxe"]
 [ext_resource type="Texture2D" uid="uid://p2n53e5n18xa" path="res://assets/art/ui/progress_bar_frame.png" id="18_u0o3n"]
+[ext_resource type="Texture2D" uid="uid://ccyv4lllft736" path="res://assets/art/ui/BombButton.png" id="19_kk5dq"]
+[ext_resource type="Texture2D" uid="uid://h7hmruph333l" path="res://assets/art/ui/BombButtonDisabled.png" id="20_uo645"]
+[ext_resource type="Texture2D" uid="uid://dshkmckvfhbi4" path="res://assets/art/ui/BombButtonRimEmpty.png" id="21_03nns"]
+[ext_resource type="Texture2D" uid="uid://b7w6cx6k2w00n" path="res://assets/art/ui/BombButtonRimFull.png" id="22_kwuyk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1255d"]
 bg_color = Color(0.38409242, 0.22858453, 0.15754125, 1)
@@ -64,6 +69,10 @@ texture_margin_left = 20.0
 texture_margin_top = 20.0
 texture_margin_right = 20.0
 texture_margin_bottom = 20.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ml5au"]
+font = ExtResource("3_4t8d0")
+font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_jwrgk"]
 font = ExtResource("3_4t8d0")
@@ -117,6 +126,18 @@ script = ExtResource("1_8pk62")
 [node name="Debug Window" parent="." instance=ExtResource("1_2mjmc")]
 unique_name_in_owner = true
 item_collection = ExtResource("2_8pk62")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+custom_minimum_size = Vector2(50, 0)
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+color = Color(0, 0, 0, 1)
 
 [node name="Control UI" type="PanelContainer" parent="."]
 anchors_preset = 11
@@ -213,14 +234,14 @@ layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control UI/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 40
 
 [node name="VBoxContainer Fire Groups" type="VBoxContainer" parent="Control UI/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="Button" type="Button" parent="Control UI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer Fire Groups"]
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 size_flags_horizontal = 2
 focus_mode = 0
@@ -237,7 +258,7 @@ text = "WEAPONS 1"
 script = ExtResource("10_l2yv4")
 
 [node name="Button2" type="Button" parent="Control UI/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer Fire Groups"]
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 size_flags_horizontal = 10
 focus_mode = 0
@@ -255,20 +276,43 @@ text = "WEAPONS 2
 script = ExtResource("10_l2yv4")
 type = 1
 
-[node name="Button3" type="Button" parent="Control UI/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="TextureButton" type="TextureButton" parent="Control UI/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 10
-focus_mode = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_4t8d0")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxTexture_u0o3n")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_h71wi")
-theme_override_styles/hover = SubResource("StyleBoxTexture_3qss4")
-toggle_mode = true
-text = "BOMB"
+size_flags_vertical = 4
+texture_normal = ExtResource("19_kk5dq")
+texture_hover = ExtResource("18_momxe")
+texture_disabled = ExtResource("20_uo645")
 script = ExtResource("10_l2yv4")
+
+[node name="Label" type="Label" parent="Control UI/MarginContainer/VBoxContainer/HBoxContainer/TextureButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "BOMB"
+label_settings = SubResource("LabelSettings_ml5au")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Control UI/MarginContainer/VBoxContainer/HBoxContainer/TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 3.13
+value = 50.08
+fill_mode = 4
+radial_fill_degrees = 356.7
+texture_under = ExtResource("21_03nns")
+texture_progress = ExtResource("22_kwuyk")
 
 [node name="MarginContainer" type="MarginContainer" parent="Control UI/MarginContainer/VBoxContainer"]
 layout_mode = 2
