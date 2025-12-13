@@ -12,6 +12,7 @@ signal selected(item: BuildModeListItem)
 @onready var texture_rect: TextureRect = %TextureRect
 @onready var label_name: Label = %"Label Name"
 @onready var label_cost: Label = %"Label Cost"
+@onready var label_cost2: Label = %"Label Cost2"
 
 var type: VehicleBasePartData
 var is_selected:= false
@@ -23,8 +24,13 @@ func init(p_type: VehicleBasePartData):
 	type= p_type
 	texture_rect.texture= type.get_build_mode_texture()
 	label_name.text= type.name
-	label_cost.text= str(type.cost, "Credits")
 	
+	label_cost2.text= ""
+	var label: Label= label_cost
+	for ore in type.cost.ores.keys():
+		label.text= "%d %s" % [ type.cost.ores[ore], Inventory.OreType.keys()[ore] ]
+		label= label_cost2
+		
 	disable(not GameData.campaign.can_afford(type.cost))
 
 

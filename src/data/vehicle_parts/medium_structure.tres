@@ -1,14 +1,22 @@
-[gd_resource type="Resource" script_class="VehicleStructureData" load_steps=3 format=3 uid="uid://8cc50frc4paw"]
+[gd_resource type="Resource" script_class="VehicleStructureData" load_steps=5 format=3 uid="uid://8cc50frc4paw"]
 
+[ext_resource type="Script" uid="uid://dhoiovu5dml4c" path="res://vehicle/inventory.gd" id="1_hdb7p"]
 [ext_resource type="Script" uid="uid://ddgjj5b5vs23n" path="res://vehicle/parts/vehicle_structure_data.gd" id="1_w40cn"]
 [ext_resource type="Texture2D" uid="uid://dcenpfeevf1ib" path="res://assets/art/vehicle/structure/Base Frame_2_Clean_3_no_dots.png" id="2_fh3gq"]
+
+[sub_resource type="Resource" id="Resource_a0k8v"]
+script = ExtResource("1_hdb7p")
+ores = Dictionary[int, int]({
+0: 5
+})
+metadata/_custom_type_script = "uid://dhoiovu5dml4c"
 
 [resource]
 script = ExtResource("1_w40cn")
 hitpoints = 25
 texture_stages = Array[Texture2D]([ExtResource("2_fh3gq")])
 name = "Solid Frame"
-cost = 5
+cost = SubResource("Resource_a0k8v")
 weight = 10
 sort_order = "ab"
 metadata/_custom_type_script = "uid://ddgjj5b5vs23n"

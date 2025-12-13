@@ -7,5 +7,5 @@ extends CanvasLayer
 
 
 func open_popup(vehicle: Vehicle):
-	label_popup.text= "Collected %d ore" % vehicle.inventory.ore
+	label_popup.text= str("Collected ", vehicle.inventory.get_as_str())
 	popup.show()

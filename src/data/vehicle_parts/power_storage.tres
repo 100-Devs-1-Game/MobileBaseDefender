@@ -1,7 +1,16 @@
-[gd_resource type="Resource" script_class="VehiclePowerStoragePartData" load_steps=3 format=3 uid="uid://cgt3fmfbmosjv"]
+[gd_resource type="Resource" script_class="VehiclePowerStoragePartData" load_steps=5 format=3 uid="uid://cgt3fmfbmosjv"]
 
 [ext_resource type="Script" uid="uid://c36kx50lrvmum" path="res://vehicle/parts/custom/power_storage_part_data.gd" id="1_ggsho"]
 [ext_resource type="Texture2D" uid="uid://dcyqaa68j6emj" path="res://assets/art/vehicle/mounted/Battery_1_export.png" id="1_x0bp6"]
+[ext_resource type="Script" uid="uid://dhoiovu5dml4c" path="res://vehicle/inventory.gd" id="2_qp6ts"]
+
+[sub_resource type="Resource" id="Resource_t1xxl"]
+script = ExtResource("2_qp6ts")
+ores = Dictionary[int, int]({
+0: 5,
+2: 5
+})
+metadata/_custom_type_script = "uid://dhoiovu5dml4c"
 
 [resource]
 script = ExtResource("1_ggsho")
@@ -10,6 +19,6 @@ category = 1
 build_mode_texture = ExtResource("1_x0bp6")
 game_mode_texture = ExtResource("1_x0bp6")
 name = "Battery"
-cost = 15
+cost = SubResource("Resource_t1xxl")
 weight = 10
 metadata/_custom_type_script = "uid://c36kx50lrvmum"

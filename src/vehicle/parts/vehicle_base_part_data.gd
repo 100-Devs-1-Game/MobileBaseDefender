@@ -5,7 +5,7 @@ extends Resource
 @export var name: String
 @export_multiline var description: String
 
-@export var cost: int
+@export var cost: Inventory
 @export var weight: int
 @export var can_be_built: bool= true
 @export var sort_order: String= "h"
@@ -17,7 +17,7 @@ func get_build_mode_texture()-> Texture2D
 
 
 func get_stats_str()-> String:
-	return "Weight: %dkg " % cost
+	return "Weight: %dkg " % weight
 
 
 func can_rotate()-> bool:

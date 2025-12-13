@@ -47,7 +47,7 @@ var structure_damage: Dictionary[Vector2i, float]
 var tile_references: Dictionary[Vector2i, TileReferences]
 
 var fire_groups: Dictionary[FireGroup.Type, FireGroup]
-var inventory:= VehicleInventory.new()
+var inventory:= Inventory.new()
 
 
 

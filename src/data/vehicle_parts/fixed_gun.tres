@@ -1,9 +1,17 @@
-[gd_resource type="Resource" script_class="VehicleFixedGunPartData" load_steps=5 format=3 uid="uid://iovva17d01ae"]
+[gd_resource type="Resource" script_class="VehicleFixedGunPartData" load_steps=7 format=3 uid="uid://iovva17d01ae"]
 
 [ext_resource type="Texture2D" uid="uid://beq62f4206jk1" path="res://assets/art/vehicle/mounted/cannon/Cannon_build_mode.png" id="1_eyw50"]
 [ext_resource type="PackedScene" uid="uid://bxy25wfyhmj48" path="res://data/vehicle_parts/scenes/cannon_part.tscn" id="1_jb1mw"]
 [ext_resource type="Resource" uid="uid://dead3a6357njm" path="res://data/projectiles/cannon_projectile.tres" id="2_jb1mw"]
+[ext_resource type="Script" uid="uid://dhoiovu5dml4c" path="res://vehicle/inventory.gd" id="2_paua4"]
 [ext_resource type="Script" uid="uid://bi3pnambfplya" path="res://vehicle/parts/custom/fixed_gun_part_data.gd" id="4_eyw50"]
+
+[sub_resource type="Resource" id="Resource_ovhhd"]
+script = ExtResource("2_paua4")
+ores = Dictionary[int, int]({
+0: 10
+})
+metadata/_custom_type_script = "uid://dhoiovu5dml4c"
 
 [resource]
 script = ExtResource("4_eyw50")
@@ -13,6 +21,6 @@ power_required = 20
 build_mode_texture = ExtResource("1_eyw50")
 game_mode_scene = ExtResource("1_jb1mw")
 name = "Gun"
-cost = 15
+cost = SubResource("Resource_ovhhd")
 weight = 20
 metadata/_custom_type_script = "uid://bi3pnambfplya"

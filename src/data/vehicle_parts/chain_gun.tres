@@ -1,9 +1,18 @@
-[gd_resource type="Resource" script_class="VehicleRotatingGunPart" load_steps=5 format=3 uid="uid://swi43ik3iupi"]
+[gd_resource type="Resource" script_class="VehicleRotatingGunPart" load_steps=7 format=3 uid="uid://swi43ik3iupi"]
 
 [ext_resource type="Texture2D" uid="uid://k8g1l61lcbm5" path="res://assets/art/vehicle/mounted/chaingun/MG_001.png" id="1_7li6q"]
+[ext_resource type="Script" uid="uid://dhoiovu5dml4c" path="res://vehicle/inventory.gd" id="2_3w3da"]
 [ext_resource type="PackedScene" uid="uid://b2e2llmlywfj5" path="res://data/vehicle_parts/scenes/chain_gun_part.tscn" id="2_7li6q"]
 [ext_resource type="Resource" uid="uid://byqy24vhnldqg" path="res://data/projectiles/gun_projectile.tres" id="3_r88ec"]
 [ext_resource type="Script" uid="uid://duyx6wgtu0f64" path="res://vehicle/parts/custom/rotating_gun_part_data.gd" id="4_7li6q"]
+
+[sub_resource type="Resource" id="Resource_r88ec"]
+script = ExtResource("2_3w3da")
+ores = Dictionary[int, int]({
+0: 10,
+1: 10
+})
+metadata/_custom_type_script = "uid://dhoiovu5dml4c"
 
 [resource]
 script = ExtResource("4_7li6q")
@@ -15,6 +24,6 @@ power_required = 20
 build_mode_texture = ExtResource("1_7li6q")
 game_mode_scene = ExtResource("2_7li6q")
 name = "Machine Gun"
-cost = 20
+cost = SubResource("Resource_r88ec")
 weight = 10
 metadata/_custom_type_script = "uid://duyx6wgtu0f64"

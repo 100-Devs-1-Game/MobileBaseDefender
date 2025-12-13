@@ -1,24 +1,18 @@
 class_name CampaignData
 extends Resource
 
-@export var credits: int= 1000
+@export var inventory: Inventory
 @export var vehicle: VehicleLayout 
 
 
 
-func can_afford(amount: int)-> bool:
-	return credits >= amount
+func can_afford(cost: Inventory)-> bool:
+	return inventory.has_enough(cost)
 
 
-func earn(amount: int):
-	change_credits(amount)
+func earn(add_inv: Inventory):
+	inventory.add_inv(add_inv)
 
 
-func pay(amount: int):
-	assert(credits >= amount)
-	change_credits(-amount)
-
-
-func change_credits(amount: int):
-	credits+= amount
-	EventManager.credits_changed.emit(credits)
+func pay(sub_inv: Inventory):
+	inventory.sub_inv(sub_inv)

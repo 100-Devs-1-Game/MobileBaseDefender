@@ -104,7 +104,7 @@ func game_over():
 
 func on_level_completed():
 	level_ui.open_popup(vehicle)
-	GameData.campaign.earn(vehicle.inventory.ore)
+	GameData.campaign.earn(vehicle.inventory)
 	SceneManager.call_delayed(SceneManager.load_build_mode, 3.0)
 
 
