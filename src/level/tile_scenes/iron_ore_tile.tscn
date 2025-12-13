@@ -1,34 +1,28 @@
 [gd_scene load_steps=7 format=3 uid="uid://be3yu3jhiqf5n"]
 
-[ext_resource type="Script" uid="uid://br0mbkjhi843r" path="res://level/ore_tile.gd" id="1_vbkug"]
-[ext_resource type="Resource" uid="uid://c1ctocx5k81hf" path="res://data/ores/iron_ore.tres" id="2_npjho"]
-[ext_resource type="Texture2D" uid="uid://dj7w27djnxdan" path="res://assets/art/level/Iron Ore_Rocks 1.png" id="2_qeqcn"]
-[ext_resource type="Texture2D" uid="uid://bb4g26rch8cjt" path="res://assets/art/level/Iron Ore_Rocks 1_Cracked.png" id="3_npjho"]
+[ext_resource type="PackedScene" uid="uid://bll6vax64noq5" path="res://level/tile_scenes/base_ore_tile.tscn" id="1_da86g"]
+[ext_resource type="Resource" uid="uid://bk3miapvuurmq" path="res://data/ores/iron_ore.tres" id="2_npjho"]
+[ext_resource type="Resource" uid="uid://c1ctocx5k81hf" path="res://data/pickups/iron_ore_pickup.tres" id="3_npjho"]
+[ext_resource type="Texture2D" uid="uid://kju4xr7eaxr1" path="res://assets/art/level/ores/Iron Ore_Rocks 1.png" id="3_vbkug"]
+[ext_resource type="Texture2D" uid="uid://clfxpx2wj3dub" path="res://assets/art/level/ores/Ore_Rocks 1_Cracked.png" id="4_qeqcn"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vbkug"]
-radius = 32.0
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_maaxr"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_qeqcn"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_qeqcn")
+"texture": ExtResource("3_vbkug")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_npjho")
+"texture": ExtResource("4_qeqcn")
 }],
 "loop": false,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="Ore Tile" type="Area2D"]
-collision_layer = 512
-script = ExtResource("1_vbkug")
+[node name="Iron Ore Tile" instance=ExtResource("1_da86g")]
 data = ExtResource("2_npjho")
+pickup = ExtResource("3_npjho")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_vbkug")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_maaxr")
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_qeqcn")

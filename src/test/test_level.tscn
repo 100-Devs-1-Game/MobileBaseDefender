@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://dp2bundpytnhd"]
+[gd_scene load_steps=33 format=4 uid="uid://dp2bundpytnhd"]
 
 [ext_resource type="Script" uid="uid://c1tnmf5ecbjjj" path="res://level/level.gd" id="1_1vllh"]
 [ext_resource type="Script" uid="uid://d1xcyyg232282" path="res://test/level_sandbox.gd" id="1_klfgi"]
@@ -19,7 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://dlsewoyhq8q1t" path="res://assets/art/level/background/Outer_Ground_4.png" id="11_84qfq"]
 [ext_resource type="Resource" uid="uid://ctgldl27tg0ve" path="res://entities/bees/speed_bee_definition.tres" id="13_j8bqw"]
 [ext_resource type="PackedScene" uid="uid://dabyq7bb8c3yy" path="res://level/level_ui.tscn" id="15_q5gq5"]
+[ext_resource type="PackedScene" uid="uid://m7g1mfjuji1c" path="res://level/tile_scenes/gold_ore_tile.tscn" id="17_1ria3"]
+[ext_resource type="PackedScene" uid="uid://b8tk36qvgmdkx" path="res://level/tile_scenes/titanium_ore_tile.tscn" id="18_3i5dl"]
 [ext_resource type="Resource" uid="uid://dri40dk0ce674" path="res://entities/bees/bad_bee_definition.tres" id="18_jdt5b"]
+[ext_resource type="PackedScene" uid="uid://re15anrohpk4" path="res://level/tile_scenes/uranium_ore_tile.tscn" id="19_w0b10"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_84qfq"]
 texture = ExtResource("8_a1eau")
@@ -61,6 +64,9 @@ sources/3 = SubResource("TileSetAtlasSource_w0b10")
 scenes/1/scene = ExtResource("7_c0hlm")
 scenes/2/scene = ExtResource("8_c0hub")
 scenes/3/scene = ExtResource("9_1vllh")
+scenes/5/scene = ExtResource("17_1ria3")
+scenes/6/scene = ExtResource("18_3i5dl")
+scenes/7/scene = ExtResource("19_w0b10")
 
 [sub_resource type="TileSet" id="TileSet_hhn1m"]
 tile_size = Vector2i(128, 128)

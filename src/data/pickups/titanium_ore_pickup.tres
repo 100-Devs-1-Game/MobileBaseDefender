@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="OrePickupData" load_steps=3 format=3 uid="uid://bswmgleiaib81"]
+
+[ext_resource type="Script" uid="uid://cgmy8c1bxc5u" path="res://level/pickups/ore_pickup_data.gd" id="1_iagac"]
+[ext_resource type="Texture2D" uid="uid://dnaxehiuhicfn" path="res://assets/art/level/ores/Blue Ore_Rocks_ 1_blue Lumps.png" id="2_iagac"]
+
+[resource]
+script = ExtResource("1_iagac")
+type = 1
+texture = ExtResource("2_iagac")
+metadata/_custom_type_script = "uid://cgmy8c1bxc5u"

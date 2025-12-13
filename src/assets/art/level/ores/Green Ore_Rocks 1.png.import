@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj7w27djnxdan"
-path="res://.godot/imported/Iron Ore_Rocks 1.png-9e702e4b4b167e39068f113bba085a17.ctex"
+uid="uid://dbd8b7ewprvxd"
+path="res://.godot/imported/Green Ore_Rocks 1.png-4c711833f7b5c2206cf5f70820de7d14.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/level/Iron Ore_Rocks 1.png"
-dest_files=["res://.godot/imported/Iron Ore_Rocks 1.png-9e702e4b4b167e39068f113bba085a17.ctex"]
+source_file="res://assets/art/level/ores/Green Ore_Rocks 1.png"
+dest_files=["res://.godot/imported/Green Ore_Rocks 1.png-4c711833f7b5c2206cf5f70820de7d14.ctex"]
 
 [params]
 

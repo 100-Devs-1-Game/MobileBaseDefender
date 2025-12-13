@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8tk36qvgmdkx"]
+
+[ext_resource type="PackedScene" uid="uid://bll6vax64noq5" path="res://level/tile_scenes/base_ore_tile.tscn" id="1_gci42"]
+[ext_resource type="Resource" uid="uid://by2hert72f88d" path="res://data/ores/titanium_ore.tres" id="2_fhyyu"]
+[ext_resource type="Resource" uid="uid://bswmgleiaib81" path="res://data/pickups/titanium_ore_pickup.tres" id="2_y7exl"]
+[ext_resource type="Texture2D" uid="uid://beytu47w2cp6e" path="res://assets/art/level/ores/Blue_ore_rocks 1.png" id="3_fhyyu"]
+[ext_resource type="Texture2D" uid="uid://b3f1ff3cifdns" path="res://assets/art/level/ores/Ore_Rocks 3_Cracked.png" id="4_dfnhs"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ni3a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_fhyyu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dfnhs")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Titanium Ore Tile" instance=ExtResource("1_gci42")]
+data = ExtResource("2_fhyyu")
+pickup = ExtResource("2_y7exl")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_1ni3a")

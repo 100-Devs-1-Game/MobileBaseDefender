@@ -12,6 +12,7 @@ func _ready() -> void:
 	area_entered.connect(on_area_entered)
 	area_exited.connect(on_area_exited)
 	
+	collision_layer= 0
 	collision_mask= CollisionLayers.PICKUP
 	timer.timeout.connect(on_timeout)
 	add_child(timer)

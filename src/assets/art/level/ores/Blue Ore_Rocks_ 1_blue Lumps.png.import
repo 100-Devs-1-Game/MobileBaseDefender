@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnl0ff6rtcls2"
-path="res://.godot/imported/Iron Ore_Rocks_ 1_Iron Lumps.png-5c7900633e23eae9f04e8db567aa3f60.ctex"
+uid="uid://dnaxehiuhicfn"
+path="res://.godot/imported/Blue Ore_Rocks_ 1_blue Lumps.png-2483d1aea2bb7aac658a6f99b9c8455c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/resources/Iron Ore_Rocks_ 1_Iron Lumps.png"
-dest_files=["res://.godot/imported/Iron Ore_Rocks_ 1_Iron Lumps.png-5c7900633e23eae9f04e8db567aa3f60.ctex"]
+source_file="res://assets/art/level/ores/Blue Ore_Rocks_ 1_blue Lumps.png"
+dest_files=["res://.godot/imported/Blue Ore_Rocks_ 1_blue Lumps.png-2483d1aea2bb7aac658a6f99b9c8455c.ctex"]
 
 [params]
 

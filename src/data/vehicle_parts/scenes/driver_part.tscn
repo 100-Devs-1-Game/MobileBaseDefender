@@ -49,6 +49,7 @@ texture = ExtResource("6_rbkdc")
 texture = ExtResource("7_ud4kg")
 
 [node name="PullTarget" type="Area2D" parent="."]
+collision_layer = 0
 script = ExtResource("8_8531v")
 metadata/_custom_type_script = "uid://bii1dddyeee5l"
 

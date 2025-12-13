@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://re15anrohpk4"]
+
+[ext_resource type="PackedScene" uid="uid://bll6vax64noq5" path="res://level/tile_scenes/base_ore_tile.tscn" id="1_1mrds"]
+[ext_resource type="Resource" uid="uid://dybh0sbtcxv5r" path="res://data/ores/uranium_ore.tres" id="2_3jgit"]
+[ext_resource type="Resource" uid="uid://b1vcdowguojyn" path="res://data/pickups/uranium_ore_pickup.tres" id="2_mj82q"]
+[ext_resource type="Texture2D" uid="uid://dbd8b7ewprvxd" path="res://assets/art/level/ores/Green Ore_Rocks 1.png" id="3_dvfko"]
+[ext_resource type="Texture2D" uid="uid://d2352lwnpcnli" path="res://assets/art/level/ores/Ore_Rocks 2_Cracked.png" id="4_3jgit"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c8yi8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_dvfko")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3jgit")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Uranium Ore Tile" instance=ExtResource("1_1mrds")]
+data = ExtResource("2_3jgit")
+pickup = ExtResource("2_mj82q")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_c8yi8")

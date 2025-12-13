@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bb4g26rch8cjt"
-path="res://.godot/imported/Iron Ore_Rocks 1_Cracked.png-79001901c2bf7dbf1dd8301a13eee7cc.ctex"
+uid="uid://db8y0qbdgc7c7"
+path="res://.godot/imported/Green Ore_Rocks_ 1_Green Lumps.png-d73a1bb94aec059474ca85c105c6a522.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/level/Iron Ore_Rocks 1_Cracked.png"
-dest_files=["res://.godot/imported/Iron Ore_Rocks 1_Cracked.png-79001901c2bf7dbf1dd8301a13eee7cc.ctex"]
+source_file="res://assets/art/level/ores/Green Ore_Rocks_ 1_Green Lumps.png"
+dest_files=["res://.godot/imported/Green Ore_Rocks_ 1_Green Lumps.png-d73a1bb94aec059474ca85c105c6a522.ctex"]
 
 [params]
 
