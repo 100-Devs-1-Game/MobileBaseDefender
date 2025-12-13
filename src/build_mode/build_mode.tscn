@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://w7vbuvefyglq"]
+[gd_scene load_steps=21 format=3 uid="uid://w7vbuvefyglq"]
 
 [ext_resource type="Script" uid="uid://bjk0mdvo3ltyo" path="res://build_mode/build_mode.gd" id="1_2vdwl"]
 [ext_resource type="Script" uid="uid://bufhsendqclmw" path="res://misc/game_camera.gd" id="2_ggnbw"]
@@ -7,11 +7,26 @@
 [ext_resource type="LabelSettings" uid="uid://cfw65naj2wd0p" path="res://build_mode/stats_label_settings.tres" id="4_c1e2y"]
 [ext_resource type="Texture2D" uid="uid://c6fhw4bb2ddc" path="res://assets/art/build_mode/build_mode_grid.png" id="5_wea0h"]
 [ext_resource type="FontFile" uid="uid://cuq0hfcm174n" path="res://assets_external/fonts/Jersey_25/Jersey25-Regular.ttf" id="6_8iu1i"]
+[ext_resource type="Texture2D" uid="uid://cvjjnoe403cmg" path="res://assets/art/ui/Paper9Slice.png" id="7_n4hcl"]
+[ext_resource type="StyleBox" uid="uid://vfq5l8a2rsll" path="res://ui/panel_style.tres" id="8_8y8w5"]
+[ext_resource type="ButtonGroup" uid="uid://ber8whstdikup" path="res://ui/build_ui/build_mode_tabs_button_group.tres" id="10_8y8w5"]
+[ext_resource type="StyleBox" uid="uid://c417rdmvsso83" path="res://ui/light_button_normal_style.tres" id="10_dvtsv"]
+[ext_resource type="StyleBox" uid="uid://bvs01gb4dabbt" path="res://ui/light_button_pressed_style.tres" id="11_v3g1f"]
+[ext_resource type="PackedScene" uid="uid://dbyugginwd1ct" path="res://ui/control_ui/control_texture_button.tscn" id="12_nbwfo"]
+[ext_resource type="Script" uid="uid://dqq8x16kjf0ek" path="res://ui/control_ui/zoom_button.gd" id="13_e1m40"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wea0h"]
-bg_color = Color(0.34656933, 0.34656936, 0.34656924, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8y8w5"]
+texture = ExtResource("7_n4hcl")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+expand_margin_left = 5.0
+expand_margin_top = 5.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_wea0h"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8y8w5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kixqc"]
 font = ExtResource("6_8iu1i")
 font_size = 32
 
@@ -19,9 +34,14 @@ font_size = 32
 font = ExtResource("6_8iu1i")
 font_size = 32
 
-[sub_resource type="LabelSettings" id="LabelSettings_kixqc"]
+[sub_resource type="LabelSettings" id="LabelSettings_dvtsv"]
 font = ExtResource("6_8iu1i")
 font_size = 32
+font_color = Color(0.77785224, 0.6042458, 0.48009235, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_v3g1f"]
+font = ExtResource("6_8iu1i")
+font_size = 40
 
 [node name="Build Mode" type="Node2D"]
 script = ExtResource("1_2vdwl")
@@ -62,7 +82,7 @@ stretch_mode = 1
 [node name="Statsbar" type="PanelContainer" parent="UI"]
 offset_right = 40.0
 offset_bottom = 40.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_wea0h")
+theme_override_styles/panel = SubResource("StyleBoxTexture_8y8w5")
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/Statsbar"]
 layout_mode = 2
@@ -74,10 +94,71 @@ theme_override_constants/margin_bottom = 15
 [node name="Stats Panel" type="GridContainer" parent="UI/Statsbar/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_constants/h_separation = 25
 columns = 2
 
+[node name="Label" type="Label" parent="UI/Statsbar/MarginContainer/Stats Panel"]
+layout_mode = 2
+text = "Vehicle Stat"
+label_settings = ExtResource("4_c1e2y")
+
+[node name="Label2" type="Label" parent="UI/Statsbar/MarginContainer/Stats Panel"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "xyz"
+label_settings = ExtResource("4_c1e2y")
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="UI/Statsbar/MarginContainer/Stats Panel"]
+layout_mode = 2
+text = "Vehicle Stat"
+label_settings = ExtResource("4_c1e2y")
+
+[node name="Label4" type="Label" parent="UI/Statsbar/MarginContainer/Stats Panel"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "xyz"
+label_settings = ExtResource("4_c1e2y")
+horizontal_alignment = 2
+
+[node name="Label5" type="Label" parent="UI/Statsbar/MarginContainer/Stats Panel"]
+layout_mode = 2
+text = "Vehicle Stat"
+label_settings = ExtResource("4_c1e2y")
+
+[node name="Label6" type="Label" parent="UI/Statsbar/MarginContainer/Stats Panel"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "xyz"
+label_settings = ExtResource("4_c1e2y")
+horizontal_alignment = 2
+
+[node name="Label7" type="Label" parent="UI/Statsbar/MarginContainer/Stats Panel"]
+layout_mode = 2
+text = "Vehicle Stat"
+label_settings = ExtResource("4_c1e2y")
+
+[node name="Label8" type="Label" parent="UI/Statsbar/MarginContainer/Stats Panel"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "xyz"
+label_settings = ExtResource("4_c1e2y")
+horizontal_alignment = 2
+
+[node name="Label9" type="Label" parent="UI/Statsbar/MarginContainer/Stats Panel"]
+layout_mode = 2
+text = "Vehicle Stat"
+label_settings = ExtResource("4_c1e2y")
+
+[node name="Label10" type="Label" parent="UI/Statsbar/MarginContainer/Stats Panel"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "xyz"
+label_settings = ExtResource("4_c1e2y")
+horizontal_alignment = 2
+
 [node name="Sidebar" type="PanelContainer" parent="UI"]
-custom_minimum_size = Vector2(400, 0)
+custom_minimum_size = Vector2(550, 0)
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
@@ -85,56 +166,64 @@ anchor_bottom = 1.0
 offset_left = -300.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_wea0h")
+theme_override_styles/panel = ExtResource("8_8y8w5")
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/Sidebar"]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/Sidebar/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Sidebar/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Sidebar/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 8
+alignment = 1
 
-[node name="Label Credits" type="Label" parent="UI/Sidebar/MarginContainer/VBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
+[node name="Button Frame Tab" parent="UI/Sidebar/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("12_nbwfo")]
 layout_mode = 2
-text = "Credits: 100"
-label_settings = SubResource("LabelSettings_wea0h")
+toggle_mode = true
+button_pressed = true
+button_group = ExtResource("10_8y8w5")
+text = "FRAME"
 
-[node name="HSeparator" type="HSeparator" parent="UI/Sidebar/MarginContainer/VBoxContainer"]
+[node name="Button Parts Tab" parent="UI/Sidebar/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("12_nbwfo")]
 layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("10_8y8w5")
+text = "PARTS"
+
+[node name="Button Upgrades Tab" parent="UI/Sidebar/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("12_nbwfo")]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("10_8y8w5")
+text = "UPGRADES"
 
 [node name="Build List Content" type="VBoxContainer" parent="UI/Sidebar/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 5
 
 [node name="Button Go" type="Button" parent="UI/Sidebar/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_vertical = 10
 theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("10_dvtsv")
+theme_override_styles/pressed = ExtResource("11_v3g1f")
 text = "GO"
 
 [node name="Info Panel" type="PanelContainer" parent="UI"]
 custom_minimum_size = Vector2(0, 50)
-anchors_preset = 12
+anchors_preset = -1
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 200.0
-offset_top = -50.0
-offset_right = -400.0
+offset_top = -207.0
+offset_right = -558.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_wea0h")
+theme_override_styles/panel = ExtResource("8_8y8w5")
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/Info Panel"]
 layout_mode = 2
@@ -143,55 +232,108 @@ theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 300
 theme_override_constants/margin_bottom = 3
 
-[node name="Label Info" type="Label" parent="UI/Info Panel/MarginContainer"]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Info Panel/MarginContainer"]
 layout_mode = 2
-text = "Weight: 10  Hitpoints: 20"
-label_settings = SubResource("LabelSettings_qsv6l")
+theme_override_constants/separation = 30
 
-[node name="Tool Panel" type="PanelContainer" parent="UI"]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
-grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_wea0h")
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/Tool Panel"]
+[node name="Tool Panel" type="PanelContainer" parent="UI/Info Panel/MarginContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_styles/panel = SubResource("StyleBoxEmpty_8y8w5")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Tool Panel/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/Tool Panel/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer"]
 layout_mode = 2
-text = "Rotate"
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Rotate Part"
 label_settings = SubResource("LabelSettings_kixqc")
+horizontal_alignment = 1
 
-[node name="Rotate Buttons" type="HBoxContainer" parent="UI/Tool Panel/MarginContainer/VBoxContainer"]
+[node name="Rotate Buttons" type="HBoxContainer" parent="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Button Rotate Left" type="Button" parent="UI/Tool Panel/MarginContainer/VBoxContainer/Rotate Buttons"]
+[node name="Button Rotate Left" type="Button" parent="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer/VBoxContainer/Rotate Buttons"]
 layout_mode = 2
 disabled = true
 text = "<-"
 
-[node name="Button Rotate Right" type="Button" parent="UI/Tool Panel/MarginContainer/VBoxContainer/Rotate Buttons"]
+[node name="Button Rotate Right" type="Button" parent="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer/VBoxContainer/Rotate Buttons"]
 layout_mode = 2
 disabled = true
 text = "->"
 
+[node name="VBoxContainer" type="HBoxContainer" parent="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureButton" parent="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("12_nbwfo")]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Zoom+"
+script = ExtResource("13_e1m40")
+type = 1
+
+[node name="TextureButton2" parent="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("12_nbwfo")]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Zoom-"
+script = ExtResource("13_e1m40")
+type = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Info Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="Label Part Name" type="Label" parent="UI/Info Panel/MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Light Frame"
+label_settings = SubResource("LabelSettings_qsv6l")
+
+[node name="Label Info" type="Label" parent="UI/Info Panel/MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Weight: 10  Hitpoints: 20"
+label_settings = SubResource("LabelSettings_qsv6l")
+
+[node name="Label Description" type="Label" parent="UI/Info Panel/MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 10
+text = "Use Frames to expand your vehicles buildable area"
+label_settings = SubResource("LabelSettings_dvtsv")
+
+[node name="Inventory" type="PanelContainer" parent="UI"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -305.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_styles/panel = ExtResource("8_8y8w5")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Inventory"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Inventory/HBoxContainer"]
+layout_mode = 2
+text = "Iron: 100  Titanium: 0  Gold: 0  Uranium: 0   XP: 0"
+label_settings = SubResource("LabelSettings_v3g1f")
+
 [connection signal="gui_input" from="TextureRect Grid" to="." method="_on_texture_rect_grid_gui_input"]
 [connection signal="mouse_entered" from="TextureRect Grid" to="." method="_on_texture_rect_grid_mouse_entered"]
 [connection signal="mouse_exited" from="TextureRect Grid" to="." method="_on_texture_rect_grid_mouse_exited"]
+[connection signal="toggled" from="UI/Sidebar/MarginContainer/VBoxContainer/HBoxContainer/Button Frame Tab" to="." method="_on_switch_tab" binds= [0]]
+[connection signal="toggled" from="UI/Sidebar/MarginContainer/VBoxContainer/HBoxContainer/Button Parts Tab" to="." method="_on_switch_tab" binds= [1]]
+[connection signal="toggled" from="UI/Sidebar/MarginContainer/VBoxContainer/HBoxContainer/Button Upgrades Tab" to="." method="_on_switch_tab" binds= [2]]
 [connection signal="pressed" from="UI/Sidebar/MarginContainer/VBoxContainer/Button Go" to="." method="_on_button_go_pressed"]
-[connection signal="pressed" from="UI/Tool Panel/MarginContainer/VBoxContainer/Rotate Buttons/Button Rotate Left" to="." method="_on_button_rotate_left_pressed"]
-[connection signal="pressed" from="UI/Tool Panel/MarginContainer/VBoxContainer/Rotate Buttons/Button Rotate Right" to="." method="_on_button_rotate_right_pressed"]
+[connection signal="pressed" from="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer/VBoxContainer/Rotate Buttons/Button Rotate Left" to="." method="_on_button_rotate_left_pressed"]
+[connection signal="pressed" from="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer/VBoxContainer/Rotate Buttons/Button Rotate Right" to="." method="_on_button_rotate_right_pressed"]

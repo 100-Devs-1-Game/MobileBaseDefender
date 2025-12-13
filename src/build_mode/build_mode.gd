@@ -1,6 +1,8 @@
 class_name BuildMode
 extends Node2D
 
+enum SidebarTab { FRAME, PARTS, UPGRADES }
+
 @export var layout: VehicleLayout
 @export var build_list_item_scene: PackedScene
 @export var stats_label_settings: LabelSettings
@@ -9,11 +11,14 @@ extends Node2D
 @onready var build_list_content: VBoxContainer = %"Build List Content"
 @onready var stats_panel: GridContainer = %"Stats Panel"
 
+@onready var label_part_name: Label = %"Label Part Name"
 @onready var label_info: Label = %"Label Info"
+@onready var label_description: Label = %"Label Description"
+
+
 @onready var structure_sprites_node: Node2D = $"Structure Sprites"
 @onready var part_sprites_node: Node2D = $"Part Sprites"
 @onready var selected_sprite: Sprite2D = $"Part Sprite"
-@onready var label_credits: Label = %"Label Credits"
 
 var selected_item: BuildModeListItem
 var selected_part: VehicleBasePartData
@@ -21,10 +26,12 @@ var vehicle_stats:= VehicleStats.new()
 
 var part_rotation:= Vector2i.UP
 
+var current_tab: SidebarTab
+
 
 
 func _ready() -> void:
-	EventManager.credits_changed.connect(update_credits)
+	#EventManager.credits_changed.connect(update_credits)
 
 	if SceneManager.vehicle_layout:
 		layout= SceneManager.vehicle_layout
@@ -36,7 +43,8 @@ func _ready() -> void:
 	#else:
 		#layout= saved_layout
 
-	update_credits(0)
+	label_part_name.text= ""
+	label_info.text= ""
 	update_list()
 	update_stats()
 	render_layout()
@@ -94,15 +102,24 @@ func _on_texture_rect_grid_gui_input(event: InputEvent) -> void:
 func update_list():
 	Utils.remove_children(build_list_content)
 
-	for part in GameData.parts:
-		if not part.can_be_built:
-			continue
+	if current_tab < SidebarTab.UPGRADES:
+		for part in GameData.parts:
+			if not part.can_be_built:
+				continue
 
-		var item: BuildModeListItem= build_list_item_scene.instantiate()
-		build_list_content.add_child(item)
-		item.init(part)
-		item.selected.connect(on_item_selected)
-		item.hover.connect(on_item_hover)
+			match current_tab:
+				SidebarTab.FRAME:
+					if part is VehicleMountedPartData:
+						continue
+				SidebarTab.PARTS:
+					if part is VehicleStructureData:
+						continue
+
+			var item: BuildModeListItem= build_list_item_scene.instantiate()
+			build_list_content.add_child(item)
+			item.init(part)
+			item.selected.connect(on_item_selected)
+			item.hover.connect(on_item_hover)
 
 
 func update_stats():
@@ -157,12 +174,6 @@ func render_layout():
 func buy_part():
 	GameData.campaign.pay(selected_part.cost)
 	update_stats()
-	#if not GameData.campaign.can_afford(selected_part.cost):
-		#update_list()
-		#selected_item= null
-		#selected_part= null
-		#selected_sprite.hide()
-		#selected_sprite.texture= null
 
 
 func refund_part(part: VehicleBasePartData):
@@ -170,13 +181,10 @@ func refund_part(part: VehicleBasePartData):
 	update_stats()
 
 
-func update_credits(_credits: int): 
-	label_credits.text= str("Credits: ", GameData.campaign.credits)
-
-
 func on_item_hover(item: BuildModeListItem):
+	label_part_name.text= item.type.name
 	label_info.text= item.type.get_stats_str()
-
+	
 
 func on_item_selected(item: BuildModeListItem):
 	for other_item: BuildModeListItem in build_list_content.get_children():
@@ -202,6 +210,14 @@ func activate_rotation_buttons(enabled: bool):
 	for button: Button in %"Rotate Buttons".get_children():
 		button.disabled= not enabled
 
+
+func deselect():
+	selected_item= null
+	selected_part= null
+	selected_sprite.hide()
+	selected_sprite.texture= null
+	label_info.text= ""
+	
 
 func get_pos_from_tile(tile: Vector2i)-> Vector2:
 	return tile * 128
@@ -237,3 +253,11 @@ func _on_button_rotate_left_pressed() -> void:
 func _on_button_rotate_right_pressed() -> void:
 	assert(selected_part.can_rotate())
 	rotate_part(1)
+
+
+func _on_switch_tab(on_off: bool, new_tab: int):
+	if not on_off:
+		return
+	current_tab= new_tab
+	deselect()
+	update_list()

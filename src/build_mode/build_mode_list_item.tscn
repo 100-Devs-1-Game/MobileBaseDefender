@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b7jvanrnafg43"]
+[gd_scene load_steps=10 format=3 uid="uid://b7jvanrnafg43"]
 
 [ext_resource type="StyleBox" uid="uid://k1tblxlbw76e" path="res://build_mode/list_item_style_disabled.tres" id="1_42deh"]
 [ext_resource type="Script" uid="uid://duetls5m8ttl5" path="res://build_mode/build_mode_list_item.gd" id="1_ehu7w"]
@@ -6,11 +6,18 @@
 [ext_resource type="Texture2D" uid="uid://dig2s5xnlnrsw" path="res://assets/art/vehicle/structure/Base Frame_Clean_1.png" id="1_ntb08"]
 [ext_resource type="StyleBox" uid="uid://ipdh607c03oy" path="res://build_mode/list_item_style.tres" id="3_jk3vx"]
 [ext_resource type="StyleBox" uid="uid://bdwctrvoq7wy4" path="res://build_mode/list_item_style_hover.tres" id="4_42deh"]
+[ext_resource type="FontFile" uid="uid://cuq0hfcm174n" path="res://assets_external/fonts/Jersey_25/Jersey25-Regular.ttf" id="7_wul22"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gawnm"]
-font_size = 24
+font = ExtResource("7_wul22")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_c5vcu"]
+font = ExtResource("7_wul22")
+font_size = 30
 
 [node name="Build Mode List Item" type="PanelContainer"]
+custom_minimum_size = Vector2(350, 0)
 theme_override_styles/panel = ExtResource("1_42deh")
 script = ExtResource("1_ehu7w")
 default_style = ExtResource("3_jk3vx")
@@ -31,7 +38,7 @@ theme_override_constants/separation = 10
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("1_ntb08")
 expand_mode = 1
@@ -40,13 +47,26 @@ expand_mode = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Name"
 label_settings = SubResource("LabelSettings_gawnm")
 
-[node name="Label Cost" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label Cost" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "20 Credits"
+text = "50 Iron"
+label_settings = SubResource("LabelSettings_c5vcu")
+horizontal_alignment = 2
+
+[node name="Label Cost2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "20 Gold"
+label_settings = SubResource("LabelSettings_c5vcu")
+horizontal_alignment = 2
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
