@@ -18,7 +18,7 @@ font_size = 30
 
 [node name="Build Mode List Item" type="PanelContainer"]
 custom_minimum_size = Vector2(350, 0)
-theme_override_styles/panel = ExtResource("1_42deh")
+theme_override_styles/panel = ExtResource("3_jk3vx")
 script = ExtResource("1_ehu7w")
 default_style = ExtResource("3_jk3vx")
 hover_style = ExtResource("4_42deh")

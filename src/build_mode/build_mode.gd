@@ -95,8 +95,8 @@ func _on_texture_rect_grid_gui_input(event: InputEvent) -> void:
 				refund_part(layout.get_mounted_part_info_at(tile_pos).part)
 				render_layout()
 			elif layout.has_structure_at(tile_pos) and can_remove_structure_at(tile_pos):
-				layout.remove_structure(tile_pos)
 				refund_part(layout.get_structure_at(tile_pos))
+				layout.remove_structure(tile_pos)
 				render_layout()
 
 

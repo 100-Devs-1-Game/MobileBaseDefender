@@ -46,6 +46,7 @@ func select(b: bool):
 
 
 func disable(b: bool):
+	if is_disabled == b: return
 	is_disabled= b
 	add_theme_stylebox_override("panel", disabled_style if b else default_style)
 
