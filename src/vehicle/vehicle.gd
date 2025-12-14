@@ -144,6 +144,7 @@ func add_structure_part(data: VehicleStructureData, tile_pos: Vector2i, part_pos
 	shadow_sprite.position= part_pos
 	shadow_sprite.modulate.a= shadow_alpha
 	shadow_node.add_child(shadow_sprite)
+	tile_references[tile_pos].shadow_node= shadow_sprite
 
 
 func add_mounted_part(info: VehicleMountedPartInfo, tile_pos: Vector2i, part_pos: Vector2):
@@ -241,6 +242,7 @@ func take_damage_at_shape(dmg_inst: DamageInstance, idx: int):
 				custom_mounted_objects.erase(refs.mounted_node)
 			if refs.mounted_node:
 				refs.mounted_node.queue_free()
+			refs.shadow_node.queue_free()
 			
 			refs.collision_shape.set_deferred("disabled", true)
 			layout.remove_structure(tile_pos, true)
