@@ -27,6 +27,7 @@ func init(p_type: VehicleBasePartData):
 	
 	label_cost2.text= ""
 	var label: Label= label_cost
+	assert(not type.cost.ores.is_empty())
 	for ore in type.cost.ores.keys():
 		label.text= "%d %s" % [ type.cost.ores[ore], Inventory.OreType.keys()[ore] ]
 		label= label_cost2
