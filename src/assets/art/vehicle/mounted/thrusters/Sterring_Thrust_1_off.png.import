@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbn2x53c40gcq"
-path="res://.godot/imported/thrusters.png-8cc9784c614ca7c25595cb3fa3154edb.ctex"
+uid="uid://bg5ls11ljwxxr"
+path="res://.godot/imported/Sterring_Thrust_1_off.png-ab85fa9b7900c73a4ba98876c6bb155e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/vehicle/mounted/thrusters.png"
-dest_files=["res://.godot/imported/thrusters.png-8cc9784c614ca7c25595cb3fa3154edb.ctex"]
+source_file="res://assets/art/vehicle/mounted/thrusters/Sterring_Thrust_1_off.png"
+dest_files=["res://.godot/imported/Sterring_Thrust_1_off.png-ab85fa9b7900c73a4ba98876c6bb155e.ctex"]
 
 [params]
 
