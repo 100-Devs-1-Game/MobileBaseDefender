@@ -91,8 +91,8 @@ func _on_texture_rect_grid_gui_input(event: InputEvent) -> void:
 				
 		elif event.button_index == MOUSE_BUTTON_RIGHT:
 			if layout.has_mounted_part_at(tile_pos):
-				layout.remove_part(tile_pos)
 				refund_part(layout.get_mounted_part_info_at(tile_pos).part)
+				layout.remove_part(tile_pos)
 				render_layout()
 			elif layout.has_structure_at(tile_pos) and can_remove_structure_at(tile_pos):
 				refund_part(layout.get_structure_at(tile_pos))
