@@ -14,7 +14,7 @@ enum SidebarTab { FRAME, PARTS, UPGRADES }
 @onready var label_part_name: Label = %"Label Part Name"
 @onready var label_info: Label = %"Label Info"
 @onready var label_description: Label = %"Label Description"
-
+@onready var label_inventory: Label = %"Label Inventory"
 
 @onready var structure_sprites_node: Node2D = $"Structure Sprites"
 @onready var part_sprites_node: Node2D = $"Part Sprites"
@@ -31,7 +31,7 @@ var current_tab: SidebarTab
 
 
 func _ready() -> void:
-	#EventManager.credits_changed.connect(update_credits)
+	GameData.campaign.inventory.amount_changed.connect(update_inventory_display)
 
 	if SceneManager.vehicle_layout:
 		layout= SceneManager.vehicle_layout
@@ -45,6 +45,7 @@ func _ready() -> void:
 
 	label_part_name.text= ""
 	label_info.text= ""
+	update_inventory_display()
 	update_list()
 	update_stats()
 	render_layout()
@@ -143,6 +144,10 @@ func update_stats():
 		label.size_flags_horizontal= Control.SIZE_EXPAND_FILL
 		label.horizontal_alignment= HORIZONTAL_ALIGNMENT_RIGHT
 		stats_panel.add_child(label)
+
+
+func update_inventory_display():
+	label_inventory.text= GameData.campaign.inventory.get_as_str()
 
 
 func render_layout():

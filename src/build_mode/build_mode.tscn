@@ -322,7 +322,8 @@ theme_override_styles/panel = ExtResource("8_8y8w5")
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Inventory"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UI/Inventory/HBoxContainer"]
+[node name="Label Inventory" type="Label" parent="UI/Inventory/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Iron: 100  Titanium: 0  Gold: 0  Uranium: 0   XP: 0"
 label_settings = SubResource("LabelSettings_v3g1f")
