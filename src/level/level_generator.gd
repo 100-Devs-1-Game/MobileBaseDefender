@@ -101,15 +101,15 @@ func second_pass(level: Level):
 	level.tile_map_objects.clear()
 	
 	var tile_rect:= level.tile_map_floor.get_used_rect()
-	var rect:= Rect2()
-	rect= rect.expand(level.tile_map_floor.map_to_local(tile_rect.position))
+	var rect:= Rect2(level.tile_map_floor.map_to_local(tile_rect.position), Vector2.ONE)
 	rect= rect.expand(level.tile_map_floor.map_to_local(tile_rect.end))
 
-	rect.position-= Vector2.ONE * 1000
-	rect.size+= Vector2.ONE * 2000
 
 	var start_tile:= level.tile_map_background.local_to_map(rect.position)
 	var end_tile:= level.tile_map_background.local_to_map(rect.end)
+
+	start_tile-= Vector2i.ONE * 10
+	end_tile+= Vector2i.ONE * 10
 
 	for x in range(start_tile.x, end_tile.x):
 		for y in range(start_tile.y, end_tile.y):
