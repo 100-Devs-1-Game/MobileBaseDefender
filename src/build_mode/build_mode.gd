@@ -202,6 +202,8 @@ func on_item_hover(item: BuildModeListItem):
 	
 
 func on_item_selected(item: BuildModeListItem):
+	if item.is_disabled: return
+	
 	for other_item: BuildModeListItem in build_list_content.get_children():
 		if other_item != item:
 			other_item.select(false)
