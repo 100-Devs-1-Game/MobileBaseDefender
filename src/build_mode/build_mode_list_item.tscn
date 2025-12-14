@@ -3,7 +3,7 @@
 [ext_resource type="StyleBox" uid="uid://k1tblxlbw76e" path="res://build_mode/list_item_style_disabled.tres" id="1_42deh"]
 [ext_resource type="Script" uid="uid://duetls5m8ttl5" path="res://build_mode/build_mode_list_item.gd" id="1_ehu7w"]
 [ext_resource type="StyleBox" uid="uid://buvqav41xqu8n" path="res://build_mode/list_item_style_active.tres" id="1_gawnm"]
-[ext_resource type="Texture2D" uid="uid://dig2s5xnlnrsw" path="res://assets/art/vehicle/structure/Base Frame_Clean_1.png" id="1_ntb08"]
+[ext_resource type="Texture2D" uid="uid://dig2s5xnlnrsw" path="res://assets/art/vehicle/structure/light_plate/Base Frame_Clean_1.png" id="1_ntb08"]
 [ext_resource type="StyleBox" uid="uid://ipdh607c03oy" path="res://build_mode/list_item_style.tres" id="3_jk3vx"]
 [ext_resource type="StyleBox" uid="uid://bdwctrvoq7wy4" path="res://build_mode/list_item_style_hover.tres" id="4_42deh"]
 [ext_resource type="FontFile" uid="uid://cuq0hfcm174n" path="res://assets_external/fonts/Jersey_25/Jersey25-Regular.ttf" id="7_wul22"]

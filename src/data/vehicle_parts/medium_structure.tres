@@ -1,8 +1,13 @@
-[gd_resource type="Resource" script_class="VehicleStructureData" load_steps=5 format=3 uid="uid://8cc50frc4paw"]
+[gd_resource type="Resource" script_class="VehicleStructureData" load_steps=10 format=3 uid="uid://8cc50frc4paw"]
 
 [ext_resource type="Script" uid="uid://dhoiovu5dml4c" path="res://vehicle/inventory.gd" id="1_hdb7p"]
 [ext_resource type="Script" uid="uid://ddgjj5b5vs23n" path="res://vehicle/parts/vehicle_structure_data.gd" id="1_w40cn"]
-[ext_resource type="Texture2D" uid="uid://dcenpfeevf1ib" path="res://assets/art/vehicle/structure/Base Frame_2_Clean_3_no_dots.png" id="2_fh3gq"]
+[ext_resource type="Texture2D" uid="uid://dcenpfeevf1ib" path="res://assets/art/vehicle/structure/solid_plate/Base Frame_2_Clean_3_no_dots.png" id="2_fh3gq"]
+[ext_resource type="Texture2D" uid="uid://cpf2wxxnvp44b" path="res://assets/art/vehicle/structure/solid_plate/Base Frame_2_Crack_1.png" id="4_g2i13"]
+[ext_resource type="Texture2D" uid="uid://ccg84yaahhc6h" path="res://assets/art/vehicle/structure/solid_plate/Base Frame_2_Crack_2.png" id="5_w5vgj"]
+[ext_resource type="Texture2D" uid="uid://byffflckwvyab" path="res://assets/art/vehicle/structure/solid_plate/Base Frame_2_Crack_3.png" id="6_cqkua"]
+[ext_resource type="Texture2D" uid="uid://cqd6kdgd1mn56" path="res://assets/art/vehicle/structure/solid_plate/Base Frame_2_Crack_4.png" id="7_qbhci"]
+[ext_resource type="Texture2D" uid="uid://lskfrprbmjxy" path="res://assets/art/vehicle/structure/solid_plate/Base Frame_2_Crack_5.png" id="8_a2kd4"]
 
 [sub_resource type="Resource" id="Resource_a0k8v"]
 script = ExtResource("1_hdb7p")
@@ -14,7 +19,7 @@ metadata/_custom_type_script = "uid://dhoiovu5dml4c"
 [resource]
 script = ExtResource("1_w40cn")
 hitpoints = 25
-texture_stages = Array[Texture2D]([ExtResource("2_fh3gq")])
+texture_stages = Array[Texture2D]([ExtResource("2_fh3gq"), ExtResource("4_g2i13"), ExtResource("5_w5vgj"), ExtResource("6_cqkua"), ExtResource("7_qbhci"), ExtResource("8_a2kd4")])
 name = "Solid Frame"
 cost = SubResource("Resource_a0k8v")
 weight = 10

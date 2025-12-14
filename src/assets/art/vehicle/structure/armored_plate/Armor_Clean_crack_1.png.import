@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5ow4t4k2mucg"
-path="res://.godot/imported/Base_plate-damae_0005.png-cfd5601b32e321e33ba3cc9f37d79c56.ctex"
+uid="uid://0jolm75ppqtf"
+path="res://.godot/imported/Armor_Clean_crack_1.png-693a5eebabe78eef87511d8bc62f1b09.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/vehicle/structure/base_plate/Base_plate-damae_0005.png"
-dest_files=["res://.godot/imported/Base_plate-damae_0005.png-cfd5601b32e321e33ba3cc9f37d79c56.ctex"]
+source_file="res://assets/art/vehicle/structure/armored_plate/Armor_Clean_crack_1.png"
+dest_files=["res://.godot/imported/Armor_Clean_crack_1.png-693a5eebabe78eef87511d8bc62f1b09.ctex"]
 
 [params]
 

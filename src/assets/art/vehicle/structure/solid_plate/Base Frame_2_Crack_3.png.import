@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3f6wk4pimyl3"
-path="res://.godot/imported/Base Frame 2_Dirty 2.png-d282be24d3caf3dd47c37bb12cbe838c.ctex"
+uid="uid://byffflckwvyab"
+path="res://.godot/imported/Base Frame_2_Crack_3.png-53587707a5e9b4a79bd5af1abc70ef3b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/vehicle/structure/Base Frame 2_Dirty 2.png"
-dest_files=["res://.godot/imported/Base Frame 2_Dirty 2.png-d282be24d3caf3dd47c37bb12cbe838c.ctex"]
+source_file="res://assets/art/vehicle/structure/solid_plate/Base Frame_2_Crack_3.png"
+dest_files=["res://.godot/imported/Base Frame_2_Crack_3.png-53587707a5e9b4a79bd5af1abc70ef3b.ctex"]
 
 [params]
 

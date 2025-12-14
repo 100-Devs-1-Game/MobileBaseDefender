@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://26flf65sv015"
-path="res://.godot/imported/Base Frame_Dirty_1.png-93efb97e01849df920e68d41741bff13.ctex"
+uid="uid://bs4vpxudub8tx"
+path="res://.godot/imported/Base_plate-damae_0004.png-7cad5b640e9e070de455b6aa16bef8f5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/vehicle/structure/Base Frame_Dirty_1.png"
-dest_files=["res://.godot/imported/Base Frame_Dirty_1.png-93efb97e01849df920e68d41741bff13.ctex"]
+source_file="res://assets/art/vehicle/structure/light_plate/Base_plate-damae_0004.png"
+dest_files=["res://.godot/imported/Base_plate-damae_0004.png-7cad5b640e9e070de455b6aa16bef8f5.ctex"]
 
 [params]
 
