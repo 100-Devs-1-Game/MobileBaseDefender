@@ -1,20 +1,29 @@
 class_name GameCamera
 extends Camera2D
 
+@export var canvas_offset: Vector2
+
 
 func _ready() -> void:
 	Global.camera= self
+	adjust_offset()
 
 
 func zoom_in():
 	if zoom.is_equal_approx(Vector2.ONE * 2):
 		return
 	zoom*= 2
+	adjust_offset()
 
 
 func zoom_out():
 	if zoom.x > 0.125:
 		zoom/= 2
+	adjust_offset()
+
+
+func adjust_offset():
+	offset= canvas_offset / zoom.x
 
 
 func _input(event: InputEvent) -> void:

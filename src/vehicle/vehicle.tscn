@@ -33,6 +33,7 @@ shadow_texture = ExtResource("4_jmtuw")
 [node name="Camera2D" type="Camera2D" parent="."]
 ignore_rotation = false
 script = ExtResource("5_157w3")
+canvas_offset = Vector2(235, 0)
 
 [node name="Structure Nodes" type="Node2D" parent="."]
 
