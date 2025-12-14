@@ -31,6 +31,10 @@ func init(p_type: VehicleBasePartData):
 		label.text= "%d %s" % [ type.cost.ores[ore], Inventory.OreType.keys()[ore] ]
 		label= label_cost2
 		
+	check_affordability()
+
+
+func check_affordability():
 	disable(not GameData.campaign.can_afford(type.cost))
 
 

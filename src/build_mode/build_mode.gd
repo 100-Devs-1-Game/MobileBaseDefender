@@ -123,6 +123,14 @@ func update_list():
 			item.hover.connect(on_item_hover)
 
 
+func check_list():
+	for item: BuildModeListItem in build_list_content.get_children():
+		item.check_affordability()
+		if item.is_disabled and item.is_selected:
+			item.select(false)
+			deselect()
+
+
 func update_stats():
 	vehicle_stats.update(layout)
 	Utils.remove_children(stats_panel)
@@ -179,11 +187,13 @@ func render_layout():
 func buy_part():
 	GameData.campaign.pay(selected_part.cost)
 	update_stats()
+	check_list()
 
 
 func refund_part(part: VehicleBasePartData):
 	GameData.campaign.earn(part.cost)
 	update_stats()
+	check_list()
 
 
 func on_item_hover(item: BuildModeListItem):
