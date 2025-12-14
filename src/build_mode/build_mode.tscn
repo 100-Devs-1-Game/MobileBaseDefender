@@ -55,6 +55,7 @@ stats_label_settings = ExtResource("4_c1e2y")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(128, 0)
 script = ExtResource("2_ggnbw")
+canvas_offset = Vector2(170, 50)
 
 [node name="Structure Sprites" type="Node2D" parent="."]
 
