@@ -95,6 +95,7 @@ shader_parameter/edge_softness = 1.0
 
 [node name="Vehicle UI" type="CanvasLayer"]
 script = ExtResource("1_8pk62")
+enable_minimap = false
 
 [node name="Debug Window" parent="." instance=ExtResource("1_2mjmc")]
 unique_name_in_owner = true
