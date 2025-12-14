@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://w7vbuvefyglq"]
+[gd_scene load_steps=20 format=3 uid="uid://w7vbuvefyglq"]
 
 [ext_resource type="Script" uid="uid://bjk0mdvo3ltyo" path="res://build_mode/build_mode.gd" id="1_2vdwl"]
 [ext_resource type="Script" uid="uid://bufhsendqclmw" path="res://misc/game_camera.gd" id="2_ggnbw"]
@@ -10,8 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cvjjnoe403cmg" path="res://assets/art/ui/Paper9Slice.png" id="7_n4hcl"]
 [ext_resource type="StyleBox" uid="uid://vfq5l8a2rsll" path="res://ui/panel_style.tres" id="8_8y8w5"]
 [ext_resource type="ButtonGroup" uid="uid://ber8whstdikup" path="res://ui/build_ui/build_mode_tabs_button_group.tres" id="10_8y8w5"]
-[ext_resource type="StyleBox" uid="uid://c417rdmvsso83" path="res://ui/light_button_normal_style.tres" id="10_dvtsv"]
-[ext_resource type="StyleBox" uid="uid://bvs01gb4dabbt" path="res://ui/light_button_pressed_style.tres" id="11_v3g1f"]
+[ext_resource type="PackedScene" uid="uid://dqhtrcaerpmkt" path="res://build_mode/go_button.tscn" id="11_n4hcl"]
 [ext_resource type="PackedScene" uid="uid://dbyugginwd1ct" path="res://ui/control_ui/control_texture_button.tscn" id="12_nbwfo"]
 [ext_resource type="Script" uid="uid://dqq8x16kjf0ek" path="res://ui/control_ui/zoom_button.gd" id="13_e1m40"]
 
@@ -204,18 +203,13 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 5
 
-[node name="Button Go" type="Button" parent="UI/Sidebar/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+[node name="Go Button" parent="UI/Sidebar/MarginContainer/VBoxContainer" instance=ExtResource("11_n4hcl")]
 layout_mode = 2
 size_flags_vertical = 10
-theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = ExtResource("10_dvtsv")
-theme_override_styles/pressed = ExtResource("11_v3g1f")
-text = "GO"
 
 [node name="Info Panel" type="PanelContainer" parent="UI"]
 custom_minimum_size = Vector2(0, 50)
-anchors_preset = -1
+anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -311,7 +305,7 @@ text = "Use Frames to expand your vehicles buildable area"
 label_settings = SubResource("LabelSettings_dvtsv")
 
 [node name="Inventory" type="PanelContainer" parent="UI"]
-anchors_preset = -1
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -305.0
@@ -334,6 +328,6 @@ label_settings = SubResource("LabelSettings_v3g1f")
 [connection signal="toggled" from="UI/Sidebar/MarginContainer/VBoxContainer/HBoxContainer/Button Frame Tab" to="." method="_on_switch_tab" binds= [0]]
 [connection signal="toggled" from="UI/Sidebar/MarginContainer/VBoxContainer/HBoxContainer/Button Parts Tab" to="." method="_on_switch_tab" binds= [1]]
 [connection signal="toggled" from="UI/Sidebar/MarginContainer/VBoxContainer/HBoxContainer/Button Upgrades Tab" to="." method="_on_switch_tab" binds= [2]]
-[connection signal="pressed" from="UI/Sidebar/MarginContainer/VBoxContainer/Button Go" to="." method="_on_button_go_pressed"]
+[connection signal="animation_finished" from="UI/Sidebar/MarginContainer/VBoxContainer/Go Button" to="." method="_on_button_go_pressed"]
 [connection signal="pressed" from="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer/VBoxContainer/Rotate Buttons/Button Rotate Left" to="." method="_on_button_rotate_left_pressed"]
 [connection signal="pressed" from="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer/VBoxContainer/Rotate Buttons/Button Rotate Right" to="." method="_on_button_rotate_right_pressed"]

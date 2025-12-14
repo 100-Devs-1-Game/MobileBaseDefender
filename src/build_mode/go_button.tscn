@@ -1,0 +1,28 @@
+[gd_scene load_steps=13 format=3 uid="uid://dqhtrcaerpmkt"]
+
+[ext_resource type="Texture2D" uid="uid://cp26pb8cvf2h3" path="res://assets/art/build_mode/go_button/0001.png" id="1_5gwgu"]
+[ext_resource type="Script" uid="uid://d2oq5onakavsm" path="res://build_mode/go_button.gd" id="2_24hde"]
+[ext_resource type="Texture2D" uid="uid://cn07buauryuxw" path="res://assets/art/build_mode/go_button/0002.png" id="3_efrha"]
+[ext_resource type="Texture2D" uid="uid://b53lwujny2fht" path="res://assets/art/build_mode/go_button/GOLeverHighlighted.png" id="3_prtt8"]
+[ext_resource type="Texture2D" uid="uid://bosegpn2drjdn" path="res://assets/art/build_mode/go_button/0003.png" id="4_i14hb"]
+[ext_resource type="Texture2D" uid="uid://mxr26u4pgfki" path="res://assets/art/build_mode/go_button/0004.png" id="5_cmrdu"]
+[ext_resource type="Texture2D" uid="uid://chhstmbaxnwqj" path="res://assets/art/build_mode/go_button/0005.png" id="6_4wrld"]
+[ext_resource type="Texture2D" uid="uid://bf3i74j7hx8oq" path="res://assets/art/build_mode/go_button/0006.png" id="8_t2khf"]
+[ext_resource type="Texture2D" uid="uid://bame05cowfte5" path="res://assets/art/build_mode/go_button/0007.png" id="9_hdo2f"]
+[ext_resource type="Texture2D" uid="uid://cqbladkx2bbmm" path="res://assets/art/build_mode/go_button/0008.png" id="10_gao8x"]
+[ext_resource type="Texture2D" uid="uid://bxve4lyphafdh" path="res://assets/art/build_mode/go_button/0009.png" id="11_seo8v"]
+[ext_resource type="Texture2D" uid="uid://cgi420cmp0ksn" path="res://assets/art/build_mode/go_button/0010.png" id="12_h52qu"]
+
+[node name="Go Button" type="TextureRect"]
+custom_minimum_size = Vector2(512, 128)
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_5gwgu")
+script = ExtResource("2_24hde")
+speed = 15.0
+highlight_texture = ExtResource("3_prtt8")
+animation = Array[Texture2D]([ExtResource("3_efrha"), ExtResource("4_i14hb"), ExtResource("5_cmrdu"), ExtResource("6_4wrld"), ExtResource("8_t2khf"), ExtResource("9_hdo2f"), ExtResource("10_gao8x"), ExtResource("11_seo8v"), ExtResource("12_h52qu")])
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
