@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://w7vbuvefyglq"]
+[gd_scene load_steps=27 format=3 uid="uid://w7vbuvefyglq"]
 
 [ext_resource type="Script" uid="uid://bjk0mdvo3ltyo" path="res://build_mode/build_mode.gd" id="1_2vdwl"]
 [ext_resource type="Script" uid="uid://bufhsendqclmw" path="res://misc/game_camera.gd" id="2_ggnbw"]
@@ -11,8 +11,16 @@
 [ext_resource type="StyleBox" uid="uid://vfq5l8a2rsll" path="res://ui/panel_style.tres" id="8_8y8w5"]
 [ext_resource type="ButtonGroup" uid="uid://ber8whstdikup" path="res://ui/build_ui/build_mode_tabs_button_group.tres" id="10_8y8w5"]
 [ext_resource type="PackedScene" uid="uid://dqhtrcaerpmkt" path="res://build_mode/go_button.tscn" id="11_n4hcl"]
+[ext_resource type="Texture2D" uid="uid://ckoahkd6xyqm1" path="res://assets/art/build_mode/DialLeft.png" id="12_dvtsv"]
 [ext_resource type="PackedScene" uid="uid://dbyugginwd1ct" path="res://ui/control_ui/control_texture_button.tscn" id="12_nbwfo"]
 [ext_resource type="Script" uid="uid://dqq8x16kjf0ek" path="res://ui/control_ui/zoom_button.gd" id="13_e1m40"]
+[ext_resource type="Texture2D" uid="uid://ceem37n4rkcck" path="res://assets/art/build_mode/DialLeftPressed.png" id="13_tp38k"]
+[ext_resource type="Texture2D" uid="uid://ohwojrlhsbfs" path="res://assets/art/build_mode/DialRight.png" id="13_v3g1f"]
+[ext_resource type="Texture2D" uid="uid://ch81hjbnlrlud" path="res://assets/art/build_mode/DialLeftHovered.png" id="14_m6a3v"]
+[ext_resource type="Texture2D" uid="uid://b2q02mwh8ilw" path="res://assets/art/build_mode/DialLeftDisabled.png" id="15_x6fox"]
+[ext_resource type="Texture2D" uid="uid://byrq87sut7sm3" path="res://assets/art/build_mode/DialRightPressed.png" id="17_g7tsb"]
+[ext_resource type="Texture2D" uid="uid://bp831a6fkun2x" path="res://assets/art/build_mode/DialRightHovered.png" id="18_8n6tu"]
+[ext_resource type="Texture2D" uid="uid://hhme2kr1d78c" path="res://assets/art/build_mode/DialRightDisabled.png" id="19_oquwh"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8y8w5"]
 texture = ExtResource("7_n4hcl")
@@ -24,10 +32,6 @@ expand_margin_left = 5.0
 expand_margin_top = 5.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8y8w5"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_kixqc"]
-font = ExtResource("6_8iu1i")
-font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_qsv6l"]
 font = ExtResource("6_8iu1i")
@@ -213,8 +217,8 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -207.0
-offset_right = -558.0
+offset_top = -224.0
+offset_right = -580.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = ExtResource("8_8y8w5")
@@ -241,27 +245,27 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Label" type="Label" parent="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Rotate Part"
-label_settings = SubResource("LabelSettings_kixqc")
-horizontal_alignment = 1
-
 [node name="Rotate Buttons" type="HBoxContainer" parent="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Button Rotate Left" type="Button" parent="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer/VBoxContainer/Rotate Buttons"]
+[node name="TextureButton" type="TextureButton" parent="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer/VBoxContainer/Rotate Buttons"]
 layout_mode = 2
 disabled = true
-text = "<-"
+texture_normal = ExtResource("12_dvtsv")
+texture_pressed = ExtResource("13_tp38k")
+texture_hover = ExtResource("14_m6a3v")
+texture_disabled = ExtResource("15_x6fox")
 
-[node name="Button Rotate Right" type="Button" parent="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer/VBoxContainer/Rotate Buttons"]
+[node name="TextureButton2" type="TextureButton" parent="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer/VBoxContainer/Rotate Buttons"]
 layout_mode = 2
 disabled = true
-text = "->"
+texture_normal = ExtResource("13_v3g1f")
+texture_pressed = ExtResource("17_g7tsb")
+texture_hover = ExtResource("18_8n6tu")
+texture_disabled = ExtResource("19_oquwh")
 
 [node name="VBoxContainer" type="HBoxContainer" parent="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -329,5 +333,5 @@ label_settings = SubResource("LabelSettings_v3g1f")
 [connection signal="toggled" from="UI/Sidebar/MarginContainer/VBoxContainer/HBoxContainer/Button Parts Tab" to="." method="_on_switch_tab" binds= [1]]
 [connection signal="toggled" from="UI/Sidebar/MarginContainer/VBoxContainer/HBoxContainer/Button Upgrades Tab" to="." method="_on_switch_tab" binds= [2]]
 [connection signal="animation_finished" from="UI/Sidebar/MarginContainer/VBoxContainer/Go Button" to="." method="_on_button_go_pressed"]
-[connection signal="pressed" from="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer/VBoxContainer/Rotate Buttons/Button Rotate Left" to="." method="_on_button_rotate_left_pressed"]
-[connection signal="pressed" from="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer/VBoxContainer/Rotate Buttons/Button Rotate Right" to="." method="_on_button_rotate_right_pressed"]
+[connection signal="pressed" from="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer/VBoxContainer/Rotate Buttons/TextureButton" to="." method="_on_button_rotate_left_pressed"]
+[connection signal="pressed" from="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer/VBoxContainer/Rotate Buttons/TextureButton2" to="." method="_on_button_rotate_right_pressed"]

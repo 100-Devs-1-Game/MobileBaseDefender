@@ -207,7 +207,7 @@ func rotate_part(delta: int):
 
 
 func activate_rotation_buttons(enabled: bool):
-	for button: Button in %"Rotate Buttons".get_children():
+	for button: BaseButton in %"Rotate Buttons".get_children():
 		button.disabled= not enabled
 
 
