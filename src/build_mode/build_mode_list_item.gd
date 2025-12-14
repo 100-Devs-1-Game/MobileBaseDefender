@@ -36,7 +36,7 @@ func init(p_type: VehicleBasePartData):
 
 func select(b: bool):
 	is_selected= b
-	prints(type.name, "selected", b)
+	if is_disabled: return
 	add_theme_stylebox_override("panel", selected_style if b else default_style)
 
 
