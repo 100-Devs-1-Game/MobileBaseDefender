@@ -22,7 +22,7 @@ func _ready() -> void:
 	await vehicle.ready
 	
 	if not OS.is_debug_build():
-		debug_window.queue_free()
+		debug_window.hide()
 	
 	if enable_minimap:
 		minimap_data= vehicle.get_level().minimap_data

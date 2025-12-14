@@ -8,6 +8,9 @@ var active: GameConstantsData
 
 
 func _ready() -> void:
+	assert(testing_constants)
+	assert(release_constants)
+	
 	if OS.is_debug_build():
 		active= testing_constants
 	else:
