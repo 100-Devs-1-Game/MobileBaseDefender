@@ -263,6 +263,6 @@ func _on_button_rotate_right_pressed() -> void:
 func _on_switch_tab(on_off: bool, new_tab: int):
 	if not on_off:
 		return
-	current_tab= new_tab
+	current_tab= new_tab as SidebarTab
 	deselect()
 	update_list()

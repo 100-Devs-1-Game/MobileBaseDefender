@@ -66,7 +66,7 @@ func change_ore_amount(type: OreType, amount: int):
 
 
 func get_as_str()-> String:
-	var result: String
+	var result: String= ""
 	for i in 4:
 		result+= "%s: %d  " % [ OreType.keys()[i], get_ore(i) ] 
 	return result
