@@ -9,6 +9,11 @@ func _ready() -> void:
 	adjust_offset()
 
 
+func _process(_delta: float) -> void:
+	if not ignore_rotation:
+		offset= (canvas_offset / zoom.x).rotated(global_rotation)
+
+
 func zoom_in():
 	if zoom.is_equal_approx(Vector2.ONE * 2):
 		return
