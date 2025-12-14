@@ -95,6 +95,22 @@ func create_cell_rect(center: Vector2i, width: int)-> Array[Vector2i]:
 
 
 func second_pass(level: Level):
+	var tile_rect:= level.tile_map_floor.get_used_rect()
+	var rect:= Rect2()
+	rect= rect.expand(level.tile_map_floor.map_to_local(tile_rect.position))
+	rect= rect.expand(level.tile_map_floor.map_to_local(tile_rect.end))
+
+	rect.position-= Vector2.ONE * 1000
+	rect.size+= Vector2.ONE * 2000
+
+	var start_tile:= level.tile_map_background.local_to_map(rect.position)
+	var end_tile:= level.tile_map_background.local_to_map(rect.end)
+
+	for x in range(start_tile.x, end_tile.x):
+		for y in range(start_tile.y, end_tile.y):
+			level.tile_map_background.set_cell(Vector2i(x, y), randi() % 9, Vector2i.ZERO)
+
+
 	for tile_pos: Vector2i in level.tile_map_floor.get_used_cells():
 		for ore in ores: 
 			if Utils.chance100(ore.density):

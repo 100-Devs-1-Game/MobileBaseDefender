@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bos1yfetanlil"
-path="res://.godot/imported/Outer_Ground_1.png-02f0243557fe5f967d472a6732ffd956.ctex"
+uid="uid://dg87kbvl332w2"
+path="res://.godot/imported/OG_7.png-78d99fa9064a9d47c9d997f4c13e0256.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/level/background/Outer_Ground_1.png"
-dest_files=["res://.godot/imported/Outer_Ground_1.png-02f0243557fe5f967d472a6732ffd956.ctex"]
+source_file="res://assets/art/level/background/OG_7.png"
+dest_files=["res://.godot/imported/OG_7.png-78d99fa9064a9d47c9d997f4c13e0256.ctex"]
 
 [params]
 
@@ -23,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
