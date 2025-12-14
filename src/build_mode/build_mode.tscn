@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://w7vbuvefyglq"]
+[gd_scene load_steps=28 format=3 uid="uid://w7vbuvefyglq"]
 
 [ext_resource type="Script" uid="uid://bjk0mdvo3ltyo" path="res://build_mode/build_mode.gd" id="1_2vdwl"]
 [ext_resource type="Script" uid="uid://bufhsendqclmw" path="res://misc/game_camera.gd" id="2_ggnbw"]
@@ -7,6 +7,7 @@
 [ext_resource type="LabelSettings" uid="uid://cfw65naj2wd0p" path="res://build_mode/stats_label_settings.tres" id="4_c1e2y"]
 [ext_resource type="Texture2D" uid="uid://c6fhw4bb2ddc" path="res://assets/art/build_mode/build_mode_grid.png" id="5_wea0h"]
 [ext_resource type="FontFile" uid="uid://cuq0hfcm174n" path="res://assets_external/fonts/Jersey_25/Jersey25-Regular.ttf" id="6_8iu1i"]
+[ext_resource type="Texture2D" uid="uid://df2oxv354k7qg" path="res://assets/art/placeholder/blueprint_placeholder.png" id="7_m6a3v"]
 [ext_resource type="Texture2D" uid="uid://cvjjnoe403cmg" path="res://assets/art/ui/Paper9Slice.png" id="7_n4hcl"]
 [ext_resource type="StyleBox" uid="uid://vfq5l8a2rsll" path="res://ui/panel_style.tres" id="8_8y8w5"]
 [ext_resource type="ButtonGroup" uid="uid://ber8whstdikup" path="res://ui/build_ui/build_mode_tabs_button_group.tres" id="10_8y8w5"]
@@ -64,6 +65,24 @@ z_index = 1
 
 [node name="Part Sprite" type="Sprite2D" parent="."]
 visible = false
+
+[node name="TextureRect Background" type="TextureRect" parent="."]
+modulate = Color(0.3316394, 0.33163944, 0.3316393, 0.3254902)
+custom_minimum_size = Vector2(2048, 2048)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -960.0
+offset_right = 1088.0
+offset_bottom = 1088.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_m6a3v")
+stretch_mode = 1
 
 [node name="TextureRect Grid" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(2048, 2048)
