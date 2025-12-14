@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://die1hq1e2rl3j"]
 
-[ext_resource type="Script" uid="uid://bm7nmnwtn7gpy" path="res://vehicle/parts/vehicle_mounted_part_object.gd" id="1_3iphr"]
+[ext_resource type="Script" uid="uid://uhra7begiwfe" path="res://data/vehicle_parts/scenes/drill_part.gd" id="1_3iphr"]
 [ext_resource type="Texture2D" uid="uid://yfvcg12lqfgq" path="res://assets/art/vehicle/mounted/drill/Drill_1_0001.png" id="1_nhiqt"]
 [ext_resource type="Texture2D" uid="uid://bjogwg58sxty6" path="res://assets/art/vehicle/mounted/drill/Drill_1_0002.png" id="2_3iphr"]
 [ext_resource type="Texture2D" uid="uid://h6fect2ipagm" path="res://assets/art/vehicle/mounted/drill/Drill_1_0003.png" id="3_pjoul"]
@@ -55,10 +55,10 @@ size = Vector2(60, 120)
 
 [node name="Drill" type="Node2D"]
 script = ExtResource("1_3iphr")
+cooldown = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fjy1e")
-autoplay = "default"
 
 [node name="CrackOre" type="Area2D" parent="."]
 collision_layer = 2048

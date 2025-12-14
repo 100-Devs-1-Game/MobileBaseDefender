@@ -56,8 +56,8 @@ func _ready() -> void:
 	camera.ignore_rotation= not GameConstants.active.lock_camera_rotation
 
 
-func initialize(_layout: VehicleLayout):
-	layout= _layout.duplicate(true)
+func initialize(p_layout: VehicleLayout):
+	layout= p_layout.duplicate(true)
 	
 	var ctr:= 0
 	for tile_pos: Vector2i in layout.structure_parts.keys():
@@ -157,7 +157,7 @@ func add_mounted_part(info: VehicleMountedPartInfo, tile_pos: Vector2i, part_pos
 	else:
 		var object: VehicleMountedPartObject= mounted_data.game_mode_scene.instantiate()
 		object.position= part_pos
-		object.part_info= info
+		object.init(info)
 		custom_mounted_objects.append(object)
 		node2d= object
 	

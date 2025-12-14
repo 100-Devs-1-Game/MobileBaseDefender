@@ -14,3 +14,11 @@ script = ExtResource("1_vq0t3")
 shape = SubResource("CircleShape2D_vbkug")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="Drill Detector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2048
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Drill Detector"]
+shape = SubResource("CircleShape2D_vbkug")

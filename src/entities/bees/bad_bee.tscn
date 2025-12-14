@@ -57,6 +57,7 @@ sprite_frames = SubResource("SpriteFrames_bc7r0")
 autoplay = "default"
 
 [node name="Vehicle Detector" type="Area2D" parent="." index="3"]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vehicle Detector" index="0"]
 shape = SubResource("CapsuleShape2D_yqxkq")
