@@ -13,4 +13,5 @@ script = ExtResource("2_llxlv")
 ores = Array[ExtResource("1_kpoq2")]([ExtResource("3_c50ss"), ExtResource("4_2w31y"), ExtResource("5_jk2ip"), ExtResource("6_g81eg")])
 clouds = Array[PackedScene]([ExtResource("1_llxlv")])
 cloud_tile_size = 480
+cloud_coverage = null
 metadata/_custom_type_script = "uid://d2k2adr6f8g3l"

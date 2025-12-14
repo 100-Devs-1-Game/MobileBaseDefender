@@ -27,6 +27,8 @@ var target: Rect2i
 
 
 func generate_terrain(level: Level):
+	level.tile_map_floor.clear()
+	
 	var branch_points: Array[BranchPoint]
 	var cells: Array[Vector2i]
 	cells.append_array(generate_branch(Vector2i.ZERO, DIRECTIONS.pick_random(), 200, 20, branch_points))
@@ -95,6 +97,9 @@ func create_cell_rect(center: Vector2i, width: int)-> Array[Vector2i]:
 
 
 func second_pass(level: Level):
+	level.tile_map_background.clear()
+	level.tile_map_objects.clear()
+	
 	var tile_rect:= level.tile_map_floor.get_used_rect()
 	var rect:= Rect2()
 	rect= rect.expand(level.tile_map_floor.map_to_local(tile_rect.position))
@@ -113,6 +118,9 @@ func second_pass(level: Level):
 
 	for tile_pos: Vector2i in level.tile_map_floor.get_used_cells():
 		for ore in ores: 
+			if level.tile_map_floor.get_cell_atlas_coords(tile_pos) != Vector2i.ONE:
+				continue
+
 			if Utils.chance100(ore.density):
 				level.tile_map_objects.set_cell(tile_pos, 0, Vector2i.ZERO, ore.tile_scene_id)
 				break
