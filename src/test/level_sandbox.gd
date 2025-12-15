@@ -14,7 +14,6 @@ extends Node
 func _ready() -> void:
 	await level.ready
 
-
 	if enable_terrain_generator:
 		level.tile_map_floor.clear()
 		level.tile_map_objects.clear()

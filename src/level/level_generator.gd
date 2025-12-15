@@ -98,9 +98,22 @@ func create_cell_rect(center: Vector2i, width: int)-> Array[Vector2i]:
 
 
 func second_pass(level: Level):
-	level.tile_map_background.clear()
-	level.tile_map_objects.clear()
+	generate_background(level)
 	
+	level.tile_map_objects.clear()
+
+	for tile_pos: Vector2i in level.tile_map_floor.get_used_cells():
+		for ore in ores: 
+			if level.tile_map_floor.get_cell_atlas_coords(tile_pos) != Vector2i.ONE:
+				continue
+
+			if Utils.chance100(ore.density):
+				level.tile_map_objects.set_cell(tile_pos, 0, Vector2i.ZERO, ore.tile_scene_id)
+				break
+
+
+static func generate_background(level: Level):
+	level.tile_map_background.clear()
 	var tile_rect:= level.tile_map_floor.get_used_rect()
 	var rect:= Rect2(level.tile_map_floor.map_to_local(tile_rect.position), Vector2.ONE)
 	rect= rect.expand(level.tile_map_floor.map_to_local(tile_rect.end))
@@ -115,16 +128,6 @@ func second_pass(level: Level):
 	for x in range(start_tile.x, end_tile.x):
 		for y in range(start_tile.y, end_tile.y):
 			level.tile_map_background.set_cell(Vector2i(x, y), randi() % 9, Vector2i.ZERO)
-
-
-	for tile_pos: Vector2i in level.tile_map_floor.get_used_cells():
-		for ore in ores: 
-			if level.tile_map_floor.get_cell_atlas_coords(tile_pos) != Vector2i.ONE:
-				continue
-
-			if Utils.chance100(ore.density):
-				level.tile_map_objects.set_cell(tile_pos, 0, Vector2i.ZERO, ore.tile_scene_id)
-				break
 
 
 

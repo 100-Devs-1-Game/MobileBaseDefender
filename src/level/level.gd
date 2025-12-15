@@ -1,6 +1,9 @@
 class_name Level
 extends Node2D
 
+@export var is_generated: bool= true
+@export var generator: LevelGenerator
+
 @export var minimap_data: MinimapData
 @export var vehicle_scene: PackedScene
 @export var explosion_scene: PackedScene
@@ -37,6 +40,22 @@ func _ready() -> void:
 
 	vehicle_query.collision_mask= CollisionLayers.VEHICLE
 	vehicle_query.shape= CircleShape2D.new()
+
+	if has_node("SandBox"):
+		return
+		
+	if not is_generated:
+		LevelGenerator.generate_background(self)
+	else:
+		assert(generator)
+		generator.generate_terrain(self)
+		generator.target= Rect2i(Vector2.UP * 10, Vector2i.ONE * 5)
+		generator.second_pass(self)
+		generator.finish(self)
+		generator.generate_clouds(self)
+		self.minimap_data= generator.generate_minimap(self, Vector2i(1000, 1000), 1.0)
+	
+	spawn_vehicle(Vector2.ZERO, GameData.campaign.vehicle)
 
 
 func spawn_vehicle(pos: Vector2, layout: VehicleLayout):

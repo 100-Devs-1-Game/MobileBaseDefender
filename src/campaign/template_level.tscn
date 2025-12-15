@@ -1,0 +1,126 @@
+[gd_scene load_steps=35 format=3 uid="uid://bcolrt66stnjm"]
+
+[ext_resource type="Script" uid="uid://c1tnmf5ecbjjj" path="res://level/level.gd" id="1_fjrtl"]
+[ext_resource type="PackedScene" uid="uid://scmr7fvfwq86" path="res://vehicle/vehicle.tscn" id="2_ooaje"]
+[ext_resource type="PackedScene" uid="uid://bqpnvn7x034jq" path="res://level/explosion.tscn" id="3_i8v6c"]
+[ext_resource type="PackedScene" uid="uid://dx47c2u622pn3" path="res://level/pickups/pickup.tscn" id="4_emu0r"]
+[ext_resource type="Resource" uid="uid://k8kvc4xxlepp" path="res://level/level_generator.tres" id="7_e8dhe"]
+[ext_resource type="Texture2D" uid="uid://dyho63k1dr036" path="res://assets/art/level/background/OG_1.png" id="8_aabn0"]
+[ext_resource type="Texture2D" uid="uid://b2chekj37d8bo" path="res://assets/art/level/background/OG_2.png" id="9_lvh85"]
+[ext_resource type="Texture2D" uid="uid://ghkmev388gvo" path="res://assets/art/level/background/OG_3.png" id="10_21k8l"]
+[ext_resource type="Texture2D" uid="uid://c6pcbvr1lggr5" path="res://assets/art/level/background/OG_4.png" id="11_ucu4p"]
+[ext_resource type="Texture2D" uid="uid://cpyh5xjvorpb6" path="res://assets/art/level/background/OG_5.png" id="12_5ccan"]
+[ext_resource type="Texture2D" uid="uid://bwi22r6xt0koh" path="res://assets/art/level/background/OG_6.png" id="13_puc8u"]
+[ext_resource type="Texture2D" uid="uid://dg87kbvl332w2" path="res://assets/art/level/background/OG_7.png" id="14_x80l1"]
+[ext_resource type="Texture2D" uid="uid://d0j4ey3jsa8uw" path="res://assets/art/level/background/OG_8.png" id="15_fao8x"]
+[ext_resource type="Texture2D" uid="uid://bl64l3bkt20uv" path="res://assets/art/level/background/OG_9.png" id="16_v6e5x"]
+[ext_resource type="TileSet" uid="uid://bd5547dpppf5q" path="res://test/tileset.tres" id="17_ub1dt"]
+[ext_resource type="PackedScene" uid="uid://be3yu3jhiqf5n" path="res://level/tile_scenes/iron_ore_tile.tscn" id="18_ho81c"]
+[ext_resource type="PackedScene" uid="uid://deyumgb2afg0o" path="res://level/tile_scenes/mushroom1_tile.tscn" id="19_vfirj"]
+[ext_resource type="PackedScene" uid="uid://cts2j2h4sqyb8" path="res://level/tile_scenes/mushroom2_tile.tscn" id="20_xp7co"]
+[ext_resource type="PackedScene" uid="uid://m7g1mfjuji1c" path="res://level/tile_scenes/gold_ore_tile.tscn" id="21_oar6y"]
+[ext_resource type="PackedScene" uid="uid://b8tk36qvgmdkx" path="res://level/tile_scenes/titanium_ore_tile.tscn" id="22_2wu4j"]
+[ext_resource type="PackedScene" uid="uid://re15anrohpk4" path="res://level/tile_scenes/uranium_ore_tile.tscn" id="23_3b55v"]
+[ext_resource type="PackedScene" uid="uid://dabyq7bb8c3yy" path="res://level/level_ui.tscn" id="27_ul3t8"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qjkni"]
+texture = ExtResource("8_aabn0")
+texture_region_size = Vector2i(512, 512)
+use_texture_padding = false
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7eux1"]
+texture = ExtResource("9_lvh85")
+texture_region_size = Vector2i(512, 512)
+use_texture_padding = false
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iokdu"]
+texture = ExtResource("10_21k8l")
+texture_region_size = Vector2i(512, 512)
+use_texture_padding = false
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7000k"]
+texture = ExtResource("11_ucu4p")
+texture_region_size = Vector2i(512, 512)
+use_texture_padding = false
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_idoyy"]
+texture = ExtResource("12_5ccan")
+texture_region_size = Vector2i(512, 512)
+use_texture_padding = false
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kqimo"]
+texture = ExtResource("13_puc8u")
+texture_region_size = Vector2i(512, 512)
+use_texture_padding = false
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_316nb"]
+texture = ExtResource("14_x80l1")
+texture_region_size = Vector2i(512, 512)
+use_texture_padding = false
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5kprl"]
+texture = ExtResource("15_fao8x")
+texture_region_size = Vector2i(512, 512)
+use_texture_padding = false
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m65sa"]
+texture = ExtResource("16_v6e5x")
+texture_region_size = Vector2i(512, 512)
+use_texture_padding = false
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_uj5il"]
+tile_size = Vector2i(512, 512)
+sources/0 = SubResource("TileSetAtlasSource_qjkni")
+sources/1 = SubResource("TileSetAtlasSource_7eux1")
+sources/2 = SubResource("TileSetAtlasSource_iokdu")
+sources/3 = SubResource("TileSetAtlasSource_7000k")
+sources/4 = SubResource("TileSetAtlasSource_idoyy")
+sources/5 = SubResource("TileSetAtlasSource_kqimo")
+sources/6 = SubResource("TileSetAtlasSource_316nb")
+sources/7 = SubResource("TileSetAtlasSource_5kprl")
+sources/8 = SubResource("TileSetAtlasSource_m65sa")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_c0hub"]
+scenes/1/scene = ExtResource("18_ho81c")
+scenes/2/scene = ExtResource("19_vfirj")
+scenes/3/scene = ExtResource("20_xp7co")
+scenes/5/scene = ExtResource("21_oar6y")
+scenes/6/scene = ExtResource("22_2wu4j")
+scenes/7/scene = ExtResource("23_3b55v")
+
+[sub_resource type="TileSet" id="TileSet_hhn1m"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetScenesCollectionSource_c0hub")
+
+[node name="Template Level" type="Node2D"]
+script = ExtResource("1_fjrtl")
+generator = ExtResource("7_e8dhe")
+vehicle_scene = ExtResource("2_ooaje")
+explosion_scene = ExtResource("3_i8v6c")
+pickup_scene = ExtResource("4_emu0r")
+
+[node name="TileMapLayer Background" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_uj5il")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = ExtResource("17_ub1dt")
+
+[node name="TileMapLayer Objects" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_hhn1m")
+
+[node name="Clouds" type="StaticBody2D" parent="."]
+modulate = Color(0.99607843, 0.99607843, 0.99607843, 0.26666668)
+scale = Vector2(10, 10)
+collision_layer = 1024
+collision_mask = 0
+
+[node name="LevelUI" parent="." instance=ExtResource("27_ul3t8")]

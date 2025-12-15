@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="CampaignData" load_steps=4 format=3 uid="uid://6ocvds5w73p"]
+[gd_resource type="Resource" script_class="CampaignData" load_steps=5 format=3 uid="uid://6ocvds5w73p"]
 
 [ext_resource type="Script" uid="uid://dhoiovu5dml4c" path="res://vehicle/inventory.gd" id="1_e1q13"]
 [ext_resource type="Script" uid="uid://dmelvg0oag58q" path="res://campaign/campaign_data.gd" id="1_t55dv"]
+[ext_resource type="Resource" uid="uid://dgc124n34wdwm" path="res://test/driver_only_vehicle_layout.tres" id="3_1lf75"]
 
 [sub_resource type="Resource" id="Resource_1lf75"]
 script = ExtResource("1_e1q13")
@@ -13,4 +14,5 @@ metadata/_custom_type_script = "uid://dhoiovu5dml4c"
 [resource]
 script = ExtResource("1_t55dv")
 inventory = SubResource("Resource_1lf75")
+vehicle = ExtResource("3_1lf75")
 metadata/_custom_type_script = "uid://dmelvg0oag58q"
