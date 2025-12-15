@@ -17,6 +17,12 @@ class BranchPoint:
 const DIRECTIONS= [ Vector2i.UP, Vector2i.RIGHT, Vector2i.DOWN, Vector2i.LEFT ]
 #const DIRECTIONS= [ Vector2i.UP, Vector2i(1, -1), Vector2i.RIGHT, Vector2i(1, 1), Vector2i.DOWN, Vector2i(-1, 1), Vector2i.LEFT, Vector2i(-1, -1)]
 
+@export var main_branch_length: int= 200
+@export var main_branch_width: int= 20
+@export var change_direction_chance: float= 30.0
+@export var branch_chance: float= 50.0
+@export var branch_point_min_width: int= 9
+
 @export var ores: Array[OreData]
 @export var clouds: Array[PackedScene]
 @export var cloud_tile_size: int= 700
@@ -32,7 +38,7 @@ func generate_terrain(level: Level):
 	
 	var branch_points: Array[BranchPoint]
 	var cells: Array[Vector2i]
-	cells.append_array(generate_branch(Vector2i.ZERO, DIRECTIONS.pick_random(), 200, 20, branch_points))
+	cells.append_array(generate_branch(Vector2i.ZERO, DIRECTIONS.pick_random(), main_branch_length, main_branch_width, branch_points))
 
 	while not branch_points.is_empty():
 		var point: BranchPoint= branch_points.pop_front()
@@ -72,7 +78,7 @@ func generate_branch(from: Vector2i, orig_direction: Vector2i, length: int, widt
 	for i in range(0, length, width):
 		cells.append_array(create_cell_rect(from, width))
 		
-		if can_change_dir and Utils.chance100(30):
+		if can_change_dir and Utils.chance100(change_direction_chance):
 			var new_dir: Vector2i= get_rand_90deg_dir(direction)
 			if new_dir.distance_to(orig_direction) == 2:
 				new_dir= direction
@@ -83,7 +89,7 @@ func generate_branch(from: Vector2i, orig_direction: Vector2i, length: int, widt
 		assert(is_equal_approx(direction.length(), 1.0)) 
 		from+= direction * width
 
-		if width > 5 and Utils.chance100(50):
+		if width >= branch_point_min_width and Utils.chance100(branch_chance):
 			branch_points.append(BranchPoint.new(from, get_rand_90deg_dir(direction), length / 2, width / 2))
 		
 	return cells
@@ -144,13 +150,23 @@ func generate_clouds(level: Level):
 
 
 func finish(level: Level):
+	target= Rect2i()
+	for i in 250:
+		var potential_target: Vector2i= level.tile_map_floor.get_used_cells().pick_random()
+		if level.tile_map_floor.get_cell_atlas_coords(potential_target) != Vector2i.ONE:
+			continue
+		if potential_target.length() > target.position.length():
+			var rect:= Rect2i(potential_target - Vector2i.ONE * 2, Vector2i.ONE * 5)
+			if level.has_same_tile_in_rect(level.tile_map_floor, rect):
+				target= rect
+
 	var cells: Array[Vector2i]
 	for x in range(target.position.x, target.end.x):
 		for y in range(target.position.y, target.end.y):
 			cells.append(Vector2i(x, y))
 	
 	level.tile_map_floor.set_cells_terrain_connect(cells, 1, 0, true)
-
+		
 	var target_cell:= target.get_center()
 	var finish_area: Area2D= finish_area_scene.instantiate()
 	finish_area.position= level.tile_map_floor.map_to_local(target_cell)

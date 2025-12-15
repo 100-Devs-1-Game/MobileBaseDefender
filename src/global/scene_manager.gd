@@ -1,6 +1,7 @@
 extends Node
 
 @export var level_scene: PackedScene
+@export var first_level_scene: PackedScene
 @export var build_mode_scene: PackedScene
 
 var vehicle_layout: VehicleLayout
@@ -11,10 +12,12 @@ func _ready() -> void:
 	process_mode= Node.PROCESS_MODE_ALWAYS
 
 
-
-
 func load_level():
 	get_tree().change_scene_to_packed(level_scene)
+
+
+func load_first_level():
+	get_tree().change_scene_to_packed(first_level_scene)
 
 
 func load_build_mode():

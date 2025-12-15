@@ -1,10 +1,9 @@
-[gd_scene load_steps=35 format=3 uid="uid://bcolrt66stnjm"]
+[gd_scene load_steps=34 format=3 uid="uid://bcolrt66stnjm"]
 
 [ext_resource type="Script" uid="uid://c1tnmf5ecbjjj" path="res://level/level.gd" id="1_fjrtl"]
 [ext_resource type="PackedScene" uid="uid://scmr7fvfwq86" path="res://vehicle/vehicle.tscn" id="2_ooaje"]
 [ext_resource type="PackedScene" uid="uid://bqpnvn7x034jq" path="res://level/explosion.tscn" id="3_i8v6c"]
 [ext_resource type="PackedScene" uid="uid://dx47c2u622pn3" path="res://level/pickups/pickup.tscn" id="4_emu0r"]
-[ext_resource type="Resource" uid="uid://k8kvc4xxlepp" path="res://level/level_generator.tres" id="7_e8dhe"]
 [ext_resource type="Texture2D" uid="uid://dyho63k1dr036" path="res://assets/art/level/background/OG_1.png" id="8_aabn0"]
 [ext_resource type="Texture2D" uid="uid://b2chekj37d8bo" path="res://assets/art/level/background/OG_2.png" id="9_lvh85"]
 [ext_resource type="Texture2D" uid="uid://ghkmev388gvo" path="res://assets/art/level/background/OG_3.png" id="10_21k8l"]
@@ -103,7 +102,6 @@ sources/0 = SubResource("TileSetScenesCollectionSource_c0hub")
 
 [node name="Template Level" type="Node2D"]
 script = ExtResource("1_fjrtl")
-generator = ExtResource("7_e8dhe")
 vehicle_scene = ExtResource("2_ooaje")
 explosion_scene = ExtResource("3_i8v6c")
 pickup_scene = ExtResource("4_emu0r")

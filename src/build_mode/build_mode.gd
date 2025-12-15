@@ -265,8 +265,10 @@ func _on_texture_rect_grid_mouse_exited() -> void:
 
 
 func _on_button_go_pressed() -> void:
-	SceneManager.vehicle_layout= layout
-	SceneManager.load_level()
+	#SceneManager.vehicle_layout= layout
+	#SceneManager.load_level()
+	GameData.campaign.vehicle= layout
+	GameData.campaign.load_next_scene()
 
 
 func _on_button_rotate_left_pressed() -> void:

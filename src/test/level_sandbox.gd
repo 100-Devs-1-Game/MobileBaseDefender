@@ -12,6 +12,7 @@ extends Node
 
 
 func _ready() -> void:
+	GameData.campaign.vehicle= vehicle_layout
 	await level.ready
 
 	if enable_terrain_generator:
@@ -20,13 +21,11 @@ func _ready() -> void:
 
 		generator.generate_terrain(level)
 	
-	generator.target= Rect2i(Vector2.UP * 10, Vector2i.ONE * 5)
+	#generator.target= Rect2i(Vector2.UP * 10, Vector2i.ONE * 5)
 	generator.second_pass(level)
 	generator.finish(level)
 	generator.generate_clouds(level)
 	level.minimap_data= generator.generate_minimap(level, Vector2i(1000, 1000), 1.0)
 	
-	if spawn_vehicle:
-		level.spawn_vehicle(Vector2.ZERO, vehicle_layout)
 	if freeze_vehicle:
 		level.vehicle.freeze= true

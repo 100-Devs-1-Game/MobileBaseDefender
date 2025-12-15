@@ -29,6 +29,7 @@ func _ready() -> void:
 	assert(vehicle_scene)
 	assert(explosion_scene)
 	Global.level= self
+	GameData.campaign.in_level= true
 	
 	projectiles_node= create_sub_node("Projectiles")
 	enemies_node= create_sub_node("Enemies")
@@ -47,9 +48,10 @@ func _ready() -> void:
 	if not is_generated:
 		LevelGenerator.generate_background(self)
 	else:
+		if not generator:
+			generator= GameData.campaign.level_generator
 		assert(generator)
 		generator.generate_terrain(self)
-		generator.target= Rect2i(Vector2.UP * 10, Vector2i.ONE * 5)
 		generator.second_pass(self)
 		generator.finish(self)
 		generator.generate_clouds(self)
@@ -107,13 +109,13 @@ func spawn_pickup(pos: Vector2, data: BasePickupData):
 
 
 func game_over():
-	SceneManager.call_delayed(SceneManager.load_build_mode, 3.0)
+	GameData.campaign.load_next_scene.call_deferred(true)
 	
 
 func on_level_completed():
 	level_ui.open_popup(vehicle)
 	GameData.campaign.earn(vehicle.inventory)
-	SceneManager.call_delayed(SceneManager.load_build_mode, 3.0)
+	GameData.campaign.load_next_scene.call_deferred()
 
 
 func create_sub_node(node_name: String)-> Node2D:
@@ -139,3 +141,13 @@ func get_enemies_in_range(center: Vector2, radius: float, steps: int= 0)-> Array
 func has_los(from: Vector2, to: Vector2)-> bool:
 	RaycastHelper.update(from, to, CollisionLayers.TERRAIN)
 	return not RaycastHelper.is_colliding()
+
+
+func has_same_tile_in_rect(tile_map: TileMapLayer, rect: Rect2i)-> bool:
+	var atlas_coords: Vector2i= tile_map.get_cell_atlas_coords(rect.position)
+	
+	for x in range(rect.position.x, rect.end.x):
+		for y in range(rect.position.y, rect.end.y):
+			if tile_map.get_cell_atlas_coords(Vector2i(x, y)) != atlas_coords:
+				return false
+	return true
