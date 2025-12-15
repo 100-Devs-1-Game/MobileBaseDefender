@@ -19,6 +19,7 @@ category = 1
 build_mode_texture = ExtResource("1_vm02y")
 game_mode_scene = ExtResource("1_pwpvo")
 name = "Generator"
+description = "Generates power constantly"
 cost = SubResource("Resource_c4ctc")
 weight = 20
 sort_order = "da"

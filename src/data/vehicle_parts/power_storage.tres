@@ -19,6 +19,7 @@ category = 1
 build_mode_texture = ExtResource("1_x0bp6")
 game_mode_texture = ExtResource("1_x0bp6")
 name = "Battery"
+description = "Stores power overflow"
 cost = SubResource("Resource_t1xxl")
 weight = 10
 metadata/_custom_type_script = "uid://c36kx50lrvmum"

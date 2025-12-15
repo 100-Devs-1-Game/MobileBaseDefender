@@ -19,6 +19,7 @@ category = 1
 build_mode_texture = ExtResource("1_xlp3u")
 game_mode_texture = ExtResource("1_xlp3u")
 name = "Solar Panel"
+description = "Generates power when there's clear sky"
 cost = SubResource("Resource_55dyg")
 weight = 5
 sort_order = "db"

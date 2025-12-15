@@ -21,6 +21,7 @@ power_required = 10
 build_mode_texture = ExtResource("1_p7w8o")
 game_mode_scene = ExtResource("2_gd2b5")
 name = "Wheel"
+description = "Improves acceleration"
 cost = SubResource("Resource_142jb")
 weight = 5
 sort_order = "ca"

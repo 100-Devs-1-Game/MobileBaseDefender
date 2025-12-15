@@ -136,9 +136,12 @@ func update_stats():
 	Utils.remove_children(stats_panel)
 	
 	var stats: Dictionary[String, String]
-	stats["Weight"]= str(vehicle_stats.weight, "kg")
-	stats["Acceleration"]= str(int(vehicle_stats.acceleration_force * 10 / vehicle_stats.weight), "m/s2")
-	stats["Power Capacity"]= str(vehicle_stats.power_capacity)
+	stats["Weight"]= str(vehicle_stats.weight * 200, "kg")
+	stats["Acceleration"]= str(int(vehicle_stats.acceleration_force * 10 / vehicle_stats.weight), "a")
+	stats["Min Power Produced"]= "---"
+	stats["Max Power Produced"]= "---"
+	stats["Power Storage"]= "---"
+	stats["Max Power Required"]= "---"
 
 	var label: Label
 	for key: String in stats:
@@ -199,6 +202,7 @@ func refund_part(part: VehicleBasePartData):
 func on_item_hover(item: BuildModeListItem):
 	label_part_name.text= item.type.name
 	label_info.text= item.type.get_stats_str()
+	label_description.text= item.type.description
 	
 
 func on_item_selected(item: BuildModeListItem):
@@ -233,8 +237,11 @@ func deselect():
 	selected_part= null
 	selected_sprite.hide()
 	selected_sprite.texture= null
+
+	label_part_name.text= ""
 	label_info.text= ""
-	
+	label_description.text= ""
+
 
 func get_pos_from_tile(tile: Vector2i)-> Vector2:
 	return tile * 128

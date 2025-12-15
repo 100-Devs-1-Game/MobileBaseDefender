@@ -62,10 +62,10 @@ func _on_gui_input(event: InputEvent) -> void:
 func _on_mouse_entered() -> void:
 	if is_selected:
 		return
+	hover.emit(self)
 	if is_disabled:
 		return
 	add_theme_stylebox_override("panel", hover_style)
-	hover.emit(self)
 
 
 func _on_mouse_exited() -> void:

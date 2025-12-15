@@ -22,3 +22,7 @@ func tick(part_info: VehicleMountedPartInfo, vehicle: Vehicle, tile_pos: Vector2
 
 func get_power_production(part_info: VehicleMountedPartInfo)-> float:
 	return power_generated if part_info.live_data[SUN_DATA] else 0
+
+
+func get_stats_str()-> String:
+	return super() + " Power generated: %d" % power_generated

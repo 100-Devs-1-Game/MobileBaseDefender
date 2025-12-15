@@ -21,6 +21,7 @@ power_required = 10
 build_mode_texture = ExtResource("1_3kxnw")
 game_mode_scene = ExtResource("3_eunmq")
 name = "Thrusters"
+description = "Improve steering velocity"
 cost = SubResource("Resource_3kxnw")
 weight = 2
 sort_order = "cb"

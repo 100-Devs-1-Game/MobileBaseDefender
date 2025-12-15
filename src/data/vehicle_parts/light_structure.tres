@@ -21,6 +21,7 @@ script = ExtResource("1_57bb5")
 hitpoints = 10
 texture_stages = Array[Texture2D]([ExtResource("3_1nghh"), ExtResource("4_o57a3"), ExtResource("5_b8lsw"), ExtResource("6_j0o8j"), ExtResource("7_acjro"), ExtResource("8_odmkh")])
 name = "Light Frame"
+description = "Use frames to expand your vehicles buildable area"
 cost = SubResource("Resource_o57a3")
 weight = 2
 sort_order = "aa"
