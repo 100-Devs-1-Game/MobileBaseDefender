@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var vehicle: Vehicle= get_parent()
 @onready var texture_minimap: TextureRect = %"Texture Minimap"
 @onready var dynamic_minimap_overlay: Control = %"Dynamic Minimap Overlay"
+@onready var static_minimap_overlay: Control = %"Static Minimap Overlay"
 @onready var debug_window: DebugWindow = %"Debug Window"
 
 @onready var progress_bar_energy: ProgressBar = %"ProgressBar Energy"
@@ -40,6 +41,9 @@ func _physics_process(_delta: float) -> void:
 		return
 	dynamic_minimap_overlay.queue_redraw()
 
+	var parent_size:= (texture_minimap.get_parent() as Control).size
+	texture_minimap.position= Vector2(-minimap_data.size / 2) +  parent_size * 0.5 - vehicle.global_position / 128
+
 
 func update_bars():
 	var orig_energy_val: float= vehicle.used_power / max(vehicle.available_power, 1)
@@ -59,16 +63,21 @@ func update_bars():
 	progress_bar_storage.value= storage_ratio * 100
 	label_storage.text= str(int(storage), "/", vehicle.stats.power_capacity)
 
-	  
 
 func _on_dynamic_minimap_overlay_redraw(canvas_item: CanvasItem):
 	if not enable_minimap:
 		return
 
-	var vehicle_pos:= minimap_data.get_local_pos(vehicle.position)
+	#var vehicle_pos:= minimap_data.get_local_pos(vehicle.position)
+	var vehicle_pos:= (canvas_item.get_parent() as Control).size / 2
 	var trans:= vehicle.global_transform
 	var points: PackedVector2Array
 	var side_length:= 5
+	
+	#points.append(vehicle_pos + (trans.x + trans.y).normalized() * side_length)
+	#points.append(vehicle_pos + (-trans.x + trans.y).normalized() * side_length)
+	#points.append(vehicle_pos - trans.y * side_length)
+	
 	points.append(vehicle_pos + (trans.x + trans.y).normalized() * side_length)
 	points.append(vehicle_pos + (-trans.x + trans.y).normalized() * side_length)
 	points.append(vehicle_pos - trans.y * side_length)

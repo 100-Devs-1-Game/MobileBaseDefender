@@ -158,19 +158,27 @@ func generate_minimap(level: Level, size: Vector2i, factor: float)-> MinimapData
 	prints("Generate minimap", size)
 	var img:= Image.create(size.x, size.y, false, Image.FORMAT_RGB8)
 	var level_rect:= level.tile_map_floor.get_used_rect()
+	prints("Level rect", level_rect)
 	
 	for x in size.x:
 		for y in size.y:
 			@warning_ignore("narrowing_conversion")
 			var tile_pos:= Vector2i(x / factor, y / factor)
-			tile_pos+= level_rect.position
+			tile_pos+= Vector2i(level_rect.position / factor)
 			if level.tile_map_floor.get_cell_source_id(tile_pos) > -1:
-				var pixel_pos:= Vector2i(x + size.x / 4, y + size.y / 4)
+				var pixel_pos:= Vector2i(x + size.x / 2, y + size.y / 2) + level_rect.position
+			
 				if pixel_pos.x < 0 or pixel_pos.y < 0:
 					continue
 				if pixel_pos.x >= size.x or pixel_pos.y >= size.y:
 					continue
-				img.set_pixel(pixel_pos.x, pixel_pos.y, Color.GREEN)
+				
+				var pixel_color:= Color.GREEN
+				
+				if level.tile_map_floor.get_cell_source_id(tile_pos) == 0:
+					pixel_color= Color.RED
+				
+				img.set_pixel(pixel_pos.x, pixel_pos.y, pixel_color)
 	
 	#img.save_png("res://minimap.png")
 	var minimap:= MinimapData.new()

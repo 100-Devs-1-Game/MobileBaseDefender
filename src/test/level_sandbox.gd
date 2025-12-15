@@ -25,7 +25,7 @@ func _ready() -> void:
 	generator.second_pass(level)
 	generator.finish(level)
 	generator.generate_clouds(level)
-	level.minimap_data= generator.generate_minimap(level, Vector2i(250, 250), 1.0)
+	level.minimap_data= generator.generate_minimap(level, Vector2i(1000, 1000), 1.0)
 	
 	if spawn_vehicle:
 		level.spawn_vehicle(Vector2.ZERO, vehicle_layout)
