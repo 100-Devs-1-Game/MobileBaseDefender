@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="LevelGenerator" load_steps=8 format=3 uid="uid://k8kvc4xxlepp"]
+[gd_resource type="Resource" script_class="LevelGenerator" load_steps=9 format=3 uid="uid://k8kvc4xxlepp"]
 
 [ext_resource type="Script" uid="uid://4yrpcdgk6rop" path="res://level/ore_data.gd" id="1_kpoq2"]
 [ext_resource type="PackedScene" uid="uid://cjkhb5u1ifqbk" path="res://level/clouds/cloud1.tscn" id="1_llxlv"]
+[ext_resource type="PackedScene" uid="uid://cuhd4nvf3wycp" path="res://level/finish_area.tscn" id="2_jk2ip"]
 [ext_resource type="Script" uid="uid://d2k2adr6f8g3l" path="res://level/level_generator.gd" id="2_llxlv"]
 [ext_resource type="Resource" uid="uid://bk3miapvuurmq" path="res://data/ores/iron_ore.tres" id="3_c50ss"]
 [ext_resource type="Resource" uid="uid://bouoqopnrinid" path="res://data/ores/gold_ore.tres" id="4_2w31y"]
@@ -13,5 +14,5 @@ script = ExtResource("2_llxlv")
 ores = Array[ExtResource("1_kpoq2")]([ExtResource("3_c50ss"), ExtResource("4_2w31y"), ExtResource("5_jk2ip"), ExtResource("6_g81eg")])
 clouds = Array[PackedScene]([ExtResource("1_llxlv")])
 cloud_tile_size = 480
-cloud_coverage = null
+finish_area_scene = ExtResource("2_jk2ip")
 metadata/_custom_type_script = "uid://d2k2adr6f8g3l"

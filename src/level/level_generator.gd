@@ -21,6 +21,7 @@ const DIRECTIONS= [ Vector2i.UP, Vector2i.RIGHT, Vector2i.DOWN, Vector2i.LEFT ]
 @export var clouds: Array[PackedScene]
 @export var cloud_tile_size: int= 700
 @export var cloud_coverage: float= 0.2
+@export var finish_area_scene: PackedScene
 
 var target: Rect2i
 
@@ -126,6 +127,7 @@ func second_pass(level: Level):
 				break
 
 
+
 func generate_clouds(level: Level):
 	var level_rect:= level.tile_map_floor.get_used_rect()
 	level_rect.position*= 128
@@ -139,8 +141,18 @@ func generate_clouds(level: Level):
 
 
 func finish(level: Level):
-	level.set_target_area(target)
+	var cells: Array[Vector2i]
+	for x in range(target.position.x, target.end.x):
+		for y in range(target.position.y, target.end.y):
+			cells.append(Vector2i(x, y))
 	
+	level.tile_map_floor.set_cells_terrain_connect(cells, 1, 0, true)
+
+	var target_cell:= target.get_center()
+	var finish_area: Area2D= finish_area_scene.instantiate()
+	finish_area.position= level.tile_map_floor.map_to_local(target_cell)
+	level.add_child(finish_area)
+
 
 func generate_minimap(level: Level, size: Vector2i, factor: float)-> MinimapData:
 	prints("Generate minimap", size)

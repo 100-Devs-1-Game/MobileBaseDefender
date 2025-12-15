@@ -1,6 +1,54 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bd5547dpppf5q"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://bd5547dpppf5q"]
 
+[ext_resource type="Texture2D" uid="uid://cdcmj7vo1x3ux" path="res://assets/art/level/finish_zone/End_platform_1_lights_off_1.png" id="1_ecqno"]
 [ext_resource type="Texture2D" uid="uid://ba44ukns6lsjh" path="res://assets/art/level/base_tileset.png" id="1_fth6p"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_plcgl"]
+texture = ExtResource("1_ecqno")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/terrain_set = 1
+0:0/0/terrains_peering_bit/bottom_right_corner = 0
+1:0/0 = 0
+1:0/0/terrain_set = 1
+1:0/0/terrains_peering_bit/bottom_right_corner = 0
+1:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0/terrains_peering_bit/bottom_left_corner = 0
+2:0/0 = 0
+2:0/0/terrain_set = 1
+2:0/0/terrains_peering_bit/bottom_left_corner = 0
+0:1/0 = 0
+0:1/0/terrain_set = 1
+0:1/0/terrains_peering_bit/right_side = 0
+0:1/0/terrains_peering_bit/bottom_right_corner = 0
+0:1/0/terrains_peering_bit/top_right_corner = 0
+1:1/0 = 0
+1:1/0/terrain_set = 1
+1:1/0/terrain = 0
+1:1/0/terrains_peering_bit/right_side = 0
+1:1/0/terrains_peering_bit/bottom_right_corner = 0
+1:1/0/terrains_peering_bit/bottom_side = 0
+1:1/0/terrains_peering_bit/bottom_left_corner = 0
+1:1/0/terrains_peering_bit/left_side = 0
+1:1/0/terrains_peering_bit/top_left_corner = 0
+1:1/0/terrains_peering_bit/top_side = 0
+1:1/0/terrains_peering_bit/top_right_corner = 0
+2:1/0 = 0
+2:1/0/terrain_set = 1
+2:1/0/terrains_peering_bit/bottom_left_corner = 0
+2:1/0/terrains_peering_bit/left_side = 0
+2:1/0/terrains_peering_bit/top_left_corner = 0
+0:2/0 = 0
+0:2/0/terrain_set = 1
+0:2/0/terrains_peering_bit/top_right_corner = 0
+1:2/0 = 0
+1:2/0/terrain_set = 1
+1:2/0/terrains_peering_bit/top_left_corner = 0
+1:2/0/terrains_peering_bit/top_side = 0
+1:2/0/terrains_peering_bit/top_right_corner = 0
+2:2/0 = 0
+2:2/0/terrain_set = 1
+2:2/0/terrains_peering_bit/top_left_corner = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ecqno"]
 texture = ExtResource("1_fth6p")
@@ -97,4 +145,8 @@ physics_layer_0/collision_layer = 2
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.8235294, 0.12156863, 1, 1)
+terrain_set_1/mode = 0
+terrain_set_1/terrain_0/name = "Finish zone"
+terrain_set_1/terrain_0/color = Color(0.14097571, 0.08373917, 0.049233995, 1)
 sources/1 = SubResource("TileSetAtlasSource_ecqno")
+sources/0 = SubResource("TileSetAtlasSource_plcgl")

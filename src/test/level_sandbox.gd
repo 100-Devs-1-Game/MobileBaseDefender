@@ -21,7 +21,7 @@ func _ready() -> void:
 
 		generator.generate_terrain(level)
 	
-	generator.target= Rect2i(Vector2.UP * 3000, Vector2.ONE * 1500)
+	generator.target= Rect2i(Vector2.UP * 10, Vector2i.ONE * 5)
 	generator.second_pass(level)
 	generator.finish(level)
 	generator.generate_clouds(level)

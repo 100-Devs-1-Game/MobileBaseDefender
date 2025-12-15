@@ -87,19 +87,6 @@ func spawn_pickup(pos: Vector2, data: BasePickupData):
 	pickup.init(data)
 
 
-func set_target_area(rect: Rect2i):
-	var area:= Area2D.new()
-	var rect_shape:= RectangleShape2D.new()
-	rect_shape.size= rect.size
-	var coll_shape:= CollisionShape2D.new()
-	coll_shape.shape= rect_shape
-	area.position= rect.position
-	area.add_child(coll_shape)
-	area.monitorable= false
-	area.body_entered.connect(on_level_completed.unbind(1))
-	add_child(area)
-
-
 func game_over():
 	SceneManager.call_delayed(SceneManager.load_build_mode, 3.0)
 	
