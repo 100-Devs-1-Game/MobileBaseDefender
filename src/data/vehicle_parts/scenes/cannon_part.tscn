@@ -12,4 +12,5 @@ recoil_distance = 5.0
 texture = ExtResource("1_cfd3m")
 
 [node name="Barrel" type="Sprite2D" parent="."]
+position = Vector2(3, 0)
 texture = ExtResource("2_15v4g")
