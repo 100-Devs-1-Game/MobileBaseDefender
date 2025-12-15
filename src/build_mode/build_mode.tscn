@@ -32,8 +32,6 @@ texture_margin_bottom = 10.0
 expand_margin_left = 5.0
 expand_margin_top = 5.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8y8w5"]
-
 [sub_resource type="LabelSettings" id="LabelSettings_qsv6l"]
 font = ExtResource("6_8iu1i")
 font_size = 32
@@ -42,6 +40,8 @@ font_size = 32
 font = ExtResource("6_8iu1i")
 font_size = 32
 font_color = Color(0.77785224, 0.6042458, 0.48009235, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8y8w5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_v3g1f"]
 font = ExtResource("6_8iu1i")
@@ -233,76 +233,23 @@ size_flags_vertical = 10
 
 [node name="Info Panel" type="PanelContainer" parent="UI"]
 custom_minimum_size = Vector2(0, 50)
-anchors_preset = 12
+anchors_preset = -1
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 378.0
 offset_top = -224.0
-offset_right = -580.0
+offset_right = -583.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = ExtResource("8_8y8w5")
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/Info Panel"]
 layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 3
-theme_override_constants/margin_right = 300
-theme_override_constants/margin_bottom = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Info Panel/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 30
-
-[node name="Tool Panel" type="PanelContainer" parent="UI/Info Panel/MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_8y8w5")
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 15
-
-[node name="Rotate Buttons" type="HBoxContainer" parent="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_constants/separation = 20
-alignment = 1
-
-[node name="TextureButton" type="TextureButton" parent="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer/VBoxContainer/Rotate Buttons"]
-layout_mode = 2
-disabled = true
-texture_normal = ExtResource("12_dvtsv")
-texture_pressed = ExtResource("13_tp38k")
-texture_hover = ExtResource("14_m6a3v")
-texture_disabled = ExtResource("15_x6fox")
-
-[node name="TextureButton2" type="TextureButton" parent="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer/VBoxContainer/Rotate Buttons"]
-layout_mode = 2
-disabled = true
-texture_normal = ExtResource("13_v3g1f")
-texture_pressed = ExtResource("17_g7tsb")
-texture_hover = ExtResource("18_8n6tu")
-texture_disabled = ExtResource("19_oquwh")
-
-[node name="VBoxContainer" type="HBoxContainer" parent="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="TextureButton" parent="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("12_nbwfo")]
-layout_mode = 2
-size_flags_horizontal = 2
-text = "Zoom+"
-script = ExtResource("13_e1m40")
-type = 1
-
-[node name="TextureButton2" parent="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("12_nbwfo")]
-layout_mode = 2
-size_flags_horizontal = 2
-text = "Zoom-"
-script = ExtResource("13_e1m40")
-type = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/Info Panel/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -327,6 +274,67 @@ layout_mode = 2
 size_flags_vertical = 10
 text = "Use Frames to expand your vehicles buildable area"
 label_settings = SubResource("LabelSettings_dvtsv")
+
+[node name="Tool Panel" type="PanelContainer" parent="UI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -224.0
+offset_right = 374.0
+grow_vertical = 0
+theme_override_styles/panel = ExtResource("8_8y8w5")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Tool Panel"]
+layout_mode = 2
+
+[node name="Tool Panel" type="PanelContainer" parent="UI/Tool Panel/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_8y8w5")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Tool Panel/MarginContainer/Tool Panel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Tool Panel/MarginContainer/Tool Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Rotate Buttons" type="HBoxContainer" parent="UI/Tool Panel/MarginContainer/Tool Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="UI/Tool Panel/MarginContainer/Tool Panel/MarginContainer/VBoxContainer/Rotate Buttons"]
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("12_dvtsv")
+texture_pressed = ExtResource("13_tp38k")
+texture_hover = ExtResource("14_m6a3v")
+texture_disabled = ExtResource("15_x6fox")
+
+[node name="TextureButton2" type="TextureButton" parent="UI/Tool Panel/MarginContainer/Tool Panel/MarginContainer/VBoxContainer/Rotate Buttons"]
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("13_v3g1f")
+texture_pressed = ExtResource("17_g7tsb")
+texture_hover = ExtResource("18_8n6tu")
+texture_disabled = ExtResource("19_oquwh")
+
+[node name="VBoxContainer" type="HBoxContainer" parent="UI/Tool Panel/MarginContainer/Tool Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureButton" parent="UI/Tool Panel/MarginContainer/Tool Panel/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("12_nbwfo")]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Zoom+"
+script = ExtResource("13_e1m40")
+type = 1
+
+[node name="TextureButton2" parent="UI/Tool Panel/MarginContainer/Tool Panel/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("12_nbwfo")]
+layout_mode = 2
+text = "Zoom-"
+script = ExtResource("13_e1m40")
+type = 2
 
 [node name="Inventory" type="PanelContainer" parent="UI"]
 anchors_preset = 5
@@ -354,5 +362,3 @@ label_settings = SubResource("LabelSettings_v3g1f")
 [connection signal="toggled" from="UI/Sidebar/MarginContainer/VBoxContainer/HBoxContainer/Button Parts Tab" to="." method="_on_switch_tab" binds= [1]]
 [connection signal="toggled" from="UI/Sidebar/MarginContainer/VBoxContainer/HBoxContainer/Button Upgrades Tab" to="." method="_on_switch_tab" binds= [2]]
 [connection signal="animation_finished" from="UI/Sidebar/MarginContainer/VBoxContainer/Go Button" to="." method="_on_button_go_pressed"]
-[connection signal="pressed" from="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer/VBoxContainer/Rotate Buttons/TextureButton" to="." method="_on_button_rotate_left_pressed"]
-[connection signal="pressed" from="UI/Info Panel/MarginContainer/HBoxContainer/Tool Panel/MarginContainer/VBoxContainer/Rotate Buttons/TextureButton2" to="." method="_on_button_rotate_right_pressed"]
