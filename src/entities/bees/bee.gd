@@ -14,8 +14,8 @@ func _ready() -> void:
 	neighbor_query.exclude= [ get_rid() ]
 
 
-func _physics_process(delta: float) -> void:
-	super(delta)
+func tick():
+	super()
 	if linear_velocity:
 		
 		neighbor_query.transform.origin= global_position
@@ -25,7 +25,8 @@ func _physics_process(delta: float) -> void:
 		for item in result:
 			var other_bee: Node2D= item.collider
 			var vec:= global_position - other_bee.global_position
-			assert(not vec.is_zero_approx())
+			if vec.is_zero_approx():
+				continue
 			correction_velocity+= vec.normalized() * 100 / vec.length()
 
 		linear_velocity+= correction_velocity * 10

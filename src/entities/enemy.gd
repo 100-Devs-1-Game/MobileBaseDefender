@@ -7,9 +7,14 @@ extends RigidBody2D
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+var tick_offset: int= randi() % 9
 
 
 func _physics_process(_delta: float) -> void:
+	if Engine.get_physics_frames() % 10 == tick_offset:
+		tick()
+
+func tick():
 	var target_pos:= get_move_target()
 	var dir= global_position.direction_to(target_pos)
 	linear_velocity= dir * max_speed
