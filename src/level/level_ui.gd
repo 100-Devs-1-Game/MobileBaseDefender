@@ -7,5 +7,5 @@ extends CanvasLayer
 
 
 func open_popup(vehicle: Vehicle):
-	label_popup.text= str("Collected ", vehicle.inventory.get_as_str())
+	label_popup.text= str("Collected\n\n", vehicle.inventory.get_as_str().replace("  ", "\n"))
 	popup.show()
