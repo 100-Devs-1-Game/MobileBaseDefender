@@ -70,8 +70,8 @@ func can_fire(_part_info: VehicleMountedPartInfo, vehicle: Vehicle)-> bool:
 	return vehicle.auto_fire
 
 
-func get_muzzle_transform(_part_info: VehicleMountedPartInfo, vehicle: Vehicle, tile_pos: Vector2i)-> Transform2D:
-	return vehicle.get_tile_transform(tile_pos)
+func get_muzzle_transform(part_info: VehicleMountedPartInfo, vehicle: Vehicle, tile_pos: Vector2i)-> Transform2D:
+	return vehicle.get_tile_transform(tile_pos, part_info)
 
 
 func get_stats_str()-> String:

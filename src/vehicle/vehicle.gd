@@ -280,8 +280,10 @@ func update_debug_window():
 	debug_window.set_value("power ratio", power_supply_ratio)
 
 
-func get_tile_transform(tile: Vector2i)-> Transform2D:
+func get_tile_transform(tile: Vector2i, part_info: VehicleMountedPartInfo= null)-> Transform2D:
 	var trans:= Transform2D()
+	if part_info:
+		trans= trans.rotated(Vector2.UP.angle_to(part_info.rotation))
 	trans.origin= Vector2(tile) * PART_SIZE # + Vector2.ONE * PART_SIZE * 0.5
 	trans= trans.rotated(rotation)
 	trans.origin+= position
