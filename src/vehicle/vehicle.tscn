@@ -25,6 +25,7 @@ linear_damp = 1.0
 angular_damp_mode = 1
 angular_damp = 1.0
 script = ExtResource("1_opyur")
+rolling_friction = 0.05
 controls = ExtResource("2_vg162")
 shadow_alpha = 0.4
 wheel_part_reference = ExtResource("2_1ktiy")
