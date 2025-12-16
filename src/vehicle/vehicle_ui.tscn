@@ -255,6 +255,7 @@ type = 1
 [node name="TextureButton" type="TextureButton" parent="Control UI/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
+disabled = true
 texture_normal = ExtResource("19_kk5dq")
 texture_hover = ExtResource("18_momxe")
 texture_disabled = ExtResource("20_uo645")
@@ -284,7 +285,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 step = 3.13
-value = 50.08
 fill_mode = 4
 radial_fill_degrees = 356.7
 texture_under = ExtResource("21_03nns")
