@@ -7,14 +7,13 @@
 [sub_resource type="Resource" id="Resource_55dyg"]
 script = ExtResource("2_ccrj0")
 ores = Dictionary[int, int]({
-0: 5,
-2: 5
+0: 5
 })
 metadata/_custom_type_script = "uid://dhoiovu5dml4c"
 
 [resource]
 script = ExtResource("1_its2j")
-power_generated = 50
+power_generated = 15
 category = 1
 build_mode_texture = ExtResource("1_xlp3u")
 game_mode_texture = ExtResource("1_xlp3u")
