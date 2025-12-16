@@ -14,3 +14,7 @@ func update_event(event: InputEvent):
 				pressed_state= true
 			elif not is_trigger:
 				pressed_state= false
+
+
+func reset():
+	pressed_state= false

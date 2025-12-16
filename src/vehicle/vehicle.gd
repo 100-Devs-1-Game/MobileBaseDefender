@@ -54,6 +54,7 @@ var inventory:= Inventory.new()
 func _ready() -> void:
 	Global.vehicle= self
 	camera.ignore_rotation= not GameConstants.active.lock_camera_rotation
+	controls.reset()
 
 
 func initialize(p_layout: VehicleLayout):

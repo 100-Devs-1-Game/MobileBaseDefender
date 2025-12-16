@@ -37,3 +37,8 @@ func finish_update():
 		if input is VehicleStandardControlInput:
 			if input.is_trigger:
 				input.pressed_state= false
+
+
+func reset():
+	for input in all_inputs:
+		input.reset()

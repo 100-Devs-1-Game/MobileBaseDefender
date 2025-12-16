@@ -11,3 +11,7 @@ var strength: float
 
 func update():
 	strength= Input.get_axis(action_mapping_negative, action_mapping_positive)
+
+
+func reset():
+	strength= 0

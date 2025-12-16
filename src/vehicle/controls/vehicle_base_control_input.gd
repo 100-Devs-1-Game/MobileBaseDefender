@@ -11,3 +11,7 @@ func update_event(_event: InputEvent):
 
 func update():
 	pass
+
+
+func reset():
+	pass
