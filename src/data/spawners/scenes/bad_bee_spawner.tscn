@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfnx5e1rf4m2h"]
+
+[ext_resource type="Script" uid="uid://cpf8rw0riybn6" path="res://entities/enemy_spawner.gd" id="1_cnplx"]
+[ext_resource type="Resource" uid="uid://dri40dk0ce674" path="res://entities/bees/bad_bee_definition.tres" id="2_uotdx"]
+
+[node name="BadBeeSpawner" type="Node2D"]
+
+[node name="EnemySpawner" type="Node2D" parent="."]
+script = ExtResource("1_cnplx")
+enemy_type = ExtResource("2_uotdx")
+trigger_distance = 5000
+max_spawns = 15
+metadata/_custom_type_script = "uid://cpf8rw0riybn6"

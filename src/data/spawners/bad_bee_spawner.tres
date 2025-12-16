@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SpawnerDefinition" load_steps=3 format=3 uid="uid://sbgw3xxgry5b"]
+
+[ext_resource type="Script" uid="uid://bo7ctj76krjq4" path="res://level/spawner_definition.gd" id="1_8ik5x"]
+[ext_resource type="PackedScene" uid="uid://bfnx5e1rf4m2h" path="res://data/spawners/scenes/bad_bee_spawner.tscn" id="1_77qkk"]
+
+[resource]
+script = ExtResource("1_8ik5x")
+scene = ExtResource("1_77qkk")
+metadata/_custom_type_script = "uid://bo7ctj76krjq4"

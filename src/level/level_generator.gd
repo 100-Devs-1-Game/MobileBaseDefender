@@ -24,6 +24,7 @@ const DIRECTIONS= [ Vector2i.UP, Vector2i.RIGHT, Vector2i.DOWN, Vector2i.LEFT ]
 @export var branch_point_min_width: int= 9
 
 @export var ores: Array[OreData]
+@export var spawners: Array[SpawnerDefinition]
 @export var clouds: Array[PackedScene]
 @export var cloud_tile_size: int= 700
 @export var cloud_coverage: float= 0.2
@@ -116,6 +117,13 @@ func second_pass(level: Level):
 			if Utils.chance100(ore.density):
 				level.tile_map_objects.set_cell(tile_pos, 0, Vector2i.ZERO, ore.tile_scene_id)
 				break
+		
+		for spawner in spawners:
+			if Utils.chance100(spawner.density):
+				var spawner_obj: Node2D= spawner.scene.instantiate()
+				spawner_obj.position= level.tile_map_floor.map_to_local(tile_pos)
+				level.add_child(spawner_obj)
+				break
 
 
 static func generate_background(level: Level):
@@ -134,7 +142,6 @@ static func generate_background(level: Level):
 	for x in range(start_tile.x, end_tile.x):
 		for y in range(start_tile.y, end_tile.y):
 			level.tile_map_background.set_cell(Vector2i(x, y), randi() % 9, Vector2i.ZERO)
-
 
 
 func generate_clouds(level: Level):
