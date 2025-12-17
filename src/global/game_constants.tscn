@@ -1,17 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://c47ot4qpckp2q"]
+[gd_scene load_steps=7 format=3 uid="uid://c47ot4qpckp2q"]
 
 [ext_resource type="Script" uid="uid://mjvx2ooy7ikx" path="res://global/game_constants.gd" id="1_y3lg3"]
 [ext_resource type="Script" uid="uid://po4gsi1p0t8e" path="res://misc/game_constants_data.gd" id="2_61cua"]
+[ext_resource type="Script" uid="uid://dhoiovu5dml4c" path="res://vehicle/inventory.gd" id="3_3fjuc"]
 
 [sub_resource type="Resource" id="Resource_3fjuc"]
 script = ExtResource("2_61cua")
 metadata/_custom_type_script = "uid://po4gsi1p0t8e"
+
+[sub_resource type="Resource" id="Resource_c2jk1"]
+script = ExtResource("3_3fjuc")
+ores = Dictionary[int, int]({
+0: 100,
+2: 20
+})
+metadata/_custom_type_script = "uid://dhoiovu5dml4c"
 
 [sub_resource type="Resource" id="Resource_qbgio"]
 script = ExtResource("2_61cua")
 lock_camera_rotation = false
 acceleration_factor = 25.0
 steering_factor = 5.0
+starting_inventory = SubResource("Resource_c2jk1")
 metadata/_custom_type_script = "uid://po4gsi1p0t8e"
 
 [node name="GameConstants" type="Node"]

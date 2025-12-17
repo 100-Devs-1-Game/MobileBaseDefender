@@ -15,3 +15,6 @@ func _ready() -> void:
 		active= testing_constants
 	else:
 		active= release_constants
+
+	if active.starting_inventory:
+		GameData.campaign.inventory.add_inv(active.starting_inventory)
