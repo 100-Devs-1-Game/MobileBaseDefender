@@ -16,3 +16,7 @@ func init(pos: Vector2, dmg: float, r: float):
 
 func _ready() -> void:
 	animated_sprite.scale= Vector2.ONE * radius / 64.0
+
+
+func _on_animation_finished() -> void:
+	queue_free()
