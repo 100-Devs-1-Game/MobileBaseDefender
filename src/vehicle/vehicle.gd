@@ -39,8 +39,6 @@ var power_supply_ratio: float
 var acceleration_force: float
 var rotation_torque: float
 
-var auto_fire:= true
-
 var custom_mounted_objects: Array[VehicleMountedPartObject]
 var coll_shape_tile_pos_lookup: Dictionary[int, Vector2i] 
 var structure_damage: Dictionary[Vector2i, float]

@@ -34,6 +34,9 @@ func tick(part_info: VehicleMountedPartInfo, vehicle: Vehicle, tile_pos: Vector2
 		target= get_target(part_info)
 		assert(target)
 	
+	if not can_fire(part_info, vehicle):
+		return
+	
 	assert(target)
 	trans.rotated(get_rotation(part_info))
 	
@@ -109,4 +112,4 @@ static func has_target(part_info: VehicleMountedPartInfo)-> bool:
 func can_fire(part_info: VehicleMountedPartInfo, vehicle: Vehicle)-> bool:
 	if not has_target(part_info):
 		return false
-	return super(part_info, vehicle)
+	return true
