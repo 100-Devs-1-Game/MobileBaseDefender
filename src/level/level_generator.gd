@@ -123,9 +123,7 @@ func second_pass(level: Level):
 		
 		for spawner in spawners:
 			if Utils.chance100(spawner.density):
-				var spawner_obj: Node2D= spawner.scene.instantiate()
-				spawner_obj.position= level.tile_map_floor.map_to_local(tile_pos)
-				level.add_child(spawner_obj)
+				spawner.spawn(level, tile_pos)
 				break
 
 

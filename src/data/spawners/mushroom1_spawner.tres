@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TileObjectSpawnerDefinition" load_steps=2 format=3 uid="uid://bll7bbnhavrye"]
+
+[ext_resource type="Script" uid="uid://d266b68fumxu6" path="res://level/tile_object_spawner_definition.gd" id="1_sx5dp"]
+
+[resource]
+script = ExtResource("1_sx5dp")
+tile_id = 2
+metadata/_custom_type_script = "uid://d266b68fumxu6"

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="LevelGenerator" load_steps=12 format=3 uid="uid://k8kvc4xxlepp"]
+[gd_resource type="Resource" script_class="LevelGenerator" load_steps=14 format=3 uid="uid://k8kvc4xxlepp"]
 
 [ext_resource type="Script" uid="uid://4yrpcdgk6rop" path="res://level/ore_data.gd" id="1_kpoq2"]
 [ext_resource type="PackedScene" uid="uid://cjkhb5u1ifqbk" path="res://level/clouds/cloud1.tscn" id="1_llxlv"]
@@ -11,11 +11,13 @@
 [ext_resource type="Script" uid="uid://bo7ctj76krjq4" path="res://level/spawner_definition.gd" id="9_iaale"]
 [ext_resource type="Resource" uid="uid://bluwsuy3i7syt" path="res://data/spawners/fast_bee_spawner.tres" id="10_54e6m"]
 [ext_resource type="Resource" uid="uid://sbgw3xxgry5b" path="res://data/spawners/bad_bee_spawner.tres" id="11_pv1c2"]
+[ext_resource type="Resource" uid="uid://bll7bbnhavrye" path="res://data/spawners/mushroom1_spawner.tres" id="12_pv1c2"]
+[ext_resource type="Resource" uid="uid://ddp45lcupqadq" path="res://data/spawners/mushroom2_spawner.tres" id="13_vmpah"]
 
 [resource]
 script = ExtResource("2_llxlv")
 ores = Array[ExtResource("1_kpoq2")]([ExtResource("3_c50ss"), ExtResource("4_2w31y"), ExtResource("5_jk2ip"), ExtResource("6_g81eg")])
-spawners = Array[ExtResource("9_iaale")]([ExtResource("10_54e6m"), ExtResource("11_pv1c2")])
+spawners = Array[ExtResource("9_iaale")]([ExtResource("10_54e6m"), ExtResource("11_pv1c2"), ExtResource("12_pv1c2"), ExtResource("13_vmpah")])
 clouds = Array[PackedScene]([ExtResource("1_llxlv")])
 cloud_tile_size = 480
 finish_area_scene = ExtResource("2_jk2ip")
