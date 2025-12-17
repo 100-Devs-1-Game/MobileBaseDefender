@@ -47,11 +47,15 @@ var tile_references: Dictionary[Vector2i, TileReferences]
 var fire_groups: Dictionary[FireGroup.Type, FireGroup]
 var inventory:= Inventory.new()
 
+var enemy_detector_query:= PhysicsShapeQueryParameters2D.new()
+
 
 
 func _ready() -> void:
 	Global.vehicle= self
 	camera.ignore_rotation= not GameConstants.active.lock_camera_rotation
+	enemy_detector_query.collision_mask= CollisionLayers.ENEMY
+	enemy_detector_query.shape= CircleShape2D.new()
 	controls.reset()
 
 
@@ -291,3 +295,17 @@ func get_tile_transform(tile: Vector2i, part_info: VehicleMountedPartInfo= null)
 
 func get_level()-> Level:
 	return get_parent()
+
+
+func _on_enemy_detector_cooldown_timeout() -> void:
+	var dss:= get_world_2d().direct_space_state
+	enemy_detector_query.shape.radius= 1500
+	enemy_detector_query.transform.origin= global_position
+	
+	if dss.intersect_shape(enemy_detector_query, 1):
+		MusicPlayer.in_battle= true
+	else:
+		enemy_detector_query.shape.radius= 2500
+		if not dss.intersect_shape(enemy_detector_query, 1):
+			MusicPlayer.in_battle= false
+		

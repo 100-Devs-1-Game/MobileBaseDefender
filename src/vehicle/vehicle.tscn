@@ -47,4 +47,9 @@ z_index = -1
 visible = false
 texture = ExtResource("4_fehuk")
 
+[node name="Enemy Detector Cooldown" type="Timer" parent="."]
+autostart = true
+
 [node name="Vehicle UI" parent="." instance=ExtResource("7_kuhha")]
+
+[connection signal="timeout" from="Enemy Detector Cooldown" to="." method="_on_enemy_detector_cooldown_timeout"]
