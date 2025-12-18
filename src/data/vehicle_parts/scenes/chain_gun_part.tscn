@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2e2llmlywfj5"]
+[gd_scene load_steps=8 format=3 uid="uid://b2e2llmlywfj5"]
 
 [ext_resource type="Script" uid="uid://bd8uf007vsxt7" path="res://data/vehicle_parts/scenes/machine_gun_part.gd" id="1_s2kvv"]
 [ext_resource type="Texture2D" uid="uid://k8g1l61lcbm5" path="res://assets/art/vehicle/mounted/chaingun/MG_001.png" id="2_qf5ln"]
 [ext_resource type="Texture2D" uid="uid://ddahmc8b1ex8x" path="res://assets/art/vehicle/mounted/chaingun/MG_002.png" id="3_xcx2u"]
 [ext_resource type="Texture2D" uid="uid://bfrau3htdfkq4" path="res://assets/art/vehicle/mounted/chaingun/MG_003.png" id="4_rdq2n"]
+[ext_resource type="AudioStream" uid="uid://drngvacsf0lcp" path="res://assets/sfx/chaingun_spinning.ogg" id="5_rdq2n"]
+[ext_resource type="AudioStream" uid="uid://81iybaehscgw" path="res://assets/sfx/chaingun_shot.ogg" id="6_1a72a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1a72a"]
 animations = [{
@@ -30,3 +32,13 @@ sprite_frames = SubResource("SpriteFrames_1a72a")
 autoplay = "default"
 frame = 2
 frame_progress = 0.04094342
+
+[node name="AudioStreamPlayer Spinning" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_rdq2n")
+bus = &"Sfx"
+
+[node name="AudioStreamPlayer Shooting" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_1a72a")
+volume_db = -5.0
+max_polyphony = 3
+bus = &"Sfx"

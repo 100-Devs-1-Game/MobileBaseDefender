@@ -1,14 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://bll6vax64noq5"]
+[gd_scene load_steps=4 format=3 uid="uid://bll6vax64noq5"]
 
 [ext_resource type="Script" uid="uid://br0mbkjhi843r" path="res://level/ore_tile.gd" id="1_vq0t3"]
+[ext_resource type="AudioStream" uid="uid://de6i22a4nufwo" path="res://assets/sfx/rock_break.ogg" id="2_jgw1q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vbkug"]
 radius = 32.0
 
-[node name="Ore Tile" type="Area2D"]
+[node name="Ore Tile" type="Area2D" node_paths=PackedStringArray("audio_player")]
 collision_layer = 512
 collision_mask = 2049
 script = ExtResource("1_vq0t3")
+audio_player = NodePath("AudioStreamPlayer Break")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_vbkug")
@@ -22,3 +24,7 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Drill Detector"]
 shape = SubResource("CircleShape2D_vbkug")
+
+[node name="AudioStreamPlayer Break" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_jgw1q")
+bus = &"Sfx"

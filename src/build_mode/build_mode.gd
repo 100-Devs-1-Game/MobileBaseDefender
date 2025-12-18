@@ -20,6 +20,11 @@ enum SidebarTab { FRAME, PARTS, UPGRADES }
 @onready var part_sprites_node: Node2D = $"Part Sprites"
 @onready var selected_sprite: Sprite2D = $"Part Sprite"
 
+@onready var audio_player_go: AudioStreamPlayer = $"UI/AudioStreamPlayer Go"
+@onready var audio_player_place: AudioStreamPlayer = $"AudioStreamPlayer Place"
+@onready var audio_player_remove: AudioStreamPlayer = $"AudioStreamPlayer Remove"
+
+
 var selected_item: BuildModeListItem
 var selected_part: VehicleBasePartData
 var vehicle_stats:= VehicleStats.new()
@@ -32,7 +37,9 @@ var current_tab: SidebarTab
 
 func _ready() -> void:
 	GameData.campaign.inventory.amount_changed.connect(update_inventory_display)
-
+	
+	MusicPlayer.in_battle= false
+	
 	if SceneManager.vehicle_layout:
 		layout= SceneManager.vehicle_layout
 	#elif start_clean:
@@ -84,20 +91,24 @@ func _on_texture_rect_grid_gui_input(event: InputEvent) -> void:
 					layout.add_structure(tile_pos, selected_part)
 					buy_part()
 					render_layout()
+					audio_player_place.play()
 			elif layout.can_mount_part_at(tile_pos):
 				layout.add_mounted_part(tile_pos, selected_part, part_rotation)
 				buy_part()
 				render_layout()
+				audio_player_place.play()
 				
 		elif event.button_index == MOUSE_BUTTON_RIGHT:
 			if layout.has_mounted_part_at(tile_pos):
 				refund_part(layout.get_mounted_part_info_at(tile_pos).part)
 				layout.remove_part(tile_pos)
 				render_layout()
+				audio_player_remove.play()
 			elif layout.has_structure_at(tile_pos) and can_remove_structure_at(tile_pos):
 				refund_part(layout.get_structure_at(tile_pos))
 				layout.remove_structure(tile_pos)
 				render_layout()
+				audio_player_remove.play()
 
 
 func update_list():
@@ -265,8 +276,7 @@ func _on_texture_rect_grid_mouse_exited() -> void:
 
 
 func _on_button_go_pressed() -> void:
-	#SceneManager.vehicle_layout= layout
-	#SceneManager.load_level()
+	AudioStreamPlayerEnhanced.play_global(audio_player_go)
 	GameData.campaign.vehicle= layout
 	GameData.campaign.load_next_scene()
 

@@ -15,6 +15,8 @@ extends Node2D
 
 @onready var level_ui: LevelUI = $LevelUI
 @onready var clouds_node: StaticBody2D = $Clouds
+@onready var audio_player_victory: AudioStreamPlayer = $"AudioStreamPlayer Victory"
+@onready var audio_player_defeat: AudioStreamPlayer = $"AudioStreamPlayer Defeat"
 
 var vehicle: Vehicle
 var projectiles_node: Node2D
@@ -109,10 +111,12 @@ func spawn_pickup(pos: Vector2, data: BasePickupData):
 
 
 func game_over():
+	audio_player_defeat.play()
 	GameData.campaign.load_next_scene.call_deferred(true)
 	
 
 func on_level_completed():
+	audio_player_victory.play()
 	level_ui.open_popup(vehicle)
 	GameData.campaign.earn(vehicle.inventory)
 	GameData.campaign.load_next_scene.call_deferred()

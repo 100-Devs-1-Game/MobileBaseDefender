@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://scmr7fvfwq86"]
+[gd_scene load_steps=13 format=3 uid="uid://scmr7fvfwq86"]
 
 [ext_resource type="Script" uid="uid://ceb3fbth2q404" path="res://vehicle/vehicle.gd" id="1_opyur"]
 [ext_resource type="Resource" uid="uid://qnlykqd5qlqd" path="res://data/vehicle_parts/wheel.tres" id="2_1ktiy"]
@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://fxbtmdld23ty" path="res://assets/art/placeholder/drop_shadow.png" id="4_jmtuw"]
 [ext_resource type="Script" uid="uid://bufhsendqclmw" path="res://misc/game_camera.gd" id="5_157w3"]
 [ext_resource type="PackedScene" uid="uid://d0g5ffcu256n" path="res://vehicle/vehicle_ui.tscn" id="7_kuhha"]
+[ext_resource type="AudioStream" uid="uid://jdros1tbw74v" path="res://assets/sfx/tires_rolling.ogg" id="8_g2dx0"]
+[ext_resource type="AudioStream" uid="uid://sdt442f5s8h7" path="res://assets/sfx/engine_idling.ogg" id="9_s4s6f"]
+[ext_resource type="AudioStream" uid="uid://b0aqo53e8xeun" path="res://assets/sfx/enging_working.ogg" id="10_fehuk"]
+[ext_resource type="AudioStream" uid="uid://db4myw6lqb3w4" path="res://assets/sfx/metal_crack.ogg" id="11_fehuk"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kuhha"]
 friction = 0.0
@@ -51,5 +55,25 @@ texture = ExtResource("4_fehuk")
 autostart = true
 
 [node name="Vehicle UI" parent="." instance=ExtResource("7_kuhha")]
+
+[node name="AudioStreamPlayer Tires" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_g2dx0")
+autoplay = true
+bus = &"Sfx"
+
+[node name="AudioStreamPlayer Engine Idle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_s4s6f")
+pitch_scale = 0.5
+autoplay = true
+bus = &"Sfx"
+
+[node name="AudioStreamPlayer Throttle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_fehuk")
+autoplay = true
+bus = &"Sfx"
+
+[node name="AudioStreamPlayer Plate Crack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_fehuk")
+bus = &"Sfx"
 
 [connection signal="timeout" from="Enemy Detector Cooldown" to="." method="_on_enemy_detector_cooldown_timeout"]

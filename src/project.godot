@@ -26,6 +26,7 @@ GameConstants="*res://global/game_constants.tscn"
 EventManager="*res://global/event_manager.gd"
 SceneManager="*res://global/scene_manager.tscn"
 MusicPlayer="*res://global/music_player.tscn"
+AudioManager="*res://global/audio_manager.gd"
 
 [display]
 

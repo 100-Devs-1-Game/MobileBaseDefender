@@ -5,6 +5,7 @@ extends ObjectTile
 @export var pickup: OrePickupData
 
 @onready var drill_detector: Area2D = $"Drill Detector"
+@onready var audio_player_break: AudioStreamPlayer = $"AudioStreamPlayer Break"
 
 
 

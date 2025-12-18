@@ -31,8 +31,7 @@ func tick(part_info: VehicleMountedPartInfo, vehicle: Vehicle, tile_pos: Vector2
 	if not is_reloading(part_info):
 		if can_fire(part_info, vehicle):
 			fire(part_info, vehicle, tile_pos)
-			print("Fire")
-		
+
 
 func fire(part_info: VehicleMountedPartInfo, vehicle: Vehicle, tile_pos: Vector2i):
 	var muzzle_trans: = get_muzzle_transform(part_info, vehicle, tile_pos)

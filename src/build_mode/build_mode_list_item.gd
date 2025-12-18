@@ -14,6 +14,10 @@ signal selected(item: BuildModeListItem)
 @onready var label_cost: Label = %"Label Cost"
 @onready var label_cost2: Label = %"Label Cost2"
 
+@onready var audio_player_hover: AudioStreamPlayer = $"AudioStreamPlayer Hover"
+@onready var audio_player_select: AudioStreamPlayer = $"AudioStreamPlayer Select"
+
+
 var type: VehicleBasePartData
 var is_selected:= false
 var is_disabled:= false
@@ -43,7 +47,8 @@ func select(b: bool):
 	is_selected= b
 	if is_disabled: return
 	add_theme_stylebox_override("panel", selected_style if b else default_style)
-
+	audio_player_select.play()
+	
 
 func disable(b: bool):
 	if is_disabled == b: return
@@ -66,6 +71,7 @@ func _on_mouse_entered() -> void:
 	if is_disabled:
 		return
 	add_theme_stylebox_override("panel", hover_style)
+	audio_player_hover.play()
 
 
 func _on_mouse_exited() -> void:

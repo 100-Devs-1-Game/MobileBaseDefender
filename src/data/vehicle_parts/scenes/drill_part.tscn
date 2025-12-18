@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://die1hq1e2rl3j"]
+[gd_scene load_steps=15 format=3 uid="uid://die1hq1e2rl3j"]
 
 [ext_resource type="Script" uid="uid://uhra7begiwfe" path="res://data/vehicle_parts/scenes/drill_part.gd" id="1_3iphr"]
 [ext_resource type="Texture2D" uid="uid://yfvcg12lqfgq" path="res://assets/art/vehicle/mounted/drill/Drill_1_0001.png" id="1_nhiqt"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://vrh3t4iea8bg" path="res://assets/art/vehicle/mounted/drill/Drill_1_0008.png" id="8_3ncpy"]
 [ext_resource type="Texture2D" uid="uid://cnnf1y4hkh7pn" path="res://assets/art/vehicle/mounted/drill/Drill_1_0009.png" id="9_ciowd"]
 [ext_resource type="Texture2D" uid="uid://l6f2hyqo4yeq" path="res://assets/art/vehicle/mounted/drill/Drill_1_0010.png" id="10_p5arc"]
+[ext_resource type="AudioStream" uid="uid://r20klxcbts26" path="res://assets/sfx/drill.ogg" id="12_pjoul"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fjy1e"]
 animations = [{
@@ -68,3 +69,7 @@ monitoring = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CrackOre"]
 shape = SubResource("RectangleShape2D_pjoul")
 debug_color = Color(0.5953692, 0.5419852, 0.18513906, 0.41960785)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_pjoul")
+bus = &"Sfx"

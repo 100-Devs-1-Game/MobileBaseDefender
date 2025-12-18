@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bcolrt66stnjm"]
+[gd_scene load_steps=36 format=3 uid="uid://bcolrt66stnjm"]
 
 [ext_resource type="Script" uid="uid://c1tnmf5ecbjjj" path="res://level/level.gd" id="1_fjrtl"]
 [ext_resource type="PackedScene" uid="uid://scmr7fvfwq86" path="res://vehicle/vehicle.tscn" id="2_ooaje"]
@@ -19,7 +19,9 @@
 [ext_resource type="PackedScene" uid="uid://cts2j2h4sqyb8" path="res://level/tile_scenes/mushroom2_tile.tscn" id="20_xp7co"]
 [ext_resource type="PackedScene" uid="uid://m7g1mfjuji1c" path="res://level/tile_scenes/gold_ore_tile.tscn" id="21_oar6y"]
 [ext_resource type="PackedScene" uid="uid://b8tk36qvgmdkx" path="res://level/tile_scenes/titanium_ore_tile.tscn" id="22_2wu4j"]
+[ext_resource type="AudioStream" uid="uid://cbyxola2gt3xn" path="res://assets/sfx/winning_sound.ogg" id="22_36w1a"]
 [ext_resource type="PackedScene" uid="uid://re15anrohpk4" path="res://level/tile_scenes/uranium_ore_tile.tscn" id="23_3b55v"]
+[ext_resource type="AudioStream" uid="uid://betgmlj87g5nb" path="res://assets/sfx/defeat_sound.ogg" id="23_5irc4"]
 [ext_resource type="PackedScene" uid="uid://dabyq7bb8c3yy" path="res://level/level_ui.tscn" id="27_ul3t8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qjkni"]
@@ -122,3 +124,13 @@ collision_layer = 1024
 collision_mask = 0
 
 [node name="LevelUI" parent="." instance=ExtResource("27_ul3t8")]
+
+[node name="AudioStreamPlayer Victory" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("22_36w1a")
+bus = &"Sfx"
+
+[node name="AudioStreamPlayer Defeat" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("23_5irc4")
+bus = &"Sfx"

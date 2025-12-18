@@ -4,6 +4,7 @@ extends RigidBody2D
 @export var max_speed: float= 100
 @export var touch_damage: Damage
 @export var angle_offset: int= 0
+@export var audio_player_death: AudioStreamPlayer2D
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -29,6 +30,8 @@ func get_move_target()-> Vector2:
 
 
 func _on_died() -> void:
+	if audio_player_death:
+		AudioStreamPlayerEnhanced.play_global(audio_player_death)
 	queue_free()
 
 

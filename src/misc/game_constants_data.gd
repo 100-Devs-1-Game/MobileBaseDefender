@@ -5,3 +5,4 @@ extends Resource
 @export var acceleration_factor: float= 1.0
 @export var steering_factor: float= 1.0
 @export var starting_inventory: Inventory
+@export var disable_music: bool= false

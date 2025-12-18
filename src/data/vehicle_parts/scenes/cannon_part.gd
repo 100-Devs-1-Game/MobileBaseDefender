@@ -4,6 +4,7 @@ extends VehicleMountedPartObject
 @export var recovery_speed: float= 2.0
 
 @onready var barrel: Sprite2D = $Barrel
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
 
@@ -12,5 +13,10 @@ func _physics_process(delta: float) -> void:
 	
 	if just_fired:
 		barrel.position.y+= recoil_distance
+		audio_player.play()
 	else:
 		barrel.position.y= lerp(barrel.position.y, 0.0, delta * recovery_speed)
+
+
+func tick(_vehicle: Vehicle, _delta: float):
+	pass

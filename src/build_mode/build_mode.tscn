@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://w7vbuvefyglq"]
+[gd_scene load_steps=31 format=3 uid="uid://w7vbuvefyglq"]
 
 [ext_resource type="Script" uid="uid://bjk0mdvo3ltyo" path="res://build_mode/build_mode.gd" id="1_2vdwl"]
 [ext_resource type="Script" uid="uid://bufhsendqclmw" path="res://misc/game_camera.gd" id="2_ggnbw"]
@@ -22,6 +22,9 @@
 [ext_resource type="Texture2D" uid="uid://byrq87sut7sm3" path="res://assets/art/build_mode/DialRightPressed.png" id="17_g7tsb"]
 [ext_resource type="Texture2D" uid="uid://bp831a6fkun2x" path="res://assets/art/build_mode/DialRightHovered.png" id="18_8n6tu"]
 [ext_resource type="Texture2D" uid="uid://hhme2kr1d78c" path="res://assets/art/build_mode/DialRightDisabled.png" id="19_oquwh"]
+[ext_resource type="AudioStream" uid="uid://blktgbqhxeedv" path="res://assets/sfx/steel_lever.ogg" id="23_oquwh"]
+[ext_resource type="AudioStream" uid="uid://gwun5gikt37o" path="res://assets/sfx/build_placement.ogg" id="25_sn2lv"]
+[ext_resource type="AudioStream" uid="uid://w6wxsom62qrk" path="res://assets/sfx/build_remove.ogg" id="26_4utqw"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8y8w5"]
 texture = ExtResource("7_n4hcl")
@@ -370,6 +373,18 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Iron: 100  Titanium: 0  Gold: 0  Uranium: 0   XP: 0"
 label_settings = SubResource("LabelSettings_v3g1f")
+
+[node name="AudioStreamPlayer Go" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource("23_oquwh")
+bus = &"Sfx"
+
+[node name="AudioStreamPlayer Place" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("25_sn2lv")
+bus = &"Sfx"
+
+[node name="AudioStreamPlayer Remove" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_4utqw")
+bus = &"Sfx"
 
 [connection signal="gui_input" from="TextureRect Grid" to="." method="_on_texture_rect_grid_gui_input"]
 [connection signal="mouse_entered" from="TextureRect Grid" to="." method="_on_texture_rect_grid_mouse_entered"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://5o5abaqxug0v"]
+[gd_scene load_steps=5 format=3 uid="uid://5o5abaqxug0v"]
 
 [ext_resource type="Script" uid="uid://dxt7t5luuxwwf" path="res://entities/enemy.gd" id="1_fmncu"]
 [ext_resource type="Script" uid="uid://dfif7mfxedq70" path="res://entities/health_component.gd" id="2_qd7tb"]
+[ext_resource type="Script" uid="uid://553s75t22y01" path="res://misc/audio_stream_player_efficient.gd" id="3_8owwy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qd7tb"]
 friction = 0.1
@@ -24,6 +25,11 @@ script = ExtResource("2_qd7tb")
 metadata/_custom_type_script = "uid://dfif7mfxedq70"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+autoplay = true
+bus = &"Sfx"
+script = ExtResource("3_8owwy")
 
 [connection signal="died" from="HealthComponent" to="." method="_on_died"]
 [connection signal="hurt" from="HealthComponent" to="." method="_on_hurt"]

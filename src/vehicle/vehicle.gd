@@ -23,8 +23,12 @@ const PART_SIZE= 128
 @onready var debug_window: DebugWindow = $"Vehicle UI/Debug Window"
 @onready var damage_indicator: Sprite2D = $"Damage Indicator"
 @onready var shadow_node: Node2D = $Shadow
-
 @onready var camera: Camera2D = $Camera2D
+
+@onready var audio_player_tires: AudioStreamPlayer = $"AudioStreamPlayer Tires"
+@onready var audio_player_engine_idle: AudioStreamPlayer = $"AudioStreamPlayer Engine Idle"
+@onready var audio_player_throttle: AudioStreamPlayer = $"AudioStreamPlayer Throttle"
+@onready var audio_player_plate_crack: AudioStreamPlayer = $"AudioStreamPlayer Plate Crack"
 
 
 var layout: VehicleLayout
@@ -121,6 +125,11 @@ func _physics_process(delta: float) -> void:
 
 	shadow_node.position= Vector2.ZERO
 	shadow_node.global_position+= shadow_offset
+
+	audio_player_throttle.stream_paused= is_zero_approx(acceleration_force)
+	audio_player_engine_idle.stream_paused= not is_zero_approx(acceleration_force)
+
+	audio_player_tires.volume_linear= linear_velocity.length() / 1000.0
 
 	update_debug_window()
 
@@ -250,6 +259,7 @@ func take_damage_at_shape(dmg_inst: DamageInstance, idx: int):
 			refs.collision_shape.set_deferred("disabled", true)
 			layout.remove_structure(tile_pos, true)
 			update_stats()
+			audio_player_plate_crack.play()
 			
 		else:
 			var dmg_ratio: float= dmg_val / structure.hitpoints

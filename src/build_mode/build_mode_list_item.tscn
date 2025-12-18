@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b7jvanrnafg43"]
+[gd_scene load_steps=12 format=3 uid="uid://b7jvanrnafg43"]
 
 [ext_resource type="StyleBox" uid="uid://k1tblxlbw76e" path="res://build_mode/list_item_style_disabled.tres" id="1_42deh"]
 [ext_resource type="Script" uid="uid://duetls5m8ttl5" path="res://build_mode/build_mode_list_item.gd" id="1_ehu7w"]
@@ -7,6 +7,8 @@
 [ext_resource type="StyleBox" uid="uid://ipdh607c03oy" path="res://build_mode/list_item_style.tres" id="3_jk3vx"]
 [ext_resource type="StyleBox" uid="uid://bdwctrvoq7wy4" path="res://build_mode/list_item_style_hover.tres" id="4_42deh"]
 [ext_resource type="FontFile" uid="uid://cuq0hfcm174n" path="res://assets_external/fonts/Jersey_25/Jersey25-Regular.ttf" id="7_wul22"]
+[ext_resource type="AudioStream" uid="uid://dhkkkukdey460" path="res://assets/sfx/button_sound_3.ogg" id="8_b4yp8"]
+[ext_resource type="AudioStream" uid="uid://btguibt4wj7a4" path="res://assets/sfx/button_sound_1.ogg" id="9_wx1mj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gawnm"]
 font = ExtResource("7_wul22")
@@ -67,6 +69,14 @@ layout_mode = 2
 text = "20 Gold"
 label_settings = SubResource("LabelSettings_c5vcu")
 horizontal_alignment = 2
+
+[node name="AudioStreamPlayer Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_b4yp8")
+bus = &"Sfx"
+
+[node name="AudioStreamPlayer Select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_wx1mj")
+bus = &"Sfx"
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

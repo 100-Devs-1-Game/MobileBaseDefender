@@ -22,6 +22,7 @@ lock_camera_rotation = false
 acceleration_factor = 25.0
 steering_factor = 5.0
 starting_inventory = SubResource("Resource_c2jk1")
+disable_music = true
 metadata/_custom_type_script = "uid://po4gsi1p0t8e"
 
 [node name="GameConstants" type="Node"]

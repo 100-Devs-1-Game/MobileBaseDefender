@@ -18,3 +18,5 @@ func _ready() -> void:
 
 	if active.starting_inventory:
 		GameData.campaign.inventory.add_inv(active.starting_inventory)
+	if active.disable_music:
+		AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), true)
