@@ -62,6 +62,13 @@ func _ready() -> void:
 	spawn_vehicle(Vector2.ZERO, GameData.campaign.vehicle)
 
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		if event.pressed:
+			if event.keycode == KEY_ESCAPE:
+				SceneManager.load_build_mode()
+
+
 func spawn_vehicle(pos: Vector2, layout: VehicleLayout):
 	vehicle= vehicle_scene.instantiate()
 	vehicle.position= pos
