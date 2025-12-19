@@ -112,10 +112,10 @@ func second_pass(level: Level):
 	for tile_pos: Vector2i in level.tile_map_floor.get_used_cells():
 		if tile_pos.length_squared() <= 100:
 			continue
+		if level.tile_map_floor.get_cell_atlas_coords(tile_pos) != Vector2i.ONE:
+			continue
 			
 		for ore in ores: 
-			if level.tile_map_floor.get_cell_atlas_coords(tile_pos) != Vector2i.ONE:
-				continue
 
 			if Utils.chance100(ore.density * (GameData.campaign.stage + 1)):
 				level.tile_map_objects.set_cell(tile_pos, 0, Vector2i.ZERO, ore.tile_scene_id)
