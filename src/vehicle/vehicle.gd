@@ -115,7 +115,7 @@ func _physics_process(delta: float) -> void:
 	linear_velocity= speed * -global_transform.y 
 
 	var applied_torque:= rotation_torque
-	if speed < 0:
+	if speed < -1:
 		applied_torque*= -1
 
 	angular_velocity= applied_torque * GameConstants.active.steering_factor / ( mass / 100.0 )
