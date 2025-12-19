@@ -3,15 +3,23 @@ extends Camera2D
 
 @export var canvas_offset: Vector2
 
+var shake_duration: float
+
 
 func _ready() -> void:
 	Global.camera= self
 	adjust_offset()
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if not ignore_rotation:
 		offset= (canvas_offset / zoom.x).rotated(global_rotation)
+
+	if shake_duration > 0:
+		shake_duration-= delta
+		offset= Vector2.from_angle(randf() * PI * 2) * randf() * 20
+	else:
+		offset= Vector2.ZERO
 
 
 func zoom_in():
@@ -38,3 +46,7 @@ func _input(event: InputEvent) -> void:
 				zoom_in()
 			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 				zoom_out()
+
+
+func shake():
+	shake_duration= 0.5

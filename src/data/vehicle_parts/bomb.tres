@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="VehicleBombPartData" load_steps=6 format=3 uid="uid://bv44ju4hktwle"]
+
+[ext_resource type="Script" uid="uid://bp4grfvui3xbp" path="res://vehicle/parts/custom/bomb_part_data.gd" id="1_i35e7"]
+[ext_resource type="Texture2D" uid="uid://0hkopipktvg0" path="res://assets/art/vehicle/mounted/bomb/BombCharge_v1_0001.png" id="1_pdhup"]
+[ext_resource type="Script" uid="uid://dhoiovu5dml4c" path="res://vehicle/inventory.gd" id="2_sw04y"]
+[ext_resource type="PackedScene" uid="uid://2cvh4khlu82q" path="res://data/vehicle_parts/scenes/bomb_part.tscn" id="3_i0oh0"]
+
+[sub_resource type="Resource" id="Resource_54yxv"]
+script = ExtResource("2_sw04y")
+ores = Dictionary[int, int]({
+0: 20,
+2: 10,
+3: 40
+})
+metadata/_custom_type_script = "uid://dhoiovu5dml4c"
+
+[resource]
+script = ExtResource("1_i35e7")
+explosion_radius = 1000.0
+power_required = 100
+build_mode_texture = ExtResource("1_pdhup")
+game_mode_scene = ExtResource("3_i0oh0")
+name = "Bomb"
+description = "Kill enemies in a large radius. Must be charged before it can be used."
+cost = SubResource("Resource_54yxv")
+sort_order = "i"
+metadata/_custom_type_script = "uid://bp4grfvui3xbp"

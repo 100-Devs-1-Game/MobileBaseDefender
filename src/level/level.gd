@@ -117,6 +117,21 @@ func spawn_pickup(pos: Vector2, data: BasePickupData):
 	pickup.init(data)
 
 
+func kill_enemies_in_radius(pos: Vector2, radius: float):
+	var query:= PhysicsShapeQueryParameters2D.new()
+	query.transform.origin= pos
+	var circle:= CircleShape2D.new()
+	circle.radius= radius
+	query.shape= circle
+	query.collision_mask= CollisionLayers.ENEMY
+	
+	var result:= get_world_2d().direct_space_state.intersect_shape(query, 128)
+	for item in result:
+		var enemy: Enemy= item.collider
+		assert(enemy)
+		enemy._on_died()
+
+
 func game_over():
 	audio_player_defeat.play()
 	GameData.campaign.load_next_scene.call_deferred(true)

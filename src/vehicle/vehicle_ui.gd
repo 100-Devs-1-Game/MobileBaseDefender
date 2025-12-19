@@ -14,12 +14,17 @@ extends CanvasLayer
 @onready var progress_bar_storage: ProgressBar = %"ProgressBar Storage"
 @onready var label_storage: Label = %"Label Storage"
 
+@onready var bomb_button: TextureButton = %"Bomb Button"
+@onready var bomb_progress_bar: TextureProgressBar = %"Bomb TextureProgressBar"
+
+
 var minimap_data: MinimapData
 
 
 
 func _ready() -> void:
 	assert(vehicle)
+	vehicle.initialized.connect(on_vehicle_initialized)
 	await vehicle.ready
 	
 	if not OS.is_debug_build():
@@ -37,12 +42,15 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	update_bars()
 	
-	if not enable_minimap:
-		return
-	dynamic_minimap_overlay.queue_redraw()
+	if enable_minimap:
+		dynamic_minimap_overlay.queue_redraw()
 
-	var parent_size:= (texture_minimap.get_parent() as Control).size
-	texture_minimap.position= Vector2(-minimap_data.size / 2) +  parent_size * 0.5 - vehicle.global_position / 128
+		var parent_size:= (texture_minimap.get_parent() as Control).size
+		texture_minimap.position= Vector2(-minimap_data.size / 2) +  parent_size * 0.5 - vehicle.global_position / 128
+
+	if vehicle.charging_bomb:
+		var progress: float= vehicle.get_bomb_part_info().live_data[VehicleBombPartData.CHARGING_PROGRESS_DATA]
+		bomb_progress_bar.value= progress
 
 
 func update_bars():
@@ -62,6 +70,11 @@ func update_bars():
 
 	progress_bar_storage.value= storage_ratio * 100
 	label_storage.text= str(int(storage), "/", vehicle.stats.power_capacity)
+
+
+func on_vehicle_initialized():
+	if vehicle.get_bomb_part_info():
+		bomb_button.disabled= false
 
 
 func _on_dynamic_minimap_overlay_redraw(canvas_item: CanvasItem):
@@ -92,3 +105,13 @@ func _on_static_minimap_overlay_on_draw(canvas_item: CanvasItem) -> void:
 	rect.position= minimap_data.get_local_pos(minimap_data.target.position)
 	rect.end= minimap_data.get_local_pos(minimap_data.target.end)
 	canvas_item.draw_rect(rect, Color.YELLOW)
+
+
+func _on_bomb_button_pressed() -> void:
+	bomb_button.disabled= true
+	if vehicle.bomb_ready:
+		vehicle.trigger_bomb()
+	else:
+		vehicle.charging_bomb= true
+		
+		

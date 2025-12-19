@@ -2,6 +2,7 @@ class_name Vehicle
 extends RigidBody2D
 
 signal destroyed
+signal initialized
 
 const PART_SIZE= 128
 
@@ -24,11 +25,14 @@ const PART_SIZE= 128
 @onready var damage_indicator: Sprite2D = $"Damage Indicator"
 @onready var shadow_node: Node2D = $Shadow
 @onready var camera: Camera2D = $Camera2D
+@onready var ui: VehicleUI = $"Vehicle UI"
 
 @onready var audio_player_tires: AudioStreamPlayer = $"AudioStreamPlayer Tires"
 @onready var audio_player_engine_idle: AudioStreamPlayer = $"AudioStreamPlayer Engine Idle"
 @onready var audio_player_throttle: AudioStreamPlayer = $"AudioStreamPlayer Throttle"
 @onready var audio_player_plate_crack: AudioStreamPlayer = $"AudioStreamPlayer Plate Crack"
+@onready var audio_player_charging: AudioStreamPlayer = $"AudioStreamPlayer Charging"
+@onready var audio_player_bomb: AudioStreamPlayer = $"AudioStreamPlayer Bomb"
 
 
 var layout: VehicleLayout
@@ -42,6 +46,9 @@ var power_supply_ratio: float
 
 var acceleration_force: float
 var rotation_torque: float
+
+var charging_bomb:= false
+var bomb_ready:= false
 
 var custom_mounted_objects: Array[VehicleMountedPartObject]
 var coll_shape_tile_pos_lookup: Dictionary[int, Vector2i] 
@@ -86,6 +93,7 @@ func initialize(p_layout: VehicleLayout):
 	mass= stats.weight
 	
 	initialize_fire_groups()
+	initialized.emit()
 
 
 func initialize_fire_groups():
@@ -291,6 +299,43 @@ func update_debug_window():
 	debug_window.set_value("used power", used_power)
 	debug_window.set_value("stored power", stored_power)
 	debug_window.set_value("power ratio", power_supply_ratio)
+
+
+func enable_bomb():
+	bomb_ready= true
+	charging_bomb= false
+	ui.bomb_button.disabled= false
+	audio_player_charging.play()
+
+
+func trigger_bomb():
+	bomb_ready= false
+	charging_bomb= false
+	ui.bomb_button.disabled= false
+	ui.bomb_progress_bar.value= 0.0
+	
+	var part_info:= get_bomb_part_info()
+	part_info.live_data[VehicleBombPartData.CHARGING_PROGRESS_DATA]= 0.0
+	var radius: float= (part_info.part as VehicleBombPartData).explosion_radius
+	var trans:= get_tile_transform(get_bomb_tile_pos())
+	get_level().kill_enemies_in_radius(trans.origin, radius)
+	
+	camera.shake()
+	audio_player_bomb.play()
+
+
+func get_bomb_tile_pos()-> Vector2i:
+	var bomb_part: VehicleMountedPartData= GameData.get_part_from_class(VehicleBombPartData)
+	var arr= layout.get_mounted_parts_of_type(bomb_part)
+	return arr[0]
+
+
+func get_bomb_part_info()-> VehicleMountedPartInfo: 
+	var bomb_part: VehicleMountedPartData= GameData.get_part_from_class(VehicleBombPartData)
+	var arr= layout.get_mounted_parts_of_type(bomb_part)
+	if arr.is_empty():
+		return null
+	return layout.get_mounted_part_info_at(arr[0])
 
 
 func get_tile_transform(tile: Vector2i, part_info: VehicleMountedPartInfo= null)-> Transform2D:

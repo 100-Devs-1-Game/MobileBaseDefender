@@ -98,6 +98,7 @@ shader_parameter/edge_softness = 1.0
 
 [node name="Vehicle UI" type="CanvasLayer"]
 script = ExtResource("1_8pk62")
+enable_minimap = null
 
 [node name="Debug Window" parent="." instance=ExtResource("1_2mjmc")]
 unique_name_in_owner = true
@@ -252,16 +253,16 @@ text = "WEAPONS 2
 script = ExtResource("10_l2yv4")
 type = 1
 
-[node name="TextureButton" type="TextureButton" parent="Control UI/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Bomb Button" type="TextureButton" parent="Control UI/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
 disabled = true
 texture_normal = ExtResource("19_kk5dq")
 texture_hover = ExtResource("18_momxe")
 texture_disabled = ExtResource("20_uo645")
-script = ExtResource("10_l2yv4")
 
-[node name="Label" type="Label" parent="Control UI/MarginContainer/VBoxContainer/HBoxContainer/TextureButton"]
+[node name="Label" type="Label" parent="Control UI/MarginContainer/VBoxContainer/HBoxContainer/Bomb Button"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -277,7 +278,8 @@ grow_vertical = 2
 text = "BOMB"
 label_settings = SubResource("LabelSettings_ml5au")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Control UI/MarginContainer/VBoxContainer/HBoxContainer/TextureButton"]
+[node name="Bomb TextureProgressBar" type="TextureProgressBar" parent="Control UI/MarginContainer/VBoxContainer/HBoxContainer/Bomb Button"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -482,5 +484,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
+[connection signal="pressed" from="Control UI/MarginContainer/VBoxContainer/HBoxContainer/Bomb Button" to="." method="_on_bomb_button_pressed"]
 [connection signal="on_draw" from="Control UI/MarginContainer/VBoxContainer/Minimap/Static Minimap Overlay" to="." method="_on_static_minimap_overlay_on_draw"]
 [connection signal="on_draw" from="Control UI/MarginContainer/VBoxContainer/Minimap/Dynamic Minimap Overlay" to="." method="_on_dynamic_minimap_overlay_redraw"]

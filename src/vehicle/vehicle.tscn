@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://scmr7fvfwq86"]
+[gd_scene load_steps=15 format=3 uid="uid://scmr7fvfwq86"]
 
 [ext_resource type="Script" uid="uid://ceb3fbth2q404" path="res://vehicle/vehicle.gd" id="1_opyur"]
 [ext_resource type="Resource" uid="uid://qnlykqd5qlqd" path="res://data/vehicle_parts/wheel.tres" id="2_1ktiy"]
@@ -11,6 +11,8 @@
 [ext_resource type="AudioStream" uid="uid://sdt442f5s8h7" path="res://assets/sfx/engine_idling.ogg" id="9_s4s6f"]
 [ext_resource type="AudioStream" uid="uid://b0aqo53e8xeun" path="res://assets/sfx/enging_working.ogg" id="10_fehuk"]
 [ext_resource type="AudioStream" uid="uid://db4myw6lqb3w4" path="res://assets/sfx/metal_crack.ogg" id="11_fehuk"]
+[ext_resource type="AudioStream" uid="uid://hk2dvvr1rfxg" path="res://assets/sfx/charging_up.ogg" id="12_jmtuw"]
+[ext_resource type="AudioStream" uid="uid://cbgm634kdhqdv" path="res://assets/sfx/large_explosion.ogg" id="13_egcsk"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kuhha"]
 friction = 0.0
@@ -74,6 +76,14 @@ bus = &"Sfx"
 
 [node name="AudioStreamPlayer Plate Crack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_fehuk")
+bus = &"Sfx"
+
+[node name="AudioStreamPlayer Charging" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_jmtuw")
+bus = &"Sfx"
+
+[node name="AudioStreamPlayer Bomb" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_egcsk")
 bus = &"Sfx"
 
 [connection signal="timeout" from="Enemy Detector Cooldown" to="." method="_on_enemy_detector_cooldown_timeout"]
