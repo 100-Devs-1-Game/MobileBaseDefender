@@ -21,8 +21,7 @@ func tick(vehicle: Vehicle, _delta: float):
 		return
 
 	if VehicleBaseGunPartData.is_shooting(part_info):
-		if not audio_player_shooting.playing:
-			audio_player_shooting.play()
+		audio_player_shooting.play()
 
 
 func can_shoot()-> bool:

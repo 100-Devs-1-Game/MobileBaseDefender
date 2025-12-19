@@ -39,6 +39,5 @@ bus = &"Sfx"
 
 [node name="AudioStreamPlayer Shooting" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_1a72a")
-volume_db = -5.0
-max_polyphony = 3
+max_polyphony = 10
 bus = &"Sfx"
