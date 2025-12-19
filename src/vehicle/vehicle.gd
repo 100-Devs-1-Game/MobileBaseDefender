@@ -213,7 +213,7 @@ func tick_parts():
 
 	available_power= total_power
 	
-	stored_power= max(stored_power, stats.power_capacity)
+	stored_power= min(stored_power, stats.power_capacity)
 	
 	if used_power > total_power:
 		var power_delta: float= used_power - total_power
