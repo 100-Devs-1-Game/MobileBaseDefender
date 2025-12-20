@@ -8,8 +8,7 @@
 [sub_resource type="Resource" id="Resource_142jb"]
 script = ExtResource("2_cg50a")
 ores = Dictionary[int, int]({
-0: 5,
-2: 5
+0: 5
 })
 metadata/_custom_type_script = "uid://dhoiovu5dml4c"
 

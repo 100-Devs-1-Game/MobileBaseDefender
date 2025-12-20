@@ -12,7 +12,7 @@
 [sub_resource type="Resource" id="Resource_a0k8v"]
 script = ExtResource("1_hdb7p")
 ores = Dictionary[int, int]({
-0: 5
+0: 3
 })
 metadata/_custom_type_script = "uid://dhoiovu5dml4c"
 
