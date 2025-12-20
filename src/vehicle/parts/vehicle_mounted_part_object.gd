@@ -15,3 +15,7 @@ func tick(_vehicle: Vehicle, _delta: float):
 
 func physics_tick(_vehicle: Vehicle, _delta: float):
 	pass
+
+
+func on_destroyed(_vehicle: Vehicle):
+	pass

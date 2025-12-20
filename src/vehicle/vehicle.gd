@@ -259,6 +259,7 @@ func take_damage_at_shape(dmg_inst: DamageInstance, idx: int):
 		if dmg_val > structure.hitpoints:
 			refs.structure_node.queue_free()
 			if refs.mounted_node is VehicleMountedPartObject:
+				refs.mounted_node.on_destroyed(self)
 				custom_mounted_objects.erase(refs.mounted_node)
 			if refs.mounted_node:
 				refs.mounted_node.queue_free()
@@ -306,6 +307,13 @@ func enable_bomb():
 	charging_bomb= false
 	ui.bomb_button.disabled= false
 	audio_player_charging.play()
+
+
+func disable_bomb():
+	bomb_ready= false
+	charging_bomb= false
+	ui.bomb_button.disabled= true
+	ui.bomb_progress_bar.value= 0
 
 
 func trigger_bomb():

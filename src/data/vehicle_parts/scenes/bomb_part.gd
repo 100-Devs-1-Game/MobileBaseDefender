@@ -28,3 +28,7 @@ func init_charge():
 	animated_sprite_charge.scale= Vector2.ZERO
 	charge_tween.tween_property(animated_sprite_charge, "scale", Vector2.ONE, 3.0)
 	animated_sprite_charge.play("default")
+
+
+func on_destroyed(vehicle: Vehicle):
+	VehicleBombPartData.reset(part_info, vehicle)

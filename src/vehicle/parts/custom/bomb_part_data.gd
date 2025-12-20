@@ -23,3 +23,10 @@ func get_power_usage(_part_info: VehicleMountedPartInfo)-> float:
 	if Global.vehicle.charging_bomb:
 		return power_required
 	return 0
+
+
+static func reset(part_info: VehicleMountedPartInfo, vehicle: Vehicle):
+	vehicle.disable_bomb()
+	part_info.live_data[CHARGING_PROGRESS_DATA]= 0.0
+	
+	
