@@ -220,7 +220,7 @@ theme_override_constants/separation = 25
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Sidebar/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 30
 alignment = 1
 
 [node name="Button Frame Tab" parent="UI/Sidebar/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("12_nbwfo")]
@@ -237,6 +237,7 @@ button_group = ExtResource("10_8y8w5")
 text = "PARTS"
 
 [node name="Button Upgrades Tab" parent="UI/Sidebar/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("12_nbwfo")]
+visible = false
 layout_mode = 2
 toggle_mode = true
 button_group = ExtResource("10_8y8w5")
