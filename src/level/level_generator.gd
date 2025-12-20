@@ -77,7 +77,7 @@ func generate_branch(from: Vector2i, orig_direction: Vector2i, length: int, widt
 	var can_change_dir:= false
 	
 	for i in range(0, length, width):
-		cells.append_array(create_cell_rect(from, width))
+		cells.append_array(create_cell_rect(from, width + 2))
 		
 		if can_change_dir and Utils.chance100(change_direction_chance):
 			var new_dir: Vector2i= get_rand_90deg_dir(direction)
@@ -88,10 +88,11 @@ func generate_branch(from: Vector2i, orig_direction: Vector2i, length: int, widt
 			can_change_dir= true
 	
 		assert(is_equal_approx(direction.length(), 1.0)) 
-		from+= direction * width
 
 		if width >= branch_point_min_width and Utils.chance100(branch_chance):
 			branch_points.append(BranchPoint.new(from, get_rand_90deg_dir(direction), length / 2, width / 2))
+
+		from+= direction * width
 		
 	return cells
 
