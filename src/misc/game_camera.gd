@@ -2,6 +2,10 @@ class_name GameCamera
 extends Camera2D
 
 @export var canvas_offset: Vector2
+@export var max_zoom: float= 0.125
+@export var can_pan: bool= false
+@export var pan_speed: float= 500.0
+@export var bounds: Vector2= Vector2(580, 920)
 
 var shake_duration: float
 
@@ -12,6 +16,11 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if can_pan:
+		position+= Input.get_vector("turn_left", "turn_right", "forward", "backward") * delta * pan_speed
+		position.x= clampf(position.x, -bounds.x, bounds.x)
+		position.y= clampf(position.y, -bounds.y, bounds.y)
+		
 	if not ignore_rotation:
 		offset= (canvas_offset / zoom.x).rotated(global_rotation)
 
@@ -30,7 +39,7 @@ func zoom_in():
 
 
 func zoom_out():
-	if zoom.x > 0.125:
+	if zoom.x > max_zoom:
 		zoom/= 2
 	adjust_offset()
 
