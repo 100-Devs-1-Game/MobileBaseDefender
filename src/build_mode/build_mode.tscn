@@ -59,6 +59,8 @@ stats_label_settings = ExtResource("4_c1e2y")
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("2_ggnbw")
 canvas_offset = Vector2(270, 50)
+max_zoom = 0.5
+can_pan = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -2
