@@ -135,9 +135,10 @@ func kill_enemies_in_radius(pos: Vector2, radius: float):
 
 
 func game_over():
+	if get_tree().paused: return
 	audio_player_defeat.play()
-	GameData.campaign.load_next_scene.call_deferred(true)
-	
+	GameData.campaign.load_next_scene(true)
+
 
 func on_level_completed():
 	audio_player_victory.play()
