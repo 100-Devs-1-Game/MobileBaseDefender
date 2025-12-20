@@ -17,9 +17,9 @@ func _process(delta: float) -> void:
 
 	if shake_duration > 0:
 		shake_duration-= delta
-		offset= Vector2.from_angle(randf() * PI * 2) * randf() * 20
-	else:
-		offset= Vector2.ZERO
+		adjust_offset()
+		if shake_duration > 0:
+			offset+= Vector2.from_angle(randf() * PI * 2) * randf() * 20
 
 
 func zoom_in():
