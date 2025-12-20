@@ -24,5 +24,6 @@ unique = true
 name = "Bomb"
 description = "Kill enemies in a large radius. Must be charged before it can be used. Only one per vehicle."
 cost = SubResource("Resource_54yxv")
+weight = 15
 sort_order = "i"
 metadata/_custom_type_script = "uid://bp4grfvui3xbp"
