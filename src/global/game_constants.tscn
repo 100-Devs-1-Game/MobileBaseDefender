@@ -12,7 +12,8 @@ metadata/_custom_type_script = "uid://po4gsi1p0t8e"
 script = ExtResource("3_3fjuc")
 ores = Dictionary[int, int]({
 0: 100,
-2: 20
+2: 100,
+3: 100
 })
 metadata/_custom_type_script = "uid://dhoiovu5dml4c"
 
