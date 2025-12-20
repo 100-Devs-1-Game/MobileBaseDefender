@@ -58,7 +58,9 @@ func _ready() -> void:
 		generator.finish(self)
 		generator.generate_clouds(self)
 		self.minimap_data= generator.generate_minimap(self, Vector2i(1000, 1000), 1.0)
-	
+
+	SceneManager.canvas_layer.hide()
+
 	spawn_vehicle(Vector2.ZERO, GameData.campaign.vehicle)
 
 

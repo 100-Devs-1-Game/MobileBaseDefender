@@ -4,6 +4,10 @@ extends Node
 @export var first_level_scene: PackedScene
 @export var build_mode_scene: PackedScene
 
+@onready var canvas_layer: CanvasLayer = $CanvasLayer
+@onready var label_stage: Label = %"Label Stage"
+
+
 var vehicle_layout: VehicleLayout
 
 
@@ -13,6 +17,8 @@ func _ready() -> void:
 
 
 func load_level():
+	label_stage.text= str("STAGE ", GameData.campaign.stage)
+	canvas_layer.show()
 	get_tree().change_scene_to_packed(level_scene)
 
 
