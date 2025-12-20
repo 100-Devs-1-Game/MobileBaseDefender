@@ -289,9 +289,11 @@ label_settings = SubResource("LabelSettings_qsv6l")
 
 [node name="Label Description" type="Label" parent="UI/Info Panel/MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(850, 0)
 layout_mode = 2
-size_flags_vertical = 10
+size_flags_vertical = 8
 label_settings = SubResource("LabelSettings_dvtsv")
+autowrap_mode = 3
 
 [node name="Tool Panel" type="PanelContainer" parent="UI"]
 anchors_preset = 2
