@@ -1,0 +1,12 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://deb0dnlny4bfr"]
+
+[ext_resource type="Texture2D" uid="uid://cd0wbcpglhb5n" path="res://assets/art/ui/RedButton9SliceHovered.png" id="1_uxl6x"]
+
+[resource]
+content_margin_left = 30.0
+content_margin_right = 30.0
+texture = ExtResource("1_uxl6x")
+texture_margin_left = 20.0
+texture_margin_top = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
