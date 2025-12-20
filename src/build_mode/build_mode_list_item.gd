@@ -24,7 +24,7 @@ var is_disabled:= false
 
 
 
-func init(p_type: VehicleBasePartData):
+func init(p_type: VehicleBasePartData, layout: VehicleLayout):
 	type= p_type
 	texture_rect.texture= type.get_build_mode_texture()
 	label_name.text= type.name
@@ -37,6 +37,11 @@ func init(p_type: VehicleBasePartData):
 		label= label_cost2
 		
 	check_affordability()
+	if type is VehicleMountedPartData:
+		var mounted_part: VehicleMountedPartData= type
+		if mounted_part.unique:
+			if not layout.get_mounted_parts_of_type(mounted_part).is_empty():
+				disable(true)
 
 
 func check_affordability():

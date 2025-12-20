@@ -97,6 +97,9 @@ func _on_texture_rect_grid_gui_input(event: InputEvent) -> void:
 				buy_part()
 				render_layout()
 				audio_player_place.play()
+				if (selected_part as VehicleMountedPartData).unique:
+					deselect()
+					update_list()
 				
 		elif event.button_index == MOUSE_BUTTON_RIGHT:
 			if layout.has_mounted_part_at(tile_pos):
@@ -129,7 +132,7 @@ func update_list():
 
 			var item: BuildModeListItem= build_list_item_scene.instantiate()
 			build_list_content.add_child(item)
-			item.init(part)
+			item.init(part, layout)
 			item.selected.connect(on_item_selected)
 			item.hover.connect(on_item_hover)
 

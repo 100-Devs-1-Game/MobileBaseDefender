@@ -13,6 +13,7 @@ enum RotateMode { NONE, TWO_WAY, FOUR_WAY }
 @export var game_mode_texture: Texture2D
 @export var game_mode_scene: PackedScene
 @export var full_visual_replacement: bool= false
+@export var unique: bool= false
 
 
 
