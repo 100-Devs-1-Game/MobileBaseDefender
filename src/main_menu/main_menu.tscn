@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://dy6wm18v8gcw1"]
+[gd_scene load_steps=8 format=3 uid="uid://dy6wm18v8gcw1"]
 
 [ext_resource type="Script" uid="uid://hqwl7p340s87" path="res://main_menu/main_menu.gd" id="1_oa53l"]
+[ext_resource type="StyleBox" uid="uid://c417rdmvsso83" path="res://ui/light_button_normal_style.tres" id="2_d3a7t"]
+[ext_resource type="Script" uid="uid://cdi1whb4mxdjo" path="res://main_menu/settings_popup.gd" id="3_3f7m4"]
+[ext_resource type="StyleBox" uid="uid://vfq5l8a2rsll" path="res://ui/panel_style.tres" id="3_bws42"]
+[ext_resource type="FontFile" uid="uid://cuq0hfcm174n" path="res://assets_external/fonts/Jersey_25/Jersey25-Regular.ttf" id="4_3f7m4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6tl50"]
+font = ExtResource("4_3f7m4")
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_t6bnd"]
+font = ExtResource("4_3f7m4")
+font_size = 32
 
 [node name="Main Menu" type="CanvasLayer"]
 script = ExtResource("1_oa53l")
@@ -12,9 +24,143 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button Play" type="Button" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="Button Play" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.5796907, 0.57969075, 0.5796918, 1)
 theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = ExtResource("2_d3a7t")
+theme_override_styles/pressed = ExtResource("2_d3a7t")
+theme_override_styles/hover = ExtResource("2_d3a7t")
 text = "PLAY"
 
-[connection signal="pressed" from="CenterContainer/Button Play" to="." method="_on_button_play_pressed"]
+[node name="Button Settings" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.5796907, 0.57969075, 0.5796918, 1)
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = ExtResource("2_d3a7t")
+theme_override_styles/pressed = ExtResource("2_d3a7t")
+theme_override_styles/hover = ExtResource("2_d3a7t")
+text = "SETTINGS
+"
+
+[node name="Button Quit" type="Button" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.5796907, 0.57969075, 0.5796918, 1)
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = ExtResource("2_d3a7t")
+theme_override_styles/pressed = ExtResource("2_d3a7t")
+theme_override_styles/hover = ExtResource("2_d3a7t")
+text = "QUIT
+"
+
+[node name="Settings" type="CenterContainer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_3f7m4")
+
+[node name="PanelContainer" type="PanelContainer" parent="Settings"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_bws42")
+
+[node name="MarginContainer" type="MarginContainer" parent="Settings/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="Settings/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "SETTINGS"
+label_settings = SubResource("LabelSettings_6tl50")
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="Settings/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Settings/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "SFX"
+label_settings = SubResource("LabelSettings_t6bnd")
+
+[node name="HSlider Sfx" type="HSlider" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+focus_mode = 0
+max_value = 1.0
+step = 0.05
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Settings/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "MUSIC"
+label_settings = SubResource("LabelSettings_t6bnd")
+
+[node name="HSlider Music" type="HSlider" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+focus_mode = 0
+max_value = 1.0
+step = 0.05
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Settings/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "FULLSCREEN"
+label_settings = SubResource("LabelSettings_t6bnd")
+
+[node name="CheckBox Fullscreen" type="CheckBox" parent="Settings/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+focus_mode = 0
+
+[node name="Control2" type="Control" parent="Settings/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Button OK" type="Button" parent="Settings/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_hover_color = Color(0.5796907, 0.57969075, 0.5796918, 1)
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = ExtResource("2_d3a7t")
+theme_override_styles/pressed = ExtResource("2_d3a7t")
+theme_override_styles/hover = ExtResource("2_d3a7t")
+text = "OK"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button Play" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button Settings" to="." method="_on_button_settings_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button Quit" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="Settings/PanelContainer/MarginContainer/VBoxContainer/Button OK" to="Settings" method="_on_ok_button_pressed"]
