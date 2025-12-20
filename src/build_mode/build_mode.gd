@@ -152,10 +152,10 @@ func update_stats():
 	var stats: Dictionary[String, String]
 	stats["Weight"]= str(vehicle_stats.weight * 200, "kg")
 	stats["Acceleration"]= str(int(vehicle_stats.acceleration_force * 10 / vehicle_stats.weight), "a")
-	stats["Min Power Produced"]= "---"
-	stats["Max Power Produced"]= "---"
-	stats["Power Storage"]= "---"
-	stats["Max Power Required"]= "---"
+	stats["Min Power Produced"]= str(vehicle_stats.min_power_generated, "KW")
+	stats["Max Power Produced"]= str(vehicle_stats.min_power_generated + vehicle_stats.bonus_power_generated, "KW")
+	stats["Power Storage"]= str(vehicle_stats.power_capacity, "KWh")
+	stats["Max Power Required"]= str(vehicle_stats.max_power_required, "KW")
 
 	var label: Label
 	for key: String in stats:
