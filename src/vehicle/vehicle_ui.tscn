@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://d0g5ffcu256n"]
+[gd_scene load_steps=43 format=3 uid="uid://d0g5ffcu256n"]
 
 [ext_resource type="PackedScene" uid="uid://bjf4o1kponle7" path="res://debug/debug_window.tscn" id="1_2mjmc"]
 [ext_resource type="Script" uid="uid://m4xmy2vwl3wx" path="res://vehicle/vehicle_ui.gd" id="1_8pk62"]
@@ -58,7 +58,7 @@ width = 200
 texture = SubResource("GradientTexture1D_dnrdk")
 axis_stretch_horizontal = 1
 
-[sub_resource type="LabelSettings" id="LabelSettings_4l2aw"]
+[sub_resource type="LabelSettings" id="LabelSettings_momxe"]
 font = ExtResource("3_4t8d0")
 font_size = 28
 
@@ -73,6 +73,10 @@ width = 200
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sds00"]
 texture = SubResource("GradientTexture1D_jwrgk")
 axis_stretch_horizontal = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_4l2aw"]
+font = ExtResource("3_4t8d0")
+font_size = 28
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83031"]
 bg_color = Color(0.6, 0.6, 0.6, 0.7607843)
@@ -89,7 +93,6 @@ shader_parameter/edge_softness = 1.0
 
 [node name="Vehicle UI" type="CanvasLayer"]
 script = ExtResource("1_8pk62")
-enable_minimap = null
 
 [node name="Debug Window" parent="." instance=ExtResource("1_2mjmc")]
 unique_name_in_owner = true
@@ -346,7 +349,7 @@ offset_bottom = 14.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "100%"
-label_settings = SubResource("LabelSettings_4l2aw")
+label_settings = SubResource("LabelSettings_momxe")
 horizontal_alignment = 1
 vertical_alignment = 1
 

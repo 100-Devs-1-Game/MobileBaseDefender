@@ -64,6 +64,7 @@ func update_bars():
 	energy_val= clampf(energy_val, 0, 150)
 	progress_bar_energy.value= energy_val
 	label_energy_progress.text= str(int(orig_energy_val * 100), "%")
+	label_energy_progress.label_settings.font_color= Color.WHITE if energy_val <= 100 else Color.RED
 
 	var storage: float= vehicle.stored_power
 	var storage_ratio: float= storage / vehicle.stats.power_capacity
