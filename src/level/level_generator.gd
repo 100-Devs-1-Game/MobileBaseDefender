@@ -193,7 +193,7 @@ func generate_minimap(level: Level, size: Vector2i, factor: float)-> MinimapData
 			@warning_ignore("narrowing_conversion")
 			var tile_pos:= Vector2i(x / factor, y / factor)
 			tile_pos+= Vector2i(level_rect.position / factor)
-			if level.tile_map_floor.get_cell_source_id(tile_pos) > -1:
+			if level.tile_map_floor.get_cell_atlas_coords(tile_pos) == Vector2i.ONE:
 				var pixel_pos:= Vector2i(x + size.x / 2, y + size.y / 2) + level_rect.position
 			
 				if pixel_pos.x < 0 or pixel_pos.y < 0:
