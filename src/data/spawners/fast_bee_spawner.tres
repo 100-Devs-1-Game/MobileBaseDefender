@@ -7,4 +7,5 @@
 script = ExtResource("1_7xmka")
 scene = ExtResource("1_404qp")
 density = 0.05
+min_stage = 2
 metadata/_custom_type_script = "uid://bo7ctj76krjq4"

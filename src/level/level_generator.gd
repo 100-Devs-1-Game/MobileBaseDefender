@@ -127,9 +127,9 @@ func second_pass(level: Level):
 
 		if tile_pos.length_squared() <= 900:
 			continue
-		
+
 		for spawner in spawners:
-			if Utils.chance100(spawner.density):
+			if Utils.chance100(spawner.density) and spawner.min_stage <= GameData.campaign.stage:
 				spawner.spawn(level, tile_pos)
 				break
 

@@ -3,6 +3,7 @@ extends Resource
 
 @export var scene: PackedScene
 @export var density: float= 0.2
+@export var min_stage: int= 0
 
 
 func spawn(level: Level, tile_pos: Vector2i):
