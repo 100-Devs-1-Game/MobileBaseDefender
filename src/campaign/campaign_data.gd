@@ -35,7 +35,7 @@ func load_next_scene(vehicle_destroyed: bool= false):
 				stage+= 1
 				SceneManager.call_delayed(SceneManager.load_build_mode, 5)
 		else:
-			level_generator.main_branch_length= 200 * stage
+			level_generator.main_branch_length= 100 * stage
 			level_generator.main_branch_width= 20 + stage * 2
 			level_generator.branch_chance= max(50 - stage * 5, 5)
 			SceneManager.load_level()
