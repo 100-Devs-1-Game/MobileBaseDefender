@@ -30,6 +30,7 @@ theme_override_constants/separation = 100
 
 [node name="Button Play" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.5796907, 0.57969075, 0.5796918, 1)
 theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = ExtResource("2_d3a7t")
@@ -39,6 +40,7 @@ text = "PLAY"
 
 [node name="Button Settings" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.5796907, 0.57969075, 0.5796918, 1)
 theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = ExtResource("2_d3a7t")
@@ -50,6 +52,7 @@ text = "SETTINGS
 [node name="Button Quit" type="Button" parent="CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 theme_override_colors/font_hover_color = Color(0.5796907, 0.57969075, 0.5796918, 1)
 theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = ExtResource("2_d3a7t")
