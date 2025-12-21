@@ -15,7 +15,7 @@ class BranchPoint:
 
 
 const DIRECTIONS= [ Vector2i.UP, Vector2i.RIGHT, Vector2i.DOWN, Vector2i.LEFT ]
-#const DIRECTIONS= [ Vector2i.UP, Vector2i(1, -1), Vector2i.RIGHT, Vector2i(1, 1), Vector2i.DOWN, Vector2i(-1, 1), Vector2i.LEFT, Vector2i(-1, -1)]
+
 
 @export var main_branch_length: int= 200
 @export var main_branch_width: int= 20
@@ -31,6 +31,7 @@ const DIRECTIONS= [ Vector2i.UP, Vector2i.RIGHT, Vector2i.DOWN, Vector2i.LEFT ]
 @export var finish_area_scene: PackedScene
 
 var target: Rect2i
+var orig_direction: Vector2i
 
 
 
@@ -39,7 +40,9 @@ func generate_terrain(level: Level):
 	
 	var branch_points: Array[BranchPoint]
 	var cells: Array[Vector2i]
-	cells.append_array(generate_branch(Vector2i.ZERO, DIRECTIONS.pick_random(), main_branch_length, main_branch_width, branch_points))
+	
+	orig_direction= DIRECTIONS.pick_random()
+	cells.append_array(generate_branch(Vector2i.ZERO, orig_direction, main_branch_length, main_branch_width, branch_points))
 
 	while not branch_points.is_empty():
 		var point: BranchPoint= branch_points.pop_front()

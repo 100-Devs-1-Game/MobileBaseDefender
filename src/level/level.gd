@@ -63,6 +63,9 @@ func _ready() -> void:
 
 	spawn_vehicle(Vector2.ZERO, GameData.campaign.vehicle)
 
+	if is_generated:
+		vehicle.rotation= Vector2(generator.orig_direction).angle_to(Vector2.UP)
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey:
