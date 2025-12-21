@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_22o5w")
 tile_id = 3
+density = 0.4
 metadata/_custom_type_script = "uid://d266b68fumxu6"
