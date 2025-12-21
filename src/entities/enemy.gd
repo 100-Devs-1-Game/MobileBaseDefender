@@ -15,6 +15,7 @@ func _physics_process(_delta: float) -> void:
 	if Engine.get_physics_frames() % 30 == tick_offset:
 		tick()
 
+
 func tick():
 	var target_pos:= get_move_target()
 	var dir= global_position.direction_to(target_pos)
