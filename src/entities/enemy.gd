@@ -8,11 +8,11 @@ extends RigidBody2D
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-var tick_offset: int= randi() % 9
+var tick_offset: int= randi() % 29
 
 
 func _physics_process(_delta: float) -> void:
-	if Engine.get_physics_frames() % 10 == tick_offset:
+	if Engine.get_physics_frames() % 30 == tick_offset:
 		tick()
 
 func tick():
