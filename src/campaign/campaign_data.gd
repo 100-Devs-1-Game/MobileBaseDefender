@@ -28,7 +28,6 @@ func load_next_scene(vehicle_destroyed: bool= false):
 		SceneManager.load_first_level()
 	else:
 		if in_level:
-			in_level= false
 			if vehicle_destroyed:
 				SceneManager.call_delayed(SceneManager.load_build_mode, 3)
 			else:

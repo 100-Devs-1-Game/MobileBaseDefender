@@ -27,6 +27,7 @@ func load_first_level():
 
 
 func load_build_mode():
+	GameData.campaign.in_level= false
 	get_tree().change_scene_to_packed(build_mode_scene)
 
 
