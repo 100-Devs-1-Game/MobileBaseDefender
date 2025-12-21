@@ -10,6 +10,7 @@ const PART_SIZE= 128
 @export var part_tick_interval: int= 1
 @export var rolling_friction: float= 0.2
 @export var brake_friction: float= 2.0
+@export var mass_impact: float= 0.0025
 
 @export var controls: VehicleControls
 
@@ -114,7 +115,7 @@ func _physics_process(delta: float) -> void:
 
 	speed= linear_velocity.dot(-global_transform.y) 
 
-	speed+= acceleration_force * GameConstants.active.acceleration_factor / ( mass / 100.0 ) * delta
+	speed+= acceleration_force * GameConstants.active.acceleration_factor / ( mass  * mass_impact ) * delta
 	speed*= 1 - delta * rolling_friction
 	
 	if controls.brake.toggled:
@@ -126,7 +127,7 @@ func _physics_process(delta: float) -> void:
 	if speed < -1:
 		applied_torque*= -1
 
-	angular_velocity= applied_torque * GameConstants.active.steering_factor / ( mass / 100.0 )
+	angular_velocity= applied_torque * GameConstants.active.steering_factor / ( mass * mass_impact )
 
 	for object in custom_mounted_objects:
 		object.physics_tick(self, delta)
