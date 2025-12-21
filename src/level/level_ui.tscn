@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://xlssgqgv4mci" path="res://level/level_ui.gd" id="1_45c2k"]
 [ext_resource type="FontFile" uid="uid://cuq0hfcm174n" path="res://assets_external/fonts/Jersey_25/Jersey25-Regular.ttf" id="2_f7lsl"]
-[ext_resource type="StyleBox" uid="uid://blk37lrytnee8" path="res://ui/paper_panel_style.tres" id="2_kiycb"]
+[ext_resource type="StyleBox" uid="uid://vfq5l8a2rsll" path="res://ui/panel_style.tres" id="2_kiycb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kiycb"]
 font = ExtResource("2_f7lsl")
@@ -16,6 +16,7 @@ visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -470.0
 grow_horizontal = 2
 grow_vertical = 2
 
