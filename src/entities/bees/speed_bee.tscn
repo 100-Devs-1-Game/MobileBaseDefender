@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://byg8h45tmmg6l"]
+[gd_scene load_steps=11 format=3 uid="uid://byg8h45tmmg6l"]
 
 [ext_resource type="PackedScene" uid="uid://5o5abaqxug0v" path="res://entities/base_enemy.tscn" id="1_m50ex"]
 [ext_resource type="Script" uid="uid://ds6gg1xa55t28" path="res://entities/bees/bee.gd" id="2_yykaq"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://cn7reoip1dla4" path="res://assets/art/enemies/speed/Bumble_speeds_0003.png" id="5_w82df"]
 [ext_resource type="Script" uid="uid://4ihsvhpi0so2" path="res://entities/vehicle_interval_damager.gd" id="6_4dp83"]
 [ext_resource type="Script" uid="uid://dwhy702tspcb" path="res://systems/damage_system/damage.gd" id="7_w82df"]
-[ext_resource type="AudioStream" uid="uid://c7g450wcuftn2" path="res://assets/sfx/small_bee_flying.ogg" id="8_w82df"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yykaq"]
 
@@ -54,6 +53,3 @@ autoplay = "default"
 script = ExtResource("6_4dp83")
 damage = SubResource("Resource_mx2n1")
 metadata/_custom_type_script = "uid://4ihsvhpi0so2"
-
-[node name="AudioStreamPlayer" parent="." index="4"]
-stream = ExtResource("8_w82df")

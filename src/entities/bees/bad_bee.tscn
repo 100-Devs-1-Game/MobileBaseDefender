@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dottu51hmefpt"]
+[gd_scene load_steps=11 format=3 uid="uid://dottu51hmefpt"]
 
 [ext_resource type="PackedScene" uid="uid://5o5abaqxug0v" path="res://entities/base_enemy.tscn" id="1_yqxkq"]
 [ext_resource type="Script" uid="uid://ds6gg1xa55t28" path="res://entities/bees/bee.gd" id="2_yuxnc"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://b03d7cmhc14xe" path="res://assets/art/enemies/bad/Bumble_Bad_0002.png" id="4_s8ifh"]
 [ext_resource type="Texture2D" uid="uid://c74ba0tegvesf" path="res://assets/art/enemies/bad/Bumble_Bad_0003.png" id="5_yshqr"]
 [ext_resource type="Texture2D" uid="uid://unpw6fshpg2r" path="res://assets/art/enemies/bad/Bumble_Bad_0004.png" id="6_7yxgw"]
-[ext_resource type="AudioStream" uid="uid://b4clqnj11xcs1" path="res://assets/sfx/large_bee_flying.ogg" id="8_plnn1"]
 
 [sub_resource type="Resource" id="Resource_plnn1"]
 script = ExtResource("3_yuxnc")
@@ -64,9 +63,6 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vehicle Detector" index="0"]
 shape = SubResource("CapsuleShape2D_yqxkq")
 
-[node name="AudioStreamPlayer" parent="." index="4"]
-stream = ExtResource("8_plnn1")
-
-[node name="AudioStreamPlayer Death" type="AudioStreamPlayer2D" parent="." index="5"]
+[node name="AudioStreamPlayer Death" type="AudioStreamPlayer2D" parent="." index="4"]
 
 [connection signal="body_entered" from="Vehicle Detector" to="." method="_on_died" unbinds=1]
