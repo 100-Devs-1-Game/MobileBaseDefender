@@ -23,7 +23,7 @@ func pay(sub_inv: Inventory):
 	inventory.sub_inv(sub_inv)
 
 
-func load_next_scene(vehicle_destroyed: bool= false):
+func load_next_scene(vehicle_destroyed: bool= false, from_main_menu: bool= false):
 	if stage == 0 and not in_level:
 		SceneManager.load_first_level()
 	else:
@@ -34,7 +34,10 @@ func load_next_scene(vehicle_destroyed: bool= false):
 				stage+= 1
 				SceneManager.call_delayed(SceneManager.load_build_mode, 5)
 		else:
-			level_generator.main_branch_length= 200 * stage
-			level_generator.main_branch_width= 20 + stage * 2
-			level_generator.branch_chance= max(50 - stage * 5, 5)
-			SceneManager.load_level()
+			if from_main_menu:
+				SceneManager.load_build_mode()
+			else:
+				level_generator.main_branch_length= 200 * stage
+				level_generator.main_branch_width= 20 + stage * 2
+				level_generator.branch_chance= max(50 - stage * 5, 5)
+				SceneManager.load_level()

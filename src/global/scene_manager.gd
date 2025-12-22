@@ -3,6 +3,7 @@ extends Node
 @export var level_scene: PackedScene
 @export var first_level_scene: PackedScene
 @export var build_mode_scene: PackedScene
+@export var main_menu_scene: PackedScene
 
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var label_stage: Label = %"Label Stage"
@@ -29,6 +30,10 @@ func load_first_level():
 func load_build_mode():
 	GameData.campaign.in_level= false
 	get_tree().change_scene_to_packed(build_mode_scene)
+
+
+func load_main_menu():
+	get_tree().change_scene_to_packed(main_menu_scene)
 
 
 func call_delayed(callable: Callable, secs: float):

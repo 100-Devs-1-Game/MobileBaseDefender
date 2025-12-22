@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://44d1sohtg23e"]
+[gd_scene load_steps=8 format=3 uid="uid://44d1sohtg23e"]
 
 [ext_resource type="Script" uid="uid://btom5x58cj7in" path="res://global/scene_manager.gd" id="1_vlahm"]
 [ext_resource type="PackedScene" uid="uid://bcolrt66stnjm" path="res://campaign/template_level.tscn" id="2_g063o"]
 [ext_resource type="PackedScene" uid="uid://crer0cg0ugs04" path="res://campaign/first_level.tscn" id="3_f2jf4"]
 [ext_resource type="PackedScene" uid="uid://w7vbuvefyglq" path="res://build_mode/build_mode.tscn" id="3_g063o"]
+[ext_resource type="PackedScene" uid="uid://dy6wm18v8gcw1" path="res://main_menu/main_menu.tscn" id="5_gvcsr"]
 [ext_resource type="FontFile" uid="uid://cuq0hfcm174n" path="res://assets_external/fonts/Jersey_25/Jersey25-Regular.ttf" id="5_sxaao"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gvcsr"]
@@ -15,6 +16,7 @@ script = ExtResource("1_vlahm")
 level_scene = ExtResource("2_g063o")
 first_level_scene = ExtResource("3_f2jf4")
 build_mode_scene = ExtResource("3_g063o")
+main_menu_scene = ExtResource("5_gvcsr")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false

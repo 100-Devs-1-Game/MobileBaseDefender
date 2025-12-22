@@ -11,7 +11,7 @@ func _ready() -> void:
 
 
 func _on_button_play_pressed() -> void:
-	GameData.campaign.load_next_scene()
+	GameData.campaign.load_next_scene(false, true)
 
 
 func _on_button_settings_pressed() -> void:

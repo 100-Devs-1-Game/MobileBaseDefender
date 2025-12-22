@@ -73,6 +73,13 @@ func _process(_delta: float) -> void:
 		selected_sprite.modulate= Color.RED
 
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		if event.pressed:
+			if event.keycode == KEY_ESCAPE:
+				SceneManager.load_main_menu()
+
+
 func _on_texture_rect_grid_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if not event.pressed:
